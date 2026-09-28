@@ -1,0 +1,122 @@
+{
+  "dit": {
+    "normal": "/audio/dit.m4a",
+    "slow": "/audio/dit-slow.m4a"
+  },
+  "is": {
+    "normal": "/audio/is.m4a",
+    "slow": "/audio/is-slow.m4a"
+  },
+  "een": {
+    "normal": "/audio/een.m4a",
+    "slow": "/audio/een-slow.m4a"
+  },
+  "huis": {
+    "normal": "/audio/huis.m4a",
+    "slow": "/audio/huis-slow.m4a"
+  },
+  "boom": {
+    "normal": "/audio/boom.m4a",
+    "slow": "/audio/boom-slow.m4a"
+  },
+  "bank": {
+    "normal": "/audio/bank.m4a",
+    "slow": "/audio/bank-slow.m4a"
+  },
+  "de": {
+    "normal": "/audio/de.m4a",
+    "slow": "/audio/de-slow.m4a"
+  },
+  "man": {
+    "normal": "/audio/man.m4a",
+    "slow": "/audio/man-slow.m4a"
+  },
+  "vrouw": {
+    "normal": "/audio/vrouw.m4a",
+    "slow": "/audio/vrouw-slow.m4a"
+  },
+  "loopt": {
+    "normal": "/audio/loopt.m4a",
+    "slow": "/audio/loopt-slow.m4a"
+  },
+  "zit": {
+    "normal": "/audio/zit.m4a",
+    "slow": "/audio/zit-slow.m4a"
+  },
+  "Dit is een huis.": {
+    "normal": "/audio/dit-is-een-huis.m4a",
+    "slow": "/audio/dit-is-een-huis-slow.m4a"
+  },
+  "Dit is een boom.": {
+    "normal": "/audio/dit-is-een-boom.m4a",
+    "slow": "/audio/dit-is-een-boom-slow.m4a"
+  },
+  "Dit is een bank.": {
+    "normal": "/audio/dit-is-een-bank.m4a",
+    "slow": "/audio/dit-is-een-bank-slow.m4a"
+  },
+  "Dit is een man.": {
+    "normal": "/audio/dit-is-een-man.m4a",
+    "slow": "/audio/dit-is-een-man-slow.m4a"
+  },
+  "Dit is een vrouw.": {
+    "normal": "/audio/dit-is-een-vrouw.m4a",
+    "slow": "/audio/dit-is-een-vrouw-slow.m4a"
+  },
+  "De man loopt.": {
+    "normal": "/audio/de-man-loopt.m4a",
+    "slow": "/audio/de-man-loopt-slow.m4a"
+  },
+  "De vrouw zit.": {
+    "normal": "/audio/de-vrouw-zit.m4a",
+    "slow": "/audio/de-vrouw-zit-slow.m4a"
+  },
+  "De vrouw loopt.": {
+    "normal": "/audio/de-vrouw-loopt.m4a",
+    "slow": "/audio/de-vrouw-loopt-slow.m4a"
+  },
+  "De man zit.": {
+    "normal": "/audio/de-man-zit.m4a",
+    "slow": "/audio/de-man-zit-slow.m4a"
+  },
+  "een huis": {
+    "normal": "/audio/een-huis.m4a",
+    "slow": "/audio/een-huis-slow.m4a"
+  },
+  "een boom": {
+    "normal": "/audio/een-boom.m4a",
+    "slow": "/audio/een-boom-slow.m4a"
+  },
+  "een bank": {
+    "normal": "/audio/een-bank.m4a",
+    "slow": "/audio/een-bank-slow.m4a"
+  },
+  "Dit is de man.": {
+    "normal": "/audio/dit-is-de-man.m4a",
+    "slow": "/audio/dit-is-de-man-slow.m4a"
+  },
+  "een man": {
+    "normal": "/audio/een-man.m4a",
+    "slow": "/audio/een-man-slow.m4a"
+  },
+  "een vrouw": {
+    "normal": "/audio/een-vrouw.m4a",
+    "slow": "/audio/een-vrouw-slow.m4a"
+  },
+  "de vrouw": {
+    "normal": "/audio/de-vrouw.m4a",
+    "slow": "/audio/de-vrouw-slow.m4a"
+  },
+  "de man": {
+    "normal": "/audio/de-man.m4a",
+    "slow": "/audio/de-man-slow.m4a"
+  },
+  "de boom": {
+    "normal": "/audio/de-boom.m4a",
+    "slow": "/audio/de-boom-slow.m4a"
+  },
+  "Dit is de vrouw.": {
+    "normal": "/audio/dit-is-de-vrouw.m4a",
+    "slow": "/audio/dit-is-de-vrouw-slow.m4a"
+  }
+}
