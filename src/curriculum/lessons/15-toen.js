@@ -819,7 +819,7 @@ export default [
       { nl: 'Vandaag woont Bram in Leuven, maar vroeger ___ hij in Oostende.', cue: 'wonen', answer: 'woonde' },
       { nl: 'Wij ___ elke dag in de zee.', cue: 'zwemmen', answer: 'zwommen' },
       { nl: 'Opa ___ een uur op de trein.', cue: 'wachten', answer: 'wachtte' },
-      { nl: 'Op school in Antwerpen ___ Lotte elk jaar examens.', cue: 'hebben', en: 'At school in Antwerp Lotte had exams every year.', answer: 'had' },
+      { nl: 'Lotte heeft vrijdag een examen. Op school in Antwerpen ___ zij elk jaar examens.', cue: 'hebben', en: 'Lotte has an exam on Friday. At school in Antwerp she had exams every year.', answer: 'had' },
       { nl: 'Lotte ___ de oude foto heel mooi.', cue: 'vinden', en: 'Lotte thinks the old photo is very beautiful. (present!)', answer: 'vindt' },
       { nl: 'Oma en opa ___ vroeger graag met de trein.', cue: 'reizen', answer: 'reisden' },
       { nl: 'Toen de trein ___, stond oma op het station.', cue: 'aankomen', answer: 'aankwam' },
