@@ -841,7 +841,7 @@ export default [
       { nl: 'Ik sta vroeg op.', task: 'Add “moeten”', answer: 'Ik moet vroeg opstaan.' },
       { nl: 'Wij gaan vrijdag uit.', task: 'Change to the perfect', answer: 'Wij zijn vrijdag uitgegaan.' },
       { nl: 'Hoe laat sta jij op?', task: 'Start with “Ik vraag”', answer: 'Ik vraag hoe laat jij opstaat.' },
-      { nl: 'Lotte gaat donderdag niet uit. Zij heeft vrijdag een examen.', task: 'Join with omdat', answer: 'Lotte gaat donderdag niet uit, omdat zij vrijdag een examen heeft.' },
+      { nl: 'Lotte gaat zondag niet uit. Zij moet maandag vroeg opstaan.', task: 'Join with omdat', answer: 'Lotte gaat zondag niet uit, omdat zij maandag vroeg moet opstaan.', accept: ['Lotte gaat zondag niet uit, omdat zij maandag vroeg op moet staan.', 'Lotte gaat zondag niet uit, omdat zij maandag vroeg opstaan moet.'] },
       { nl: 'Het regent. Bram neemt zijn jas mee.', task: 'Join with als — the als-clause first', answer: 'Als het regent, neemt Bram zijn jas mee.' },
       { en: 'I speak a bit of Dutch, but I understand a lot.', answer: 'Ik spreek een beetje Nederlands, maar ik begrijp veel.' },
       { en: 'We arrived at eleven.', answer: 'Wij zijn om elf uur aangekomen.', accept: ['Om elf uur zijn wij aangekomen.'] },
