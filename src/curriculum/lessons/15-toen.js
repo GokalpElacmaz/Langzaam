@@ -8,8 +8,8 @@
  * Story: Bram's childhood in Oostende, by the sea: in the holidays his parents worked, so he and
  * Sofie went to the beach every day with oma and opa. When he was twelve the family moved to Gent.
  * Lotte grew up in Antwerpen with Tom and went to the sea by train. No “zomer” (lesson 17):
- * the course says “in de vakantie”. Plural “foto’s” needs an apostrophe, so the lesson keeps to
- * one photo at a time.
+ * the course says “in de vakantie”. The plural “foto’s” (with the curly ’, like ’s avonds) is
+ * only read, never typed.
  */
 export default [
   // ——— Words ———
@@ -27,16 +27,16 @@ export default [
       { nl: 'Toen Bram klein was, ging hij vaak met oma en opa naar het strand.', en: 'When Bram was small, he often went to the beach with grandma and grandpa.', image: 'grandparents' },
       { nl: 'Dat is lang geleden!', en: 'That was a long time ago!', image: 'photo' },
     ],
-    note: 'de zee (the sea): **aan zee** = by the sea, at the seaside; **naar zee** = to the seaside — no article in either. het strand (the beach), de vakantie (the holiday; in de vakantie = in the holidays), de foto (the photo — its plural is written with an apostrophe, so this lesson keeps to one photo at a time), de oma, de opa, reizen (to travel). **toen** = when / then (in the past), **vroeger** = in the past, formerly, **geleden** = ago, **samen** = together. Extra words: het zand, het zandkasteel, vaak (often).',
+    note: 'de zee (the sea): **aan zee** = by the sea, at the seaside; **naar zee** = to the seaside — no article in either. het strand (the beach), de vakantie (the holiday; in de vakantie = in the holidays), de foto (the photo; plural de foto’s, with an apostrophe as in ’s avonds; *een foto maken* = to take a photo, in Belgium also *een foto nemen*), de oma, de opa, reizen (to travel). **toen** = when / then (in the past), **vroeger** = in the past, formerly, **geleden** = ago, **samen** = together. Extra words: het zand, het zandkasteel, vaak (often).',
   },
   {
     type: 'observe', title: 'At grandma and grandpa’s', grammar: ['imperfect-strong', 'possessives', 'plural'],
     instruction: 'More words for the story. Listen for bij, van, kijken naar and later.',
     cards: [
       { nl: 'In de vakantie sliepen Bram en Sofie vaak bij oma en opa.', en: 'In the holidays Bram and Sofie often slept at grandma and grandpa’s.', image: 'grandparents' },
-      { nl: 'Samen maakten zij een groot zandkasteel.', en: 'Together they made a big sandcastle.', image: 'child-beach' },
+      { nl: 'Op het strand maakte Bram een groot zandkasteel.', en: 'On the beach Bram made a big sandcastle.', image: 'child-beach' },
       { nl: 'Oma en opa reisden vroeger veel met de trein.', en: 'Grandma and grandpa used to travel a lot by train.', image: 'train' },
-      { nl: 'Op het strand vond Sofie mooie schelpen.', en: 'On the beach Sofie found beautiful shells.', image: 'child-beach' },
+      { nl: 'Samen met oma vond Sofie mooie schelpen.', en: 'Together with grandma, Sofie found beautiful shells.', image: 'sea' },
       { nl: 'Om vier uur aten de kinderen een ijsje.', en: 'At four o’clock the children ate an ice cream.', image: 'sea' },
       { nl: 'Lotte kijkt naar een foto van Bram.', en: 'Lotte is looking at a photo of Bram.', image: 'photo' },
       { nl: 'Lotte is in Antwerpen opgegroeid, samen met haar broer Tom.', en: 'Lotte grew up in Antwerp, together with her brother Tom.', image: 'brother' },
@@ -93,7 +93,7 @@ export default [
       { listen: 'Wij reisden met de trein.' },
       { listen: 'Oma en opa woonden aan zee.' },
     ],
-    explanation: 'vakantie is written with t but said with an s-sound: va-kan-sie. zandkasteel: zand + kasteel, the d said as t.',
+    explanation: 'vakantie is written with t but said with an s-sound (in Flanders often ts): va-kan-sie. zandkasteel: zand + kasteel, the d said as t.',
   },
 
   // ——— Grammar: the simple past of weak verbs ———
@@ -103,9 +103,9 @@ export default [
       'Dutch has two past tenses. The **perfect** you know since lesson 11: *Ik heb in Oostende gewoond.* The second is the **simple past** (in Dutch grammars: *de onvoltooid verleden tijd*): one word, like English *lived* or *worked*. *Vroeger **woonde** Bram in Oostende. Oma **kookte** elke dag.* When to use which comes on a later page; first, how to make it.',
       '**Weak verbs** — the regular ones — take the **stem** and add **-te** or **-de**. That one form serves **ik, jij, hij and zij** (she): *ik woonde, jij woonde, hij woonde*. There is **no -t for jij or hij** in the past, so the jij-rule of the present disappears: *Woonde jij in Gent?* For **wij, jullie and zij** (they) add **-n**: *wij woonden, zij werkten*.',
       '**-te or -de?** The same test as for the participle: if the stem ends in a letter of **’t kofschip** (t, k, f, s, ch, p), add **-te**; otherwise add **-de**. The participle already tells you: *gekookt → kookte*, *gespeeld → speelde*. As before, check the **infinitive**: *reizen* has a z, so *reis → **reisde*** (never reiste), just as its participle is *gereisd* with a d.',
-      '**A stem that ends in t** still gets the whole ending — so here, unlike the participle, Dutch **does** write a double letter: *praat + te = **praatte***, *wacht + te = **wachtte***, *heet + te = **heette***. Compare *hij praat* (present) and *gepraat* (participle). In speech the two t’s are heard as one — *praat-te* sounds like *pra-te* — so only the spelling, and the context, show the past.',
+      '**A stem that ends in t** still gets the whole ending — so here, unlike the participle, Dutch **does** write a double letter: *praat + te = **praatte***, *wacht + te = **wachtte***, *heet + te = **heette***. Compare *hij praat* (present) and *gepraat* (participle). In speech the two t’s are heard as one, so *wij wachtten* (past) sounds exactly like *wij wachten* (present): only the spelling, and the context, show the past. A stem in **d** works the same way and gets a double d (*antwoorden → antwoordde*, a verb for later).',
       '**The stem is the ik-form**, with its spelling: a long vowel stays double because the syllable stays closed: *woon-de, kook-te, speel-de, leer-de, maak-te, hoop-te*. A single consonant stays single: *bel-de*.',
-      '**Four common verbs break the pattern**, and two of them you can guess from their participles: *kopen → **kocht*** (gekocht), *denken → **dacht*** (gedacht). *zeggen → **zei**, zeiden. vragen → **vroeg**, vroegen* — the same spelling as *vroeg* (early): *Hij vroeg het* (he asked) against *Hij stond vroeg op* (he got up early). **willen** is simply regular: *wil + de = **wilde**, wilden* (in speech you will also hear *wou*; write wilde).',
+      '**Four common verbs break the pattern**, and two of them you can guess from their participles: *kopen → **kocht*** (gekocht), *denken → **dacht*** (gedacht). *zeggen → **zei**, zeiden. vragen → **vroeg**, vroegen* — the same spelling as *vroeg* (early): *Hij vroeg het* (he asked) against *Hij stond vroeg op* (he got up early). **willen** is simply regular: *wil + de = **wilde**, wilden*. You will also hear and read *wou* (plural *wouden*): it is correct too, but more informal; this course writes wilde.',
     ],
     tables: [
       { caption: 'wonen (-de) · werken (-te)', rows: [
@@ -236,7 +236,7 @@ export default [
       'The verbs you use most are **strong**: they make their past by **changing the vowel**, and in the singular they add **no ending at all**. *gaan → ik **ging**, jij ging, hij ging. komen → zij **kwam**.* For wij, jullie and zij (they) add **-en**: *wij **gingen**, zij **kwamen***.',
       '**zijn and hebben** first, because every story needs them: *ik **was**, jij was, hij was — wij / jullie / zij **waren***; *ik **had**, jij had, hij had — wij / jullie / zij **hadden***. In a story *was* and *had* are far more common than *ben geweest* and *heb gehad*.',
       '**The four modals:** *kunnen → **kon**, konden · willen → **wilde**, wilden · moeten → **moest**, moesten · mogen → **mocht**, mochten.* The infinitive still waits at the end: *Bram **kon** toen al goed **zwemmen**.*',
-      'No rule predicts the new vowel, but there are families. **ij → ee:** schrijven → schreef, rijden → reed, begrijpen → begreep, kijken → keek. **i → o:** drinken → dronk, vinden → vond, zwemmen → zwom. **→ ie:** lopen → liep, slapen → sliep, helpen → hielp. **→ a:** lezen → las, eten → at, spreken → sprak, zitten → zat, nemen → nam, zien → zag. **On their own:** gaan → ging, komen → kwam, staan → stond, doen → deed, weten → wist.',
+      'No rule predicts the new vowel, but there are families. **ij → ee:** schrijven → schreef, rijden → reed, begrijpen → begreep, kijken → keek. **i or e → o:** drinken → dronk, vinden → vond, zwemmen → zwom. **→ ie:** lopen → liep, slapen → sliep, helpen → hielp. **→ a:** lezen → las, eten → at, spreken → sprak, zitten → zat, nemen → nam, zien → zag. **On their own:** gaan → ging, komen → kwam, staan → stond, doen → deed, weten → wist.',
       '**The plural brings back the spelling rules** of lessons 3 and 5. The -en opens the syllable, so a short a in the singular becomes a long a, written single: *zat → za-ten, at → a-ten, nam → na-men, sprak → spra-ken, zag → za-gen, kwam → kwa-men*. The z and v come back: *las → la**z**en, schreef → schre**v**en*. A vowel that stays short doubles the consonant: *zwom → zwo**mm**en*. And *reed → re-den, deed → de-den, keek → ke-ken*.',
       '**Separable verbs** still split in a main clause: *Bram **stond** om zeven uur **op**. Oma **nam** brood **mee**. De trein **kwam** laat **aan**.* In a subclause they come together as one word, exactly as in the present: *toen de trein **aankwam***, *omdat Bram vroeg **opstond***.',
     ],
@@ -291,7 +291,7 @@ export default [
       { label: 'wij', gloss: 'hebben', answer: 'hadden' },
       { label: 'zij', gloss: 'they · hebben', answer: 'hadden' },
     ],
-    explanation: 'jij was, not “jij waart”: that form is centuries old. had / hadden: short a, so the d doubles in the plural.',
+    explanation: 'jij was. The old form “waart” only lives on with gij / ge in Flemish speech (“ge waart”) — with jij it is always was. had / hadden: short a, so the d doubles in the plural.',
   },
   {
     type: 'drill', layout: 'table', title: 'gaan, komen, staan — and the modals', grammar: ['imperfect-strong', 'gaan', 'modals', 'subject-pronouns'],
@@ -313,7 +313,7 @@ export default [
     explanation: 'ging, kwam, stond, kon, moest, mocht: no ending in the singular. wilde is the odd one among the modals — it is simply weak: wil + de.',
   },
   {
-    type: 'drill', layout: 'table', title: 'Strong verbs: ij, i, ie', grammar: ['imperfect-strong', 'subject-pronouns', 'spelling-z-s'],
+    type: 'drill', layout: 'table', title: 'Strong verbs: ij, i/e, ie', grammar: ['imperfect-strong', 'subject-pronouns', 'spelling-z-s'],
     instruction: 'Families one to three. The small word is the verb; the person tells you singular or plural.',
     items: [
       { label: 'opa', gloss: 'he · schrijven', answer: 'schreef' },
@@ -327,7 +327,7 @@ export default [
       { label: 'zij', gloss: 'they · slapen', answer: 'sliepen' },
       { label: 'oma', gloss: 'she · helpen', answer: 'hielp' },
     ],
-    explanation: 'schreef, keek, begreep: ij becomes ee. zwom → zwommen: the o stays short, so the m doubles. vond, not vondt: no -t is ever added in the past.',
+    explanation: 'schreef, keek, begreep: ij becomes ee. dronk, vond, zwom: i or e becomes o. zwom → zwommen: the o stays short, so the m doubles. vond, not vondt: in the past hij and jij never add a -t.',
   },
   {
     type: 'drill', layout: 'table', title: 'Strong verbs: a, and the loners', grammar: ['imperfect-strong', 'subject-pronouns', 'spelling-z-s', 'spelling-stem'],
@@ -395,10 +395,10 @@ export default [
     body: [
       '**toen** + a subclause means *when* for **one moment or one period in the past**. Like omdat and als it sends the verb to the end: *toen ik klein **was***, *toen de trein **aankwam***.',
       'Put the toen-clause first and it fills position one, so the main verb comes straight after the comma — the pattern of *Als het regent, gaan wij …*: ***Toen** ik klein was, **woonde ik** aan zee.* Or keep the main clause first: *Ik woonde aan zee, toen ik klein was.*',
-      '**toen, als or wanneer?** English has one *when*; Dutch has three. **toen** — one occasion or period in the past: *Toen Bram twaalf was, …* **als** — now or in the future, and also *whenever* for a habit in the past: *Als het regende, speelden wij in de keuken* (every time it rained). **wanneer** — the question word: *Wanneer was dat?*',
-      '**toen** has a second job: on its own it means *then, at that time*, and it is an ordinary first element with inversion: ***Toen ging** opa naar huis* — then grandpa went home. Only the verb tells you which toen you have: *Toen ging opa naar huis* (then …) against *Toen opa naar huis ging, …* (when …). In the middle of a sentence: *Bram was toen zes jaar.* Use **dan** for *then* in the present and future, **toen** in the past.',
+      '**toen, als or wanneer?** English has one *when*; Dutch has three. **toen** — one occasion or one period in the past: *Toen Bram twaalf was, …* **als** — now or in the future, and also *whenever* for a habit in the past: *Als het regende, speelden wij in de keuken* (every time it rained). **wanneer** is first of all the question word: *Wanneer was dat?* It can also join clauses where als stands — *Wanneer het regende, speelden wij in de keuken* — a little more formally. But for one occasion in the past only **toen** is right: never *als* or *wanneer Bram twaalf was*.',
+      '**toen** has a second job: on its own it means *then, at that time*, and it is an ordinary first element with inversion: ***Toen ging** opa naar huis* — then grandpa went home. Only the verb tells you which toen you have: *Toen ging opa naar huis* (then …) against *Toen opa naar huis ging, …* (when …). In the middle of a sentence: *Bram was toen zes jaar.* Use **dan** for *then* in the present and future, and **toen** in a written story about the past. In speech, Flemings also often say *dan* for the next step in the past (*Dan zijn we naar de stad gegaan*, lesson 11); that is fine in conversation.',
       '**vroeger** means *in the past, formerly*. With the simple past it is how Dutch says *used to*: ***Vroeger woonde** Bram in Oostende* — Bram used to live in Ostend. **… geleden** means *ago*, and like English it comes after the time: *drie jaar geleden, een week geleden, lang geleden.* Both are time elements; at the front the verb comes second: *Twee dagen geleden **kocht** Lotte een boek.*',
-      '**Simple past or perfect?** Both are correct; the difference is how you use them. The **perfect** reports a single fact or a piece of news, above all in conversation: *Ik heb gisteren gezwommen. Heb jij de foto gezien?* The **simple past** tells a **story** or describes how things **were**: a chain of events, a habit, the background. *Toen ik klein was, woonden wij aan zee. Elke dag gingen wij naar het strand.* A story often opens with a perfect and goes on in the simple past. And with **zijn, hebben and the modals** Dutch prefers the simple past even for a single fact: *Ik was gisteren moe* sounds better than *Ik ben gisteren moe geweest*.',
+      '**Simple past or perfect?** Often both are correct, and the choice is one of style, not of right or wrong. The **perfect** is the everyday tense for a single past fact or a piece of news, above all in conversation: *Ik heb gisteren gezwommen. Heb jij de foto gezien?* The **simple past** is the tense of **stories** and **descriptions**: a chain of events, a habit, how things were. *Toen ik klein was, woonden wij aan zee. Elke dag gingen wij naar het strand.* Books, newspapers and written stories use it all the time, and a spoken story often opens with a perfect and goes on in the simple past. Flemings speak in the perfect more than the Dutch in the Netherlands do, even when they tell a story, so you will hear both. With **zijn, hebben and the modals** the simple past is the usual choice even for one fact: *Ik was gisteren moe* is more common than *Ik ben gisteren moe geweest*, though both are correct.',
     ],
     tables: [
       { caption: 'toen + subclause: the verb at the end', rows: [

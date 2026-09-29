@@ -170,7 +170,13 @@ function checkShape(step, at) {
         if (item.label) need(step.layout === 'table', `${where}: label items belong in a table layout`);
       });
       break;
-    case 'arrange': need(step.nl && step.en, 'needs nl and en'); need(tokenize(step.nl).length >= 3, 'needs at least three words'); break;
+    case 'arrange': {
+      need(step.nl && step.en, 'needs nl and en'); need(tokenize(step.nl).length >= 3, 'needs at least three words');
+      // Another correct order may be accepted, but it must be built from exactly the same tiles.
+      const tiles = (text) => tokenize(text).map((t) => t.toLowerCase()).sort().join(' ');
+      for (const alternative of step.accept || []) need(tiles(alternative) === tiles(step.nl), `accepted order “${alternative}” must use exactly the words of nl`);
+      break;
+    }
     case 'story': need(step.lines?.length >= 4, 'needs at least four lines'); step.lines?.forEach((l) => need(l.nl && l.en, 'each line needs nl and en')); break;
     case 'complete': break;
     default: fail(at, `unknown page type ${step.type}`);

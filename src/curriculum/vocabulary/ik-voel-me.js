@@ -9,7 +9,7 @@ export default {
     { id: 'wassen', dutch: 'wassen', english: 'to wash (zich wassen; ik was me — same spelling as “was”, the past of zijn)', forms: ['wast', 'gewassen', 'waste', 'wasten'] },
     { id: 'aankleden', dutch: 'aankleden', english: 'to get dressed (zich aankleden)', forms: ['aankleed', 'aankleedt', 'aangekleed', 'kleed', 'kleedt', 'kleden', 'kleedde', 'kleedden'] },
     { id: 'apotheker', dutch: 'apotheker', article: 'de', english: 'pharmacist', image: 'pharmacy', forms: ['apothekers'] },
-    { id: 'blijven', dutch: 'blijven', english: 'to stay', forms: ['blijf', 'blijft', 'gebleven', 'bleef', 'bleven'] },
+    { id: 'blijven', dutch: 'blijven', english: 'to stay (thuisblijven: to stay at home — ik blijf thuis, ik ben thuisgebleven)', forms: ['blijf', 'blijft', 'gebleven', 'bleef', 'bleven', 'thuisblijven', 'thuisgebleven'] },
     { id: 'slecht', dutch: 'slecht', english: 'bad / badly', forms: ['slechte', 'slechter', 'slechtst', 'slechtste'] },
   ],
 };

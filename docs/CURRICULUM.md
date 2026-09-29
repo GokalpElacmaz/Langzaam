@@ -261,7 +261,7 @@ ids are generated (`lessonId-01` …). Every page has `type`, `title`, and usual
 | `picture` | `nl`, `en`, `listen` (hide the text, audio only), `choices: [{ image, nl }]` (3–4), `answer` = the right image key |
 | `grammar` | `body: [paragraphs]` (supports `**bold**` and `*italic*`), `tables: [{ caption, rows: [{ nl, en }] }]`, `examples: [{ nl, en }]`. In `nl`, square brackets highlight an ending: `hij woon[t]` |
 | `drill` | `items: [...]`, optional shared `choices: [...]` (buttons instead of typing), `layout: 'table'` (conjugation table), `task` (shown on every item), `image`, `explanation` |
-| `arrange` | `nl`, `en`, `image`, `distractors: [...]` — the word tiles are generated from `nl` |
+| `arrange` | `nl`, `en`, `image`, `distractors: [...]` — the word tiles are generated from `nl`; `accept: [...]` other correct orders of the same tiles |
 | `story` | `image`, `lines: [{ nl, en, image, speaker }]` |
 | `complete` | `title`, `instruction` |
 

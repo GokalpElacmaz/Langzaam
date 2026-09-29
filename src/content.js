@@ -106,7 +106,7 @@ export function stepTexts(step) {
   for (const row of (step.tables || []).flatMap((table) => table.rows)) spoken.push(row.nl);
   for (const example of step.examples || []) spoken.push(example.nl);
   for (const choice of step.type === 'picture' ? step.choices : []) spoken.push(choice.nl);
-  checked.push(...(step.distractors || []));
+  checked.push(...(step.distractors || []), ...(step.type === 'arrange' ? step.accept || [] : []));
   for (const item of step.items || []) {
     const texts = itemTexts(item, step.choices && step.type === 'drill' ? step.choices : []);
     spoken.push(...texts.spoken); checked.push(...texts.checked);

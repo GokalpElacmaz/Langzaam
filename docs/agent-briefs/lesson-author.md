@@ -103,7 +103,7 @@ and the grammar summaries of every earlier lesson in plan.js — at this level a
   (split them into lines of one or two sentences).
 - **Translation grows:** at least 12 English → Dutch sentences, many of them long and combining two clauses. From
   volume five, add "rewrite" drills: formal ↔ informal, active ↔ passive, direct ↔ reported, two sentences → one.
-- **Answers:** longer answers allow more correct word orders. List every natural variant in `accept` (time-manner-
+- **Answers:** longer answers allow more correct word orders. Arrange pages take `accept` too (other orders of exactly the same tiles). List every natural variant in `accept` (time-manner-
   place variations, participle before/after the finite verb in subclauses, dat/die alternatives, ze/hen). A typed item
   that has several equally good answers and no `accept` is a bug.
 - **Recycling:** targets and grammar from more than twelve lessons back must appear at least once, recent ones twice,

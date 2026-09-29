@@ -118,7 +118,7 @@ function Arrange({ step, encounter, onDone, onStuck }) {
   function check(e) {
     e.preventDefault();
     if (arranged.length !== needed || status === 'correct') return;
-    const correct = isAnswerCorrect(arranged.map(i => tokens[i]).join(' '), step.nl);
+    const correct = isAnswerCorrect(arranged.map(i => tokens[i]).join(' '), step.nl, step.accept);
     setStatus(correct ? 'correct' : 'wrong');
     if (correct) { encounter(step.wordIds, revealed || missed.current ? null : true, `passed:${step.id}`); onDone(); }
     else if (!missed.current) { missed.current = true; encounter(step.wordIds, false, `missed:${step.id}:${Date.now()}`); }

@@ -14,6 +14,7 @@ Check and FIX directly in the lesson files:
    (word-order variants like "Bram drinkt altijd koffie" vs other valid placements, "het"/"dit", optional parts),
    add them to `accept` or add an `en`/`cue` that forces one answer. Choice items: exactly one correct choice.
    Remember jij/je, zij/ze, wij/we swaps are accepted automatically; capitals/punctuation are ignored.
+   Arrange pages also take `accept`: other correct orders built from exactly the same tiles.
 4. **English**: translations (`en`) accurate; grammar explanations correct and not misleading (check every rule
    statement — e.g. about t-rules, spelling, geen/niet, adjective -e, V2).
 5. **Pictures and story**: a sentence next to an image must match what the image shows (descriptions in
