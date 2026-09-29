@@ -340,11 +340,13 @@ export default [
     type: 'arrange', title: 'Hurrying to the train', grammar: ['reflexive', 'want-omdat', 'verb-final', 'clock-time'],
     instruction: 'Build: “Bram is hurrying to the station, because his train leaves at eight.” Two tiles are traps.',
     nl: 'Bram haast zich naar het station, omdat zijn trein om acht uur gaat.', en: 'Bram is hurrying to the station, because his train leaves at eight.', image: 'man-hurrying', distractors: ['me', 'want'],
+    accept: ['Omdat zijn trein om acht uur gaat, haast Bram zich naar het station.'],
   },
   {
     type: 'arrange', title: 'Not well today', grammar: ['reflexive', 'v2-inversion', 'want-omdat', 'pijn-hebben'],
     instruction: 'Build: “Today I don’t feel well, because I have a headache.” Two tiles are traps.',
     nl: 'Vandaag voel ik me niet goed, omdat ik hoofdpijn heb.', en: 'Today I don’t feel well, because I have a headache.', image: 'man-headache', distractors: ['zich', 'geen'],
+    accept: ['Ik voel me vandaag niet goed, omdat ik hoofdpijn heb.', 'Omdat ik hoofdpijn heb, voel ik me vandaag niet goed.'],
   },
 
   // ——— Grammar: pain and illness ———
@@ -449,9 +451,10 @@ export default [
     explanation: 'Gisteren is Bram thuisgebleven: blijven takes zijn in the perfect, like gaan and komen; thuisblijven is written as one word, like thuiskomen.',
   },
   {
-    type: 'arrange', title: 'Why Bram’s back hurts', grammar: ['pijn-hebben', 'want-omdat', 'perfect-hebben', 'possessives'],
+    type: 'arrange', title: 'Why Bram’s back hurts', grammar: ['pijn-hebben', 'verb-final', 'perfect-hebben', 'possessives'],
     instruction: 'Build: “My back hurts, because I made a bench in the garden.” Two tiles are traps.',
-    nl: 'Mijn rug doet pijn, want ik heb een bank in de tuin gemaakt.', en: 'My back hurts, because I made a bench in the garden.', image: 'back-pain', distractors: ['doen', 'heeft'],
+    nl: 'Mijn rug doet pijn, omdat ik een bank in de tuin gemaakt heb.', en: 'My back hurts, because I made a bench in the garden.', image: 'back-pain', distractors: ['doen', 'heeft'],
+    accept: ['Mijn rug doet pijn, omdat ik een bank in de tuin heb gemaakt.', 'Mijn rug doet pijn, omdat ik in de tuin een bank gemaakt heb.', 'Mijn rug doet pijn, omdat ik in de tuin een bank heb gemaakt.', 'Omdat ik een bank in de tuin gemaakt heb, doet mijn rug pijn.', 'Omdat ik een bank in de tuin heb gemaakt, doet mijn rug pijn.'],
   },
 
   // ——— Grammar: the imperative ———
@@ -728,6 +731,7 @@ export default [
     type: 'arrange', title: 'If you have a fever', grammar: ['als-inversion', 'modals', 'infinitive-end', 'pijn-hebben'],
     instruction: 'Build: “If you have a fever, you have to stay at home.” Two tiles are traps.',
     nl: 'Als je koorts hebt, moet je thuisblijven.', en: 'If you have a fever, you have to stay at home.', image: 'woman-sick', distractors: ['blijft', 'heb'],
+    accept: ['Je moet thuisblijven, als je koorts hebt.'],
   },
 
   // ——— Read ———
