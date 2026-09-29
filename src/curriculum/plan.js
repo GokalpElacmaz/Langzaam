@@ -10,6 +10,8 @@
  * (`laterForms`), e.g. “is” in lesson 1 but “ben / bent / zijn” in lesson 2.
  */
 
+import vocabulary from './vocabulary/index.js';
+
 export const lessonPlan = [
   {
     id: 'wat-is-dit',
@@ -176,7 +178,7 @@ export const lessonPlan = [
 ];
 
 /** kind: target | structure. `forms` are unlocked with the word; `laterForms` by lesson. */
-export const words = [
+const coreWords = [
   // 1 — Wat is dit?
   { id: 'huis', dutch: 'huis', article: 'het', english: 'house', kind: 'target', image: 'house', laterForms: { 'twee-katten': ['huizen'] } },
   { id: 'boom', dutch: 'boom', article: 'de', english: 'tree', kind: 'target', image: 'tree', laterForms: { 'twee-katten': ['bomen'] } },
@@ -471,6 +473,23 @@ export const words = [
   { id: 'die', dutch: 'die', english: 'who / that (relative) / that one', kind: 'structure' },
 ];
 
+/**
+ * Extra vocabulary (kind: extra). From volume two on a lesson needs more words than its ten targets:
+ * the nouns, verbs and adjectives of its topic. They live in src/curriculum/vocabulary/<lesson-id>.js,
+ * must be used at least three times in their own lesson, and may be used freely from then on — but,
+ * unlike targets, they are not recycled by rule. A vocabulary file can also unlock new forms of older
+ * words from its lesson on (`forms: { huis: ['huisje'] }`).
+ */
+for (const lesson of lessonPlan) lesson.vocabulary = (vocabulary[lesson.id]?.words || []).map((word) => word.id);
+const extraWords = lessonPlan.flatMap((lesson) => (vocabulary[lesson.id]?.words || []).map((word) => ({ ...word, kind: 'extra' })));
+export const words = [...coreWords, ...extraWords].map((word) => {
+  const added = lessonPlan.filter((lesson) => vocabulary[lesson.id]?.forms?.[word.id]);
+  if (!added.length) return word;
+  const laterForms = { ...word.laterForms };
+  for (const lesson of added) laterForms[lesson.id] = [...(laterForms[lesson.id] || []), ...vocabulary[lesson.id].forms[word.id]];
+  return { ...word, laterForms };
+});
+
 /** Proper names may appear anywhere; they are never tracked as vocabulary. */
 export const names = ['Bram', 'Lotte', 'Max', 'Leuven', 'Gent', 'Brussel', 'Antwerpen', 'Sofie', 'Tom', 'Emma', 'Jonas', 'Noor', 'Mimi', 'België', 'Spanje', 'Oostende'];
 
@@ -586,4 +605,6 @@ export const voices = {
 export const speakerVoices = {
   Bram: 'xander', Lotte: 'ellen', 'De man': 'xander', 'De oude man': 'xander', Tom: 'xander', Jonas: 'xander',
   Emma: 'ellen', Sofie: 'ellen', Noor: 'ellen', Moeder: 'ellen', Vader: 'xander',
+  'De buurman': 'xander', 'De buurvrouw': 'ellen', 'De dokter': 'ellen', 'De apotheker': 'xander', 'De leraar': 'xander',
+  Oma: 'ellen', Opa: 'xander', 'De verkoper': 'xander', 'De verkoopster': 'ellen',
 };

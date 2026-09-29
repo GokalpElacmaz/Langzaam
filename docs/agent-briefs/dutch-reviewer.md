@@ -1,6 +1,6 @@
 # Linguistic & Curriculum QA brief — Langzaam
 
-Project: /Users/gokalpelacmaz/Downloads/langzaam. You are the QA agent (a strict native-level Dutch teacher
+Project: the repository root (the folder with package.json). You are the QA agent (a strict native-level Dutch teacher
 working in Flanders, and an experienced course editor). Read docs/CURRICULUM.md and src/curriculum/plan.js,
 then review your assigned lesson files line by line. The course is for an adult English speaker moving to
 Belgium. Lessons were written by different author agents; you are the last line of defence before a learner uses them.

@@ -29,7 +29,7 @@ import lesson18 from './curriculum/lessons/18-die-dat.js';
 export { grammarPoints, images, names, voices };
 const authored = { 'wat-is-dit': lesson1, 'ik-ben': lesson2, 'ik-woon': lesson3, 'ik-heb': lesson4, 'ik-lees': lesson5, vandaag: lesson6, 'twee-katten': lesson7, 'mijn-familie': lesson8, 'ik-kan': lesson9, 'op-maandag': lesson10, gisteren: lesson11, omdat: lesson12, 'ik-sta-op': lesson13, groter: lesson14, toen: lesson15, 'ik-voel-me': lesson16, 'volgende-zomer': lesson17, 'die-dat': lesson18 };
 
-const lessonOf = Object.fromEntries(lessonPlan.flatMap((lesson) => [...lesson.targets, ...lesson.structure].map((id) => [id, lesson.id])));
+const lessonOf = Object.fromEntries(lessonPlan.flatMap((lesson) => [...lesson.targets, ...lesson.structure, ...lesson.vocabulary].map((id) => [id, lesson.id])));
 export const words = plannedWords.map((word) => ({ ...word, lessonId: lessonOf[word.id] }));
 export const wordById = Object.fromEntries(words.map((word) => [word.id, word]));
 
@@ -98,7 +98,7 @@ export const lessons = lessonPlan.map((plan, lessonIndex) => {
     return { ...step, id: step.id || `${plan.id}-${String(i + 1).padStart(2, '0')}`, part, wordIds: wordsIn(...texts.spoken, ...texts.checked) };
   });
   const answers = steps.reduce((sum, step) => sum + (step.type === 'drill' ? step.items.length : ['picture', 'arrange'].includes(step.type) ? 1 : 0), 0);
-  return { ...plan, number: lessonIndex + 1, newWordIds: [...plan.targets, ...plan.structure], steps, answers, minutes: Math.round(answers * 0.3 + steps.length * 0.4) };
+  return { ...plan, number: lessonIndex + 1, newWordIds: [...plan.targets, ...plan.structure, ...plan.vocabulary], steps, answers, minutes: Math.round(answers * 0.3 + steps.length * 0.4) };
 });
 export const lessonById = Object.fromEntries(lessons.map((lesson) => [lesson.id, lesson]));
 

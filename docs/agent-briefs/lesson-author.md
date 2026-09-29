@@ -1,6 +1,6 @@
 # Lesson Author brief — Langzaam (illustrated Dutch course)
 
-Project: /Users/gokalpelacmaz/Downloads/langzaam. You are one of several Lesson Author agents working in
+Project: the repository root (the folder with package.json). You are one of several Lesson Author agents working in
 parallel; each writes exactly ONE lesson file. The learner (an adult, English-speaking, moving to study in
 Belgium; wants to reach academic Dutch eventually) tried an earlier version and said it was "too much like
 Duolingo": too easy, too short, not enough grammar and conjugation practice, grammar felt separate, lessons
@@ -57,7 +57,7 @@ and a short list of any judgement calls or suggested plan changes.
   length and difficulty of lessons 1–6 are right — match them, do not go easier.
 - Read lessons 1–6 (at least their grammar pages, stories and final drills) so you know exactly what the learner
   has practised, and the volume-one story bible in docs/CURRICULUM.md.
-- Tokenizer limits: never write apostrophe forms (auto's, 's ochtends, 's avonds, zo'n) — rephrase. Plurals of
+- Tokenizer limits: never write apostrophe forms (auto's, zo'n) — rephrase. The one exception, from lesson 13 on: ’s ochtends, ’s middags, ’s avonds, ’s nachts (write the curly ’). Plurals of
   earlier nouns unlock in lesson 7 via `laterForms`; participles unlock in lesson 11 (see plan.js). "één" (one)
   is spelled with accents; answers ignore accents.
 - Possessive "zijn" (his) is the same written form as the verb "zijn"; it is allowed from lesson 8 on.
@@ -74,3 +74,19 @@ and a short list of any judgement calls or suggested plan changes.
 - New forms unlock by lesson (plan.js): separable-verb compounds (opsta, opgestaan …) in lesson 13, comparatives in 14,
   simple-past forms of every verb in 15. A form you need but the validator rejects is not available — rephrase.
 - The word "vroeg" (early) and the simple past of vragen ("hij vroeg") share one spelling; both are allowed from lesson 15.
+
+## Extra vocabulary (volume two on)
+Ten targets cannot carry a whole topic, so from lesson 13 on each lesson also owns a small file of **extra
+vocabulary**: `src/curriculum/vocabulary/<lesson-id>.js` (already created and registered; edit only your own).
+- It is seeded with the topic words the editor expects you to need. You may add more, up to the cap the
+  validator enforces for your volume (12 in volume two, 30 in three, 35 in four, 40 in five, 45 in six).
+- Every extra word must be used **3+ times in spoken Dutch** in your lesson, and should be taught: show it on an
+  observe card or in a gloss the first time it appears, and use it in at least one typed answer.
+- Before adding a word, check it does not exist yet (`grep -rn "id: 'woord'" src/curriculum`). If it is a target
+  or structure word of a *later* lesson, do not add it — rephrase. Targets stay the heart of the lesson; extras
+  serve them.
+- List every form you use: plurals, verb forms (ik/jij/hij, participle, simple past), adjective -e, comparatives.
+  One spelling belongs to one word: if a form is already another word's (e.g. “was” is zijn), leave it out and
+  say so in the english gloss. `forms: { huis: ['huisje'] }` unlocks new forms of an older word from your lesson on.
+- Dialogue speakers must be keys of `speakerVoices` in plan.js; new proper names must be in `names`. If you need
+  one that is missing, ask the editor in your final reply rather than editing plan.js.

@@ -1,6 +1,6 @@
 # Illustration brief — Langzaam (illustrated Dutch course)
 
-Project: /Users/gokalpelacmaz/Downloads/langzaam. Existing illustrations live in `public/images/*.svg`
+Project: the repository root (the folder with package.json). Existing illustrations live in `public/images/*.svg`
 (house, tree, bench, man, woman, man-walking, woman-sitting, neighbourhood). The learner loves this style;
 new pictures must be indistinguishable in style from them.
 
@@ -28,6 +28,8 @@ re-pose limbs) so the recurring characters stay recognisably the same people:
 
 ## Check your work
 Render each file and look at it:
-`qlmanage -t -s 800 -o <a scratch folder> public/images/<name>.svg` then Read the PNG. Fix anything ugly, off-model,
+`node scripts/render-svg.mjs <a scratch folder> public/images/<name>.svg` (any platform; on macOS
+`qlmanage -t -s 800 -o <folder> <file>` also works), then Read the PNG — it shows the picture large and at
+lesson thumbnail size side by side. Fix anything ugly, off-model,
 cropped, or ambiguous. Iterate until each picture looks like it belongs to the same book. Do not modify existing files.
 When done, reply with the list of files written and one line per file describing what it shows.

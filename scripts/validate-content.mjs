@@ -5,9 +5,10 @@
  *   node scripts/validate-content.mjs            all lessons
  *   node scripts/validate-content.mjs ik-woon    one lesson (plus the plan)
  *
- * It enforces the course's rules mechanically: only introduced Dutch, five
- * targets heavily repeated and then recycled forever, grammar that keeps
- * coming back, and pages that are well formed. Exit code 1 on any error.
+ * It enforces the course's rules mechanically: only introduced Dutch, ten
+ * targets heavily repeated and then recycled forever, extra vocabulary used
+ * enough to be learnt, grammar that keeps coming back, and pages that are
+ * well formed. Exit code 1 on any error.
  */
 import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -23,6 +24,14 @@ export const RULES = {
   minEarlierTargetUses: 2, // every older target, in every later lesson
   minOwnGrammarSteps: 5,
   minEarlierGrammarSteps: 2,
+  // From volume three on (lesson index 18+), targets and grammar points from more than twelve
+  // lessons back (two volumes) must still return in every lesson, but once is enough.
+  distantFrom: 18,
+  distantAfter: 12,
+  minDistantTargetUses: 1,
+  minDistantGrammarSteps: 1,
+  minOwnExtraUses: 3, // extra vocabulary (vocabulary/<lesson-id>.js), within its own lesson
+  maxExtrasPerLesson: [12, 12, 30, 35, 40, 45], // by volume: 0–2, 3, 4, 5, 6 (index = volume)
   minSteps: 30,
   minAnswers: 130,
   // Share of answers the learner must type (not tap). Rises as the book goes on.
@@ -41,7 +50,9 @@ const fail = (where, message) => errors.push(`${where}: ${message}`);
 const planned = new Map();
 for (const lesson of lessonPlan) {
   if (lesson.targets.length !== RULES.targetsPerLesson) fail(lesson.id, `must have exactly ${RULES.targetsPerLesson} targets`);
-  for (const id of [...lesson.targets, ...lesson.structure]) {
+  const maxExtras = RULES.maxExtrasPerLesson[Math.min((lesson.volume || 0), RULES.maxExtrasPerLesson.length - 1)];
+  if (lesson.vocabulary.length > maxExtras) fail(lesson.id, `has ${lesson.vocabulary.length} extra words; volume ${lesson.volume || 0} allows ${maxExtras}`);
+  for (const id of [...lesson.targets, ...lesson.structure, ...lesson.vocabulary]) {
     if (planned.has(id)) fail(lesson.id, `word ${id} is already introduced in ${planned.get(id)}`);
     planned.set(id, lesson.id);
     if (!plannedWords.some((word) => word.id === id)) fail(lesson.id, `word ${id} is not defined in words`);
@@ -50,9 +61,21 @@ for (const lesson of lessonPlan) {
 }
 for (const word of plannedWords) if (!planned.has(word.id)) fail('plan', `word ${word.id} is not in any lesson`);
 for (const word of plannedWords) {
-  const expected = word.kind === 'target' ? 'targets' : 'structure';
+  const expected = { target: 'targets', structure: 'structure', extra: 'vocabulary' }[word.kind];
   const lesson = lessonPlan.find((l) => l.id === planned.get(word.id));
   if (lesson && !lesson[expected].includes(word.id)) fail('plan', `${word.id} is kind ${word.kind} but listed outside ${expected}`);
+}
+
+// One spelling, one word: a form may belong to only one word (true homographs are listed here).
+const homographs = new Set(['reis']);
+const formOwner = new Map();
+for (const word of plannedWords) {
+  for (const form of [word.dutch, ...(word.forms || []), ...Object.values(word.laterForms || {}).flat()]) {
+    const key = form.toLowerCase();
+    if (formOwner.has(key) && formOwner.get(key) !== word.id && !homographs.has(key)) fail('plan', `form “${form}” belongs to both ${formOwner.get(key)} and ${word.id}`);
+    formOwner.set(key, word.id);
+  }
+  for (const lessonId of Object.keys(word.laterForms || {})) if (!lessonPlan.some((l) => l.id === lessonId)) fail('plan', `${word.id} unlocks forms in unknown lesson ${lessonId}`);
 }
 
 const stepIds = new Set();
@@ -98,16 +121,23 @@ lessons.forEach((lesson, index) => {
   for (const id of lesson.targets) if ((uses[id] || 0) < RULES.minOwnTargetUses) fail(lesson.id, `target “${id}” is used ${uses[id] || 0}× in spoken Dutch; needs ${RULES.minOwnTargetUses}`);
   const earlier = lessonPlan.slice(0, index).flatMap((l) => l.targets);
   const previous = new Set(lessonPlan[index - 1]?.targets || []);
+  const distant = (lessonIndex) => index >= RULES.distantFrom && index - lessonIndex > RULES.distantAfter;
+  const introducedAt = (key, id) => lessonPlan.findIndex((l) => l[key].includes(id));
   for (const id of earlier) {
-    const needed = previous.has(id) ? RULES.minPreviousTargetUses : RULES.minEarlierTargetUses;
+    const needed = previous.has(id) ? RULES.minPreviousTargetUses : distant(introducedAt('targets', id)) ? RULES.minDistantTargetUses : RULES.minEarlierTargetUses;
     if ((uses[id] || 0) < needed) fail(lesson.id, `earlier target “${id}” is recycled ${uses[id] || 0}×; needs ${needed}`);
   }
+  for (const id of lesson.vocabulary) if ((uses[id] || 0) < RULES.minOwnExtraUses) fail(lesson.id, `extra word “${id}” is used ${uses[id] || 0}× in spoken Dutch; needs ${RULES.minOwnExtraUses}`);
   for (const id of lesson.grammar) if ((grammarSteps[id] || 0) < RULES.minOwnGrammarSteps) fail(lesson.id, `grammar “${id}” is practised on ${grammarSteps[id] || 0} pages; needs ${RULES.minOwnGrammarSteps}`);
-  for (const id of lessonPlan.slice(0, index).flatMap((l) => l.grammar)) if ((grammarSteps[id] || 0) < RULES.minEarlierGrammarSteps) fail(lesson.id, `earlier grammar “${id}” returns on ${grammarSteps[id] || 0} pages; needs ${RULES.minEarlierGrammarSteps}`);
+  for (const id of lessonPlan.slice(0, index).flatMap((l) => l.grammar)) {
+    const needed = distant(introducedAt('grammar', id)) ? RULES.minDistantGrammarSteps : RULES.minEarlierGrammarSteps;
+    if ((grammarSteps[id] || 0) < needed) fail(lesson.id, `earlier grammar “${id}” returns on ${grammarSteps[id] || 0} pages; needs ${needed}`);
+  }
 
   report.push({
     lesson: `${lesson.number} ${lesson.id}`, pages: lesson.steps.length, answers: lesson.answers, typed: `${Math.round(typedShare * 100)}%`,
     targets: lesson.targets.map((id) => `${id}×${uses[id] || 0}`).join(' '),
+    extras: lesson.vocabulary.length ? `${lesson.vocabulary.length} (min ${Math.min(...lesson.vocabulary.map((id) => uses[id] || 0))}×)` : '–',
     recycledMin: earlier.length ? Math.min(...earlier.map((id) => uses[id] || 0)) : '–',
   });
 });
