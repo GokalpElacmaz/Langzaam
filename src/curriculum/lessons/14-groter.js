@@ -66,7 +66,7 @@ export default [
     type: 'picture', title: 'Read and point', grammar: ['zijn'],
     instruction: 'Read the sentence and choose its picture.',
     nl: 'Een slak is langzamer dan een trein.', en: 'A snail is slower than a train.', answer: 'snail',
-    choices: [{ image: 'train', nl: 'een snelle trein' }, { image: 'snail', nl: 'een langzame slak' }, { image: 'bike', nl: 'een fiets' }, { image: 'dog-big', nl: 'een grote hond' }],
+    choices: [{ image: 'cat', nl: 'een kat' }, { image: 'snail', nl: 'een langzame slak' }, { image: 'bike', nl: 'een fiets' }, { image: 'dog-big', nl: 'een grote hond' }],
   },
   {
     type: 'picture', listen: true, title: 'Listen and point', grammar: ['zijn'],
@@ -137,6 +137,7 @@ export default [
       'After an **r** the ending is **-der**: *duur → **duurder***. The d makes the two r-sounds easy to say. duur keeps its uu, because the syllable *duur* stays closed.',
       'Listen to *koud → kouder* and *oud → ouder*: at the end of a word a d sounds like a t, but inside kouder it is a real d again. You have heard the same in *ik vind* and *vinden*.',
       'A comparative is still an adjective. After *zijn* it has no ending — *De jas is duurder.* — and before a noun the -e of lesson 4 comes back: *een duurdere jas*. That has its own page below.',
+      'Two small words often stand in front of a comparative: **veel** = much, and **nog** = even (still more): *De nieuwe jas is **veel** warmer. Vandaag is het **nog** kouder dan gisteren.*',
     ],
     tables: [
       { caption: 'just add -er', rows: [
@@ -221,7 +222,7 @@ export default [
       'When you compare what people do, the comparative stands next to the verb like any other adverb, and Dutch adverbs look exactly like adjectives: *De trein rijdt **sneller** dan de auto. Lotte loopt **langzamer** dan Max.*',
     ],
     tables: [
-      { caption: 'three irregular comparatives', rows: [
+      { caption: 'three irregular comparatives — and the opposite of meer', rows: [
         { nl: 'goed · [beter]', en: 'good, well · better' },
         { nl: 'veel · [meer]', en: 'much, many · more' },
         { nl: 'graag · [liever]', en: 'like to · would rather' },
@@ -267,7 +268,7 @@ export default [
       { nl: 'Een auto is duur.', task: 'Compare: een auto > een fiets', answer: 'Een auto is duurder dan een fiets.' },
       { nl: 'Max is groot.', task: 'Compare: Max > Mimi', answer: 'Max is groter dan Mimi.' },
       { nl: 'Brussel is groot.', task: 'Compare: Brussel > Leuven', answer: 'Brussel is groter dan Leuven.' },
-      { nl: 'Het is vandaag koud.', task: 'Compare: vandaag > gisteren', answer: 'Het is vandaag kouder dan gisteren.' },
+      { nl: 'Het is vandaag koud.', task: 'Compare: vandaag > gisteren', answer: 'Het is vandaag kouder dan gisteren.', accept: ['Vandaag is het kouder dan gisteren.'] },
       { nl: 'Bram zwemt goed.', task: 'Compare: Bram > Lotte', answer: 'Bram zwemt beter dan Lotte.' },
       { nl: 'Bram drinkt veel koffie.', task: 'Compare: Bram > Lotte', answer: 'Bram drinkt meer koffie dan Lotte.' },
       { nl: 'Lotte drinkt graag thee.', task: 'Compare: thee > koffie', answer: 'Lotte drinkt liever thee dan koffie.' },
@@ -285,7 +286,7 @@ export default [
   {
     type: 'grammar', title: 'een duurdere jas', grammar: ['comparative', 'adjective-e', 'de-het', 'plural'],
     body: [
-      'A comparative in front of a noun is still an adjective, so the rule of lesson 4 applies to it exactly: it takes **-e** — except with **een** (or no article at all) before a singular **het-word**.',
+      'A comparative in front of a noun is still an adjective, so the rule of lesson 4 applies to it exactly: it takes **-e** — except after **een** or **geen** (or with no article at all) before a singular **het-word**.',
       'de-words: *een **duurdere** jas, de **duurdere** jas, de **snellere** trein*. het-words: *een **groter** huis*, but *het **grotere** huis*. Plurals always take -e: *duurdere jassen, grotere huizen*. And a het-word with no article stays bare too: *warmer weer* (het weer).',
       'The spelling is easy: add a plain -e to the -er form, and nothing doubles: *groter → grotere, sneller → snellere, duurder → duurdere, langzamer → langzamere*.',
       '**beter** does the same: *een **betere** fiets, het betere boek*. **meer** and **minder** never change: *meer jassen, minder koffie*.',
@@ -297,7 +298,7 @@ export default [
         { nl: 'de duurder[e] jas', en: 'the more expensive coat' },
         { nl: 'een beter[e] fiets', en: 'a better bike' },
       ] },
-      { caption: 'het-word: no -e after een', rows: [
+      { caption: 'het-word: no -e after een or geen', rows: [
         { nl: 'een groter huis', en: 'a bigger house' },
         { nl: 'het groter[e] huis', en: 'the bigger house' },
         { nl: 'een makkelijker boek', en: 'an easier book' },
@@ -320,7 +321,7 @@ export default [
     instruction: 'Type the comparative of the adjective given, with or without -e. Ask two questions: de or het? een or de/het?',
     items: [
       { nl: 'Lotte wil een ___ jas.', cue: 'warm', en: 'Lotte wants a warmer coat.', answer: 'warmere' },
-      { nl: 'Bram koopt de ___ jas.', cue: 'goedkoop', en: 'Bram buys the cheaper coat.', answer: 'goedkopere' },
+      { nl: 'Lotte koopt de ___ jas.', cue: 'goedkoop', en: 'Lotte buys the cheaper coat.', answer: 'goedkopere' },
       { nl: 'Brussel is een ___ stad dan Leuven.', cue: 'groot', answer: 'grotere' },
       { nl: 'Leuven is een ___ stad dan Gent.', cue: 'klein', answer: 'kleinere' },
       { nl: 'Bram en Lotte willen geen ___ huis.', cue: 'groot', en: 'They don’t want a bigger house.', answer: 'groter' },
@@ -332,7 +333,7 @@ export default [
       { nl: 'Lotte leest ___ boeken dan Bram.', cue: 'moeilijk', answer: 'moeilijkere' },
       { nl: 'De ___ film is mooier.', cue: 'kort', en: 'The shorter film is more beautiful.', answer: 'kortere' },
     ],
-    explanation: 'een groter huis, een makkelijker boek, warmer weer: a het-word without de/het, so no -e. Everything else: -e. goed → beter → een betere fiets.',
+    explanation: 'een groter huis, geen groter huis, een makkelijker boek, warmer weer: a het-word with een, geen or no article, so no -e. Everything else: -e. goed → beter → een betere fiets.',
   },
 
   // ——— Grammar: the superlative ———
@@ -341,9 +342,9 @@ export default [
     body: [
       'The superlative adds **-st** to the adjective itself — not to the comparative: *groot → **grootst**, snel → **snelst**, duur → **duurst**, langzaam → **langzaamst**, goedkoop → **goedkoopst***. No syllable is added, so the adjective keeps its spelling: no double l in snelst, no d in duurst, oo and aa stay.',
       'The irregular three: **goed → beter → best**, **veel → meer → meest**, **graag → liever → liefst**.',
-      '**Before a noun** a superlative always takes **-e**, because it always comes with de or het — there is no “een grootste”: ***de** grootste stad, **het** grootste huis, **de** snelste trein, **de** beste jas*.',
+      '**Before a noun** a superlative always takes **-e**, because it always comes with de, het or a word like mijn or haar — there is no “een grootste”: ***de** grootste stad, **het** grootste huis, **de** snelste trein, **mijn** beste jas*.',
       '**After zijn, and after any other verb**, Dutch says **het + -st**: *Brussel is **het grootst**. De trein gaat **het snelst**. Bram zwemt **het best**. Ik drink **het liefst** thee.* This het means “most of all” and points at nothing; even a de-word gets it. You will also hear *het grootste, het snelste* — both are correct and the answers accept them. When you mean “the biggest one”, use the article of the noun you have in mind: *Brussel is **de grootste** (stad).*',
-      '**het meest** and **het liefst** go with verbs: *Lotte leest **het meest**. Wat doe jij **het liefst**?* — “What do you like doing most?” And **de meeste** goes with a plural noun: *de meeste dagen*, most days.',
+      '**het meest** and **het liefst** go with verbs (here too you will hear an -e: het meeste, het liefste): *Lotte leest **het meest**. Wat doe jij **het liefst**?* — “What do you like doing most?” And **de meeste** goes with a plural noun: *de meeste dagen*, most days.',
       'Dutch, like English, uses the superlative when there are three or more: *Wat is het snelst: de trein, de auto of de fiets?* With two, use the comparative: *Wie is groter: Bram of Lotte?*',
     ],
     tables: [
@@ -405,7 +406,7 @@ export default [
       { nl: 'Wie kookt het ___: Bram, Lotte of zijn moeder?', cue: 'goed', answer: 'best', accept: ['beste'] },
       { nl: 'Lotte neemt haar ___ jas mee.', cue: 'warm', en: 'Lotte takes her warmest coat along.', answer: 'warmste' },
     ],
-    explanation: 'de grootste stad, de duurste jas, haar warmste jas: before a noun, always -e. Ending on het … : grootst, snelst, best, liefst (the -e is allowed there too). meest has no -e after het.',
+    explanation: 'de grootste stad, de duurste jas, haar warmste jas: before a noun, always -e. Ending on het … : grootst, snelst, best, liefst (the -e is allowed there too).',
   },
   {
     type: 'drill', title: 'Answer with the superlative', grammar: ['superlative', 'question-word', 'wie-hoe'],
@@ -418,7 +419,7 @@ export default [
       { nl: 'Wie is het oudst: Bram, Noor of de oude man?', answer: 'De oude man is het oudst.', accept: ['De oude man is het oudste.', 'De oude man is de oudste.'] },
       { nl: 'Wie is het jongst: Bram, Lotte of Noor?', answer: 'Noor is het jongst.', accept: ['Noor is het jongste.', 'Noor is de jongste.'] },
       { nl: 'Wat is het langzaamst: een slak, een kat of een hond?', answer: 'Een slak is het langzaamst.', accept: ['Een slak is het langzaamste.', 'De slak is het langzaamst.', 'De slak is het langzaamste.', 'Een slak is de langzaamste.', 'De slak is de langzaamste.'] },
-      { nl: 'Wat drink jij het liefst: koffie, thee of water?', answer: 'Ik drink het liefst thee.', accept: ['Ik drink het liefst koffie.', 'Ik drink het liefst water.', 'Ik drink het liefste thee.', 'Ik drink het liefste koffie.', 'Ik drink het liefste water.', 'Het liefst drink ik thee.', 'Het liefst drink ik koffie.', 'Het liefst drink ik water.'] },
+      { nl: 'Wat drink jij het liefst: koffie, thee of water?', answer: 'Ik drink het liefst thee.', accept: ['Ik drink het liefst koffie.', 'Ik drink het liefst water.', 'Ik drink het liefste thee.', 'Ik drink het liefste koffie.', 'Ik drink het liefste water.', 'Het liefst drink ik thee.', 'Het liefst drink ik koffie.', 'Het liefst drink ik water.', 'Het liefste drink ik thee.', 'Het liefste drink ik koffie.', 'Het liefste drink ik water.'] },
     ],
     explanation: 'The oude man is the oldest, Noor (five) the youngest, Leuven the smallest of the three cities. “Wat drink jij het liefst?” has no one right answer — any of the three is fine.',
   },

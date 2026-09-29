@@ -7,7 +7,7 @@ export default {
     { id: 'nacht', dutch: 'nacht', article: 'de', english: 'night (’s nachts: at night)', forms: ['nachten', 'nachts'] },
     { id: 's', dutch: '’s', forms: ['s'], english: '’s ochtends, ’s middags, ’s avonds, ’s nachts: in the morning / afternoon / evening / at night' },
     { id: 'wekker', dutch: 'wekker', article: 'de', english: 'alarm clock', image: 'man-waking', forms: ['wekkers'] },
-    { id: 'douchen', dutch: 'douchen', english: 'to shower (ik douche, hij doucht)', forms: ['douche', 'doucht', 'gedoucht', 'douchte', 'douchten'] },
+    { id: 'douchen', dutch: 'douchen', english: 'to shower (ik douche, hij doucht)', forms: ['douche', 'doucht', 'gedoucht'], laterForms: { toen: ['douchte', 'douchten'] } },
     { id: 'wakker', dutch: 'wakker', english: 'awake' },
     { id: 'thuiskomen', dutch: 'thuiskomen', english: 'to come home', forms: ['thuiskom', 'thuiskomt', 'thuisgekomen'] },
     { id: 'weg', dutch: 'weg', english: 'away (separable part)' },

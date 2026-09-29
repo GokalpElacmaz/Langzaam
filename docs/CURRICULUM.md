@@ -109,6 +109,127 @@ point — is `src/curriculum/plan.js`.
   Lotte is a student at the university in Leuven; her teacher; Bram's colleagues in Brussel; "Ken jij de man die …?"
   — relative clauses about everyone met in the book.
 
+### Volume three (lessons 19–24) · A2+ → B1 · Een nieuw jaar
+
+Autumn to spring of the next academic year. Lotte is a student at the university in Leuven (lesson 18); Bram still
+works in Brussel and commutes by train. **Tom**, Lotte's brother, moves from Antwerpen to Leuven: he is a nurse
+(verpleegkundige) at the hospital (het ziekenhuis) in Leuven and works shifts, including nights.
+
+- **Lesson 19, the birthday:** Lotte is jarig (in October — but month names only arrive in lesson 21, so lesson 19 says “vandaag”, “zaterdag”). Bram gives her
+  a book and flowers; Tom gives her a cake he bought (he cannot bake); Emma, who is away that week, sends a card; Bram's parents
+  ring from Gent (Bram's grandparents belong to his childhood in lesson 15 — leave them in the past). The party is at home with Jonas, Tom, de buurman and de buurvrouw; they sing,
+  there are candles; Max gets a piece of cake he should not have. Object pronouns everywhere: “Ik geef haar een boek.”
+- **Lesson 20, the flat:** Tom moves into a flat (een appartement) on the second floor near the station in Leuven.
+  Bram and Lotte help him carry boxes up the stairs; where does everything go — the bookcase against the wall,
+  the lamp next to the bed, the mirror in the bathroom, the plant in the corner. Things lie, stand and hang.
+- **Lesson 21, the rent:** how Tom found the flat: he searched, visited three flats, the owner (de eigenaar,
+  a woman, **mevrouw Claes** — use “de eigenaar” in sentences; the speaker label is “De eigenaar”) asks 750 euro
+  per month plus costs; a deposit (waarborg) of two months; he signs the contract on 1 October. Prices in the shop,
+  dates, birthdays of everyone (Lotte: in October; Bram: 14 March), how much Bram's train ticket costs. Digits are
+  fine in writing (750, 2025); number words are taught and dictated.
+- **Lesson 22, free time and work:** Tom works in the hospital and takes care of patients; he loves music and
+  listens to it after a night shift; Bram watches football on television and waits for the train every morning;
+  Lotte is interested in history and in languages; Noor is afraid of big dogs — but not of Max. What are you thinking of?
+  Who are you waiting for? “Waar heb je zin in?”
+- **Lesson 23, the project:** Lotte does a group project for her course with three other students; they arrange to
+  meet, divide the work, write a report; while Lotte studies, Bram cooks; before the deadline they work late; as
+  soon as it is finished they celebrate. Although it rains, Bram walks to the station (he still has no bike).
+  “Ik weet niet of …” questions about the project.
+- **Lesson 24, market day:** on Saturday Bram and Lotte go to the market in Leuven to buy vegetables, fruit and
+  fish; which tomatoes, these or those; Bram cooks soup for Tom, Emma and Jonas from a recipe of his mother's; you
+  don't have to bring anything; Lotte cuts the vegetables — carefully, Max is waiting under the table.
+
+### Volume four (lessons 25–30) · B1 · Werk en stad
+
+Winter to summer. Bram is tired of commuting to Brussel; he is an engineer (ingenieur) at a large company there.
+This volume he applies for — and gets — a job at a small Leuven company that designs electric bikes (the joke the
+book enjoys: Bram, who has never had a bike, will work for a bike company). Tom settles in Leuven; Lotte continues
+her studies. From lesson 26 the formal **u** appears in offices, letters and with strangers; friends and family
+always stay jij/je.
+
+- **Lesson 25, a bad day:** Bram oversleeps, runs for the bus, misses it; when he arrives at the station his train
+  has already left; in the next train he notices he has lost his wallet. Nobody has seen it; he searches everywhere.
+  That evening someone rings: a woman has found it on the bus. Everything is still in it. Told in the past with
+  had/was + participle for what had already happened.
+- **Lesson 26, the town hall:** Tom registers his new address at the gemeente (het stadhuis in Leuven): he needs
+  an appointment, fills in a form, shows his identity card, signs. The clerk (speaker “De bediende”) speaks u; Tom is
+  polite and asks her to repeat. A café scene with a waiter (“De ober”): “Ik zou graag een koffie willen.”
+  Bram drinks coffee, Lotte tea — as always.
+- **Lesson 27, dreams:** after the bad day Bram dreams aloud: if he worked in Leuven he would not have to commute;
+  if he were rich he would … ; Lotte and Tom give advice (“Je zou eens moeten solliciteren”); wishes (“Had ik maar een
+  baan in Leuven!”). He sees a vacancy at a Leuven bike company.
+- **Lesson 28, the application:** the vacancy (engineer, electric bikes), Bram's CV, his experience and degree,
+  the motivation letter he writes with Lotte's help (Geachte mevrouw …, Met vriendelijke groeten). “De baan waarvoor
+  ik solliciteer”, “het bedrijf waar ik wil werken”, “alles wat ik geleerd heb”. The contact person is a woman.
+- **Lesson 29, the city is changing:** the station square and a new bike bridge are being built; there is noise and
+  a diversion; Lotte's bike is stolen from outside the library (her bike from lesson 4!) — she reports it to the police
+  (speaker “De agent”); a camera filmed the thief, but the bike is not found (yet).
+- **Lesson 30, history:** Tom and Lotte give Emma a tour of Leuven: the university was founded in 1425; the
+  University Library was destroyed in 1914, rebuilt with American help (opened 1928), burnt again in 1940 and
+  rebuilt; the town hall and Sint-Pieterskerk (write “de kerk”); a guide (speaker “De gids”). The passive in past
+  and perfect. Stay factual: only these widely known dates.
+
+### Volume five (lessons 31–36) · B1+ → B2 · Stad en samenleving
+
+The following autumn and winter. Bram got the job: he is now an engineer at the Leuven bike company (small team,
+electric bikes). His boss is **Sarah**; his closest colleague is **Karim**, who has worked there for years. Bram buys
+his first bike — an electric one, at a staff price. Lotte starts her final year and chooses her thesis subject:
+student housing in Leuven (koten). The texts get longer and more like real Belgian texts: e-mails, a newspaper
+article, an interview, a debate, an information page about Belgium.
+
+- **Lesson 31, the new job:** the interview (“het sollicitatiegesprek”) is told in the perfect with modals
+  (“Ik heb lang moeten wachten”, “Ik ben gaan zitten”); his first day: meetings, his team, tasks, customers, the
+  test department; Sarah lets him test a prototype; Bram has his (new) bike repaired by the bike repairer after a
+  flat battery; Karim sits reading the plans; “laat maar”.
+- **Lesson 32, the debate:** in a café Tom, Emma, Jonas, Bram and Lotte argue about the car-free city centre of
+  Leuven: shopkeepers, safety, traffic, parking; opinions, agreeing and disagreeing politely; Bram has changed his
+  mind since he cycles. Keep it balanced — the book does not take sides.
+- **Lesson 33, the climate:** the warm, dry summer that just ended; Leuven's climate plans; solar panels on the
+  house of de buurman; recycling; “Hoe meer we fietsen, hoe schoner de lucht”; not only … but also; Lotte and Tom
+  disagree about flying to Spanje (lesson 17!).
+- **Lesson 34, in the newspaper:** a journalist (speaker “De journaliste”) interviews Lotte about her thesis on
+  student rooms; next day the article reports what she said (reported speech); a rumour in the news that rents will
+  rise “zou”; Lotte is annoyed that the paper got one figure wrong. Invented figures must be plausible and stay the
+  same across the lesson.
+- **Lesson 35, choices:** Tom was offered a job in a hospital in Spanje last year and refused it; would he have been
+  happier? “Als ik het aanbod had aangenomen, …”; Bram's regrets that he did not leave Brussel earlier; Lotte's
+  choice of subject; “mocht je twijfelen, …”. The tone is reflective, not sad.
+- **Lesson 36, Belgium:** Emma's cousin from abroad asks how Belgium works: three official languages (Dutch, French,
+  German), communities and regions (Vlaanderen, Wallonië, Brussel), the federal government, the king, compulsory
+  voting, the language border. Word formation throughout (regeren → regering, veilig → veiligheid, begrijpen →
+  begrijpelijk). Stay factual and neutral.
+
+### Volume six (lessons 37–42) · B2 · Academisch Nederlands
+
+Lotte's final semester: lectures, her master's thesis (**de masterproef**) on student housing in Leuven, her
+supervisor **professor Janssens** (a woman; speaker “De promotor”), a survey among students, a presentation, and
+graduation in June. Bram is settled at the bike company; Tom is thinking about his future. The texts are now what a
+student at a Flemish university reads and writes: lecture notes, an argumentative essay, a research summary with
+figures, a presentation, a speech. The learner writes long translations and formal rewrites; answers accept
+reasonable word-order variants.
+
+- **Lesson 37, the lecture:** a lecture on the history of Leuven's student housing (connects to lesson 30): Lotte
+  takes notes, summarises; the professor (speaker “De professor”, a man) gives examples and definitions; students
+  ask questions; nominalised style (“Het huren van een kot werd …”), present participles, iets nieuws, de ouderen,
+  houten tafels in the old library.
+- **Lesson 38, the essay:** Lotte writes an argumentative essay for a seminar: “Studenten hebben recht op
+  betaalbare huisvesting” — thesis statement, introduction, arguments, counter-arguments, conclusion; aangezien,
+  doordat, dankzij, ondanks; Bram's spoken Dutch versus Lotte's written Dutch (register).
+- **Lesson 39, the research:** Lotte's survey: 400 students took part; the data she collected; results: rents rose,
+  most students pay more than a third of their budget; “Uit de gegevens blijkt dat …”; “de door Lotte verzamelde
+  gegevens”; every function of er. Figures invented but consistent and plausible, and consistent with lesson 34.
+- **Lesson 40, the presentation:** Lotte presents her results to her supervisor and fellow students; careful claims
+  (“Het lijkt erop dat …”, “Dit zou kunnen betekenen dat …”); questions from the audience; modal particles in the
+  friendly chat afterwards with Bram and Tom (“Dat was toch goed, hoor!”).
+- **Lesson 41, expressions:** at Bram's work Karim uses idioms Bram does not understand; Flemish versus
+  Netherlands expressions; collocations (een besluit nemen, rekening houden met); Tom makes a decision: he will do
+  a further training (specialisation) — voorkómen versus vóórkomen, verhuren (the owner of lesson 21 rents out a new
+  flat), ontdekken.
+- **Lesson 42, graduation:** Lotte graduates (met onderscheiding); the ceremony; Bram's speech at the party for
+  family and friends (everyone from the book: Bram's parents from Gent, Sofie, Tom, Emma, Jonas, Noor — now older,
+  de buurman and de buurvrouw, Karim, Max and Mimi); looking back at the first day (“Dit is een huis.”) and ahead: by
+  next year Lotte will have found a job — future perfect; every tense in one final story. The end of the book.
+
 Sentences must be true to this bible and to the pictures they sit next to.
 
 ## Lesson anatomy (30–40 pages, 120+ answers)
