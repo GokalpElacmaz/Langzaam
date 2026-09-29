@@ -16,8 +16,11 @@ export default {
     { id: 'verliefd', dutch: 'verliefd', english: 'in love (verliefd op)' },
     { id: 'af', dutch: 'af', english: 'off (separable part: afhangen, afspreken)' },
     { id: 'afhangen', dutch: 'afhangen', english: 'to depend (afhangen van: dat hangt ervan af)', forms: ['afhangt', 'afgehangen'] },
+    { id: 'taal', dutch: 'taal', article: 'de', english: 'language', forms: ['talen'] },
+    { id: 'soms', dutch: 'soms', english: 'sometimes' },
   ],
   // erop, daarop, waarop … (and ermee, daarmee, waarmee: met becomes mee)
   // daarom and daarnaast are words of their own (that is why; in addition), so daar skips om and naast.
-  forms: { er: join('er', preps), daar: join('daar', preps.filter((p) => !['om', 'naast'].includes(p))), waar: join('waar', preps) },
+  // “de hele nacht”: heel (very) as an adjective means whole.
+  forms: { heel: ['hele'], er: join('er', preps), daar: join('daar', preps.filter((p) => !['om', 'naast'].includes(p))), waar: join('waar', preps) },
 };
