@@ -13,5 +13,17 @@ export default {
     { id: 'woonkamer', dutch: 'woonkamer', article: 'de', english: 'living room', image: 'living-room', forms: ['woonkamers'] },
     { id: 'per', dutch: 'per', english: 'per / a (per maand)' },
     { id: 'ongeveer', dutch: 'ongeveer', english: 'about / roughly' },
+    { id: 'cent', dutch: 'cent', article: 'de', english: 'cent (vijftig cent — no plural after a number)', image: 'money', forms: ['centen'] },
+    { id: 'geboren', dutch: 'geboren', english: 'born (Ik ben geboren op …)' },
+    { id: 'tekenen', dutch: 'tekenen', english: 'to sign (a contract) / to draw', forms: ['teken', 'tekent', 'getekend', 'tekende', 'tekenden'] },
+    { id: 'keer', dutch: 'keer', article: 'de', english: 'time, occasion (twee keer: twice · de eerste keer)', forms: ['keren'] },
+    { id: 'ander', dutch: 'ander', english: 'other / different (een ander huis, de andere kamer)', forms: ['andere'] },
+    { id: 'genoeg', dutch: 'genoeg', english: 'enough' },
+    { id: 'hoog', dutch: 'hoog', english: 'high', forms: ['hoge', 'hoger', 'hogere', 'hoogst', 'hoogste'] },
+    { id: 'weinig', dutch: 'weinig', english: 'little / few (the opposite of veel)' },
+    { id: 'ticket', dutch: 'ticket', article: 'het', english: 'ticket (Belgium; NL also: kaartje)', image: 'train', forms: ['tickets', 'treinticket', 'treintickets'] },
+    { id: 'internet', dutch: 'internet', article: 'het', english: 'the internet (op internet: online)' },
   ],
+  // “De hoeveelste is het vandaag?” — what is the date today? (welke only arrives in lesson 24)
+  forms: { hoeveel: ['hoeveelste'] },
 };

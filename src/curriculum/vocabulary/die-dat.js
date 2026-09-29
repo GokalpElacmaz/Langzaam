@@ -1,4 +1,4 @@
-/** Lesson 18 — extra vocabulary: university and the office, people, and four verbs without ge-. */
+/** Lesson 18 — extra vocabulary: university and the office, people, and three more verbs without ge- (besides ontmoeten). */
 export default {
   words: [
     { id: 'studeren', dutch: 'studeren', english: 'to study (at university)', image: 'students', forms: ['studeer', 'studeert', 'gestudeerd', 'studeerde', 'studeerden'] },

@@ -1,11 +1,11 @@
-/** Lesson 19 — extra vocabulary: a birthday party. */
+/** Lesson 19 — extra vocabulary: a birthday party, and the verbs of giving. */
 export default {
   words: [
     { id: 'jarig', dutch: 'jarig', english: 'having a birthday (Lotte is jarig)', image: 'birthday' },
     { id: 'gefeliciteerd', dutch: 'gefeliciteerd', english: 'congratulations / happy birthday' },
     { id: 'uitnodigen', dutch: 'uitnodigen', english: 'to invite (nodig hebben: to need — same spelling as “nodig”)', forms: ['nodig', 'nodigt', 'uitnodig', 'uitnodigt', 'uitgenodigd', 'nodigde', 'nodigden', 'uitnodiging', 'uitnodigingen'] },
     { id: 'vieren', dutch: 'vieren', english: 'to celebrate (ik vier — same spelling as the number vier)', forms: ['viert', 'gevierd', 'vierden'] },
-    { id: 'kaars', dutch: 'kaars', article: 'de', english: 'candle', image: 'birthday', forms: ['kaarsen', 'kaarsjes'] },
+    { id: 'kaars', dutch: 'kaars', article: 'de', english: 'candle', image: 'birthday', forms: ['kaarsen', 'kaarsje', 'kaarsjes'] },
     { id: 'zingen', dutch: 'zingen', english: 'to sing', forms: ['zing', 'zingt', 'gezongen', 'zong', 'zongen'] },
     { id: 'lied', dutch: 'lied', article: 'het', english: 'song', forms: ['liedje', 'liedjes', 'liederen'] },
     { id: 'gast', dutch: 'gast', article: 'de', english: 'guest', forms: ['gasten'] },
@@ -15,5 +15,15 @@ export default {
     { id: 'dank', dutch: 'dank', english: 'thanks (dank je wel)' },
     { id: 'wel', dutch: 'wel', english: 'indeed / well (contrast with niet; dank je wel)' },
     { id: 'fijn', dutch: 'fijn', english: 'nice / pleasant', forms: ['fijne'] },
+    { id: 'ouders', dutch: 'ouders', article: 'de', english: 'parents (always plural)', image: 'family' },
+    { id: 'brengen', dutch: 'brengen', english: 'to bring', image: 'gift', forms: ['breng', 'brengt', 'gebracht', 'bracht', 'brachten'] },
+    { id: 'bakken', dutch: 'bakken', english: 'to bake / to fry', forms: ['bak', 'bakt', 'gebakken', 'bakte', 'bakten'] },
+    { id: 'tonen', dutch: 'tonen', english: 'to show', forms: ['toon', 'toont', 'getoond', 'toonde', 'toonden'] },
+    { id: 'stuk', dutch: 'stuk', article: 'het', english: 'piece (een stuk taart)', forms: ['stukken', 'stukje', 'stukjes'] },
+    { id: 'lekker', dutch: 'lekker', english: 'tasty / nice', forms: ['lekkere', 'lekkerder', 'lekkerst'] },
+    { id: 'leuk', dutch: 'leuk', english: 'nice / fun', forms: ['leuke', 'leuker', 'leukst', 'leukste'] },
+    { id: 'echt', dutch: 'echt', english: 'really / real', forms: ['echte'] },
+    { id: 'allemaal', dutch: 'allemaal', english: 'all (of us / them): wij zingen allemaal' },
+    { id: 'kus', dutch: 'kus', article: 'de', english: 'kiss', forms: ['kusje', 'kusjes'] },
   ],
 };

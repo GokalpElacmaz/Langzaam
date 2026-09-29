@@ -1,8 +1,8 @@
 /** Lesson 24 — extra vocabulary: the market and the kitchen. */
 export default {
   words: [
-    { id: 'kilo', dutch: 'kilo', article: 'de', english: 'kilo' },
-    { id: 'stuk', dutch: 'stuk', article: 'het', english: 'piece', forms: ['stukken', 'stukje', 'stukjes'] },
+    { id: 'kilo', dutch: 'kilo', article: 'de', english: 'kilo (twee kilo — no plural after a number)' },
+    { id: 'stuk', dutch: 'stuk', article: 'het', english: 'piece (in stukjes snijden: to cut into small pieces)', forms: ['stukken', 'stukje', 'stukjes'] },
     { id: 'tomaat', dutch: 'tomaat', article: 'de', english: 'tomato', image: 'vegetables', forms: ['tomaten'] },
     { id: 'aardappel', dutch: 'aardappel', article: 'de', english: 'potato (Flanders also: patat)', forms: ['aardappelen', 'aardappels'] },
     { id: 'ui', dutch: 'ui', article: 'de', english: 'onion', forms: ['uien'] },
@@ -17,5 +17,17 @@ export default {
     { id: 'bakken', dutch: 'bakken', english: 'to bake / to fry', forms: ['bak', 'bakt', 'gebakken', 'bakte', 'bakten'] },
     { id: 'pan', dutch: 'pan', article: 'de', english: 'pan', forms: ['pannen'] },
     { id: 'mes', dutch: 'mes', article: 'het', english: 'knife', image: 'man-cutting', forms: ['messen'] },
+    { id: 'boodschap', dutch: 'boodschap', article: 'de', english: 'errand · boodschappen doen: to do the shopping', forms: ['boodschappen'] },
+    { id: 'verkoper', dutch: 'verkoper', article: 'de', english: 'seller, stallholder (a woman: de verkoopster)', image: 'market', forms: ['verkopers', 'verkoopster', 'verkoopsters'] },
+    { id: 'minuut', dutch: 'minuut', article: 'de', english: 'minute', image: 'clock', forms: ['minuten'] },
+    { id: 'vanavond', dutch: 'vanavond', english: 'this evening, tonight' },
+    { id: 'genoeg', dutch: 'genoeg', english: 'enough' },
+    { id: 'gezond', dutch: 'gezond', english: 'healthy', forms: ['gezonde', 'gezonder'] },
+    { id: 'honger', dutch: 'honger', article: 'de', english: 'hunger (honger hebben: to be hungry)' },
+    { id: 'vallen', dutch: 'vallen', english: 'to fall', forms: ['val', 'valt', 'gevallen', 'viel', 'vielen'] },
+    { id: 'voorzichtig', dutch: 'voorzichtig', english: 'careful / carefully', forms: ['voorzichtige'] },
+    { id: 'smakelijk', dutch: 'smakelijk', english: 'enjoy your meal! (Smakelijk! — said before eating)' },
   ],
+  // een halve kilo; de groentesoep (groente + soep).
+  forms: { half: ['halve'], soep: ['groentesoep'] },
 };
