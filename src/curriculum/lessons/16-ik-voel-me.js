@@ -30,7 +30,7 @@ export default [
     note: 'voelen = to feel; zich herinneren = to remember; zich haasten = to hurry. het hoofd (head), de buik (belly, stomach), de rug (back), de pijn (pain): hoofdpijn, buikpijn, rugpijn. de dokter (doctor), de apotheek (pharmacy), het medicijn (medicine), plural de medicijnen. me = me / myself; zich = himself, herself, themselves.',
   },
   {
-    type: 'observe', title: 'The body, and what helps', grammar: ['pijn-hebben', 'plural', 'numbers', 'perfect-zijn'],
+    type: 'observe', title: 'The body, and what helps', grammar: ['pijn-hebben', 'de-het', 'plural', 'numbers', 'perfect-zijn'],
     instruction: 'More words for this topic. Listen, repeat, and notice which nouns are de-words and which are het-words.',
     cards: [
       { nl: 'het hoofd, de buik, de rug', en: 'the head, the belly, the back' },
@@ -46,14 +46,14 @@ export default [
     note: 'de arm, de armen; het been, de benen (leg — irregular plural); de keel (throat) → keelpijn; de koorts (fever); rusten (to rest: ik rust, hij rust); blijven (to stay: ik blijf, hij blijft, ik ben gebleven, ik bleef); slecht (bad, badly); de apotheker (the pharmacist). zich wassen (to wash): ik was me — the same spelling as “was”, the past of zijn. zich aankleden (to get dressed): ik kleed me aan.',
   },
   {
-    type: 'observe', title: 'Remembering Oostende', grammar: ['reflexive', 'toen-past', 'imperfect-weak', 'imperfect-strong'],
+    type: 'observe', title: 'Remembering Oostende', grammar: ['reflexive', 'dit-is', 'adverb-position', 'toen-past', 'imperfect-weak', 'imperfect-strong'],
     instruction: 'Bram remembers his childhood. Listen for zich herinneren, and for the simple past of lesson 15.',
     cards: [
       { nl: 'Dit is een oude foto. Op de foto zijn Bram, zijn oma en zijn opa.', en: 'This is an old photo. In the photo are Bram, his grandma and his grandpa.', image: 'photo' },
       { nl: 'Toen Bram klein was, woonde hij in Oostende, aan zee.', en: 'When Bram was little, he lived in Ostend, by the sea.', image: 'sea' },
       { nl: 'Ik herinner me het strand en de zee nog goed.', en: 'I still remember the beach and the sea well.', image: 'child-beach' },
       { nl: 'Herinner jij je oma nog? — Ja, ik herinner me haar heel goed.', en: 'Do you still remember grandma? — Yes, I remember her very well.', image: 'grandparents' },
-      { nl: 'Vroeger gingen wij elk jaar met oma en opa op vakantie.', en: 'We used to go on holiday with grandma and grandpa every year.', image: 'suitcase' },
+      { nl: 'Vroeger ging Bram elk jaar met oma en opa op vakantie.', en: 'Bram used to go on holiday with grandma and grandpa every year.', image: 'suitcase' },
       { nl: 'Lang geleden speelde Bram elke dag op het strand.', en: 'A long time ago Bram played on the beach every day.', image: 'child-beach' },
       { nl: 'Oma en opa reisden graag.', en: 'Grandma and grandpa liked to travel.', image: 'grandparents' },
       { nl: 'Bram herinnert zich dat oma altijd thee maakte, als hij ziek was.', en: 'Bram remembers that grandma always made tea when he was ill.', image: 'tea' },
@@ -112,8 +112,9 @@ export default [
       { listen: 'Haast je!' },
       { listen: 'Begrijp jij de dokter?' },
       { listen: 'Herinner jij je dat?' },
+      { listen: 'Mijn hoofd doet pijn.' },
     ],
-    explanation: 'me-di-CIJN and a-po-THEEK: the stress is at the end. her-IN-ne-ren: the stress is on -in-. hoofd is written with d (hoofden in the old plural), but said with t — like hond.',
+    explanation: 'me-di-CIJN and a-po-THEEK: the stress is at the end. her-IN-ne-ren: the stress is on -in-. hoofd is written with a d — you hear it in the plural, hoofden — but at the end of the word it sounds like t, just as in hond.',
   },
 
   // ——— Grammar: reflexive verbs ———
@@ -197,7 +198,7 @@ export default [
     explanation: 'herinner, herinnert, herinneren: two n in the middle, one r at the end of the stem. Stress on -in- in every form.',
   },
   {
-    type: 'drill', layout: 'table', title: 'wassen, aankleden, rusten, blijven', grammar: ['reflexive', 'separable', 'present-regular', 'spelling-stem'],
+    type: 'drill', layout: 'table', title: 'wassen, aankleden, rusten, blijven', grammar: ['reflexive', 'spelling-z-s', 'dt-rule', 'separable', 'present-regular', 'spelling-stem'],
     instruction: 'Mixed persons and verbs. The small word under each person is the verb. Reflexive verbs need their pronoun; a separable verb needs its particle at the end (ik kleed me aan).',
     items: [
       { label: 'ik', gloss: 'zich wassen', answer: 'was me' },
@@ -269,7 +270,7 @@ export default [
       { caption: 'Perfect, subordinate clause, simple past', rows: [
         { nl: 'Ik [heb] me gehaast.', en: 'I hurried — hebben, never zijn.' },
         { nl: 'Bram heeft zich [aangekleed].', en: 'Bram got dressed.' },
-        { nl: 'Ik heb me de film niet [herinnerd].', en: 'I did not remember the film — no ge-.' },
+        { nl: 'Ik heb me haar naam niet [herinnerd].', en: 'I did not remember her name — no ge-.' },
         { nl: '… omdat ik me niet goed [voel].', en: '… because I don’t feel well.' },
         { nl: '… dat Bram zich [gehaast heeft].', en: '… that Bram hurried. (also: heeft gehaast)' },
         { nl: 'Bram [haastte] zich naar de trein.', en: 'Bram hurried to the train.' },
@@ -283,7 +284,7 @@ export default [
     ],
   },
   {
-    type: 'drill', title: 'Question, negative, other person', grammar: ['reflexive', 'yes-no-question', 'inversion', 'niet', 'v2-inversion'],
+    type: 'drill', title: 'Question, negative, other person', grammar: ['reflexive', 'question-word', 'yes-no-question', 'inversion', 'niet', 'v2-inversion'],
     instruction: 'Rewrite each sentence as the task says. Keep the pronoun right after the verb — or right after the subject when the subject is behind the verb.',
     items: [
       { nl: 'Jij voelt je goed op je nieuwe school.', task: 'Make it a question', answer: 'Voel jij je goed op je nieuwe school?' },
@@ -306,7 +307,7 @@ export default [
       { nl: 'Ik haast me.', task: 'Put it in the perfect', answer: 'Ik heb me gehaast.' },
       { nl: 'Bram voelt zich ziek.', task: 'Put it in the perfect', answer: 'Bram heeft zich ziek gevoeld.' },
       { nl: 'Wij kleden ons aan.', task: 'Put it in the perfect', answer: 'Wij hebben ons aangekleed.' },
-      { nl: 'Ik herinner me het strand.', task: 'Put it in the perfect', answer: 'Ik heb me het strand herinnerd.' },
+      { nl: 'Jij haast je.', task: 'Put it in the perfect', answer: 'Jij hebt je gehaast.' },
       { nl: 'Noor wast zich.', task: 'Put it in the perfect', answer: 'Noor heeft zich gewassen.' },
       { nl: 'Ik voel me ziek.', task: 'Put it in the simple past', answer: 'Ik voelde me ziek.' },
       { nl: 'Bram haast zich naar het station.', task: 'Put it in the simple past', answer: 'Bram haastte zich naar het station.' },
@@ -314,10 +315,10 @@ export default [
       { nl: 'Lotte blijft thuis.', task: 'Put it in the perfect', answer: 'Lotte is thuis gebleven.' },
       { nl: 'Lotte praat met de apotheker.', task: 'Put it in the simple past', answer: 'Lotte praatte met de apotheker.' },
     ],
-    explanation: 'heb me gehaast, heeft zich gevoeld, hebben ons aangekleed, heb me herinnerd (no ge-). blijven is the exception here: it is not reflexive, and like gaan and komen it takes zijn — Lotte is thuis gebleven. haastte and praatte: stem + te, two t’s.',
+    explanation: 'heb me gehaast, hebt je gehaast, heeft zich gevoeld, hebben ons aangekleed. blijven is the exception here: it is not reflexive, and like gaan and komen it takes zijn — Lotte is thuis gebleven. haastte and praatte: stem + te, two t’s.',
   },
   {
-    type: 'drill', title: 'In a subordinate clause', grammar: ['reflexive', 'als-inversion', 'verb-final', 'want-omdat', 'dat-clause', 'separable-together', 'modals'],
+    type: 'drill', title: 'In a subordinate clause', grammar: ['reflexive', 'als-inversion', 'infinitive-end', 'verb-final', 'want-omdat', 'dat-clause', 'separable-together', 'modals'],
     instruction: 'Rewrite as the task says. In the subordinate clause the pronoun follows the subject, and the verbs go to the end.',
     items: [
       { nl: 'Lotte blijft thuis. Zij voelt zich niet goed.', task: 'Join with omdat', answer: 'Lotte blijft thuis, omdat zij zich niet goed voelt.' },
@@ -350,7 +351,7 @@ export default [
     body: [
       'Dutch talks about pain in three ways, and all three are everyday Dutch. **Ik heb hoofdpijn** — a compound noun. **Ik heb pijn in mijn hoofd** — pijn + in + the body part. **Mijn hoofd doet pijn** — the body part is the subject and *pijn doen* means “to hurt”.',
       'The compounds are **hoofdpijn, buikpijn, rugpijn, keelpijn**. A compound takes the article of its last part (de pijn → de hoofdpijn), but after *hebben* these words, like **koorts**, take **no article**: *Ik heb hoofdpijn. Ik heb koorts.* English says “a headache”, “a fever”; Dutch never says *een hoofdpijn*. So the negative is **geen**: *Ik heb geen koorts.*',
-      '**pijn in** + a possessive: *Ik heb pijn in **mijn** rug. Lotte heeft pijn in **haar** buik.* Dutch uses the possessive here, never *de rug*. For arms and legs you will also hear **pijn aan**: *pijn aan mijn been* — both are correct.',
+      '**pijn in** + a possessive: *Ik heb pijn in **mijn** rug. Lotte heeft pijn in **haar** buik.* Dutch normally uses the possessive here, where English sometimes says “the”. For arms and legs you will also hear **pijn aan**: *pijn aan mijn been* — both are correct.',
       '**doet pijn / doen pijn**: the body part is the subject, so the verb agrees with it — *Mijn rug **doet** pijn, mijn benen **doen** pijn.* To ask: *Waar heb je pijn? Waar doet het pijn? Doet het pijn?* The answer can be short: *Ja, het doet pijn.*',
       'Being ill and getting better: **ziek zijn**, **koorts hebben**, **zich (niet) goed voelen**, **zich beter voelen** — with the comparative of lesson 14: *Ik voel me beter **dan** gisteren.* “No longer” is **geen … meer** with a noun and **niet meer** otherwise — the geen/niet rule of lesson 4: *Ik heb **geen** hoofdpijn **meer**. Ik ben **niet meer** ziek.*',
       'Going for help: **naar de dokter gaan**, **naar de apotheek gaan** — with naar, like *naar de winkel*. The doctor advises; **de apotheker** (the pharmacist) gives you the medicine. In Belgium medicines are sold in the apotheek, not in an ordinary shop.',
@@ -406,13 +407,13 @@ export default [
       { nl: 'Ik heb ___ koorts.', en: 'I don’t have a fever.', answer: 'geen' },
       { nl: 'Ik heb pijn in mijn ___.', en: 'I have pain in my head.', answer: 'hoofd' },
       { nl: 'Vandaag voel ik me ___ dan gisteren.', en: 'Today I feel better than yesterday.', answer: 'beter' },
-      { nl: 'Gisteren voelde ik me ___ dan vandaag.', en: 'Yesterday I felt worse (= badder) than today.', answer: 'slechter' },
+      { nl: 'Gisteren voelde ik me ___ dan vandaag.', cue: 'slecht', en: 'Yesterday I felt worse than today.', answer: 'slechter' },
       { nl: 'Noor heeft pijn in haar ___.', en: 'Noor has pain in her belly.', answer: 'buik' },
     ],
     explanation: 'zijn rug, haar buik: the possessive belongs to the person. doet / doen agrees with the body part. geen … meer = no longer. slecht → slechter, like snel → sneller.',
   },
   {
-    type: 'drill', title: 'At the doctor’s: answer in full', grammar: ['pijn-hebben', 'zijn', 'question-word', 'reflexive', 'yes-no-question', 'geen-niet'],
+    type: 'drill', title: 'At the doctor’s: answer in full', grammar: ['pijn-hebben', 'zijn', 'hebben', 'wie-hoe', 'question-word', 'reflexive', 'yes-no-question', 'geen-niet'],
     instruction: 'The doctor asks. Answer with a full sentence using the words in the task.',
     items: [
       { nl: 'Waar heb je pijn?', task: 'Answer: in your back', answer: 'Ik heb pijn in mijn rug.', accept: ['Ik heb pijn in de rug.', 'Mijn rug doet pijn.', 'In mijn rug.'] },
@@ -423,9 +424,8 @@ export default [
       { nl: 'Heb je nog hoofdpijn?', task: 'Answer: no, no longer', answer: 'Nee, ik heb geen hoofdpijn meer.' },
       { nl: 'Ben je nog ziek?', task: 'Answer: no, no longer', answer: 'Nee, ik ben niet meer ziek.' },
       { nl: 'Doet je hoofd pijn?', task: 'Answer: yes, a bit', answer: 'Ja, mijn hoofd doet een beetje pijn.', accept: ['Ja, het doet een beetje pijn.'] },
-      { nl: 'Is het examen lang of kort?', task: 'Answer: short', answer: 'Het examen is kort.', accept: ['Het is kort.'] },
-      { nl: 'Hoe voelen jullie je?', task: 'Answer for you and Lotte: tired', answer: 'Wij voelen ons moe.' },
-      { nl: 'Hoe heb je geslapen?', task: 'Answer: badly', answer: 'Ik heb slecht geslapen.' },
+            { nl: 'Hoe voelen jullie je?', task: 'Answer for you and Lotte: tired', answer: 'Wij voelen ons moe.' },
+      { nl: 'Heb je lang of kort geslapen?', task: 'Answer: short, and badly', answer: 'Ik heb kort en slecht geslapen.', accept: ['Ik heb slecht en kort geslapen.', 'Kort en slecht.'] },
     ],
     explanation: 'Hoe voelen jullie je? — Wij voelen ons … The pronoun follows the person who answers: jullie je, wij ons.',
   },
@@ -502,7 +502,7 @@ export default [
     explanation: 'The imperative is the ik-form: neem, ga, rust, rijd, blijf, drink. With a reflexive verb: Haast je.',
   },
   {
-    type: 'drill', title: 'Make the imperative', grammar: ['imperative', 'gaan', 'spelling-stem', 'spelling-z-s', 'dt-rule'],
+    type: 'drill', title: 'Make the imperative', grammar: ['imperative', 'gaan', 'time-place', 'spelling-stem', 'spelling-z-s', 'dt-rule'],
     instruction: 'Type the imperative of the verb given. Start with a capital if you like — capitals do not count.',
     items: [
       { nl: '___ dit medicijn ’s avonds.', cue: 'nemen', answer: 'Neem' },
@@ -551,7 +551,7 @@ export default [
       { en: 'Don’t hurry!', answer: 'Haast je niet!' },
       { en: 'Get dressed!', answer: 'Kleed je aan!' },
       { en: 'Take your coat with you.', answer: 'Neem je jas mee.', accept: ['Neem jouw jas mee.'] },
-      { en: 'Come back on Monday at ten. (say: come on Monday at ten o’clock)', answer: 'Kom maandag om tien uur.', accept: ['Kom op maandag om tien uur.'] },
+      { en: 'Come on Monday at ten o’clock.', answer: 'Kom maandag om tien uur.', accept: ['Kom op maandag om tien uur.'] },
     ],
     explanation: 'Ga vroeg naar bed: time before place, as in every sentence. Neem je jas mee: here je is the possessive “your” — the context makes it clear.',
   },
@@ -590,7 +590,7 @@ export default [
     explanation: 'The traps of the book in one table: haast, rust, weet and praat (no second t), rijdt and vindt (d + t), blijf, schrijf, leest and reis (v → f, z → s), bent and heeft, jij kunt but hij wil.',
   },
   {
-    type: 'drill', title: 'Every verb you know, part two — the past', grammar: ['imperfect-weak', 'imperfect-strong', 'toen-past', 'reflexive', 'perfect-hebben', 'perfect-zijn', 'participle'],
+    type: 'drill', title: 'Every verb you know, part two — the past', grammar: ['separable-perfect', 'imperfect-weak', 'imperfect-strong', 'toen-past', 'reflexive', 'perfect-hebben', 'perfect-zijn', 'participle'],
     instruction: 'Type the simple past (or the participle, when hebben or zijn is already there) of the verb given.',
     items: [
       { nl: 'Toen Bram klein was, ___ hij in Oostende.', cue: 'wonen', answer: 'woonde' },
@@ -605,15 +605,15 @@ export default [
       { nl: 'De trein ___ om negen uur.', cue: 'komen', answer: 'kwam' },
       { nl: 'Lotte heeft zich niet goed ___.', cue: 'voelen', answer: 'gevoeld' },
       { nl: 'Bram heeft zich ___.', cue: 'haasten', answer: 'gehaast' },
-      { nl: 'Ik heb het me niet ___.', cue: 'herinneren', en: 'I did not remember it.', answer: 'herinnerd' },
+      { nl: 'Ik heb me haar naam niet ___.', cue: 'herinneren', en: 'I did not remember her name.', answer: 'herinnerd' },
       { nl: 'Lotte is thuis ___.', cue: 'blijven', answer: 'gebleven' },
       { nl: 'Wij zijn om zeven uur ___.', cue: 'opstaan', answer: 'opgestaan' },
       { nl: 'Heb jij je jas ___?', cue: 'meenemen', answer: 'meegenomen' },
     ],
-    explanation: 'Weak verbs: woonde, speelde, maakte, voelde, belde, herinnerde; with t after ’t kofschip: haastte. Strong verbs change their vowel: las, gingen, kwam, bleef. Participles: gevoeld, gehaast, herinnerd (no ge-), gebleven (with zijn), opgestaan and meegenomen (ge- in the middle).',
+    explanation: 'Weak verbs: woonde, speelde, maakte, voelde, herinnerde; with t after ’t kofschip: haastte. Strong verbs change their vowel: las, gingen, kwam, bleef. Participles: gevoeld, gehaast, herinnerd (no ge-), gebleven (with zijn), opgestaan and meegenomen (ge- in the middle).',
   },
   {
-    type: 'drill', title: 'Bram remembers', grammar: ['reflexive', 'adverb-position', 'dat-clause', 'verb-final', 'toen-past', 'imperfect-weak', 'imperfect-strong'],
+    type: 'drill', title: 'Bram remembers', grammar: ['reflexive', 'adverb-position', 'adjective-e', 'dat-clause', 'verb-final', 'toen-past', 'imperfect-weak', 'imperfect-strong'],
     task: 'Start with “Bram herinnert zich dat”',
     instruction: 'Put each memory behind “Bram herinnert zich dat …”. The simple-past verb goes to the end of the dat-clause.',
     items: [
@@ -630,7 +630,7 @@ export default [
     explanation: 'dat oma altijd thee maakte, dat opa elke avond een boek las: the clause keeps its order and only the verb moves to the end — as in the present.',
   },
   {
-    type: 'drill', title: 'zich in every corner of the book', grammar: ['reflexive', 'want-omdat', 'verb-final', 'als-inversion', 'separable-perfect', 'separable-together', 'wie-hoe', 'perfect-hebben', 'possessives'],
+    type: 'drill', title: 'zich in every corner of the book', grammar: ['reflexive', 'participle', 'want-omdat', 'verb-final', 'als-inversion', 'separable-perfect', 'separable-together', 'wie-hoe', 'perfect-hebben', 'possessives'],
     instruction: 'Old people, old places, old grammar — now with reflexive verbs. Rewrite as the task says.',
     items: [
       { nl: 'Het kind heeft buikpijn. Het heeft drie appels gegeten.', task: 'Join with omdat', answer: 'Het kind heeft buikpijn, omdat het drie appels gegeten heeft.', accept: ['Het kind heeft buikpijn, omdat het drie appels heeft gegeten.'] },
@@ -652,7 +652,7 @@ export default [
     explanation: 'omdat … aankomt, dat … uitgaan: separable verbs in one piece at the end. opgebeld: ge- in the middle. Als Lotte zich niet goed voelt, kookt Bram: after the als-clause, the verb comes first.',
   },
   {
-    type: 'drill', title: 'The house, the town, the week', grammar: ['reflexive', 'v2-inversion', 'days-op-om', 'er-is-zijn', 'plural', 'adjective-e', 'hij-het-things', 'zijn', 'comparative', 'dan-als', 'toen-past', 'numbers'],
+    type: 'drill', title: 'The house, the town, the week', grammar: ['reflexive', 'v2-inversion', 'days-op-om', 'er-is-zijn', 'plural', 'adjective-e', 'hij-het-things', 'zijn', 'comparative', 'dan-als', 'imperfect-weak', 'numbers'],
     instruction: 'More of everything, with pain and hurrying. Rewrite as the task says.',
     items: [
       { nl: 'Bram mag niet zwemmen. Zijn rug doet pijn.', task: 'Join with omdat', answer: 'Bram mag niet zwemmen, omdat zijn rug pijn doet.' },
@@ -683,7 +683,7 @@ export default [
       { nl: 'Lotte zegt dat zij de dokter morgen ___.', cue: 'opbellen', en: 'Lotte says she will ring the doctor tomorrow.', answer: 'opbelt' },
       { nl: 'Bram is moe, omdat de trein laat ___.', cue: 'aankomen', en: 'Bram is tired, because the train arrives late.', answer: 'aankomt' },
       { nl: 'Vandaag voel ik me ___ dan gisteren.', cue: 'goed', answer: 'beter' },
-      { nl: 'Vandaag is Lotte ___ moe als Bram.', en: 'Today Lotte is as tired as Bram.', answer: 'even' },
+      { nl: 'Vandaag is Lotte ___ moe als Bram.', en: 'Today Lotte is as tired as Bram.', answer: 'even', accept: ['zo'] },
       { nl: 'Een korte vakantie is het ___ medicijn.', cue: 'goed', en: 'A short holiday is the best medicine.', answer: 'beste' },
       { nl: 'De trein is ___ dan de fiets.', cue: 'snel', answer: 'sneller' },
       { nl: 'De fiets is ___ dan de trein.', cue: 'goedkoop', answer: 'goedkoper' },
@@ -711,15 +711,16 @@ export default [
       { nl: 'Lotte drinkt ___ koffie.', en: 'Lotte never drinks coffee.', answer: 'nooit' },
       { nl: 'Ik heb ___ koorts.', en: 'I don’t have a fever.', answer: 'geen' },
       { nl: 'Neem dit medicijn ___ dagen.', en: 'Take this medicine for four days.', answer: 'vier' },
+      { nl: 'Rust is het ___ medicijn.', cue: 'goed', en: 'Rest is the best medicine.', answer: 'beste' },
       { nl: 'Noor is ___ jaar. Zij heeft keelpijn.', en: 'Noor is five. She has a sore throat.', answer: 'vijf' },
       { nl: 'Ik ben ___ ziek.', en: 'I am not ill.', answer: 'niet' },
-      { nl: 'Waar is het medicijn? ___ is in mijn tas.', cue: 'hij / het', answer: 'Het' },
+      { nl: 'Waar is het medicijn? ___ zit in mijn tas.', cue: 'hij / het', answer: 'Het' },
       { nl: 'Waar is de dokter? ___ is in het park.', cue: 'hij / zij', en: 'Where is the doctor? She is in the park.', answer: 'Zij', accept: ['Ze'] },
       { image: 'pharmacy', nl: 'Wat is dit?', answer: 'Dit is een apotheek.', accept: ['Dit is de apotheek.'] },
       { nl: '___ hoofd', cue: 'de / het', answer: 'het' },
       { nl: '___ buik', cue: 'de / het', answer: 'de' },
     ],
-    explanation: 'apothekers, medicijnen, benen: -s, -en, and one irregular plural. een goed medicijn — een + het-word: no -e; het nieuwe medicijn — with het: -e. het medicijn → het. The doctor in this book is a woman → zij.',
+    explanation: 'apothekers, medicijnen, benen: -s, -en, and one irregular plural. een goed medicijn — een + het-word: no -e; een lieve vrouw — a de-word: -e. het medicijn → het. The doctor in this book is a woman → zij.',
   },
   {
     type: 'arrange', title: 'If you have a fever', grammar: ['als-inversion', 'modals', 'infinitive-end', 'pijn-hebben'],
@@ -765,7 +766,7 @@ export default [
       { nl: 'Heeft Lotte koorts?', answer: 'Nee' },
       { nl: 'Moet Bram om tien uur in Brussel zijn?', answer: 'Ja' },
       { nl: 'Haast Bram zich naar het station?', answer: 'Ja' },
-            { nl: 'Herinnert Bram zich zijn oma?', answer: 'Ja' },
+      { nl: 'Herinnert Bram zich zijn oma?', answer: 'Ja' },
     ],
   },
   {
@@ -776,7 +777,7 @@ export default [
       { nl: 'Bram heeft pijn in zijn rug.', task: 'Say why — use omdat', answer: 'Bram heeft pijn in zijn rug, omdat hij zaterdag de bank in de tuin gemaakt heeft.', accept: ['Bram heeft pijn in zijn rug, omdat hij zaterdag de bank in de tuin heeft gemaakt.', 'Bram heeft pijn in zijn rug, omdat hij de bank in de tuin gemaakt heeft.', 'Bram heeft pijn in zijn rug, omdat hij de bank in de tuin heeft gemaakt.', 'Bram heeft pijn in zijn rug, omdat hij een bank gemaakt heeft.', 'Bram heeft pijn in zijn rug, omdat hij een bank heeft gemaakt.', 'Bram heeft pijn in zijn rug, omdat hij de bank gemaakt heeft.', 'Bram heeft pijn in zijn rug, omdat hij de bank heeft gemaakt.', 'Bram heeft pijn in zijn rug, omdat hij zaterdag een bank gemaakt heeft.', 'Bram heeft pijn in zijn rug, omdat hij zaterdag een bank heeft gemaakt.'] },
       { nl: 'Wat denkt de dokter?', answer: 'De dokter denkt dat Lotte heel moe is.', accept: ['Zij denkt dat Lotte heel moe is.', 'De dokter denkt dat Lotte moe is.', 'Zij denkt dat Lotte moe is.', 'De dokter denkt dat zij heel moe is.', 'De dokter denkt dat zij moe is.'] },
       { nl: 'Wat moet Lotte vandaag doen?', answer: 'Lotte moet vandaag rusten en vroeg naar bed gaan.', accept: ['Zij moet vandaag rusten en vroeg naar bed gaan.', 'Lotte moet rusten en vroeg naar bed gaan.', 'Zij moet rusten en vroeg naar bed gaan.', 'Lotte moet vandaag rusten.', 'Zij moet vandaag rusten.', 'Lotte moet rusten.', 'Zij moet rusten.', 'Rusten en vroeg naar bed gaan.'] },
-      { nl: 'Wat moet Bram een week niet doen?', answer: 'Bram mag een week niet in de tuin werken.', accept: ['Hij mag een week niet in de tuin werken.', 'Bram moet een week niet in de tuin werken.', 'Hij moet een week niet in de tuin werken.', 'Hij mag niet in de tuin werken.', 'Hij moet niet in de tuin werken.', 'Werk een week niet in de tuin.', 'Bram mag een week niet in de tuin werken', 'In de tuin werken.'] },
+      { nl: 'Wat moet Bram een week niet doen?', answer: 'Bram mag een week niet in de tuin werken.', accept: ['Hij mag een week niet in de tuin werken.', 'Bram moet een week niet in de tuin werken.', 'Hij moet een week niet in de tuin werken.', 'Hij mag niet in de tuin werken.', 'Hij moet niet in de tuin werken.', 'Werk een week niet in de tuin.', 'In de tuin werken.'] },
       { nl: 'Bram haast zich naar het station.', task: 'Say why — use want', answer: 'Bram haast zich naar het station, want zijn trein gaat om half tien.', accept: ['Bram haast zich naar het station, want hij moet om tien uur in Brussel zijn.', 'Bram haast zich naar het station, want de trein gaat om half tien.'] },
       { nl: 'Wie gaat naar de apotheek?', answer: 'Lotte gaat naar de apotheek.', accept: ['Lotte.', 'Zij gaat naar de apotheek.'] },
       { nl: 'Wat zegt de apotheker?', answer: 'Neem ze ’s ochtends en ’s avonds, met veel water.', accept: ['Neem ze ’s ochtends en ’s avonds met veel water.', 'Neem ze ’s ochtends en ’s avonds.', 'De apotheker zegt: neem ze ’s ochtends en ’s avonds, met veel water.', 'Neem de medicijnen ’s ochtends en ’s avonds.', 'Neem de medicijnen ’s ochtends en ’s avonds, met veel water.'] },
@@ -822,7 +823,7 @@ export default [
     explanation: 'Hoe voel jij je — two you’s: the subject and the pronoun. Herinneren jullie je: jullie takes je. Ik heb me gehaast: hebben, never zijn.',
   },
   {
-    type: 'drill', title: 'Everything in one round', grammar: ['reflexive', 'dit-is', 'geen', 'als-inversion', 'want-omdat', 'imperative', 'pijn-hebben', 'present-regular', 'inversion', 'verb-final', 'perfect-hebben', 'separable', 'imperfect-weak', 'comparative', 'plural', 'geen-niet'],
+    type: 'drill', title: 'Everything in one round', grammar: ['reflexive', 'dit-is', 'geen', 'als-inversion', 'want-omdat', 'er-is-zijn', 'hij-het-things', 'numbers', 'imperative', 'pijn-hebben', 'present-regular', 'inversion', 'verb-final', 'perfect-hebben', 'separable', 'imperfect-weak', 'comparative', 'plural', 'geen-niet'],
     instruction: 'A final, demanding round: everything from lesson 1 to lesson 16, mixed. Type every answer. No hints beyond the task.',
     items: [
       { nl: 'Wij ___ ons niet goed.', cue: 'voelen', answer: 'voelen' },
@@ -844,6 +845,8 @@ export default [
       { en: 'The exam is not easy.', answer: 'Het examen is niet makkelijk.' },
       { image: 'medicine', nl: 'Wat is dit?', answer: 'Dit is een medicijn.', accept: ['Dit is het medicijn.'] },
       { en: 'Do you feel better?', answer: 'Voel jij je beter?' },
+      { nl: 'Er ___ twee dokters in onze straat.', cue: 'zijn', answer: 'zijn' },
+      { nl: 'Waar is mijn sleutel? ___ zit in mijn tas.', cue: 'hij / het', answer: 'Hij' },
       { listen: 'Als je koorts hebt, moet je thuis blijven.' },
     ],
   },
