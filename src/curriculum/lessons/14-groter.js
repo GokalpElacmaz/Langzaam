@@ -822,7 +822,7 @@ export default [
     type: 'drill', title: 'Did you follow?', grammar: ['yes-no-question', 'inversion'], choices: ['Ja', 'Nee'],
     instruction: 'Questions about the story. Answer without looking back.',
     items: [
-      { nl: 'Sneeuwt het in Leuven?', answer: 'Ja' },
+      { nl: 'Vindt Lotte de prijs goed?', answer: 'Ja' },
       { nl: 'Is Bram laat opgestaan?', answer: 'Nee' },
       { nl: 'Zit Bram met zijn ontbijt in de keuken?', answer: 'Ja' },
       { nl: 'Is het vandaag warmer dan gisteren?', answer: 'Nee' },
