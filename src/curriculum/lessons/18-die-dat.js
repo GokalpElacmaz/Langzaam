@@ -8,8 +8,10 @@
  * zullen, te and over / geleden of lessons 13–17 return inside relative clauses, about every person in the book.
  * Teaching choices, as in lesson 12: in a subordinate clause the course writes “ontmoet heb” (participle,
  * then the conjugated verb) and “kan spreken” (modal, then infinitive); the other orders are always accepted.
- * Masculine objects are handled with “die” (“Die ken ik”), because “hem” has not been taught; the plural of
- * collega needs an apostrophe, so colleagues appear one at a time.
+ * Short answers use “die” where spoken Dutch does (“Ja, die ken ik”); hem / haar (lesson 13) are accepted
+ * and taught beside it. The relative clause after a final participle or infinitive (“Ik heb de vrouw ontmoet
+ * die …”) and the one before it are both accepted. The plural “collega’s” is written with the ’s of lesson 13.
+ * Strict kennen / weten: iemand of een plaats kennen; het antwoord, zijn naam weten; een taal spreken or kennen.
  */
 export default [
   // ——— Words ———
@@ -39,15 +41,15 @@ export default [
       { nl: 'Er zijn veel studenten in Leuven.', en: 'There are a lot of students in Leuven.', image: 'students' },
       { nl: 'Lotte heeft dit jaar vijf vakken: vier zijn makkelijk, maar één vak is heel moeilijk.', en: 'Lotte has five subjects this year: four are easy, but one subject is very difficult.', image: 'woman-studying' },
       { nl: 'Lotte leert elke avond in haar kamer.', en: 'Lotte studies in her room every evening.', image: 'woman-studying' },
-      { nl: 'Op dinsdag en donderdag heeft zij ook les.', en: 'She also has class on Tuesday and Thursday.', image: 'students' },
+      { nl: 'Op dinsdag, donderdag en vrijdag heeft zij ook les.', en: 'She also has class on Tuesday, Thursday and Friday.', image: 'students' },
       { nl: 'Zij is twee weken geleden met een nieuwe cursus begonnen.', en: 'Two weeks ago she started a new course.', image: 'classroom' },
-      { nl: 'De leraar geeft elke maandag om zeven uur les.', en: 'The teacher teaches every Monday at seven o’clock.', image: 'classroom' },
-      { nl: 'Bram werkt in Brussel, in een groot kantoor.', en: 'Bram works in Brussels, in a big office.', image: 'colleagues' },
+      { nl: 'De leraar van de cursus geeft elke maandag om zeven uur les.', en: 'The course teacher teaches every Monday at seven o’clock.', image: 'classroom' },
+      { nl: 'Bram werkt in Brussel, in een groot kantoor met veel collega’s.', en: 'Bram works in Brussels, in a big office with a lot of colleagues.', image: 'colleagues' },
       { nl: 'Op maandag, dinsdag, woensdag en donderdag reist hij met de trein naar Brussel.', en: 'On Monday, Tuesday, Wednesday and Thursday he travels to Brussels by train.', image: 'train' },
       { nl: 'Bram heeft een collega die ook in Leuven woont.', en: 'Bram has a colleague who also lives in Leuven.', image: 'colleagues' },
       { nl: 'Weet jij het antwoord? — Nee, ik weet het niet.', en: 'Do you know the answer? — No, I don’t know.', image: 'exam' },
     ],
-    note: 'studeren = to study at a university (leren = to learn, to study for a test). “Lotte is student” — no “een” before a job or a study, as in “Bram is leraar”. de les = the lesson, the class: “les hebben” = to have class, “les geven” = to teach (geven = to give). het vak = a subject, het kantoor = the office (op kantoor = at the office), het antwoord = the answer. de collega is a de-word; its plural is written with an apostrophe, so in this course colleagues come one at a time.',
+    note: 'studeren = to study at a university (leren = to learn, to study for a test). “Lotte is student” — no “een” before a job or a study, as in “Hij is leraar”. de les = the lesson, the class: “les hebben” = to have class, “les geven” = to teach (geven = to give). het vak = a subject, het kantoor = the office (op kantoor = at the office), het antwoord = the answer. de collega is a de-word; its plural is de collega’s — a word ending in a long vowel (a, o, u, i) takes ’s, as in ’s ochtends: de foto’s, de oma’s.',
   },
   {
     type: 'observe', title: 'Knowing and meeting people', grammar: ['kennen-weten', 'participle-no-ge', 'perfect-hebben', 'pijn-hebben'],
@@ -62,18 +64,18 @@ export default [
       { nl: 'De buurman vertelt graag over vroeger.', en: 'The neighbour likes to talk about the old days.', image: 'old-man' },
       { nl: 'Wat is er gebeurd? — Bram heeft pijn aan zijn rug.', en: 'What happened? — Bram has a pain in his back.', image: 'back-pain' },
     ],
-    note: 'kennen = to know a person or a place; weten = to know a fact. “Die ken ik” = I know him / her — die points back to the person. ontmoeten = to meet; its participle is simply “ontmoet”. bezoeken = to visit, vertellen = to tell, gebeuren = to happen (“wat is er gebeurd?” = what happened?). None of these four takes ge- in the perfect — the grammar pages explain why.',
+    note: 'kennen = to know a person or a place; weten = to know a fact. “Die ken ik” = I know him / her — die points back to the person, the usual short answer in speech (“Ik ken hem”, “Ik ken haar” are just as correct). ontmoeten = to meet; its participle is simply “ontmoet”. bezoeken = to visit, vertellen = to tell, gebeuren = to happen (“wat is er gebeurd?” = what happened?). None of these four takes ge- in the perfect — the grammar pages explain why.',
   },
   {
     type: 'picture', title: 'Read and point', grammar: ['dit-is', 'plural'],
     instruction: 'Read the sentence and choose its picture.',
     nl: 'Dit zijn onze buren: de buurman en de buurvrouw.', en: 'These are our neighbours: the man and the woman next door.', answer: 'neighbours',
-    choices: [{ image: 'colleagues', nl: 'Bram en een collega' }, { image: 'neighbours', nl: 'de buren' }, { image: 'students', nl: 'studenten' }, { image: 'family', nl: 'een familie' }],
+    choices: [{ image: 'colleagues', nl: 'Bram en twee collega’s' }, { image: 'neighbours', nl: 'de buren' }, { image: 'students', nl: 'studenten' }, { image: 'family', nl: 'een familie' }],
   },
   {
     type: 'picture', listen: true, title: 'Listen and point', grammar: ['possessives'],
     instruction: 'Listen without reading. Where is Bram?',
-    nl: 'Bram praat op kantoor met zijn collega.', en: 'Bram is talking with his colleague at the office.', answer: 'colleagues',
+    nl: 'Bram praat op kantoor met zijn collega’s.', en: 'Bram is talking with his colleagues at the office.', answer: 'colleagues',
     choices: [{ image: 'couple-talking', nl: 'Bram en Lotte praten.' }, { image: 'colleagues', nl: 'Bram op kantoor' }, { image: 'classroom', nl: 'een les' }, { image: 'neighbours', nl: 'de buren' }],
   },
   {
@@ -94,11 +96,13 @@ export default [
       { en: 'the teachers', answer: 'de leraren' },
       { en: 'the answer', answer: 'het antwoord' },
       { en: 'the answers', answer: 'de antwoorden' },
+      { en: 'the lessons', answer: 'de lessen' },
+      { image: 'colleagues', en: 'the colleagues', answer: 'de collega’s' },
       { en: 'the office', answer: 'het kantoor' },
       { en: 'the subject (at school)', answer: 'het vak' },
       { en: 'the people', answer: 'de mensen' },
     ],
-    explanation: 'Three het-words: het antwoord, het kantoor, het vak — every other noun here is a de-word, and every plural takes de. les → lessen (short e, so the s doubles); leraar → leraren (le-ra-ren: an open syllable needs only one a); buurman → buren is irregular.',
+    explanation: 'Three het-words: het antwoord, het kantoor, het vak — every other noun here is a de-word, and every plural takes de. les → lessen (short e, so the s doubles); leraar → leraren (le-ra-ren: an open syllable needs only one a); collega → collega’s (a long a at the end: ’s, so the a keeps its sound); buurman → buren is irregular.',
   },
   {
     type: 'drill', title: 'Hear and spell', grammar: ['kennen-weten'],
@@ -121,8 +125,8 @@ export default [
       'Two target verbs — **kennen** (to know a person or a place) and **ontmoeten** (to meet) — and five extra ones: **studeren** (to study at university), **geven** (to give), **bezoeken** (to visit), **vertellen** (to tell) and **gebeuren** (to happen). In the present they all follow the pattern of lesson 3: **ik** + stem, **jij / hij / zij** + stem + **t**, **wij / jullie / zij** = the infinitive. In a question jij takes the bare stem: ***Ken** jij de buurman? **Studeer** jij in Leuven?*',
       'The stem follows the spelling rules you know. *ken-nen* → **ik ken** (one n at the end of a word), *stu-de-ren* → **ik studeer** (a long e in a closed syllable needs two letters), *be-zoe-ken* → **ik bezoek**, *ver-tel-len* → **ik vertel**. *ge-ven* → **ik geef**: v becomes f at the end, as in *schrijven → ik schrijf*.',
       '**ontmoeten** is the trap of this lesson. Its stem, **ontmoet**, already ends in t, so jij and hij add nothing: *jij ontmoet, hij ontmoet* — like *praten → hij praat* and *weten → hij weet*. In the question nothing changes either: ***Ontmoet** jij Emma vandaag?*',
-      '**gebeuren** usually has **er** or **het** as its subject: *Wat **gebeurt** er?* (What is happening?) *Het gebeurt elke dag.*',
-      '**The simple past** (lesson 15). ’t kofschip decides: *kennen → **kende**, kenden* (n is not in ’t kofschip), *studeren → studeerde, vertellen → vertelde, gebeuren → gebeurde*. *ontmoeten → **ontmoette**, ontmoetten*: t is in ’t kofschip, so -te — and the stem already ends in t, which gives a double t. Two are strong: *geven → **gaf**, gaven*, and *bezoeken → **bezocht**, bezochten* (like *kopen → kocht*).',
+      '**gebeuren** is almost always said of a thing, not a person, so you mostly meet the hij / het form, often with **er**: *Wat **gebeurt** er?* (What is happening?) *Het gebeurt elke dag.*',
+      '**The simple past** (lesson 15). ’t kofschip decides: *kennen → **kende**, kenden* (n is not in ’t kofschip), *studeren → studeerde, vertellen → vertelde, gebeuren → gebeurde*. *ontmoeten → **ontmoette**, ontmoetten*: t is in ’t kofschip, so -te — and the stem already ends in t, which gives a double t. Two are irregular: *geven → **gaf**, gaven* (a strong verb), and *bezoeken → **bezocht**, bezochten* (like *kopen → kocht*).',
     ],
     tables: [
       { caption: 'kennen · ontmoeten', rows: [
@@ -200,10 +204,10 @@ export default [
       { nl: 'Woensdag ___ wij de buren.', cue: 'bezoeken', en: 'On Wednesday we are visiting the neighbours.', answer: 'bezoeken' },
       { nl: 'Vroeger ___ de buurman veel studenten.', cue: 'kennen', en: 'The neighbour used to know a lot of students.', answer: 'kende' },
       { nl: 'Gisteren ___ Lotte haar nieuwe leraar.', cue: 'ontmoeten', en: 'Yesterday Lotte met her new teacher.', answer: 'ontmoette' },
-      { nl: 'Toen Bram klein was, ___ hij elke zomer oma en opa.', cue: 'bezoeken', en: 'When Bram was little, he visited grandma and grandpa every summer.', answer: 'bezocht' },
+      { nl: 'Toen Bram klein was, ___ hij elke zondag oma en opa.', cue: 'bezoeken', en: 'When Bram was little, he visited grandma and grandpa every Sunday.', answer: 'bezocht' },
       { nl: 'De leraar ___ de studenten een moeilijk examen.', cue: 'geven', en: 'The teacher gave the students a difficult exam.', answer: 'gaf' },
     ],
-    explanation: 'Waar ontmoet jij? — the jij-question of a stem in t looks just like the statement. ontmoette: -te after t, so two t’s. gaf and bezocht are strong: learn them as they are.',
+    explanation: 'Waar ontmoet jij? — the jij-question of a stem in t looks just like the statement. ontmoette: -te after t, so two t’s. gaf and bezocht are irregular: learn them as they are.',
   },
 
   // ——— Grammar: die and dat ———
@@ -222,6 +226,7 @@ export default [
         { nl: 'de vrouw [die] naast ons woont', en: 'the woman who lives next door to us' },
         { nl: 'de collega [die] ook in Leuven woont', en: 'the colleague who also lives in Leuven' },
         { nl: 'de studenten [die] in Leuven studeren', en: 'the students who study in Leuven' },
+        { nl: 'de collega’s [die] met Bram in Brussel werken', en: 'the colleagues who work with Bram in Brussels' },
         { nl: 'de huizen [die] in onze straat staan', en: 'the houses that stand in our street' },
         { nl: 'de tafel [die] in de keuken staat', en: 'the table that stands in the kitchen' },
       ] },
@@ -253,6 +258,7 @@ export default [
       { nl: 'het ijsje ___ Noor eet', answer: 'dat' },
       { nl: 'het vak ___ Lotte het makkelijkst vindt', answer: 'dat' },
       { nl: 'de universiteit ___ Lotte zo mooi vindt', answer: 'die' },
+      { nl: 'de collega’s ___ met Bram in Brussel werken', answer: 'die' },
     ],
     explanation: 'het kind dat, het ijsje dat: a het-word, even when it is a person. de studenten die: every plural takes die.',
   },
@@ -312,6 +318,7 @@ export default [
     type: 'arrange', title: 'The man on the bench', grammar: ['relative-clause', 'verb-final', 'adjective-e'],
     instruction: 'Build: “The neighbour is the old man who always reads on the bench.” Two tiles are traps.',
     nl: 'De buurman is de oude man die altijd op de bank leest.', en: 'The neighbour is the old man who always reads on the bench.', image: 'old-man', distractors: ['dat', 'lees'],
+    accept: ['De oude man die altijd op de bank leest, is de buurman.'],
   },
   {
     type: 'grammar', title: 'die as the object, two verbs, and the clause in front', grammar: ['relative-clause', 'verb-final', 'perfect-hebben', 'modals', 'separable-together', 'als-inversion', 'zullen-future', 'te-infinitive'],
@@ -361,11 +368,11 @@ export default [
       { nl: 'Dat zijn de studenten. Lotte kent ze.', answer: 'Dat zijn de studenten die Lotte kent.' },
       { nl: 'Emma is de vriendin. Lotte belt haar elke dag op.', answer: 'Emma is de vriendin die Lotte elke dag opbelt.' },
       { nl: 'Dit is het antwoord. Jij hebt het geschreven.', answer: 'Dit is het antwoord dat jij geschreven hebt.', accept: ['Dit is het antwoord dat jij hebt geschreven.'] },
-      { nl: 'Dat is de jas. Lotte heeft de jas gekocht.', answer: 'Dat is de jas die Lotte gekocht heeft.', accept: ['Dat is de jas die Lotte heeft gekocht.'] },
+      { nl: 'Dat is de jas. Lotte heeft hem gekocht.', answer: 'Dat is de jas die Lotte gekocht heeft.', accept: ['Dat is de jas die Lotte heeft gekocht.'] },
       { nl: 'Dit is het medicijn. De dokter heeft het aan Bram gegeven.', answer: 'Dit is het medicijn dat de dokter aan Bram gegeven heeft.', accept: ['Dit is het medicijn dat de dokter aan Bram heeft gegeven.'] },
-      { nl: 'Dat is de buurman. Jij kent de buurman al.', answer: 'Dat is de buurman die jij al kent.' },
+      { nl: 'Dat is de buurman. Jij kent hem al.', answer: 'Dat is de buurman die jij al kent.' },
     ],
-    explanation: 'haar, het, ze disappear: die or dat takes their place at the front of the clause. Lotte kent ze → die Lotte kent (Lotte knows them — kent, singular). belt … op → opbelt, one word at the end.',
+    explanation: 'hem, haar, het, ze disappear: die or dat takes their place at the front of the clause. Lotte kent ze → die Lotte kent (Lotte knows them — kent, singular). belt … op → opbelt, one word at the end.',
   },
   {
     type: 'drill', title: 'Two verbs at the end of the clause', grammar: ['relative-clause', 'verb-final', 'modals', 'infinitive-end', 'perfect-hebben', 'perfect-zijn', 'separable-together', 'reflexive', 'zullen-future', 'imperfect-weak'],
@@ -373,7 +380,7 @@ export default [
     items: [
       { nl: 'Bram is de man die heel goed ___.', cue: 'kunnen + zwemmen', answer: 'kan zwemmen', accept: ['zwemmen kan'] },
       { nl: 'Dat is de man die ik gisteren ___.', cue: 'hebben + ontmoeten', answer: 'ontmoet heb', accept: ['heb ontmoet'] },
-      { nl: 'Bram neemt de trein die om zeven uur in Brussel ___.', cue: 'aankomen', answer: 'aankomt' },
+      { nl: 'Bram neemt de trein die om half negen in Brussel ___.', cue: 'aankomen', answer: 'aankomt' },
       { nl: 'Is dat de buurman die altijd zo vroeg ___?', cue: 'opstaan', answer: 'opstaat' },
       { nl: 'Wij praten over de reis die wij volgende zomer ___.', cue: 'zullen + maken', answer: 'zullen maken', accept: ['maken zullen'] },
       { nl: 'Oma en opa zijn de mensen die vroeger in Oostende ___.', cue: 'wonen', en: 'Grandma and grandpa are the people who used to live in Ostend.', answer: 'woonden' },
@@ -395,7 +402,7 @@ export default [
       { nl: 'Het boek is heel mooi. Ik lees het.', task: 'Start with “Het boek dat …”', answer: 'Het boek dat ik lees, is heel mooi.' },
       { nl: 'De collega woont ook in Leuven. Hij werkt naast Bram.', task: 'Start with “De collega die …”', answer: 'De collega die naast Bram werkt, woont ook in Leuven.' },
       { nl: 'De trein is te laat. Hij komt om acht uur aan.', task: 'Start with “De trein die …”', answer: 'De trein die om acht uur aankomt, is te laat.' },
-      { nl: 'De jas was te duur. Lotte wilde de jas kopen.', task: 'Start with “De jas die …”', answer: 'De jas die Lotte wilde kopen, was te duur.', accept: ['De jas die Lotte kopen wilde, was te duur.'] },
+      { nl: 'De jas was te duur. Lotte wilde hem kopen.', task: 'Start with “De jas die …”', answer: 'De jas die Lotte wilde kopen, was te duur.', accept: ['De jas die Lotte kopen wilde, was te duur.'] },
       { nl: 'De buren zijn heel lief. Wij bezoeken ze zondag.', task: 'Start with “De buren die …”', answer: 'De buren die wij zondag bezoeken, zijn heel lief.' },
     ],
     explanation: 'zit, is · speelt, is · leest, is: verb, comma, verb — the pattern of “Als het regent, gaan wij …”. The main clause never starts with its subject here.',
@@ -404,6 +411,7 @@ export default [
     type: 'arrange', title: 'The woman I met', grammar: ['relative-clause', 'perfect-hebben', 'participle-no-ge'],
     instruction: 'Build: “The woman I met yesterday is the neighbour.” Two tiles are traps.',
     nl: 'De vrouw die ik gisteren ontmoet heb, is de buurvrouw.', en: 'The woman I met yesterday is the neighbour.', image: 'old-woman', distractors: ['dat', 'hebt'],
+    accept: ['De vrouw die ik gisteren heb ontmoet, is de buurvrouw.', 'De buurvrouw is de vrouw die ik gisteren ontmoet heb.', 'De buurvrouw is de vrouw die ik gisteren heb ontmoet.'],
   },
 
   // ——— Grammar: kennen or weten ———
@@ -590,6 +598,7 @@ export default [
     type: 'arrange', title: 'A Sunday visit', grammar: ['participle-no-ge', 'perfect-hebben', 'time-place'],
     instruction: 'Build: “On Sunday we visited the neighbours.” Two tiles are traps.',
     nl: 'Wij hebben zondag de buren bezocht.', en: 'On Sunday we visited the neighbours.', image: 'neighbours', distractors: ['bezoeken', 'hebt'],
+    accept: ['Zondag hebben wij de buren bezocht.', 'Wij hebben de buren zondag bezocht.'],
   },
 
   // ——— Combine ———
@@ -771,6 +780,7 @@ export default [
     type: 'arrange', title: 'Lotte’s teacher', grammar: ['relative-clause', 'kennen-weten', 'verb-final'],
     instruction: 'Build: “I know the teacher who teaches Lotte.” Two tiles are traps.',
     nl: 'Ik ken de leraar die Lotte les geeft.', en: 'I know the teacher who teaches Lotte.', image: 'classroom', distractors: ['weet', 'dat'],
+    accept: ['De leraar die Lotte les geeft, ken ik.'],
   },
 
   // ——— Read ———

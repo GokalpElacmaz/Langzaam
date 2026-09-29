@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter></defs><rect width="400" height="300" fill="#eef0e4"/><g filter="url(#grain)"><path d="M300 34Q302 26 312 28Q317 18 328 25Q339 24 340 32Q350 30 352 37H299Z" fill="#fffcf2"/><path d="M40 52Q42 44 52 46Q57 36 68 43Q79 42 80 50Q90 48 92 55H39Z" fill="#fffcf2"/>
+<path d="M0 238H400V300H0Z" fill="#e6dfcc"/><path d="M0 250H400M0 266H400M0 284H400M30 238V250M90 238V250M150 238V250M210 238V250M270 238V250M330 238V250M390 238V250M60 250V266M120 250V266M180 250V266M240 250V266M300 250V266M360 250V266M20 266V284M84 266V284M148 266V284M212 266V284M276 266V284M340 266V284M50 284V300M116 284V300M182 284V300M248 284V300M314 284V300M380 284V300" fill="none" stroke="#d6cbb2" stroke-width="1.6"/>
+<ellipse cx="200" cy="258" rx="170" ry="9" fill="#dce0ca" opacity=".66"/>
+<g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M40 240V110H148V240Z" fill="#e7e4d6" stroke-width="2.5"/>
+ <path d="M252 240V110H360V240Z" fill="#e7e4d6" stroke-width="2.5"/>
+ <path d="M36 104H152V112H36ZM248 104H364V112H248Z" fill="#c9c9bd" stroke-width="2.2"/>
+ <path d="M50 124H138V142H50ZM50 156H138V174H50ZM50 188H138V206H50ZM262 124H350V142H262ZM262 156H350V174H262ZM262 188H350V206H262Z" fill="#cfd5c5" stroke-width="2"/>
+ <path d="M72 124V142M94 124V142M116 124V142M72 156V174M94 156V174M116 156V174M72 188V206M94 188V206M116 188V206M284 124V142M306 124V142M328 124V142M284 156V174M306 156V174M328 156V174M284 188V206M306 188V206M328 188V206" fill="none" stroke-width="1.5"/>
+ <path d="M54 128L62 138M266 128L274 138M54 160L62 170M266 160L274 170M54 192L62 202M266 192L274 202" fill="none" stroke="#eef1e6" stroke-width="2"/>
+ <path d="M140 240V62H260V240Z" fill="#f5f1e7" stroke-width="2.6"/>
+ <path d="M134 54H266V64H134Z" fill="#c9c9bd" stroke-width="2.4"/>
+ <path d="M150 76H250V94H150ZM150 104H250V122H150ZM150 132H250V150H150ZM150 160H250V178H150Z" fill="#cfd5c5" stroke-width="2"/>
+ <path d="M170 76V94M190 76V94M210 76V94M230 76V94M170 104V122M190 104V122M210 104V122M230 104V122M170 132V150M190 132V150M210 132V150M230 132V150M170 160V178M190 160V178M210 160V178M230 160V178" fill="none" stroke-width="1.5"/>
+ <path d="M154 80L162 90M154 108L162 118M154 136L162 146M154 164L162 174" fill="none" stroke="#eef1e6" stroke-width="2"/>
+ <path d="M178 16H222V54H178Z" fill="#fffef9" stroke-width="2.4"/>
+ <path d="M194 22H206V29H213V41H206V48H194V41H187V29H194Z" fill="#b8664a" stroke-width="1.8"/>
+ <path d="M188 54V58M212 54V58" fill="none" stroke-width="2"/>
+ <path d="M150 198H250V206H150Z" fill="#9a9d92" stroke-width="2.2"/>
+ <path d="M162 206H238V240H162Z" fill="#cfd5c5" stroke-width="2.4"/>
+ <path d="M200 206V240M181 206V240M219 206V240" fill="none" stroke-width="1.8"/>
+ <path d="M166 212L174 222M204 212L212 222" fill="none" stroke="#eef1e6" stroke-width="2"/>
+ <path d="M140 240H260" fill="none" stroke-width="2.5"/>
+ <path d="M56 240V222M76 240V214" fill="none" stroke-width="4"/><path d="M56 240V222M76 240V214" fill="none" stroke="#a9825b" stroke-width="1.5"/>
+ <path d="M42 224Q34 208 46 198Q48 184 62 186Q74 182 78 196Q90 202 84 218Q76 230 60 228Q48 232 42 224Z" fill="#768e79" stroke-width="2.2"/>
+ <path d="M52 208l8-4m6 12l8-3m-6-18l6 3" fill="none" stroke="#b5bb8d" stroke-width="2.5"/>
+ <path d="M280 204H336Q346 204 352 214L358 226V246H270V214Q270 204 280 204Z" fill="#fffef9" stroke-width="2.4"/>
+ <path d="M336 208Q344 208 348 216L352 224H334V208Z" fill="#cfd5c5" stroke-width="1.8"/>
+ <path d="M270 230H358" fill="none" stroke="#b8664a" stroke-width="4"/>
+ <path d="M296 212H302V217H307V223H302V228H296V223H291V217H296Z" fill="#b8664a" stroke="none"/>
+ <path d="M296 200H306V204H296Z" fill="#9fb2b0" stroke-width="1.6"/>
+ <circle cx="290" cy="246" r="8" fill="#534d3e" stroke-width="2"/><circle cx="340" cy="246" r="8" fill="#534d3e" stroke-width="2"/>
+ <circle cx="290" cy="246" r="3" fill="#c9c9bd" stroke="none"/><circle cx="340" cy="246" r="3" fill="#c9c9bd" stroke="none"/>
+ </g></g></svg>

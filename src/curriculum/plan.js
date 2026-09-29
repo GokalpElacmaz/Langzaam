@@ -1061,6 +1061,17 @@ export const words = [...coreWords, ...extraWords].map((word) => {
   return { ...word, laterForms };
 });
 
+/** The book's volumes, in order; each lesson's `volume` indexes this list (lessons 1–6 have none: volume zero). */
+export const volumes = [
+  { name: 'First things first', level: 'Pre-A1 → A1', description: 'Images, sounds, and a small familiar world: de/het, zijn and hebben, every present-tense ending, geen and niet, word order.' },
+  { name: 'A life in Dutch', level: 'A1 → A2', description: 'Home, family, the week, what you did yesterday and why: plurals, possessives, modal verbs, the perfect tense and subordinate clauses.' },
+  { name: 'More to say', level: 'A2', description: 'Separable verbs, comparisons, the simple past, reflexive verbs, the future and relative clauses — with longer stories.' },
+  { name: 'A new year in Leuven', level: 'A2+ → B1', description: 'Object pronouns, where things are, money and dates, verbs with prepositions, time clauses, om … te — Tom moves to Leuven.' },
+  { name: 'Work and the city', level: 'B1', description: 'The pluperfect, the formal u, the conditional, relative clauses with prepositions and the passive — Bram finds a new job.' },
+  { name: 'City and society', level: 'B1+ → B2', description: 'Verb clusters, opinions and connectors, reported speech, the past conditional and word formation — the news, the climate, Belgium.' },
+  { name: 'Academic Dutch', level: 'B2', description: 'Lectures, essays, research and presentations: nominal style, formal connectors, hedging, idioms — and Lotte graduates.' },
+];
+
 /** Proper names may appear anywhere; they are never tracked as vocabulary. */
 export const names = ['Bram', 'Lotte', 'Max', 'Leuven', 'Gent', 'Brussel', 'Antwerpen', 'Sofie', 'Tom', 'Emma', 'Jonas', 'Noor', 'Mimi', 'België', 'Spanje', 'Oostende', 'Claes', 'Duitsland', 'Amerika', 'Europa', 'Nederland', 'Frankrijk', 'Vlaanderen', 'Wallonië', 'Karim', 'Sarah', 'Janssens'];
 

@@ -5,7 +5,7 @@
  * the vocabulary each lesson may use — is derived here, never hand-maintained.
  * The page schema is documented in docs/CURRICULUM.md.
  */
-import { grammarPoints, images, lessonPlan, names, speakerVoices, voices, words as plannedWords } from './curriculum/plan.js';
+import { grammarPoints, images, lessonPlan, names, speakerVoices, voices, volumes, words as plannedWords } from './curriculum/plan.js';
 import { fillBlank, stripMarkup, tokenize } from './curriculum/text.js';
 import lesson1 from './curriculum/lessons/01-wat-is-dit.js';
 import lesson2 from './curriculum/lessons/02-ik-ben.js';
@@ -50,7 +50,7 @@ import lesson40 from './curriculum/lessons/40-presentatie.js';
 import lesson41 from './curriculum/lessons/41-uitdrukkingen.js';
 import lesson42 from './curriculum/lessons/42-afstuderen.js';
 
-export { grammarPoints, images, names, voices };
+export { grammarPoints, images, names, voices, volumes };
 const authored = { 'wat-is-dit': lesson1, 'ik-ben': lesson2, 'ik-woon': lesson3, 'ik-heb': lesson4, 'ik-lees': lesson5, vandaag: lesson6, 'twee-katten': lesson7, 'mijn-familie': lesson8, 'ik-kan': lesson9, 'op-maandag': lesson10, gisteren: lesson11, omdat: lesson12, 'ik-sta-op': lesson13, groter: lesson14, toen: lesson15, 'ik-voel-me': lesson16, 'volgende-zomer': lesson17, 'die-dat': lesson18, 'hem-haar': lesson19, 'op-de-kast': lesson20, 'hoeveel-kost': lesson21, 'wachten-op': lesson22, 'terwijl': lesson23, 'om-te': lesson24, 'had-gedaan': lesson25, 'kunt-u': lesson26, 'als-ik-rijk-was': lesson27, 'sollicitatie': lesson28, 'wordt-gebouwd': lesson29, 'is-gebouwd': lesson30, 'laten': lesson31, 'mening': lesson32, 'hoe-meer': lesson33, 'volgens-de-krant': lesson34, 'had-ik-maar': lesson35, 'belgie': lesson36, 'college': lesson37, 'betoog': lesson38, 'onderzoek-doen': lesson39, 'presentatie': lesson40, 'uitdrukkingen': lesson41, 'afstuderen': lesson42 };
 
 const lessonOf = Object.fromEntries(lessonPlan.flatMap((lesson) => [...lesson.targets, ...lesson.structure, ...lesson.vocabulary].map((id) => [id, lesson.id])));

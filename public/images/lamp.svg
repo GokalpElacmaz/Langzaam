@@ -7,11 +7,10 @@
 <path d="M104 120H196V126H104Z" fill="#5f7d5f" stroke-width="2.2"/>
 <path d="M122 112Q124 98 138 94" fill="none" stroke="#b5bb8d" stroke-width="2.6"/>
 <path d="M150 136V146M128 134L122 142M172 134L178 142" fill="none" stroke="#e5cb8a" stroke-width="2.2"/>
-<path d="M250 118L234 244H300L286 118Z" fill="#fffef9" stroke="none" opacity=".35"/>
 <path d="M268 116V246" fill="none" stroke-width="6"/><path d="M268 116V246" fill="none" stroke="#9a9d92" stroke-width="2.6"/>
 <path d="M244 254Q244 244 268 244Q292 244 292 254Z" fill="#695b43" stroke-width="2.3"/>
 <path d="M242 112L252 62H284L294 112Z" fill="#ead4a4" stroke-width="2.6"/>
 <path d="M258 70L252 104" fill="none" stroke="#fffef9" stroke-width="3" opacity=".85"/>
 <path d="M242 112H294" fill="none" stroke="#c5a06c" stroke-width="1.5"/>
-<path d="M277 120L275 132M281 120L281 142" fill="none" stroke-width="1.4"/><circle cx="281" cy="144" r="2.4" fill="#c5a06c" stroke-width="1.3"/>
+<path d="M282 112V138" fill="none" stroke-width="1.4"/><circle cx="282" cy="141" r="2.6" fill="#c5a06c" stroke-width="1.3"/>
 </g></g></svg>
