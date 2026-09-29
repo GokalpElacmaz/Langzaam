@@ -96,7 +96,7 @@ point — is `src/curriculum/plan.js`.
   (meenemen), rings his mother (opbellen), the train arrives late (aankomen); on Friday evening Bram and Lotte go out
   with Emma and Jonas (uitgaan).
 - **Lesson 14, comparing:** Leuven versus Brussel and Gent; the train is faster than the bike, the bike cheaper than
-  the car; Max is bigger than Mimi; Bram is taller than Lotte; coats in the shop (dure / goedkope jas); summer versus winter.
+  the car; Max is bigger than Mimi; Bram is taller than Lotte; coats in the shop (dure / goedkope jas); warm and cold days, sun and snow (zomer and winter only arrive in lesson 17).
 - **Lesson 15, the past:** Bram's childhood: when he was small he lived in **Oostende**, by the sea; every summer
   he went on holiday with oma and opa; they played on the beach; old photos. Lotte grew up in Antwerpen with Tom.
 - **Lesson 16, health:** Lotte has a headache before her exam; Bram has back pain from building the bench; the doctor
