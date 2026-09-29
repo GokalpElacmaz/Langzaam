@@ -779,7 +779,7 @@ export default [
       { nl: 'Dan gaat hij naar de winkel: brood, kaas en vier appels. Brood is in Leuven goedkoper dan in Brussel, zegt Bram.', en: 'Then he goes to the shop: bread, cheese and four apples. Bread is cheaper in Leuven than in Brussels, Bram says.', image: 'shop' },
       { nl: 'Lotte is niet meer ziek. Zij leert in de kleine kamer, want de kleine kamer is warmer dan de grote.', en: 'Lotte is no longer ill. She studies in the small room, because the small room is warmer than the big one.', image: 'woman-studying' },
       { nl: 'Lotte belt haar broer Tom op, en zij wil ook haar vriendin Emma opbellen. Bram belt zijn vriend Jonas op.', en: 'Lotte rings her brother Tom, and she also wants to ring her friend Emma. Bram rings his friend Jonas.', image: 'woman-phoning' },
-      { nl: 'En zaterdag en zondag? Dan sneeuwt het misschien nog meer.', en: 'And Saturday and Sunday? Then maybe it will snow even more.', image: 'snow' },
+      { nl: 'En in het weekend, op zaterdag en zondag? Dan sneeuwt het misschien nog meer.', en: 'And at the weekend, on Saturday and Sunday? Then maybe it will snow even more.', image: 'snow' },
     ],
   },
   {
@@ -907,6 +907,8 @@ export default [
       { en: 'Bram has no bike, but he walks faster than Lotte.', answer: 'Bram heeft geen fiets, maar hij loopt sneller dan Lotte.' },
       { en: 'The long coat is the most expensive.', answer: 'De lange jas is het duurst.', accept: ['De lange jas is het duurste.', 'De lange jas is de duurste.'] },
       { image: 'snail', nl: 'Is dit een hond?', answer: 'Nee, dit is een slak.', accept: ['Nee, dit is geen hond.', 'Nee, dit is geen hond, maar een slak.', 'Nee, dit is geen hond. Dit is een slak.'] },
+      { en: 'Is it snowing outside?', answer: 'Sneeuwt het buiten?' },
+      { en: 'A coffee costs three euros.', answer: 'Een koffie kost drie euro.' },
       { listen: 'Als het sneeuwt, is de trein altijd langzamer.' },
     ],
   },

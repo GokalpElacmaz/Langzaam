@@ -57,7 +57,7 @@ and a short list of any judgement calls or suggested plan changes.
   length and difficulty of lessons 1–6 are right — match them, do not go easier.
 - Read lessons 1–6 (at least their grammar pages, stories and final drills) so you know exactly what the learner
   has practised, and the volume-one story bible in docs/CURRICULUM.md.
-- Tokenizer limits: never write apostrophe forms (auto's, zo'n) — rephrase. The one exception, from lesson 13 on: ’s ochtends, ’s middags, ’s avonds, ’s nachts (write the curly ’). Plurals of
+- Tokenizer limits: never write apostrophe forms (auto's, zo'n) — rephrase. From lesson 13 on the token “s” exists, so ’s ochtends / ’s avonds / ’s nachts and apostrophe plurals (foto’s, auto’s, collega’s, programma’s) are writable — use the curly ’. Plurals of
   earlier nouns unlock in lesson 7 via `laterForms`; participles unlock in lesson 11 (see plan.js). "één" (one)
   is spelled with accents; answers ignore accents.
 - Possessive "zijn" (his) is the same written form as the verb "zijn"; it is allowed from lesson 8 on.
