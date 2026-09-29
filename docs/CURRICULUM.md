@@ -1,8 +1,18 @@
 # Curriculum and authoring guide
 
-Volume zero, part one: six long lessons that take a true beginner from “Dit is een huis” to telling a
-short story about their day with correct verb forms, articles, negation and word order. It is still
-Pre-A1 → early A1; it does not claim a CEFR level.
+Seven volumes, forty-two long lessons, from “Dit is een huis” to reading and writing academic Dutch at a
+Flemish university. The volumes follow the CEFR grammar and topic syllabus (the level on each volume is the
+target of its syllabus, not a certified level):
+
+| Volume | Lessons | Level | Theme |
+|---|---|---|---|
+| 0 | 1–6 | Pre-A1 → A1 | First things first |
+| 1 | 7–12 | A1 → A2 | A life in Dutch |
+| 2 | 13–18 | A2 | More to say |
+| 3 | 19–24 | A2+ → B1 | A new year in Leuven |
+| 4 | 25–30 | B1 | Work and the city |
+| 5 | 31–36 | B1+ → B2 | City and society |
+| 6 | 37–42 | B2 | Academic Dutch |
 
 ## Principles
 
@@ -10,6 +20,13 @@ Pre-A1 → early A1; it does not claim a CEFR level.
    at least 12 times in their own lesson (most far more), the previous lesson's targets return at least
    4 times, and **every older target returns at least twice in every later lesson** — so nothing leaves
    the cycle. A few structure words (pronouns, prepositions, negation) come with the grammar that needs them.
+   From volume three on, targets and grammar from more than twelve lessons back must still return in every
+   lesson, but once is enough.
+   **Extra vocabulary.** From volume two on, ten targets cannot carry a topic (a flat, a job application, the
+   climate), so each lesson also owns a file of extra words, `src/curriculum/vocabulary/<lesson-id>.js`: each is
+   used at least three times in its lesson and may be used freely afterwards, but it is not recycled by rule.
+   The cap rises by volume (12 in volume two, 30 → 45 in volumes three to six). One spelling belongs to one word;
+   the few true homographs (de reis / ik reis) are listed in the validator.
 2. **Grammar is taught, then never left alone.** A lesson may start a grammar point on its own page
    with tables and examples, but from then on it is practised *combined* with everything before it.
    Every earlier grammar point must return on at least two pages of every later lesson.
@@ -22,7 +39,7 @@ Pre-A1 → early A1; it does not claim a CEFR level.
 
 All of these are enforced by `node scripts/validate-content.mjs`, not by good intentions.
 
-## The six lessons
+## The lessons
 
 | # | Lesson | Targets | Structure words | Grammar |
 |---|---|---|---|---|
@@ -147,8 +164,10 @@ string gets a recording. Proper names (`names` in plan.js) are always allowed.
 
 ## Dutch standard
 
-Standard Dutch that is natural in Flanders: “jij/je” for you (no “u”, no “ge/gij”), no
-Netherlands-only or Flemish-only colloquialisms. Belgian place names. Audio uses a Belgian (Ellen) and a Netherlands (Xander) voice;
+Standard Dutch that is natural in Flanders: “jij/je” for you (no “ge/gij”), no
+Netherlands-only or Flemish-only colloquialisms. From lesson 26 the formal “u” is taught and used with officials,
+in letters and in lectures; friends and family always say jij/je. Where Flanders and the Netherlands differ in
+standard usage (waarborg / borg, kot, proficiat, masterproef), the course uses the Belgian word and names the other. Belgian place names. Audio uses a Belgian (Ellen) and a Netherlands (Xander) voice;
 dialogue speakers keep their own voice (`speakerVoices` in plan.js). A human Dutch teacher should review before real publication; the linguistic QA agent is
 a first pass, not a substitute.
 

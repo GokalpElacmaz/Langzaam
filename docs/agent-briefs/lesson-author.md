@@ -90,3 +90,28 @@ vocabulary**: `src/curriculum/vocabulary/<lesson-id>.js` (already created and re
   say so in the english gloss. `forms: { huis: ['huisje'] }` unlocks new forms of an older word from your lesson on.
 - Dialogue speakers must be keys of `speakerVoices` in plan.js; new proper names must be in `names`. If you need
   one that is missing, ask the editor in your final reply rather than editing plan.js.
+
+## Volumes three to six (lessons 19–42) — A2+ to B2
+Everything above applies; the level rises by volume. Read the story bible for your volume in docs/CURRICULUM.md
+and the grammar summaries of every earlier lesson in plan.js — at this level a lesson assumes all of them.
+- **Length:** 44–50 pages and 300–380 answers; typed share ≥ 85%. The lesson must be at least as demanding as
+  lessons 12 and 18: grammar pages that explain the rule, its exceptions and the traps an English speaker falls into,
+  followed at once by heavy typed drilling, then drills that combine the new point with everything earlier.
+- **Reading grows:** two Read texts per lesson — a dialogue (16–24 lines) and a written text of the kind the volume
+  practises (an e-mail, a notice, a newspaper article, lecture notes, an essay; 12–20 lines) — each followed by
+  comprehension questions answered in full typed sentences. In volumes five and six texts may be long paragraphs
+  (split them into lines of one or two sentences).
+- **Translation grows:** at least 12 English → Dutch sentences, many of them long and combining two clauses. From
+  volume five, add "rewrite" drills: formal ↔ informal, active ↔ passive, direct ↔ reported, two sentences → one.
+- **Answers:** longer answers allow more correct word orders. List every natural variant in `accept` (time-manner-
+  place variations, participle before/after the finite verb in subclauses, dat/die alternatives, ze/hen). A typed item
+  that has several equally good answers and no `accept` is a bug.
+- **Recycling:** targets and grammar from more than twelve lessons back must appear at least once, recent ones twice,
+  the previous lesson's targets four times (the validator reports exactly what is missing). Work them into the story
+  and drills; never write disconnected word lists.
+- **Numbers:** from lesson 21 number words exist; digits (750, 1425) are allowed anywhere in the text and are not
+  checked, but dictation items must use words.
+- **Formal register:** from lesson 26 the formal u / uw exists. Use it for officials, letters, strangers and in
+  lectures; friends and family always use jij/je. Accept both “u hebt” and “u heeft”, “u kunt” and “u kan” in answers.
+- **Grammar vocabulary** in explanations may be technical at B1–B2 (subject, object, subordinate clause, participle,
+  passive, infinitive clause) but must be explained once when first used.

@@ -67,7 +67,7 @@ for (const word of plannedWords) {
 }
 
 // One spelling, one word: a form may belong to only one word (true homographs are listed here).
-const homographs = new Set(['reis']);
+const homographs = new Set(['reis', 'reden']); // de reis / ik reis; de reden / zij reden (rijden)
 const formOwner = new Map();
 for (const word of plannedWords) {
   for (const form of [word.dutch, ...(word.forms || []), ...Object.values(word.laterForms || {}).flat()]) {
