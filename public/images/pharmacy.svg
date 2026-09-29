@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter><pattern id="bricks" x="0" y="0" width="46" height="28" patternUnits="userSpaceOnUse"><path d="M0 14H46 M23 0V14 M0 14V28 M46 14V28" fill="none" stroke="#98573f" stroke-width="1.2" opacity=".33"/></pattern><pattern id="roof" width="30" height="15" patternUnits="userSpaceOnUse"><path d="M0 14H30M15 0V14" fill="none" stroke="#50614d" stroke-width="1" opacity=".3"/></pattern></defs><rect width="400" height="300" fill="#eef0e4"/><g filter="url(#grain)"><ellipse cx="210" cy="258" rx="150" ry="10" fill="#dce0ca" opacity=".66"/><g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M316 50L350 66V256H316Z" fill="#a3654d" stroke-width="2.5"/><path d="M316 50L350 66V256H316Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M110 256V48H316V256Z" fill="#bd795c" stroke-width="2.5"/><path d="M110 256V48H316V256Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M322 36L354 54V66L322 50Z" fill="#a3a28c" stroke-width="2"/><path d="M104 36H322V50H104Z" fill="#c9c9bd" stroke-width="2.5"/>
+ <path d="M134 62H180V106H134ZM246 62H292V106H246Z" fill="#ead4a4" stroke-width="4"/><path d="M157 62V106M134 84H180M269 62V106M246 84H292" fill="none" stroke-width="2.5"/>
+ <path d="M128 108H186V114H128ZM240 108H298V114H240Z" fill="#bba086" stroke-width="2"/>
+ <path d="M328 90L340 95V130L328 126Z" fill="#ead4a4" stroke-width="3"/>
+ <path d="M120 122H306V146H120Z" fill="#5f7d5f" stroke-width="2.5"/>
+ <path d="M208 125H218V129H222V139H218V143H208V139H204V129H208Z" fill="#fffef9" stroke-width="1.6"/>
+ <path d="M110 70H84" fill="none" stroke-width="3.5"/><path d="M110 76L96 70" fill="none" stroke-width="2"/>
+ <path d="M86 70V78M42 70V78" fill="none" stroke-width="1.6"/>
+ <path d="M52 78H76V96H94V120H76V138H52V120H34V96H52Z" fill="#f5f1e7" stroke-width="2.5"/>
+ <path d="M56 82H72V100H90V116H72V134H56V116H38V100H56Z" fill="#7c947e" stroke-width="1.6"/>
+ <path d="M44 70H88" fill="none" stroke-width="2.5"/>
+ <path d="M118 156H236V246H118Z" fill="#5d745b" stroke-width="2.5"/>
+ <path d="M125 162H229V240H125Z" fill="#ece6d3" stroke-width="2"/>
+ <path d="M126 190H228M126 216H228M126 239H228" fill="none" stroke="#bf935b" stroke-width="3"/>
+ <path d="M133 189V175Q133 171 137 171H143Q147 171 147 175V189ZM153 189V178Q153 174 157 174H161Q165 174 165 178V189ZM200 189V175Q200 171 204 171H210Q214 171 214 175V189Z" fill="#fffef9" stroke-width="1.6"/>
+ <path d="M134 171V166H146V171M154 174V169H164V174M201 171V166H213V171" fill="#7c947e" stroke-width="1.5"/>
+ <path d="M171 189V172H195V189Z" fill="#f5f1e7" stroke-width="1.6"/><path d="M180 176H186V179H189V183H186V186H180V183H177V179H180Z" fill="#7c947e" stroke="none"/>
+ <path d="M218 189V179H226V189Z" fill="#c5a06c" stroke-width="1.5"/>
+ <path d="M132 215V199H158V215ZM164 215V203H182V215ZM188 215V196H212V215Z" fill="#f5f1e7" stroke-width="1.6"/>
+ <path d="M132 205H158M188 204H212" fill="none" stroke="#7c947e" stroke-width="3"/><path d="M164 208H182" fill="none" stroke="#b8664a" stroke-width="3"/>
+ <path d="M218 215V204Q218 200 222 200Q226 200 226 204V215Z" fill="#fffef9" stroke-width="1.5"/>
+ <path d="M134 238V228Q134 223 140 223H148Q154 223 154 228V238ZM162 238V225H184V238ZM192 238V229Q192 224 198 224H206Q212 224 212 229V238Z" fill="#c9c9bd" stroke-width="1.6"/>
+ <path d="M134 225V221H154V225M192 226V222H212V226" fill="#5f7d5f" stroke-width="1.4"/>
+ <path d="M166 231H180" fill="none" stroke="#7c947e" stroke-width="3"/>
+ <path d="M134 238L150 164M188 238L206 164" fill="none" stroke="#fffef9" stroke-width="3" opacity=".45"/>
+ <path d="M112 246H240V256H112Z" fill="#9a9d92" stroke-width="2"/>
+ <path d="M252 162H300V256H252Z" fill="#446353" stroke-width="3"/>
+ <path d="M259 170H293V222H259Z" fill="#e4d5ae" stroke-width="2"/>
+ <path d="M272 186H280V192H286V200H280V206H272V200H266V192H272Z" fill="#7c947e" stroke-width="1.4"/>
+ <path d="M259 230H293V250H259Z" fill="none" stroke="#8a9c7e" stroke-width="1.6"/>
+ <circle cx="294" cy="226" r="2.6" fill="#d4bc6c" stroke="none"/>
+ <path d="M246 256H306V262H246Z" fill="#a3a28c" stroke-width="2"/>
+ <path d="M60 262H370" fill="none" stroke-width="2.5"/>
+ </g></g></svg>

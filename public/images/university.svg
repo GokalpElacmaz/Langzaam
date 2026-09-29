@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter><pattern id="bricks" x="0" y="0" width="46" height="28" patternUnits="userSpaceOnUse"><path d="M0 14H46 M23 0V14 M0 14V28 M46 14V28" fill="none" stroke="#98573f" stroke-width="1.2" opacity=".33"/></pattern><pattern id="roof" width="30" height="15" patternUnits="userSpaceOnUse"><path d="M0 14H30M15 0V14" fill="none" stroke="#50614d" stroke-width="1" opacity=".3"/></pattern></defs><rect width="400" height="300" fill="#f1ede4"/><g filter="url(#grain)">
+ <path d="M104 58Q106 50 116 52Q121 42 132 49Q143 48 144 56Q154 54 156 61H103Z" fill="#fffcf2"/><path d="M300 44Q302 36 312 38Q317 28 328 35Q339 34 340 42Q350 40 352 47H299Z" fill="#fffcf2"/>
+ <path d="M0 236H400V300H0Z" fill="#e6dfcc"/><path d="M0 244H400M0 236V244M30 236V244M60 236V244M90 236V244M120 236V244M150 236V244M180 236V244M210 236V244M240 236V244M270 236V244M300 236V244M330 236V244M360 236V244M390 236V244M0 254H400M17 244V254M51 244V254M85 244V254M119 244V254M153 244V254M187 244V254M221 244V254M255 244V254M289 244V254M323 244V254M357 244V254M391 244V254M0 266H400M0 254V266M38 254V266M76 254V266M114 254V266M152 254V266M190 254V266M228 254V266M266 254V266M304 254V266M342 254V266M380 254V266M0 280H400M21 266V280M63 266V280M105 266V280M147 266V280M189 266V280M231 266V280M273 266V280M315 266V280M357 266V280M399 266V280M0 296H400M0 280V296M46 280V296M92 280V296M138 280V296M184 280V296M230 280V296M276 280V296M322 280V296M368 280V296" fill="none" stroke="#cdbfa4" stroke-width="1.6"/>
+ <ellipse cx="200" cy="244" rx="176" ry="7" fill="#dce0ca" opacity=".66"/>
+ <g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M94 114L114 92H286L306 114Z" fill="#586951" stroke-width="2.5"/><path d="M94 114L114 92H286L306 114Z" fill="url(#roof)" stroke="none"/>
+ <path d="M100 236V112H300V236Z" fill="#bd795c" stroke-width="2.5"/><path d="M100 236V112H300V236Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M40 236V102H46V90H54V78H62V66H66V54H74V66H78V78H86V90H94V102H100V236ZM300 236V102H306V90H314V78H322V66H326V54H334V66H338V78H346V90H354V102H360V236Z" fill="#b36f53" stroke-width="2.5"/>
+ <path d="M40 236V102H46V90H54V78H62V66H66V54H74V66H78V78H86V90H94V102H100V236ZM300 236V102H306V90H314V78H322V66H326V54H334V66H338V78H346V90H354V102H360V236Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M40 102H46V90H54V78H62V66H66V54H74V66H78V78H86V90H94V102H100M300 102H306V90H314V78H322V66H326V54H334V66H338V78H346V90H354V102H360" fill="none" stroke="#e4d5ae" stroke-width="6"/><path d="M40 102H46V90H54V78H62V66H66V54H74V66H78V78H86V90H94V102H100M300 102H306V90H314V78H322V66H326V54H334V66H338V78H346V90H354V102H360" fill="none" stroke-width="2"/>
+ <circle cx="70" cy="86" r="7" fill="#ead4a4" stroke-width="2"/><circle cx="330" cy="86" r="7" fill="#ead4a4" stroke-width="2"/>
+ <path d="M38 112H362V118H38ZM38 172H362V177H38Z" fill="#e4d5ae" stroke-width="2"/>
+ <path d="M109 162h20v4h-20ZM109 226h20v4h-20ZM133 162h20v4h-20ZM133 226h20v4h-20ZM247 162h20v4h-20ZM247 226h20v4h-20ZM271 162h20v4h-20ZM271 226h20v4h-20ZM49 162h20v4h-20ZM49 226h20v4h-20ZM71 162h20v4h-20ZM71 226h20v4h-20ZM309 162h20v4h-20ZM309 226h20v4h-20ZM331 162h20v4h-20ZM331 226h20v4h-20Z" fill="#e4d5ae" stroke-width="1.5"/>
+ <path d="M112 162V129.0a7.0 7.0 0 0 1 14 0V162Z M112 226V189.0a7.0 7.0 0 0 1 14 0V226Z M136 162V129.0a7.0 7.0 0 0 1 14 0V162Z M136 226V189.0a7.0 7.0 0 0 1 14 0V226Z M250 162V129.0a7.0 7.0 0 0 1 14 0V162Z M250 226V189.0a7.0 7.0 0 0 1 14 0V226Z M274 162V129.0a7.0 7.0 0 0 1 14 0V162Z M274 226V189.0a7.0 7.0 0 0 1 14 0V226Z M52 162V129.0a7.0 7.0 0 0 1 14 0V162Z M52 226V189.0a7.0 7.0 0 0 1 14 0V226Z M74 162V129.0a7.0 7.0 0 0 1 14 0V162Z M74 226V189.0a7.0 7.0 0 0 1 14 0V226Z M312 162V129.0a7.0 7.0 0 0 1 14 0V162Z M312 226V189.0a7.0 7.0 0 0 1 14 0V226Z M334 162V129.0a7.0 7.0 0 0 1 14 0V162Z M334 226V189.0a7.0 7.0 0 0 1 14 0V226Z" fill="#ead4a4" stroke-width="2.2"/>
+ <path d="M119 129V162M112 144H126 M119 189V226M112 206H126 M143 129V162M136 144H150 M143 189V226M136 206H150 M257 129V162M250 144H264 M257 189V226M250 206H264 M281 129V162M274 144H288 M281 189V226M274 206H288 M59 129V162M52 144H66 M59 189V226M52 206H66 M81 129V162M74 144H88 M81 189V226M74 206H88 M319 129V162M312 144H326 M319 189V226M312 206H326 M341 129V162M334 144H348 M341 189V226M334 206H348" fill="none" stroke-width="1.3"/>
+ <path d="M188 104V52H212V104Z" fill="#b36f53" stroke-width="2.5"/><path d="M188 104V52H212V104Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M184 52H216V58H184Z" fill="#e4d5ae" stroke-width="2"/>
+ <path d="M194 86V68.0a6.0 6.0 0 0 1 12 0V86Z" fill="#446353" stroke-width="2"/>
+ <path d="M184 52L200 18 216 52Z" fill="#586951" stroke-width="2.5"/><path d="M200 18V10" fill="none" stroke-width="2"/><circle cx="200" cy="9" r="2.4" fill="#e5cb8a" stroke-width="1.5"/>
+ <path d="M160 236V112H240V236Z" fill="#c4836a" stroke-width="2.5"/><path d="M160 236V112H240V236Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M152 112L200 84 248 112Z" fill="#e4d5ae" stroke-width="2.5"/><path d="M168 108L200 90 232 108Z" fill="#c4836a" stroke-width="1.6"/>
+ <circle cx="200" cy="101" r="4" fill="#ead4a4" stroke-width="1.5"/>
+ <path d="M154 112H246V118H154Z" fill="#e4d5ae" stroke-width="2"/>
+ <path d="M186 170V138.0a14.0 14.0 0 0 1 28 0V170Z" fill="#ead4a4" stroke-width="2.4"/><path d="M200 124V170M186 147H214" fill="none" stroke-width="1.4"/>
+ <path d="M168 128h10v40h-10ZM222 128h10v40h-10Z" fill="none" stroke="none"/>
+ <path d="M154 172H246V178H154Z" fill="#e4d5ae" stroke-width="2"/>
+ <path d="M166 186h9v50h-9ZM225 186h9v50h-9Z" fill="#f5f1e7" stroke-width="2"/><path d="M164 180h13v6h-13ZM223 180h13v6h-13Z" fill="#e4d5ae" stroke-width="1.6"/>
+ <path d="M182 236V198a18 18 0 0 1 36 0V236Z" fill="#e4d5ae" stroke-width="2.4"/>
+ <path d="M188 236V199a12 12 0 0 1 24 0V236Z" fill="#446353" stroke-width="2.2"/><path d="M200 187V236" fill="none" stroke-width="1.5"/>
+ <circle cx="196" cy="216" r="1.8" fill="#d4bc6c" stroke="none"/><circle cx="204" cy="216" r="1.8" fill="#d4bc6c" stroke="none"/>
+ <path d="M150 236H250V242H150ZM142 242H258V248H142Z" fill="#c9c9bd" stroke-width="2"/>
+ <path d="M34 236H366" fill="none" stroke-width="2.5"/>
+ </g></g></svg>

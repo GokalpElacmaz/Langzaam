@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter></defs><rect width="400" height="300" fill="#eef0e4"/><g filter="url(#grain)"><ellipse cx="206" cy="256" rx="136" ry="10" fill="#dce0ca" opacity=".66"/>
+<path d="M26 250Q60 246 96 249" fill="none" stroke="#c9cfc4" stroke-width="9" stroke-linecap="round"/><path d="M34 248Q60 245 88 247" fill="none" stroke="#fffef9" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+<g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+<path d="M294 180L282 130M312 178L324 132" fill="none" stroke-width="8"/>
+<path d="M294 180L282 130M312 178L324 132" fill="none" stroke="#c9c9bd" stroke-width="3.8"/>
+<circle cx="281" cy="126" r="7" fill="#c9c9bd" stroke-width="2.2"/><circle cx="325" cy="128" r="7" fill="#c9c9bd" stroke-width="2.2"/>
+<circle cx="283" cy="126" r="2.4" fill="#405a4b" stroke="none"/><circle cx="327" cy="128" r="2.4" fill="#405a4b" stroke="none"/>
+<path d="M88 247Q84 236 104 233L236 225Q262 221 272 196Q282 170 302 170Q326 172 326 200Q326 230 310 242Q298 250 276 250L106 252Q90 252 88 247Z" fill="#c9c9bd" stroke-width="2.5"/>
+<path d="M104 244L276 243Q298 242 312 232" fill="none" stroke="#9a9d92" stroke-width="1.6"/>
+<path d="M306 210Q312 214 318 210" fill="none" stroke-width="1.8"/>
+<path d="M290 188Q296 180 304 184" fill="none" stroke="#e1e1d6" stroke-width="3"/>
+<circle cx="182" cy="166" r="62" fill="#c5a06c" stroke-width="2.6"/>
+<path d="M142 134Q160 112 188 112" fill="none" stroke="#e4c28b" stroke-width="4"/>
+<g transform="translate(180 170)"><path d="M0.0 -4.0 L1.1 -4.6 L2.5 -5.0 L4.0 -4.9 L5.6 -4.3 L7.2 -3.2 L8.4 -1.6 L9.4 0.4 L9.8 2.7 L9.6 5.3 L8.7 7.8 L7.1 10.2 L4.9 12.3 L2.0 13.8 L-1.2 14.7 L-4.8 14.7 L-8.4 13.9 L-11.9 12.2 L-15.0 9.5 L-17.5 6.1 L-19.2 2.0 L-19.9 -2.5 L-19.6 -7.3 L-18.0 -12.0 L-15.3 -16.3 L-11.6 -20.1 L-6.9 -22.9 L-1.6 -24.7 L4.2 -25.1 L10.2 -24.2 L15.9 -21.8 L21.0 -18.1 L25.3 -13.2 L28.4 -7.3 L30.1 -0.6 L30.2 6.4 L28.6 13.5 L25.4 20.1 L20.6 26.0 L14.4 30.7 L7.2 33.9 L-0.7 35.4 L-9.0 35.1 L-17.1 32.8 L-24.7 28.6 L-31.1 22.6 L-36.2 15.2 L-39.5 6.7 L-40.7 -2.6 L-39.8 -12.0 L-36.7 -21.2 L-31.4 -29.5 L-24.3 -36.5 L-15.6 -41.8 L-5.7 -45.0 L4.8 -45.9 L15.4 -44.3 L25.6 -40.3 L34.6 -33.9 L42.1 -25.5 L47.6 -15.5" fill="none" stroke="#8f6a44" stroke-width="3.2"/></g>
+<path d="M134 200Q156 222 192 224" fill="none" stroke="#bf935b" stroke-width="2.4"/>
+<path d="M40 252Q38 240 44 234M48 252Q50 242 56 238M350 254Q348 240 356 232M358 254Q362 244 368 240M342 254Q338 246 334 242" fill="none" stroke="#7c947e" stroke-width="2.4"/>
+</g></g></svg>
