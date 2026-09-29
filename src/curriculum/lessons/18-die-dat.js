@@ -111,7 +111,7 @@ export default [
       { listen: 'Die ken ik niet.' },
       { listen: 'Wat is er gebeurd?' },
     ],
-    explanation: 'universiteit ends in “teit”: the ei of trein. antwoord: ANT-woord, the d is said as a t. ontmoeten: ont-MOE-ten, with the oe of boek.',
+    explanation: 'universiteit ends in “teit”: the ei of trein. buurvrouw: first uu, then ouw. ontmoeten: ont-MOE-ten, with the oe of boek.',
   },
 
   // ——— Grammar: the new verbs ———
@@ -134,7 +134,7 @@ export default [
       ] },
       { caption: 'studeren · geven · bezoeken · vertellen', rows: [
         { nl: 'ik studeer · ik geef · ik bezoek · ik vertel', en: 'I study · give · visit · tell' },
-        { nl: 'zij studeer[t] · zij gee[ft] · zij bezoek[t] · zij vertel[t]', en: 'she studies · gives · visits · tells' },
+        { nl: 'zij studeer[t] · zij geef[t] · zij bezoek[t] · zij vertel[t]', en: 'she studies · gives · visits · tells' },
         { nl: 'jullie studer[en] · jullie gev[en] · jullie bezoek[en] · jullie vertell[en]', en: 'you (plural) study · give · visit · tell' },
         { nl: 'wat gebeur[t] er?', en: 'what is happening?' },
       ] },
@@ -151,7 +151,7 @@ export default [
       { nl: 'Lotte studeert aan de universiteit.', en: 'Lotte studies at the university.' },
       { nl: 'De leraar geeft elke maandag les.', en: 'The teacher teaches every Monday.' },
       { nl: 'Wat gebeurt er?', en: 'What is happening?' },
-      { nl: 'Bram belt zijn vader en moeder en vertelt over de reis die zij in de winter naar Oostende maken.', en: 'Bram calls his father and mother and tells them about the trip they are making to Ostend in the winter.' },
+      { nl: 'Bram belt zijn vader en moeder en vertelt over de reis die Lotte en hij in de winter naar Oostende maken.', en: 'Bram calls his father and mother and tells them about the trip Lotte and he are making to Ostend in the winter.' },
     ],
   },
   {
@@ -249,12 +249,12 @@ export default [
       { nl: 'de buurman ___ altijd leest', answer: 'die' },
       { nl: 'het kind ___ in onze straat woont', answer: 'dat' },
       { nl: 'het antwoord ___ Lotte geschreven heeft', answer: 'dat' },
-      { nl: 'het boek ___ de buurman leest', answer: 'dat' },
+      { nl: 'de studenten ___ in Leuven wonen', answer: 'die' },
       { nl: 'het ijsje ___ Noor eet', answer: 'dat' },
       { nl: 'het vak ___ Lotte het makkelijkst vindt', answer: 'dat' },
       { nl: 'de universiteit ___ Lotte zo mooi vindt', answer: 'die' },
     ],
-    explanation: 'het kind dat, het ijsje dat: a het-word, even when it is a person. de lessen die, de studenten die: every plural takes die.',
+    explanation: 'het kind dat, het ijsje dat: a het-word, even when it is a person. de studenten die: every plural takes die.',
   },
   {
     type: 'drill', title: 'Type die or dat', grammar: ['relative-clause', 'de-het', 'plural', 'separable-together', 'comparative', 'perfect-hebben', 'reflexive'],
@@ -265,7 +265,7 @@ export default [
       { nl: 'Wij wachten op de trein ___ om acht uur aankomt.', answer: 'die' },
       { nl: 'Het ontbijt ___ Bram gemaakt heeft, is heel goed.', answer: 'dat' },
       { nl: 'Lotte koopt de appels ___ goedkoper zijn.', answer: 'die' },
-      { nl: 'Het medicijn ___ de dokter gegeven heeft, helpt.', answer: 'dat' },
+      { nl: 'Het medicijn ___ de dokter Bram gegeven heeft, helpt.', answer: 'dat' },
       { nl: 'De foto ___ oma heeft, is heel oud.', answer: 'die' },
       { nl: 'Het strand ___ Bram zich herinnert, is in Oostende.', answer: 'dat' },
       { nl: 'De kinderen ___ op het strand spelen, zijn blij.', answer: 'die' },
@@ -273,7 +273,7 @@ export default [
       { nl: 'Noor is het kind ___ vijf jaar is.', answer: 'dat' },
       { nl: 'De mensen ___ naast ons wonen, zijn heel lief.', answer: 'die' },
     ],
-    explanation: 'de trein, de jas, de foto, de kinderen, de mensen → die. het ontbijt, het medicijn, het strand, het hotel, het kind → dat. When the noun with its clause comes first, the main verb follows straight after the comma: …, is heel goed.',
+    explanation: 'de hond, de kat, de trein, de appels, de foto, de kinderen, de mensen → die. het ontbijt, het medicijn, het strand, het hotel, het kind → dat. When the noun with its clause comes first, the main verb follows straight after the comma: …, is heel goed.',
   },
   {
     type: 'drill', title: 'Join with die or dat', grammar: ['relative-clause', 'verb-final', 'adverb-position', 'separable-together', 'hij-het-things', 'adjective-e'],
@@ -289,7 +289,7 @@ export default [
       { nl: 'Emma is een vriendin. Zij gaat graag uit.', answer: 'Emma is een vriendin die graag uitgaat.' },
       { nl: 'Lotte heeft een broer. Hij woont in Antwerpen.', answer: 'Lotte heeft een broer die in Antwerpen woont.' },
     ],
-    explanation: 'een kind → dat, because it is het kind. Zij (they) → die: a plural. “graag uit gaat” becomes “graag uitgaat”: at the end of a subordinate clause a separable verb is one word again.',
+    explanation: 'een kind → dat, because it is het kind. Zij (they) → die: a plural. “gaat graag uit” becomes “graag uitgaat”: at the end of a subordinate clause a separable verb is one word again.',
   },
   {
     type: 'drill', title: 'The verb at the end', grammar: ['relative-clause', 'verb-final', 'present-regular', 'zijn', 'hebben', 'dt-rule', 'spelling-z-s'],
@@ -297,7 +297,7 @@ export default [
     items: [
       { nl: 'Ken jij de man die op de bank ___?', cue: 'zitten', answer: 'zit' },
       { nl: 'De buurvrouw is de vrouw die elke dag thee ___.', cue: 'drinken', answer: 'drinkt' },
-      { nl: 'Lotte heeft een leraar die met de auto naar de les ___.', cue: 'rijden', answer: 'rijdt' },
+      { nl: 'Bram heeft een collega die met de auto naar Brussel ___.', cue: 'rijden', answer: 'rijdt' },
       { nl: 'Is dat de collega die altijd moe ___?', cue: 'zijn', answer: 'is' },
       { nl: 'De buren zijn de mensen die twee katten ___.', cue: 'hebben', answer: 'hebben' },
       { nl: 'De leraar leest het antwoord dat jij ___.', cue: 'schrijven', answer: 'schrijft' },
@@ -362,7 +362,7 @@ export default [
       { nl: 'Emma is de vriendin. Lotte belt haar elke dag op.', answer: 'Emma is de vriendin die Lotte elke dag opbelt.' },
       { nl: 'Dit is het antwoord. Jij hebt het geschreven.', answer: 'Dit is het antwoord dat jij geschreven hebt.', accept: ['Dit is het antwoord dat jij hebt geschreven.'] },
       { nl: 'Dat is de jas. Lotte heeft de jas gekocht.', answer: 'Dat is de jas die Lotte gekocht heeft.', accept: ['Dat is de jas die Lotte heeft gekocht.'] },
-      { nl: 'Dit is het medicijn. De dokter heeft het gegeven.', answer: 'Dit is het medicijn dat de dokter gegeven heeft.', accept: ['Dit is het medicijn dat de dokter heeft gegeven.'] },
+      { nl: 'Dit is het medicijn. De dokter heeft het aan Bram gegeven.', answer: 'Dit is het medicijn dat de dokter aan Bram gegeven heeft.', accept: ['Dit is het medicijn dat de dokter aan Bram heeft gegeven.'] },
       { nl: 'Dat is de buurman. Jij kent de buurman al.', answer: 'Dat is de buurman die jij al kent.' },
     ],
     explanation: 'haar, het, ze disappear: die or dat takes their place at the front of the clause. Lotte kent ze → die Lotte kent (Lotte knows them — kent, singular). belt … op → opbelt, one word at the end.',
@@ -373,7 +373,7 @@ export default [
     items: [
       { nl: 'Bram is de man die heel goed ___.', cue: 'kunnen + zwemmen', answer: 'kan zwemmen', accept: ['zwemmen kan'] },
       { nl: 'Dat is de man die ik gisteren ___.', cue: 'hebben + ontmoeten', answer: 'ontmoet heb', accept: ['heb ontmoet'] },
-      { nl: 'Bram neemt de trein die om zeven uur in Leuven ___.', cue: 'aankomen', answer: 'aankomt' },
+      { nl: 'Bram neemt de trein die om zeven uur in Brussel ___.', cue: 'aankomen', answer: 'aankomt' },
       { nl: 'Is dat de buurman die altijd zo vroeg ___?', cue: 'opstaan', answer: 'opstaat' },
       { nl: 'Wij praten over de reis die wij volgende zomer ___.', cue: 'zullen + maken', answer: 'zullen maken', accept: ['maken zullen'] },
       { nl: 'Oma en opa zijn de mensen die vroeger in Oostende ___.', cue: 'wonen', en: 'Grandma and grandpa are the people who used to live in Ostend.', answer: 'woonden' },
@@ -383,7 +383,7 @@ export default [
       { nl: 'Het examen dat Lotte ___, was moeilijk.', cue: 'hebben + maken', answer: 'gemaakt heeft', accept: ['heeft gemaakt'] },
       { nl: 'Jonas is de vriend die gisteren met Bram naar de film ___.', cue: 'zijn + gaan', answer: 'gegaan is', accept: ['is gegaan'] },
     ],
-    explanation: 'kan spreken, zullen maken: the conjugated verb first, then the infinitive. ontmoet heb, gegeven heeft, gegaan is: participle first in this course. aankomt, opstaat: one word. die zich haast: the reflexive pronoun stays right after the subject.',
+    explanation: 'kan zwemmen, zullen maken: the conjugated verb first, then the infinitive. ontmoet heb, gegeven heeft, gegaan is: participle first in this course. aankomt, opstaat: one word. die zich haast: the reflexive pronoun stays right after the subject.',
   },
   {
     type: 'drill', title: 'The clause in front', grammar: ['relative-clause', 'als-inversion', 'v2-inversion', 'superlative', 'separable-together', 'imperfect-strong', 'modals'],
@@ -660,11 +660,11 @@ export default [
       { nl: 'Het boek dat Lotte gisteren ___, was heel mooi.', cue: 'lezen', answer: 'las' },
       { nl: 'De film die wij vorig weekend ___, was te lang.', cue: 'zien', answer: 'zagen' },
       { nl: 'De jas die Lotte ___, was niet duur.', cue: 'kopen', answer: 'kocht' },
-      { nl: 'Het vliegtuig dat naar Spanje ___, was klein.', cue: 'vliegen', answer: 'vloog' },
+      { nl: 'Toen Bram klein was, ___ hij nooit met het vliegtuig.', cue: 'reizen', answer: 'reisde' },
       { nl: 'Toen ik de buurvrouw ___, was zij in de tuin.', cue: 'ontmoeten', answer: 'ontmoette' },
       { nl: 'De student die het antwoord ___, was Lotte.', cue: 'weten', answer: 'wist' },
     ],
-    explanation: 'Weak verbs by ’t kofschip: werkte, maakte, ontmoette with -te; woonde, speelde with -de. Strong verbs change the vowel: ging, las, zagen, kocht, vloog, wist, moest.',
+    explanation: 'Weak verbs by ’t kofschip: werkte, ontmoette with -te; speelde, reisde with -de (reizen: the stem is reis, but the z of the infinitive decides — z is not in ’t kofschip). Strong verbs change the vowel: ging, las, zagen, kocht, wist, moest.',
   },
   {
     type: 'drill', title: 'Ken jij …? Everyone in the book', grammar: ['relative-clause', 'kennen-weten', 'separable-together', 'toen-past', 'modals', 'infinitive-end', 'adjective-e', 'possessives', 'imperfect-strong'],
@@ -703,7 +703,7 @@ export default [
     explanation: 'want: the second half is a normal main clause (want wij hebben …). omdat, als, dat: the verb goes to the end (omdat zij ziek is, omdat mijn hoofd pijn doet). A clause at the front counts as one element: Als het warm is, leest de buurman … And “Noor vraagt wie de man is die …”: the relative clause may follow the verb.',
   },
   {
-    type: 'drill', title: 'Point and say it: dit is de … die …', grammar: ['relative-clause', 'dit-is', 'plural', 'numbers', 'perfect-hebben', 'adjective-e', 'imperative', 'dan-als', 'kennen-weten'],
+    type: 'drill', title: 'Point and say it: dit is de … die …', grammar: ['relative-clause', 'dit-is', 'plural', 'numbers', 'perfect-hebben', 'adjective-e', 'imperative', 'comparative', 'dan-als', 'kennen-weten'],
     instruction: 'Each picture comes with an English sentence. Say it in Dutch — and choose die or dat by the article of the noun.',
     items: [
       { image: 'tree', en: 'This is the tree that stands in our garden.', answer: 'Dit is de boom die in onze tuin staat.' },
@@ -731,7 +731,7 @@ export default [
       { nl: 'In de keuken ___ vier stoelen die Bram mooi vindt.', cue: 'er is / er zijn', answer: 'zijn er' },
       { nl: 'Bram koopt brood en kaas in de ___ die naast het station is.', en: 'Bram buys bread and cheese in the shop next to the station.', answer: 'winkel' },
       { nl: 'Lotte heeft een leraar die ___ auto heeft.', en: 'Lotte has a teacher who has no car.', answer: 'geen' },
-      { nl: 'Ik ken de man die ___ koffie drinkt.', en: 'I know the man who never drinks coffee.', answer: 'nooit' },
+      { nl: 'Ken jij het boek dat Lotte leest? ___ is heel mooi.', cue: 'hij / het', answer: 'Het' },
       { nl: 'Is dat de buurvrouw die ___ in de tuin werkt?', en: 'Is that the neighbour who likes working in the garden?', answer: 'graag' },
       { nl: 'Dat is ___ buurman.', en: 'That is our neighbour.', answer: 'onze' },
       { nl: 'Dat is ___ kantoor.', en: 'That is our office.', answer: 'ons' },
@@ -743,7 +743,7 @@ export default [
       { nl: 'Bram werkt in een ___ kantoor.', cue: 'groot', answer: 'groot' },
       { image: 'university', nl: 'Wat is dit?', answer: 'Dit is de universiteit.', accept: ['Dit is een universiteit.'] },
     ],
-    explanation: 'In de keuken zijn er …: after a place in first position, er follows the verb. onze buurman (a de-word), ons kantoor (a het-word). een groot kantoor: een + het-word, no -e. om + clock time, op + day.',
+    explanation: 'In de keuken zijn er …: after a place in first position, er follows the verb. onze buurman (a de-word), ons kantoor (a het-word). een groot kantoor: een + het-word, no -e. om + clock time, op + day. het boek → het.',
   },
   {
     type: 'drill', title: 'Volume two in one page', grammar: ['separable', 'separable-together', 'separable-perfect', 'comparative', 'superlative', 'dan-als', 'imperfect-weak', 'imperfect-strong', 'toen-past', 'reflexive', 'imperative', 'pijn-hebben', 'zullen-future', 'te-infinitive', 'over-geleden'],
@@ -775,7 +775,7 @@ export default [
 
   // ——— Read ———
   {
-    part: 'Read', type: 'story', title: 'De buurman die altijd leest', image: 'neighbours', grammar: ['relative-clause', 'kennen-weten', 'participle-no-ge', 'imperfect-strong', 'perfect-hebben', 'modals', 'v2-inversion', 'comparative'],
+    part: 'Read', type: 'story', title: 'De buurman die altijd leest', image: 'neighbours', grammar: ['relative-clause', 'kennen-weten', 'imperfect-strong', 'perfect-hebben', 'modals', 'v2-inversion', 'dat-clause'],
     instruction: 'The last story of volume two. Read and listen to every line, then read it again without the English. Find every die and dat, and decide each time which noun it belongs to.',
     lines: [
       { nl: 'Het is vrijdag, vier uur. Bram werkt vandaag thuis.', en: 'It is Friday, four o’clock. Bram is working at home today.', image: 'man-working' },
@@ -847,7 +847,7 @@ export default [
     ],
   },
   {
-    type: 'drill', title: 'Now say it in Dutch', grammar: ['relative-clause', 'kennen-weten', 'participle-no-ge', 'perfect-hebben', 'perfect-zijn', 'days-op-om', 'time-place'],
+    type: 'drill', title: 'Now say it in Dutch', grammar: ['relative-clause', 'kennen-weten', 'participle-no-ge', 'perfect-hebben', 'separable-together', 'days-op-om', 'time-place'],
     instruction: 'Translate. “You” is one person unless it says plural.',
     items: [
       { en: 'Do you know the child who is playing with Max?', answer: 'Ken jij het kind dat met Max speelt?' },
@@ -861,11 +861,11 @@ export default [
       { en: 'Do you know the students who live next door to us?', answer: 'Ken jij de studenten die naast ons wonen?' },
       { en: 'The lesson that begins at nine is difficult.', answer: 'De les die om negen uur begint, is moeilijk.' },
       { en: 'Do you know when the plane arrives?', answer: 'Weet jij wanneer het vliegtuig aankomt?' },
-      { en: 'The neighbour told a lot about the old days.', answer: 'De buurman heeft veel over vroeger verteld.', accept: ['De buurman vertelde veel over vroeger.'] },
+      { en: 'The neighbour has told us a lot about the old days.', answer: 'De buurman heeft veel over vroeger verteld.', accept: ['De buurman heeft over vroeger veel verteld.'] },
     ],
   },
   {
-    type: 'drill', title: 'Volume two in one round', grammar: ['relative-clause', 'kennen-weten', 'participle-no-ge', 'want-omdat', 'verb-final', 'plural', 'present-regular', 'inversion', 'v2-inversion', 'separable-together', 'perfect-hebben', 'zullen-future'],
+    type: 'drill', title: 'Volume two in one round', grammar: ['relative-clause', 'kennen-weten', 'participle-no-ge', 'want-omdat', 'verb-final', 'plural', 'present-regular', 'inversion', 'v2-inversion', 'separable-together', 'perfect-hebben'],
     instruction: 'The final round of volume two: everything mixed. Type every answer. No hints beyond the task.',
     items: [
       { nl: 'drie ___', cue: 'les', answer: 'lessen' },
@@ -880,7 +880,7 @@ export default [
       { nl: 'Bram staat om zeven uur op.', task: 'Start with “Bram is de man die …”', answer: 'Bram is de man die om zeven uur opstaat.' },
       { en: 'Do you know Tom? — Yes, I know him. (answer with die)', answer: 'Ken jij Tom? Ja, die ken ik.' },
       { en: 'Lotte is at home, because she is ill. (use omdat)', answer: 'Lotte is thuis, omdat zij ziek is.' },
-      { en: 'The hotel that we will visit next summer is by the sea.', answer: 'Het hotel dat wij volgende zomer zullen bezoeken, is aan zee.', accept: ['Het hotel dat wij volgende zomer bezoeken, is aan zee.'] },
+      { en: 'The hotel that Bram has found is by the sea.', answer: 'Het hotel dat Bram gevonden heeft, is aan zee.', accept: ['Het hotel dat Bram heeft gevonden, is aan zee.'] },
       { listen: 'Ken jij de man die ik gisteren ontmoet heb?' },
     ],
   },
