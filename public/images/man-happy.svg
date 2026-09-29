@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter></defs><rect width="400" height="300" fill="#f4ecdd"/><g filter="url(#grain)"><ellipse cx="200" cy="258" rx="122" ry="10" fill="#dce0ca" opacity=".66"/><g transform="translate(79 -3) scale(.94)"><g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M100 189L98 267 119 267 130 210 137 267 157 267 148 188Z" fill="#526653" stroke-width="2.5"/>
+ <path d="M98 265L91 278Q107 283 124 278L123 266M137 265L136 279 168 279Q174 275 156 268" fill="#534d3e" stroke-width="2.3"/>
+ <path d="M108 118L82 96 70 66M146 118L172 96 184 66" fill="none" stroke-width="17"/>
+ <path d="M108 118L82 96 70 66M146 118L172 96 184 66" fill="none" stroke="#c2a66e" stroke-width="12.5"/>
+ <path d="M64 67Q58 54 62 46Q66 40 72 45Q78 52 76 64M190 67Q196 54 192 46Q188 40 182 45Q176 52 178 64" fill="#cf9671" stroke-width="2"/>
+ <path d="M65 51L60 46M70 47L69 41M189 51L194 46M184 47L185 41" fill="none" stroke-width="1.3"/>
+ <path d="M114 94L99 111 98 190Q124 203 153 190L154 111 139 95Z" fill="#c6aa70" stroke-width="2.5"/>
+ <path d="M128 101V192M112 142H122V158H110" fill="none" stroke="#93845c" stroke-width="1.5"/>
+ <circle cx="132" cy="128" r="1.7" fill="#405a4b"/><circle cx="132" cy="156" r="1.7" fill="#405a4b"/>
+ <path d="M118 81V99L129 108 140 98 137 78" fill="#cf9671" stroke-width="2"/>
+ <path d="M106 53Q109 32 131 33Q153 35 152 60L153 73Q151 91 132 92Q113 90 109 72Q99 69 103 60L109 60" fill="#dba57c" stroke-width="2"/>
+ <path d="M107 61Q101 41 115 33Q132 19 148 32Q159 37 154 49L135 46Q119 54 115 46L111 64Z" fill="#695b43" stroke-width="2"/>
+ <path d="M145 61L149 71 143 72" fill="none" stroke-width="1.4"/>
+ <path d="M132 63Q137 56 142 63" fill="none" stroke-width="1.9"/>
+ <circle cx="128" cy="73" r="4.5" fill="#cf9671" stroke="none" opacity=".55"/>
+ <path d="M133 77Q142 80 150 76Q149 89 140 89Q133 87 133 77Z" fill="#98573f" stroke-width="1.6"/>
+ <path d="M134.5 78.3Q142 81 148.6 77.6L148.3 80.3Q142 83 134.8 81Z" fill="#fffef9" stroke="none"/>
+ <path d="M120 96L129 108 119 113 112 99M139 97L129 108 139 113 145 101" fill="#ded0a5" stroke-width="1.5"/>
+ <path d="M84 36L76 30M92 24L88 16M170 36L178 30M162 24L166 16" fill="none" stroke-width="2.2"/>
+ </g></g></g></svg>

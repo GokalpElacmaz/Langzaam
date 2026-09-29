@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter><pattern id="bricks" x="0" y="0" width="46" height="28" patternUnits="userSpaceOnUse"><path d="M0 14H46 M23 0V14 M0 14V28 M46 14V28" fill="none" stroke="#98573f" stroke-width="1.2" opacity=".33"/></pattern><pattern id="roof" width="30" height="15" patternUnits="userSpaceOnUse"><path d="M0 14H30M15 0V14" fill="none" stroke="#50614d" stroke-width="1" opacity=".3"/></pattern></defs><rect width="400" height="300" fill="#f5f1e7"/><g filter="url(#grain)"><ellipse cx="200" cy="258" rx="122" ry="10" fill="#dce0ca" opacity=".66"/><g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M76 256V30H324V256Z" fill="#bd795c" stroke-width="2.7"/>
+ <path d="M76 256V30H324V256Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M133 118Q200 4 267 118L253 114Q200 40 147 114Z" fill="#d4a389" stroke-width="2.3"/>
+ <path d="M144 101L156 103M155 86L165 93M166 75L174 86M178 67L182 81M189 63L191 78M200 61L200 77M211 63L209 78M222 67L218 81M234 75L226 86M245 86L235 93M256 101L244 103" fill="none" stroke="#98573f" stroke-width="1.3"/>
+ <path d="M147 244V114Q200 40 253 114V244Z" fill="#e4d5ae" stroke-width="3"/>
+ <path d="M157 244V116Q200 56 243 116V244Z" fill="#446353" stroke-width="3"/>
+ <path d="M175 126V110Q200 80 225 110V126Z" fill="#ead4a4" stroke-width="3"/>
+ <path d="M200 90V126M175 110H225" fill="none" stroke-width="2.4"/>
+ <path d="M172 140H228V180H172ZM172 202H228V234H172Z" fill="none" stroke="#8a9c7e" stroke-width="1.8"/>
+ <path d="M186 187H214V195H186Z" fill="#d4bc6c" stroke-width="1.6"/>
+ <path d="M188 191H212" fill="none" stroke-width="1.2"/>
+ <path d="M229 180Q229 176 233 176Q237 176 237 180V204Q237 208 233 208Q229 208 229 204Z" fill="#c5a06c" stroke-width="1.6"/>
+ <circle cx="233" cy="188" r="5.5" fill="#d4bc6c" stroke-width="1.8"/>
+ <circle cx="231.5" cy="186.5" r="1.6" fill="#fffef9" stroke="none"/>
+ <path d="M136 244H264V256H136Z" fill="#a3a28c" stroke-width="2.3"/>
+ <path d="M141 248H259" fill="none" stroke="#c9c9bd" stroke-width="1.3"/>
+ <path d="M76 256H324" stroke-width="2.7"/>
+ <path d="M276 232H306L302 256H280Z" fill="#945f45" stroke-width="1.8"/>
+ <path d="M279 233Q275 212 283 214Q288 216 290 231Q290 204 297 208Q303 211 298 232Q306 215 311 220Q313 227 304 234" fill="#607b57" stroke-width="1.5"/>
+ </g></g></svg>

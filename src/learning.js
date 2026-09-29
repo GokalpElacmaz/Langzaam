@@ -3,7 +3,7 @@ export const REVIEW_INTERVALS = [0, 10 * 60_000, 24 * 60 * 60_000, 3 * 24 * 60 *
 
 export function createInitialState() {
   return {
-    version: 1,
+    version: 2,
     words: {},
     completedSteps: {},
     completedLessons: [],
@@ -100,13 +100,4 @@ export function getLearningSummary(state, vocabulary, now = Date.now()) {
   };
 }
 
-/** Ignore casing, punctuation, and extra whitespace, but preserve word order. */
-export function normalizeAnswer(value) {
-  return String(value).normalize('NFC').toLocaleLowerCase('nl-NL')
-    .replace(/[.,!?;:“”"'‘’]/gu, '')
-    .replace(/\s+/gu, ' ').trim();
-}
-
-export function isAnswerCorrect(actual, expected) {
-  return normalizeAnswer(actual) === normalizeAnswer(expected);
-}
+export { normalizeAnswer, isAnswerCorrect } from './curriculum/text.js';

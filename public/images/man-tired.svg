@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter></defs><rect width="400" height="300" fill="#efeedd"/><g filter="url(#grain)"><ellipse cx="200" cy="258" rx="122" ry="10" fill="#dce0ca" opacity=".66"/><g transform="translate(80 -3) scale(.94)"><g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M100 189L98 267 119 267 130 210 137 267 157 267 148 188Z" fill="#526653" stroke-width="2.5"/>
+ <path d="M98 265L91 278Q107 283 124 278L123 266M137 265L136 279 168 279Q174 275 156 268" fill="#534d3e" stroke-width="2.3"/>
+ <g transform="rotate(7 125 190)">
+  <path d="M100 116L90 184 104 186 121 130" fill="#c2a66e" stroke-width="2.5"/>
+  <path d="M90 184Q87 202 97 205Q106 204 104 186" fill="#cf9671" stroke-width="2"/>
+  <path d="M114 97L100 116 98 190Q124 203 153 190L153 116 139 98Z" fill="#c6aa70" stroke-width="2.5"/>
+  <path d="M128 104V192M112 142H122V158H110" fill="none" stroke="#93845c" stroke-width="1.5"/>
+  <circle cx="132" cy="128" r="1.7" fill="#405a4b"/><circle cx="132" cy="156" r="1.7" fill="#405a4b"/>
+  <g transform="rotate(-9 129 102)">
+   <path d="M118 84V102L129 111 140 101 137 81" fill="#cf9671" stroke-width="2"/>
+   <path d="M106 56Q109 35 131 36Q153 38 152 63L153 76Q151 94 132 95Q113 93 109 75Q99 72 103 63L109 63" fill="#dba57c" stroke-width="2"/>
+   <path d="M107 64Q101 44 115 36Q132 22 148 35Q159 40 154 52L135 49Q119 57 115 49L111 67Z" fill="#695b43" stroke-width="2"/>
+   <path d="M145 64L149 74 143 75" fill="none" stroke-width="1.4"/>
+   <ellipse cx="141" cy="85" rx="4.6" ry="7" fill="#98573f" stroke-width="1.6"/>
+   <path d="M132 64Q137 68 142 64" fill="none" stroke-width="1.7"/>
+   <path d="M133 70Q137 72 141 70" fill="none" stroke="#cf9671" stroke-width="1.6"/>
+   <path d="M131 58Q136 56 141 54" fill="none" stroke="#695b43" stroke-width="2"/>
+  </g>
+  <path d="M120 98L129 110 119 115 112 101M139 99L129 110 139 115 145 103" fill="#ded0a5" stroke-width="1.5"/>
+  <path d="M148 116L164 156 154 100" fill="none" stroke-width="16"/>
+  <path d="M148 116L164 156 154 100" fill="none" stroke="#c2a66e" stroke-width="11.5"/>
+  <path d="M146 99Q141 84 146 74Q152 68 157 74Q160 86 159 99Z" fill="#cf9671" stroke-width="2"/>
+  <path d="M146 80L151 80M146 86L152 86M146 92L151 92" fill="none" stroke-width="1.2"/>
+ </g>
+ </g></g></g></svg>

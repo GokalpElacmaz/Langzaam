@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter></defs><rect width="400" height="300" fill="#eef0e4"/><g filter="url(#grain)"><ellipse cx="200" cy="258" rx="122" ry="10" fill="#dce0ca" opacity=".66"/><g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M181 222L181 252H195L198 224M204 224L206 252H220L220 222" fill="#dfa98b" stroke-width="2.3"/>
+ <path d="M181 242H195V252H181ZM206 242H220V252H206Z" fill="#fffef9" stroke-width="1.8"/>
+ <path d="M181 251L175 259Q175 265 184 265H197L196 251M206 251L205 265H221Q230 265 228 259L220 251" fill="#534d3e" stroke-width="2.2"/>
+ <path d="M176 263H198M204 263H229" fill="none" stroke="#fffef9" stroke-width="1.5"/>
+ <path d="M177 196L175 228Q187 231 199 228L200 214 202 228Q214 231 225 228L223 196Z" fill="#5f7d5f" stroke-width="2.4"/>
+ <path d="M175 150L165 176 168 180 178 181 181 164M225 150L235 176 232 180 222 181 219 164" fill="#f5f1e7" stroke-width="2.3"/>
+ <path d="M167 178L163 203Q162 212 170 212Q176 211 175 204L178 181M233 178L237 203Q238 212 230 212Q224 211 225 204L222 181" fill="#dfa98b" stroke-width="2.1"/>
+ <path d="M187 143L175 150 177 200Q200 206 223 200L225 150 213 143Z" fill="#f5f1e7" stroke-width="2.4"/>
+ <path d="M177 162H224M177 176H224M177 190H223M170.5 169L178 171M229.5 169L222 171" fill="none" stroke="#c28260" stroke-width="3.6"/>
+ <path d="M193 132V145L200 151 207 145V132" fill="#dfa98b" stroke-width="2"/>
+ <path d="M187 144L200 151 213 144" fill="none" stroke-width="2"/>
+ <path d="M174 110Q173 83 200 82Q227 82 228 108Q229 138 201 139Q176 139 174 110Z" fill="#dfa98b" stroke-width="2.1"/>
+ <path d="M176 104Q168 105 169 114Q171 121 179 119" fill="#dfa98b" stroke-width="1.8"/>
+ <path d="M175 106Q168 83 186 76Q200 70 214 75Q231 80 229 100Q221 96 214 88Q211 97 200 96Q192 96 187 91Q186 100 180 106Z" fill="#bf935b" stroke-width="2.1"/>
+ <path d="M199 74Q199 64 208 66M186 90Q190 84 189 79" fill="none" stroke-width="1.6"/>
+ <circle cx="210" cy="107" r="1.9" fill="#405a4b"/>
+ <circle cx="205" cy="119" r="4.5" fill="#cf9671" stroke="none" opacity=".5"/>
+ <path d="M219 111Q225 116 219 120M207 126Q213 130 219 125" fill="none" stroke-width="1.4"/>
+ </g></g></svg>

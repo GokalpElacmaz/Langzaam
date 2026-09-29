@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter><pattern id="bricks" x="0" y="0" width="46" height="28" patternUnits="userSpaceOnUse"><path d="M0 14H46 M23 0V14 M0 14V28 M46 14V28" fill="none" stroke="#98573f" stroke-width="1.2" opacity=".33"/></pattern><pattern id="roof" width="30" height="15" patternUnits="userSpaceOnUse"><path d="M0 14H30M15 0V14" fill="none" stroke="#50614d" stroke-width="1" opacity=".3"/></pattern></defs><rect width="400" height="300" fill="#f1ede4"/><g filter="url(#grain)"><ellipse cx="200" cy="258" rx="122" ry="10" fill="#dce0ca" opacity=".66"/><g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M70 256V30H330V256Z" fill="#bd795c" stroke-width="2.7"/>
+ <path d="M70 256V30H330V256Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M126 42H274V58H126Z" fill="#d4a389" stroke-width="2.2"/>
+ <path d="M134 42V58M143 42V58M152 42V58M161 42V58M170 42V58M179 42V58M188 42V58M197 42V58M206 42V58M215 42V58M224 42V58M233 42V58M242 42V58M251 42V58M260 42V58M269 42V58" fill="none" stroke="#98573f" stroke-width="1.2"/>
+ <path d="M140 58H260V198H140Z" fill="#f5f1e7" stroke-width="3"/>
+ <path d="M150 68H195V123H150ZM205 68H250V123H205ZM150 133H195V188H150ZM205 133H250V188H205Z" fill="#ead4a4" stroke-width="2.4"/>
+ <path d="M158 96L178 76M161 104L186 79M213 96L233 76M216 104L241 79M158 161L178 141M213 161L233 141" fill="none" stroke="#fffef9" stroke-width="3" opacity=".7"/>
+ <path d="M96 58H134V198H96ZM266 58H304V198H266Z" fill="#5d745b" stroke-width="2.5"/>
+ <path d="M102 74H128M102 88H128M102 102H128M102 116H128M102 130H128M102 144H128M102 158H128M102 172H128M102 186H128M272 74H298M272 88H298M272 102H298M272 116H298M272 130H298M272 144H298M272 158H298M272 172H298M272 186H298" fill="none" stroke="#8a9c7e" stroke-width="1.6"/>
+ <path d="M134 80H140M134 176H140M260 80H266M260 176H266" fill="none" stroke-width="2.6"/>
+ <path d="M130 198H270V207H130Z" fill="#bba086" stroke-width="2.2"/>
+ <path d="M150 180Q146 162 154 164Q160 166 163 184Q163 156 172 160Q179 162 176 184Q186 158 194 166Q199 174 190 190Q200 168 210 166Q216 168 212 186Q222 160 230 164Q236 168 232 190Q242 166 249 172Q252 180 244 194" fill="#607b57" stroke-width="1.6"/>
+ <circle cx="160" cy="166" r="5" fill="#b8664a" stroke-width="1.5"/><circle cx="185" cy="163" r="5" fill="#fffef9" stroke-width="1.5"/><circle cx="210" cy="165" r="5" fill="#b8664a" stroke-width="1.5"/><circle cx="236" cy="163" r="5" fill="#fffef9" stroke-width="1.5"/>
+ <circle cx="160" cy="166" r="1.6" fill="#d4bc6c" stroke="none"/><circle cx="185" cy="163" r="1.6" fill="#d4bc6c" stroke="none"/><circle cx="210" cy="165" r="1.6" fill="#d4bc6c" stroke="none"/><circle cx="236" cy="163" r="1.6" fill="#d4bc6c" stroke="none"/>
+ <path d="M140 184H260L254 212H146Z" fill="#945f45" stroke-width="2"/>
+ <path d="M146 196H254" fill="none" stroke="#7a4c37" stroke-width="1.3"/>
+ <path d="M70 256H330" stroke-width="2.7"/>
+ </g></g></svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter></defs><rect width="400" height="300" fill="#eef0e3"/><g filter="url(#grain)"><ellipse cx="200" cy="258" rx="92" ry="9" fill="#dce0ca" opacity=".66"/><g transform="translate(-30 -38.85) scale(1.15)" stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M215 259V199L218 196 221 199V259Z" fill="#c5a06c" stroke-width="2"/>
+ <path d="M218 204V252" stroke="#e4c28b" stroke-width="1.2"/>
+ <path d="M196 258Q200 214 197 168Q198 162 201 165Q204 214 204 258Z" fill="#a9825b" stroke-width="2"/>
+ <path d="M200 222Q190 212 180 206M201 196Q210 186 222 181M199 180Q191 172 184 164M201 200Q205 194 207 190" fill="none" stroke-width="1.6"/>
+ <path d="M201 207Q208 203 216 207Q208 211 201 207ZM202 234Q209 230 216 234Q209 238 202 234Z" fill="none" stroke="#5f7d5f" stroke-width="2.2"/>
+ <g fill="#768e79" stroke-width="1.5"><path d="M199 163Q191 156 196 146Q204 154 199 163"/><path d="M199 163Q198 152 208 148Q209 159 199 163"/><path d="M199 163Q188 163 186 152Q197 153 199 163"/><path d="M197 172Q187 175 181 166Q191 163 197 172"/><path d="M201 170Q207 161 217 164Q211 173 201 170"/><path d="M184 163Q174 159 176 148Q185 152 184 163"/><path d="M184 163Q175 168 167 160Q177 155 184 163"/><path d="M184 166Q180 176 169 174Q173 165 184 166"/><path d="M222 181Q226 171 237 172Q233 182 222 181"/><path d="M222 181Q232 178 238 187Q228 190 222 181"/><path d="M214 184Q209 175 217 167Q222 177 214 184"/><path d="M180 206Q169 207 165 198Q176 196 180 206"/><path d="M180 206Q174 215 164 212Q170 203 180 206"/><path d="M188 210Q188 221 177 223Q178 212 188 210"/><path d="M207 190Q198 184 201 174Q210 180 207 190"/></g>
+ <path d="M172 259Q200 244 230 259Z" fill="#a9825b" stroke-width="2"/>
+ <path d="M160 259H240" fill="none" stroke="#8f9778" stroke-width="2"/>
+ </g></g></svg>

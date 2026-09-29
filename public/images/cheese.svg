@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter></defs><rect width="400" height="300" fill="#f4ecdd"/><g filter="url(#grain)"><ellipse cx="200" cy="258" rx="150" ry="10" fill="#dce0ca" opacity=".66"/><g stroke="#405a4b" stroke-linecap="round" stroke-linejoin="round">
+<path d="M52 244H348V254H52Z" fill="#aa8154" stroke-width="2.5"/>
+<path d="M52 244H348L320 186H80Z" fill="#c5a06c" stroke-width="2.5"/>
+<path d="M90 232H200M230 236H320M110 200H180M240 196H300M150 214H250" fill="none" stroke="#e4c28b" stroke-width="1.6"/>
+<path d="M98 172L242 188L242 222L98 206Z" fill="#e2bb68" stroke-width="2.5"/>
+<path d="M242 188Q262.6 173.4 262.4 160.1V194.1Q262.6 207.4 242 222Z" fill="#bf935b" stroke-width="2.5"/>
+<path d="M98 172L242 188Q276 164 254 144Z" fill="#ebcf88" stroke-width="2.5"/>
+<path d="M242 188Q276 164 254 144L247 149Q266 166 234 187Z" fill="#bf935b" stroke-width="1.6"/>
+<circle cx="150" cy="194" r="4" fill="#c9a052" stroke-width="1.2"/><circle cx="190" cy="206" r="3" fill="#c9a052" stroke-width="1.2"/><circle cx="214" cy="198" r="4.5" fill="#c9a052" stroke-width="1.2"/><circle cx="200" cy="170" r="3" fill="#c9a052" stroke-width="1.2"/>
+<path d="M130 232L250 238V243L130 237Z" fill="#e2bb68" stroke-width="2"/>
+<path d="M250 238Q264 234 262 222L262 227Q264 239 250 243Z" fill="#bf935b" stroke-width="2"/>
+<path d="M130 232L250 238Q264 234 262 222Z" fill="#ebcf88" stroke-width="2"/>
+<circle cx="224" cy="232" r="2.6" fill="#c9a052" stroke-width="1"/>
+</g></g></svg>

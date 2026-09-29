@@ -1,66 +1,184 @@
-# The first three chapters
+# Curriculum and authoring guide
 
-This demo is the opening of a much longer Dutch reading course, not a complete proficiency level. It starts before A1. Finishing these chapters does not imply A1 or B2 proficiency.
+Volume zero, part one: six long lessons that take a true beginner from “Dit is een huis” to telling a
+short story about their day with correct verb forms, articles, negation and word order. It is still
+Pre-A1 → early A1; it does not claim a CEFR level.
 
-The reader sees a house, a tree, a bench, and two people repeatedly. New vocabulary grows slowly: six words in chapter 1, three in chapter 2, and two in chapter 3. Every Dutch sentence uses only words introduced in that chapter or an earlier chapter. English instructions and translations reduce the initial burden.
+## Principles
 
-| Chapter | New vocabulary | Repeated pattern |
-| --- | --- | --- |
-| A small beginning | dit, is, een, huis, boom, bank | Dit is een … |
-| Someone in the picture | de, man, vrouw | Dit is een … / Dit is de … |
-| A little movement | loopt, zit | De man loopt. / De vrouw zit. |
+1. **Ten target words per lesson.** Each lesson introduces exactly ten content words. They are used
+   at least 12 times in their own lesson (most far more), the previous lesson's targets return at least
+   4 times, and **every older target returns at least twice in every later lesson** — so nothing leaves
+   the cycle. A few structure words (pronouns, prepositions, negation) come with the grammar that needs them.
+2. **Grammar is taught, then never left alone.** A lesson may start a grammar point on its own page
+   with tables and examples, but from then on it is practised *combined* with everything before it.
+   Every earlier grammar point must return on at least two pages of every later lesson.
+3. **Conjugation gets volume.** Every verb is drilled across all persons, in statements, questions
+   (where “jij woont” becomes “woon jij”), and negatives, typed — not tapped.
+4. **Production over recognition.** Multiple choice is for first contact only. The share of answers
+   the learner must type rises from 50% (lesson 1) to 70% (lessons 4–6).
+5. **The lessons build one language.** The same people, places and sentences grow from lesson to
+   lesson; a later story re-tells earlier facts with new grammar.
 
-“Bank” means a bench in this setting. “Loopt” and “zit” are singular present-tense forms, with contextual English translations “is walking” and “is sitting”. Noun gender and the article “het” are deliberately deferred. The indefinite article is written “een”; the numeral “één” is not introduced.
+All of these are enforced by `node scripts/validate-content.mjs`, not by good intentions.
 
-Each chapter has eight pages: observe, select a picture, listen and select, arrange a sentence, fill a gap, listen and write, read a short illustrated page, and finish. Readers should be able to repeat audio, request a translation, and revisit pages. A gentle correction is practice, not a failure state.
+## The six lessons
 
-## Content contract
+| # | Lesson | Targets | Structure words | Grammar |
+|---|---|---|---|---|
+| 1 | Wat is dit? | huis, boom, bank, man, vrouw, kind, deur, raam, auto, straat | dit, is, een, de, het, wat, ja, nee, geen, en | dit is · de/het · yes/no questions · geen |
+| 2 | Ik ben moe | groot, klein, oud, jong, moe, blij, ziek, mooi, nieuw, lief | ik, jij/je, hij, zij/ze, wij/we, jullie, niet, ook (+ ben, bent, zijn) | pronouns · zijn · verb-first questions · niet · hij/het for things |
+| 3 | Waar woon jij? | wonen, werken, lopen, zitten, slapen, koken, spelen, leren, praten, wachten | in, op, hier, waar, thuis | regular present tense · stem spelling · question words |
+| 4 | Ik heb een hond | hebben, hond, kat, boek, fiets, tas, sleutel, telefoon, jas, bed | mijn, maar, of (+ grote, kleine, oude, jonge, mooie, nieuwe, lieve) | hebben · geen vs niet · adjective -e |
+| 5 | Wat eet je graag? | lezen, eten, drinken, schrijven, koffie, thee, water, brood, kaas, appel | graag, altijd, nooit | z→s and v→f spelling · adverb position |
+| 6 | Vandaag ga ik naar het park | gaan, komen, vandaag, morgen, park, winkel, school, station, stad, trein | naar, nu, dan, met | gaan · verb-second inversion · time before place |
+| 7 | Twee katten, vier stoelen | twee, drie, vier, vijf, kamer, tafel, stoel, keuken, tuin, veel | er, hoeveel, één (+ plurals of every noun) | plurals · er is / er zijn · counting |
+| 8 | Hoe heet jouw broer? | vader, moeder, broer, zus, vriend, vriendin, familie, naam, heten, jaar | jouw, haar, ons/onze, hun, wie, hoe | possessives · wie/hoe |
+| 9 | Ik kan een beetje Nederlands | kunnen, willen, moeten, mogen, zwemmen, spreken, rijden, helpen, Nederlands, goed | Engels, beetje, heel | modal verbs · infinitive at the end · d+t |
+| 10 | Op maandag om acht uur | maandag … zondag, week, dag, uur | om, laat, half, elke, zes … twaalf | telling the time · op/om |
+| 11 | Gisteren heb ik gekookt | gisteren, vorige, weekend, maken, kopen, zien, doen, vinden, zeggen, film | al, nog (+ a participle for every verb) | perfect with hebben · participles · perfect with zijn |
+| 12 | Ik ga niet, omdat het regent | omdat, want, als, denken, weten, hopen, begrijpen, vragen, regenen, examen | dat, wanneer, misschien | want vs omdat · verb at the end · dat · als + inversion |
 
-`src/content.js` exports `words`, `lessons`, `wordById`, `lessonById`, and `audioTexts`.
+The machine-readable version — every word, every allowed verb form and when it unlocks, every grammar
+point — is `src/curriculum/plan.js`.
 
-- Words contain `id`, `dutch`, `english`, and `lessonId`. Concrete nouns and actions have an optional semantic `image` key; function words use text instead of a potentially misleading illustration. Optional `article` metadata is used only for articles introduced with that word.
-- Lessons contain `id`, `title`, `subtitle`, `description`, `newWordIds`, `grammar`, `image`, `duration`, and `steps`.
-- Every step has a globally unique `id`, `type`, English `title` and `instruction`, and `wordIds` describing the words encountered or assessed. Most have `sentence`, `translation`, and `image`.
-- `observe` adds `cards: [{wordId, sentence, translation, image}]` and an optional English `note`.
-- `picture-choice` and `listen-choice` add `choices: [{id, label, image}]` and `answer` equal to a choice ID.
-- `arrange` adds scrambled `tokens` and `answer` equal to the complete Dutch sentence.
-- `cloze` contains a `sentence` with `___`, a `fullSentence` for playback, choices, and a choice-ID `answer`.
-- `dictation` uses the complete `sentence` as its audio prompt and `answer`; an English `hint` is optional.
-- `story` contains `lines: [{sentence, translation, image}]`.
-- `complete` supplies the text for a completion page; completion and navigation are handled by the interface.
-- `explanation` fields supply targeted English feedback for assessed exercises.
-- `audioTexts` is an explicit, unique corpus of all vocabulary, full sentences, and choice labels. Blanked cloze prompts are excluded in favour of full sentences.
+## Story bible
 
-Image keys are `house`, `tree`, `bench`, `man`, `woman`, `man-walking`, `woman-sitting`, and `neighbourhood`.
+- **Bram** (man.svg) and **Lotte** (woman.svg) are a young couple. They live together in a brick house
+  in **Leuven**.
+- Bram works in **Brussel**; Lotte works **thuis**, at her desk. Bram is often **moe**; Lotte rarely is.
+- An old man (old-man.svg) often sits on the bench in the street. He is friendly and old; he has no name.
+- From lesson 4: Bram has a big dog called **Max** (dog-big). Lotte has a small cat (cat). Lotte has a
+  bike; Bram has no bike. Lotte has a book she loves.
+- From lesson 5: Bram always drinks coffee; Lotte never does. Lotte reads a lot; Bram eats bread.
+- From lesson 6: Bram commutes to Brussel by train. Today they go to the park with Max; tomorrow Bram goes to the shop.
+- In Flanders de straat, de deur, de bank and de tas are traditionally “ze”; the course only uses “hij” for
+  things that are masculine everywhere (boom, auto, sleutel, trein, winkel …).
 
-## Progress and repetition
+### Volume one (lessons 7–12)
 
-`src/learning.js` contains pure helpers; it does not read or write browser storage. The application owns persistence. `createInitialState()` returns:
+- **Lesson 7, the house:** Bram and Lotte's house has three rooms upstairs (kamers), a kitchen (keuken) with a
+  table and four chairs, and a small garden (tuin) with one tree. The old man next door has two cats. Lotte's
+  small cat is called **Mimi**.
+- **Lesson 8, family and friends:** Bram's parents live in **Gent**; his father is 62, his mother 60 (numbers above
+  twelve are never written out, only said as "oud"/"jong" or avoided). Bram has a sister, **Sofie**. Lotte has a
+  brother, **Tom**, who lives in **Antwerpen**. Lotte's best friend is **Emma**; Bram's friend is **Jonas**.
+  The child in the street is **Noor**; she is five.
+- **Lesson 9, abilities:** Bram swims well and drives; Lotte cannot drive (she cycles) but speaks English and Dutch
+  very well. Bram helps the old man. The learner's own voice appears: "Ik spreek een beetje Nederlands."
+- **Lesson 10, the week:** Bram works in Brussel Monday to Thursday and at home on Friday. Lotte studies every day.
+  On Saturday they go to the shop and the park; on Sunday they visit Bram's parents in Gent, by train at ten o'clock.
+- **Lesson 11, last weekend:** they went to Gent, Bram's mother cooked, they saw a film on Saturday, Lotte bought a
+  new coat, and Bram made a bench for the garden.
+- **Lesson 12, because:** Lotte has an exam on Friday. It rains a lot this week; she stays at home because she has to
+  study; she hopes the exam will be easy (keep within allowed words); Bram thinks she will pass.
 
-```js
-{
-  version: 1,
-  words: {},
-  completedSteps: {}, // Globally unique step ID -> true
-  completedLessons: [], // Lesson IDs
-  processedEvents: {} // Stable encounter event ID -> true
-}
-```
+### Volume two (lessons 13–18)
 
-`recordEncounter(state, wordIds, correct, now, eventId)` returns new state and leaves old state intact. `correct` is `true` for a successful recall, `false` for a correction, or `null` for an unscored encounter. `now` is a millisecond timestamp and defaults to `Date.now()`. Duplicate word IDs in one event count only once. Reusing an `eventId` returns the unchanged state; pass a stable ID such as `passed:first-words-build` for one-time lesson progress and a fresh ID for an intentional review attempt.
+- **Lesson 13, a morning:** Bram gets up at seven (opstaan), has breakfast, takes his bag and key along
+  (meenemen), rings his mother (opbellen), the train arrives late (aankomen); on Friday evening Bram and Lotte go out
+  with Emma and Jonas (uitgaan).
+- **Lesson 14, comparing:** Leuven versus Brussel and Gent; the train is faster than the bike, the bike cheaper than
+  the car; Max is bigger than Mimi; Bram is taller than Lotte; coats in the shop (dure / goedkope jas); summer versus winter.
+- **Lesson 15, the past:** Bram's childhood: when he was small he lived in **Oostende**, by the sea; every summer
+  he went on holiday with oma and opa; they played on the beach; old photos. Lotte grew up in Antwerpen with Tom.
+- **Lesson 16, health:** Lotte has a headache before her exam; Bram has back pain from building the bench; the doctor
+  (a woman) says: rest, take this medicine; the pharmacy; Bram hurries (zich haasten) to the train; Bram remembers his
+  grandparents (zich herinneren).
+- **Lesson 17, plans:** next summer Bram and Lotte will fly to **Spanje** and stay in a hotel by the sea; in winter
+  they go by train to **Oostende** on the Belgian coast. After her exam Lotte will begin a new course; Bram tries to cook
+  better. “over drie weken” (future) against “drie weken geleden” (past).
+- **Lesson 18, people:** the old man next door is **de buurman** (from now on he has that name), his wife is de buurvrouw;
+  Lotte is a student at the university in Leuven; her teacher; Bram's colleagues in Brussel; "Ken jij de man die …?"
+  — relative clauses about everyone met in the book.
 
-Each word record has `encounters`, `correctCount`, `incorrectCount`, `streak`, `stage`, `dueAt`, `firstSeenAt`, `lastSeenAt`, and `mastered`. An exposure alone does not count as successful recall. The initial successful recall schedules ten minutes; subsequent successful recalls when due schedule one day, three days, seven days, and fourteen days. Practice before the due time cannot advance a stage. A correction reduces the stage by one, resets the successful streak, and makes the word immediately available for practice.
+Sentences must be true to this bible and to the pictures they sit next to.
 
-The internal `mastered` flag requires stage 3, at least five successful recalls, and a current streak of three. This is a deliberately conservative demo indicator of familiarity with an individual item, not a validated language proficiency measurement. One sitting of rapid correct answers cannot produce it. `getDueWords(state, words, now)` returns encountered words whose due time has arrived, sorted by due time; it does not introduce unseen words.
+## Lesson anatomy (30–40 pages, 120+ answers)
 
-`completeStep(state, stepId)` and `completeLesson(state, lessonId)` update their respective completion records idempotently. `getLessonProgress(state, lesson)` counts all eight pages, including completion, and `getLearningSummary(state, words, now)` reports encountered words, internal mastery count, due words, exposures, and completed lessons. The app must call `completeLesson` only when the learner finishes that lesson.
+Each lesson moves through the same parts (set `part` on the first page of each):
 
-`normalizeAnswer` and `isAnswerCorrect` tolerate capitalisation, spacing, and common punctuation while preserving Dutch spelling and word order.
+1. **Words** — `observe` pages with the ten targets in sentences built from *known* grammar;
+   picture recognition by reading and by ear; “write the word”; “hear and spell”.
+2. **Grammar** — one explicit `grammar` page per point (tables, examples), each followed immediately
+   by heavy drills: conjugation tables for *every* verb, choice drills for first contact, then typed
+   cloze drills with the infinitive as cue.
+3. **Combine** — the new grammar mixed with every earlier point: transform drills (make it a
+   question / negative / change the subject / use “the”), arrange with distractor words that are
+   deliberately tempting (“woont” when “woon” is right).
+4. **Read** — an 8–12 line story or dialogue that continues the story bible, then comprehension
+   questions and full-sentence answers.
+5. **Write** — dictation, translation from English (8+ sentences), and a final 12-item mixed drill.
+6. **complete** — the closing page.
 
-## Extending the book
+## Page schema
 
-Future chapters should reuse known scenes and sentence patterns before adding a small set of words. Keep a cumulative vocabulary budget and validate Dutch exercise text against it. Expand grammar through many meaningful examples before naming a rule. Add human Dutch-language review before growing the curriculum extensively.
+Lesson files live in `src/curriculum/lessons/NN-id.js` and default-export an array of pages. Page
+ids are generated (`lessonId-01` …). Every page has `type`, `title`, and usually `instruction`
+(English) and `grammar` (ids of the grammar points it practises — the validator counts these).
 
-The later course should progress through everyday A1/A2 reading and listening, then broader B1/B2 contexts. Mathematics and physics should form a subsequent, separately reviewed track after demonstrated B2 readiness. The demo does not yet implement a B2 assessment, long-term curriculum, pronunciation scoring, or a scientifically calibrated retention model.
+| type | fields |
+|---|---|
+| `observe` | `cards: [{ nl, en, image }]`, optional `note` |
+| `picture` | `nl`, `en`, `listen` (hide the text, audio only), `choices: [{ image, nl }]` (3–4), `answer` = the right image key |
+| `grammar` | `body: [paragraphs]` (supports `**bold**` and `*italic*`), `tables: [{ caption, rows: [{ nl, en }] }]`, `examples: [{ nl, en }]`. In `nl`, square brackets highlight an ending: `hij woon[t]` |
+| `drill` | `items: [...]`, optional shared `choices: [...]` (buttons instead of typing), `layout: 'table'` (conjugation table), `task` (shown on every item), `image`, `explanation` |
+| `arrange` | `nl`, `en`, `image`, `distractors: [...]` — the word tiles are generated from `nl` |
+| `story` | `image`, `lines: [{ nl, en, image, speaker }]` |
+| `complete` | `title`, `instruction` |
 
-Run the learner and content checks with `node --test tests/learning.test.js` from the project directory.
+Drill items — the shape decides how the item is shown:
+
+| item | shows | learner gives |
+|---|---|---|
+| `{ label: 'jij', gloss: 'you', answer: 'woont' }` | a conjugation row (needs `layout: 'table'`) | the verb form |
+| `{ nl: 'Jij ___ in Gent.', cue: 'wonen', en: 'You live in Ghent.', answer: 'woont' }` | a sentence with one blank | the missing word |
+| `{ nl: 'Ik woon hier.', task: 'Change to hij', answer: 'Hij woont hier.' }` | a Dutch sentence to rewrite | the whole new sentence |
+| `{ nl: 'Is Bram moe?', answer: 'Ja' }` + `choices` | a spoken question | a button |
+| `{ en: 'I live here.', answer: 'Ik woon hier.' }` | English | the Dutch translation |
+| `{ listen: 'Hij woont in Gent.' }` | a play button only | what they hear |
+| `{ image: 'tree', answer: 'boom' }` | a picture (can combine with `nl`) | the word or answer |
+
+`accept: [...]` adds other correct answers. The pronoun pairs jij/je, zij/ze, wij/we are accepted
+automatically. Capitals and punctuation never matter; spelling and word order always do.
+
+Every Dutch string is tokenized and checked against the forms introduced so far, and every spoken
+string gets a recording. Proper names (`names` in plan.js) are always allowed.
+
+## Dutch standard
+
+Standard Dutch that is natural in Flanders: “jij/je” for you (no “u”, no “ge/gij”), no
+Netherlands-only or Flemish-only colloquialisms. Belgian place names. Audio uses a Belgian (Ellen) and a Netherlands (Xander) voice;
+dialogue speakers keep their own voice (`speakerVoices` in plan.js). A human Dutch teacher should review before real publication; the linguistic QA agent is
+a first pass, not a substitute.
+
+## Learner model
+
+`src/learning.js` is deterministic and has no AI in it. Every answer records an encounter for each
+word in it (derived from the text, so “woont” counts for *wonen*). Exposure never counts as recall.
+Correct first attempts schedule reviews after 10 minutes, 1, 3, 7 and 14 days; mistakes make a word
+due immediately; early practice never advances the schedule. The review page turns due words back
+into typed sentence tasks drawn from lessons already completed.
+
+## The publishing team (agents)
+
+The lessons were produced the way the original plan described: agents working against one curriculum model,
+never generating content live for the learner. Their definitions live in `.claude/agents/` and their full
+briefs in `docs/agent-briefs/`, so the same workflow can be rerun for the next volume:
+
+- **illustrator** — draws missing pictures in the house style (40+ so far).
+- **lesson-author** — writes or revises one lesson file until `validate-content.mjs` passes.
+- **dutch-reviewer** — a strict Flemish-Dutch teacher that fixes grammar, naturalness, answer keys and story consistency.
+
+The validator is the curriculum QA: the agents cannot publish vocabulary the learner has not met, or let
+a target or grammar point fall out of the cycle. In Claude Code, ask for them by name, e.g. “use the
+lesson-author agent to write lesson 7 from plan.js, then the dutch-reviewer agent on it”.
+
+## Adding a lesson
+
+1. Add the lesson to `lessonPlan` and its words to `words` in `src/curriculum/plan.js`.
+2. Write `src/curriculum/lessons/NN-id.js` and import it in `src/content.js`.
+3. Run `node scripts/validate-content.mjs <id>` until it passes.
+4. Commission missing pictures (see `.claude/agents/illustrator.md`) and regenerate audio with
+   `node scripts/generate-audio.mjs`.
+5. Run the linguistic and curriculum QA agents, fix what they find, then `npm test`.

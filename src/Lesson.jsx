@@ -1,10 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, Check, RotateCcw, Eye, Headphones, Sparkles, BookOpen, Sprout, HelpCircle } from 'lucide-react';
-import { lessons, wordById } from './content.js';
-import { completeStep, completeLesson, isAnswerCorrect } from './learning.js';
-import { AudioButton, useAudio } from './audio.jsx';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight, Check, RotateCcw, Eye, Headphones, Sprout, BookOpen } from 'lucide-react';
+import { grammarPoints, lessons, voiceFor, wordById, wordsIn } from './content.js';
+import { completeStep, completeLesson } from './learning.js';
+import { isAnswerCorrect, seededShuffle, tokenize } from './curriculum/text.js';
+import { names } from './curriculum/plan.js';
+import { AudioButton, PlayAllButton, useAudio } from './audio.jsx';
+import { DrillItem, Rich, checkItem, imageAlt, itemModel } from './Exercises.jsx';
 
-const labels = { observe: 'Look & listen', 'picture-choice': 'Look & recognise', 'listen-choice': 'Listen & recognise', arrange: 'Build a sentence', cloze: 'Notice the pattern', dictation: 'Listen & write', story: 'Read a little', complete: 'A moment to pause' };
+function label(step) {
+  if (step.type === 'picture') return step.listen ? 'Listen & recognise' : 'Read & recognise';
+  if (step.type !== 'drill') return { observe: 'Look & listen', grammar: 'Grammar', arrange: 'Build a sentence', story: 'Read', complete: 'A moment to pause' }[step.type];
+  if (step.layout === 'table') return 'Conjugate';
+  if (step.items.every(item => item.listen)) return 'Dictation';
+  if (step.items.every(item => item.en && !item.nl)) return 'Translate';
+  return step.choices ? 'Choose' : 'Write';
+}
+
 export default function Lesson({ lesson, state, setState, preferences, setPreferences, navigate, encounter }) {
   const [index, setIndex] = useState(() => Math.max(0, Math.min(state.positions?.[lesson.id] || 0, lesson.steps.length - 1)));
   const step = lesson.steps[index];
@@ -16,45 +27,149 @@ export default function Lesson({ lesson, state, setState, preferences, setPrefer
     if (index < lesson.steps.length - 1) setIndex(index + 1);
     else { setState(s => ({ ...completeLesson(s, lesson.id), positions: { ...s.positions, [lesson.id]: 0 } })); navigate('book'); }
   }
-  return <div className="lesson-page page-enter"><div className="reader-nav"><button className="text-link" onClick={() => navigate('book')}><ArrowLeft size={15} /> The book</button><span>LESSON 0{lessons.indexOf(lesson) + 1} <span className="reader-nav-divider">/</span> {lesson.title}</span><span>{index + 1} <span className="muted">/ {lesson.steps.length}</span></span></div><div className="reader-progress" aria-label={`Page ${index + 1} of ${lesson.steps.length}`}>{lesson.steps.map((s, i) => <span key={s.id} className={i <= index ? 'filled' : ''} />)}</div><div className="reader-toolbar"><span className="small-caps">{labels[step.type]}</span><div><button className={preferences.slow ? 'tool-toggle selected' : 'tool-toggle'} onClick={() => setPreferences(p => ({ ...p, slow: !p.slow }))} aria-pressed={preferences.slow}><Headphones size={15} />{preferences.slow ? 'Slow audio' : 'Normal audio'}</button><button className={preferences.translations ? 'tool-toggle selected' : 'tool-toggle'} onClick={() => setPreferences(p => ({ ...p, translations: !p.translations }))} aria-pressed={preferences.translations}><Eye size={15} /> English</button></div></div><ExercisePage key={step.id} {...{ step, lesson, preferences, encounter, next }} back={index > 0 ? () => setIndex(index - 1) : null} /></div>;
+  const parts = [...new Set(lesson.steps.map(s => s.part))];
+  return <div className="lesson-page page-enter">
+    <div className="reader-nav"><button className="text-link" onClick={() => navigate('book')}><ArrowLeft size={15} /> The book</button><span>LESSON {String(lesson.number).padStart(2, '0')} <span className="reader-nav-divider">/</span> {lesson.title}</span><span>{index + 1} <span className="muted">/ {lesson.steps.length}</span></span></div>
+    <div className="reader-progress" aria-label={`Page ${index + 1} of ${lesson.steps.length}`}>{lesson.steps.map((s, i) => <span key={s.id} className={`${i <= index ? 'filled' : ''} ${i > 0 && lesson.steps[i - 1].part !== s.part ? 'part-start' : ''}`} />)}</div>
+    <div className="reader-toolbar"><span className="small-caps">PART {parts.indexOf(step.part) + 1} · {step.part.toUpperCase()} <span className="reader-nav-divider">/</span> {label(step).toUpperCase()}</span><div><button className={preferences.slow ? 'tool-toggle selected' : 'tool-toggle'} onClick={() => setPreferences(p => ({ ...p, slow: !p.slow }))} aria-pressed={preferences.slow}><Headphones size={15} />{preferences.slow ? 'Slow audio' : 'Normal audio'}</button><button className={preferences.translations ? 'tool-toggle selected' : 'tool-toggle'} onClick={() => setPreferences(p => ({ ...p, translations: !p.translations }))} aria-pressed={preferences.translations}><Eye size={15} /> English</button></div></div>
+    <ExercisePage key={step.id} {...{ step, lesson, preferences, encounter, next }} back={index > 0 ? () => setIndex(index - 1) : null} />
+  </div>;
 }
+
 function ExercisePage({ step, lesson, preferences, encounter, next, back }) {
-  const [selected, setSelected] = useState('');
-  const [arranged, setArranged] = useState([]);
-  const [typed, setTyped] = useState('');
-  const [feedback, setFeedback] = useState(null);
-  const [hint, setHint] = useState(false);
-  const [transcript, setTranscript] = useState(false);
-  const [assisted, setAssisted] = useState(false);
-  const [noticed, setNoticed] = useState(false);
-  const interactive = ['picture-choice', 'listen-choice', 'arrange', 'cloze', 'dictation'].includes(step.type);
-  const isListening = ['listen-choice', 'dictation'].includes(step.type);
-  useEffect(() => {
-    if (step.type === 'observe' || step.type === 'story') encounter(step.wordIds, null, `exposure:${step.id}`);
-  }, [step.id]);
-  const answer = step.type === 'arrange' ? arranged.map(i => step.tokens[i]).join(' ') : step.type === 'dictation' ? typed : selected;
-  const ready = step.type === 'arrange' ? arranged.length === step.tokens.length : !!answer.trim();
-  function check(e) {
-    e?.preventDefault();
-    if (!ready || feedback === 'correct') return;
-    const correct = isAnswerCorrect(answer, step.answer);
-    setFeedback(correct ? 'correct' : 'retry');
-    // Seeing a transcript supports practice, but does not count as unassisted recall.
-    encounter(step.wordIds, correct ? assisted ? null : true : false, correct ? `${assisted ? 'assisted' : 'passed'}:${step.id}` : `retry:${step.id}:${Date.now()}`);
-  }
-  function choose(value) { setSelected(value); setFeedback(null); }
-  if (step.type === 'complete') return <section className="completion-page"><div className="completion-art"><img src={`/images/${step.image}.svg`} alt="A familiar scene from this lesson" /><span><Check size={23} /></span></div><div className="eyebrow">A LITTLE MORE FAMILIAR</div><h1>{step.title}.</h1><p>{step.instruction}</p><div className="collected-words">{lesson.newWordIds.map(id => <span lang="nl" key={id}>{wordById[id].dutch}</span>)}</div><p className="completion-note">You don’t need to feel ready for the next lesson.<br />This one will always be here to read again.</p><button className="primary-button" onClick={next}>Finish this lesson <Check size={17} /></button>{back && <button className="text-link completion-back" onClick={back}><ArrowLeft size={15} /> Read the last page again</button>}</section>;
-  return <section className="exercise-page"><div className="exercise-heading"><h1>{step.title}.</h1><p>{step.instruction}</p></div>
-    {step.type === 'observe' && <><div className={`observation-grid cards-${step.cards.length}`}>{step.cards.map((card, i) => <article className="observation-card" key={`${card.wordId}-${i}`}><img src={`/images/${card.image}.svg`} alt={card.translation} /><div className="observation-text"><span lang="nl">{card.sentence}</span><AudioButton text={card.sentence} />{preferences.translations && <small>{card.translation}</small>}</div></article>)}</div><div className="gentle-note"><Sprout size={22} /><p>{step.note}</p></div></>}
-    {isListening && <div className="listening-player"><span className="waveform" aria-hidden="true">{[10, 21, 31, 16, 39, 25, 45, 29, 17, 36, 23, 12].map((h, i) => <i key={i} style={{ height: h }} />)}</span><AudioButton text={step.sentence} label="Listen to the sentence" className="audio-wide" conceal={!transcript && feedback !== 'correct'} /><p>Replay as often as you need.</p><button className="subtle-link" onClick={() => { setTranscript(!transcript); setAssisted(true); }}>{transcript ? 'Hide text' : 'Need the text? Show transcript'}</button>{(transcript || feedback === 'correct') && <p className="transcript" lang="nl">{step.sentence}</p>}</div>}
-    {step.type === 'picture-choice' && <div className="sentence-prompt"><span lang="nl">{step.sentence}</span><AudioButton text={step.sentence} /></div>}
-    {(step.type === 'picture-choice' || step.type === 'listen-choice') && <div className="picture-options" role="group" aria-label="Choose a picture">{step.choices.map((choice, i) => <button key={choice.id} className={`picture-option ${selected === choice.id ? 'selected' : ''} ${feedback === 'correct' && selected === choice.id ? 'correct' : ''}`} onClick={() => choose(choice.id)} disabled={feedback === 'correct'} aria-pressed={selected === choice.id} aria-label={`Picture ${i + 1}: ${imageDescription(choice.image)}`}><img src={`/images/${choice.image}.svg`} alt="" /><span className="option-index">{feedback === 'correct' && selected === choice.id ? <Check size={15} /> : i + 1}</span>{feedback === 'correct' && <span lang="nl" className="revealed-label">{choice.label}</span>}</button>)}</div>}
-    {step.type === 'arrange' && <div className="arrange-exercise"><img src={`/images/${step.image}.svg`} alt={step.translation} /><div className="sentence-builder"><div className={`answer-slot ${feedback === 'correct' ? 'correct' : ''}`} aria-label="Your sentence" aria-live="polite">{arranged.length ? arranged.map((tokenIndex, i) => <button key={tokenIndex} lang="nl" className="word-token" disabled={feedback === 'correct'} onClick={() => { setArranged(arranged.filter((_, j) => j !== i)); setFeedback(null); }}>{step.tokens[tokenIndex]}</button>) : <span>Your sentence goes here…</span>}</div><div className="token-bank">{step.tokens.map((token, i) => <button key={i} lang="nl" className="word-token" disabled={arranged.includes(i) || feedback === 'correct'} onClick={() => { setArranged([...arranged, i]); setFeedback(null); }}>{token}</button>)}</div><button className="subtle-link" onClick={() => { setArranged([]); setFeedback(null); }} disabled={feedback === 'correct'}><RotateCcw size={13} /> Start the sentence again</button></div></div>}
-    {step.type === 'cloze' && <div className="cloze-exercise"><img src={`/images/${step.image}.svg`} alt={step.translation} /><p lang="nl">{step.sentence.split('___')[0]}<span className="blank-word">{selected ? step.choices.find(c => c.id === selected)?.label : '…'}</span>{step.sentence.split('___')[1]}</p><div className="cloze-options">{step.choices.map(choice => <button key={choice.id} lang="nl" className={`word-token ${selected === choice.id ? 'selected' : ''}`} onClick={() => choose(choice.id)} aria-pressed={selected === choice.id} disabled={feedback === 'correct'}>{choice.label}</button>)}</div></div>}
-    {step.type === 'dictation' && <form id="dictation-form" className="dictation-form" onSubmit={check}><label htmlFor="dictation-input">The sentence you hear</label><input id="dictation-input" lang="nl" placeholder="Type in Dutch…" autoComplete="off" autoCapitalize="sentences" spellCheck="false" value={typed} onChange={e => { setTyped(e.target.value); setFeedback(null); }} disabled={feedback === 'correct'} /><span>Capital letters and punctuation don’t matter.</span><button type="button" className="subtle-link" onClick={() => { setHint(!hint); setAssisted(true); }}><HelpCircle size={14} />{hint ? 'Hide hint' : 'A little help'}</button>{hint && <p className="hint-text">{step.hint}</p>}</form>}
-    {step.type === 'story' && <div className="story-page"><img className="story-scene" src={`/images/${step.image}.svg`} alt="The familiar little neighbourhood" /><div className="story-lines">{step.lines.map((line, i) => <div className="story-line" key={i}><img src={`/images/${line.image}.svg`} alt="" /><div><span lang="nl">{line.sentence}</span>{preferences.translations && <small>{line.translation}</small>}</div><AudioButton text={line.sentence} /></div>)}</div><button className="pattern-disclosure" onClick={() => setNoticed(!noticed)} aria-expanded={noticed}><Sparkles size={16} /> A pattern you might have noticed <span>{noticed ? '−' : '+'}</span></button>{noticed && <div className="pattern-note">{lesson.grammar}</div>}</div>}
-    {feedback && <div className={`answer-feedback ${feedback}`} role="status"><span className="feedback-icon">{feedback === 'correct' ? <Check size={19} /> : <RotateCcw size={19} />}</span><div><strong>{feedback === 'correct' ? 'Yes, exactly. You’ve got it.' : 'Almost. Let’s have another look.'}</strong><p>{feedback === 'correct' ? step.explanation : 'Take your time. Try a different answer, or listen again.'}</p></div></div>}
-    <div className="reader-bottom"><button className="text-link" disabled={!back} onClick={back}><ArrowLeft size={16} /> Previous page</button><span className="reader-bottom-note">A little repetition goes a long way.</span>{!interactive || feedback === 'correct' ? <button className="primary-button" onClick={next}>Turn the page <ArrowRight size={17} /></button> : <button className="primary-button" disabled={!ready} onClick={check}>Check my answer <Check size={17} /></button>}</div>
+  const [done, setDone] = useState(!['picture', 'arrange', 'drill'].includes(step.type));
+  const [skippable, setSkippable] = useState(false);
+  useEffect(() => { if (['observe', 'story', 'grammar'].includes(step.type)) encounter(step.wordIds, null, `exposure:${step.id}`); }, [step.id]);
+  const props = { step, preferences, encounter, onDone: () => setDone(true), onStuck: () => setSkippable(true) };
+  if (step.type === 'complete') return <Complete {...{ step, lesson, next, back }} />;
+  return <section className="exercise-page">
+    <div className="exercise-heading"><h1>{step.title}.</h1>{step.instruction && <p>{step.instruction}</p>}</div>
+    {step.type === 'observe' && <Observe step={step} preferences={preferences} />}
+    {step.type === 'grammar' && <Grammar step={step} preferences={preferences} />}
+    {step.type === 'story' && <Story step={step} preferences={preferences} />}
+    {step.type === 'picture' && <Picture {...props} />}
+    {step.type === 'arrange' && <Arrange {...props} />}
+    {step.type === 'drill' && <Drill {...props} />}
+    <div className="reader-bottom"><button className="text-link" disabled={!back} onClick={back}><ArrowLeft size={16} /> Previous page</button><span className="reader-bottom-note">{done ? 'Say it out loud once more before you move on.' : 'Mistakes are part of the practice.'}</span>{done ? <button className="primary-button" onClick={next}>Turn the page <ArrowRight size={17} /></button> : <span className="reader-actions">{skippable && <button className="secondary-button" onClick={next}>Move on anyway</button>}<button className="primary-button" type="submit" form={`check-${step.id}`}>Check my answers <Check size={17} /></button></span>}</div>
   </section>;
 }
-function imageDescription(image) { return { house: 'a house', tree: 'a tree', bench: 'a bench', man: 'a man', woman: 'a woman', 'man-walking': 'a man walking', 'woman-sitting': 'a woman sitting' }[image] || 'a neighbourhood'; }
+
+function Observe({ step, preferences }) {
+  return <><div className={`observation-grid cards-${Math.min(step.cards.length, 3)}`}>{step.cards.map((card, i) => <article className="observation-card" key={i}>{card.image ? <img src={`/images/${card.image}.svg`} alt={imageAlt(card.image)} /> : <div className="word-typography" lang="nl">{card.nl.split(/[ .?!]/)[0]}</div>}<div className="observation-text"><span lang="nl">{card.nl}</span><AudioButton text={card.nl} />{preferences.translations && <small>{card.en}</small>}</div></article>)}</div>{step.note && <div className="gentle-note"><Sprout size={22} /><p>{step.note}</p></div>}</>;
+}
+
+function Grammar({ step, preferences }) {
+  return <article className="grammar-page">
+    <div className="grammar-body">{step.body.map((paragraph, i) => <p key={i}><Rich text={paragraph} /></p>)}</div>
+    {step.tables?.length > 0 && <div className="grammar-tables">{step.tables.map((table, t) => <table key={t} className="grammar-table">{table.caption && <caption>{table.caption}</caption>}<tbody>{table.rows.map((row, r) => <tr key={r}><td lang="nl"><Rich text={row.nl} /></td>{row.en && <td className="muted">{row.en}</td>}<td><AudioButton text={row.nl} /></td></tr>)}</tbody></table>)}</div>}
+    {step.examples?.length > 0 && <div className="grammar-examples"><div className="grammar-examples-head"><span className="small-caps">EXAMPLES</span><PlayAllButton id={`examples-${step.id}`} texts={step.examples.map(e => e.nl)} /></div>{step.examples.map((example, i) => <div className="grammar-example" key={i}><div><span lang="nl"><Rich text={example.nl} /></span><small>{example.en}</small></div><AudioButton text={example.nl} /></div>)}</div>}
+    {step.note && <div className="gentle-note"><BookOpen size={20} /><p><Rich text={step.note} /></p></div>}
+  </article>;
+}
+
+function Story({ step, preferences }) {
+  const [english, setEnglish] = useState(false);
+  const show = preferences.translations && english;
+  return <div className="story-page"><img className="story-scene" src={`/images/${step.image}.svg`} alt={imageAlt(step.image)} />
+    <div className="story-tools"><PlayAllButton id={`story-${step.id}`} texts={step.lines.map(l => ({ text: l.nl, voice: voiceFor(l.nl, l.speaker) }))} label="Listen to it all" /><button type="button" className="subtle-link" onClick={() => setEnglish(!english)} disabled={!preferences.translations}>{english ? 'Hide the English' : 'Show the English'}</button></div>
+    <div className="story-lines">{step.lines.map((line, i) => <div className="story-line" key={i}>{line.image && <img src={`/images/${line.image}.svg`} alt="" />}<div>{line.speaker && <b className="story-speaker">{line.speaker}</b>}<span lang="nl">{line.nl}</span>{show && <small>{line.en}</small>}</div><AudioButton text={line.nl} voice={voiceFor(line.nl, line.speaker)} /></div>)}</div>
+    {step.note && <div className="pattern-note"><Rich text={step.note} /></div>}
+  </div>;
+}
+
+function Feedback({ status, explanation, wrongCount, total, onReveal, revealed }) {
+  if (!status) return null;
+  const correct = status === 'correct';
+  return <div className={`answer-feedback ${correct ? 'correct' : 'retry'}`} role="status"><span className="feedback-icon">{correct ? <Check size={19} /> : <RotateCcw size={19} />}</span><div>
+    <strong>{correct ? 'Correct.' : total > 1 ? `${wrongCount} of ${total} still need work.` : 'Not yet.'}</strong>
+    <p>{correct ? explanation || 'Read it once more, out loud.' : revealed ? 'The answers are shown. Type them in yourself — writing them is how they stick.' : 'Look at the marked answers again: verb ending, article, word order.'}</p>
+    {!correct && !revealed && <button type="button" className="subtle-link" onClick={onReveal}>Show me the answers</button>}
+  </div></div>;
+}
+
+function Picture({ step, encounter, onDone, onStuck }) {
+  const [selected, setSelected] = useState('');
+  const [status, setStatus] = useState(null);
+  const [revealed, setRevealed] = useState(false);
+  const missed = useRef(false);
+  function check(e) {
+    e.preventDefault();
+    if (!selected || status === 'correct') return;
+    const correct = selected === step.answer;
+    setStatus(correct ? 'correct' : 'wrong');
+    if (correct) { encounter(step.wordIds, revealed || missed.current ? null : true, `passed:${step.id}`); onDone(); }
+    else if (!missed.current) { missed.current = true; encounter(step.wordIds, false, `missed:${step.id}:${Date.now()}`); }
+  }
+  return <form id={`check-${step.id}`} onSubmit={check}>
+    {step.listen ? <div className="listening-player"><AudioButton text={step.nl} label="Listen to the sentence" className="audio-wide" conceal={status !== 'correct'} />{status === 'correct' && <p className="transcript" lang="nl">{step.nl}</p>}</div>
+      : <div className="sentence-prompt"><span lang="nl">{step.nl}</span><AudioButton text={step.nl} /></div>}
+    <div className="picture-options" role="group" aria-label="Choose a picture">{step.choices.map((choice, i) => <button type="button" key={choice.image} className={`picture-option ${selected === choice.image ? 'selected' : ''} ${status === 'correct' && selected === choice.image ? 'correct' : ''} ${revealed && choice.image === step.answer ? 'revealed' : ''}`} onClick={() => { setSelected(choice.image); setStatus(null); }} disabled={status === 'correct'} aria-pressed={selected === choice.image} aria-label={`Picture ${i + 1}: ${imageAlt(choice.image)}`}><img src={`/images/${choice.image}.svg`} alt="" /><span className="option-index">{status === 'correct' && selected === choice.image ? <Check size={15} /> : i + 1}</span>{status === 'correct' && <span lang="nl" className="revealed-label">{choice.nl}</span>}</button>)}</div>
+    <Feedback status={status} explanation={step.explanation || step.en} total={1} wrongCount={1} revealed={revealed} onReveal={() => { setRevealed(true); onStuck(); }} />
+  </form>;
+}
+
+function Arrange({ step, encounter, onDone, onStuck }) {
+  const tokens = useRef(seededShuffle([...tokenize(step.nl), ...(step.distractors || [])].map(t => names.includes(t) ? t : t.toLowerCase()), step.id)).current;
+  const needed = tokenize(step.nl).length;
+  const [arranged, setArranged] = useState([]);
+  const [status, setStatus] = useState(null);
+  const [revealed, setRevealed] = useState(false);
+  const missed = useRef(false);
+  function check(e) {
+    e.preventDefault();
+    if (arranged.length !== needed || status === 'correct') return;
+    const correct = isAnswerCorrect(arranged.map(i => tokens[i]).join(' '), step.nl);
+    setStatus(correct ? 'correct' : 'wrong');
+    if (correct) { encounter(step.wordIds, revealed || missed.current ? null : true, `passed:${step.id}`); onDone(); }
+    else if (!missed.current) { missed.current = true; encounter(step.wordIds, false, `missed:${step.id}:${Date.now()}`); }
+  }
+  const edit = (list) => { setArranged(list); setStatus(null); };
+  return <form id={`check-${step.id}`} onSubmit={check} className="arrange-exercise">{step.image && <img src={`/images/${step.image}.svg`} alt={imageAlt(step.image)} />}<div className="sentence-builder">
+    <p className="arrange-english">{step.en}</p>
+    <div className={`answer-slot ${status === 'correct' ? 'correct' : ''}`} aria-label="Your sentence" aria-live="polite">{arranged.length ? arranged.map((tokenIndex, i) => <button type="button" key={tokenIndex} lang="nl" className="word-token" disabled={status === 'correct'} onClick={() => edit(arranged.filter((_, j) => j !== i))}>{tokens[tokenIndex]}</button>) : <span>Tap the words in order… {step.distractors?.length ? `(${step.distractors.length === 1 ? 'one word is' : `${step.distractors.length} words are`} not needed)` : ''}</span>}</div>
+    <div className="token-bank">{tokens.map((token, i) => <button type="button" key={i} lang="nl" className="word-token" disabled={arranged.includes(i) || status === 'correct' || arranged.length >= needed} onClick={() => edit([...arranged, i])}>{token}</button>)}</div>
+    <button type="button" className="subtle-link" onClick={() => edit([])} disabled={status === 'correct'}><RotateCcw size={13} /> Start the sentence again</button>
+    {status === 'correct' && <p className="drill-done" lang="nl"><AudioButton text={step.nl} />{step.nl}</p>}
+    {revealed && status !== 'correct' && <p className="drill-reveal">Answer: <b lang="nl">{step.nl}</b></p>}
+    <Feedback status={status} explanation={step.explanation} total={1} wrongCount={1} revealed={revealed} onReveal={() => { setRevealed(true); onStuck(); }} />
+  </div></form>;
+}
+
+function Drill({ step, preferences, encounter, onDone, onStuck }) {
+  const [values, setValues] = useState(() => step.items.map(() => ''));
+  const [statuses, setStatuses] = useState(() => step.items.map(() => null));
+  const [revealed, setRevealed] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const missed = useRef(new Set());
+  const allCorrect = statuses.every(s => s === 'correct');
+  function check(e) {
+    e.preventDefault();
+    if (allCorrect) return;
+    const next = step.items.map((item, i) => statuses[i] === 'correct' ? 'correct' : values[i].trim() ? (checkItem(item, values[i], step) ? 'correct' : 'wrong') : 'wrong');
+    next.forEach((status, i) => {
+      if (statuses[i] === 'correct') return;
+      const words = wordsIn(...[itemModel(step.items[i], step).spoken, step.items[i].nl, step.items[i].listen, step.items[i].answer].filter(Boolean));
+      if (status === 'correct') encounter(words, revealed || missed.current.has(i) ? null : true, `passed:${step.id}:${i}`);
+      else if (!missed.current.has(i)) { missed.current.add(i); encounter(words, false, `missed:${step.id}:${i}:${Date.now()}`); }
+    });
+    setStatuses(next); setChecked(true);
+    if (next.every(s => s === 'correct')) onDone();
+  }
+  const wrong = statuses.filter(s => s === 'wrong').length;
+  const firstOpen = statuses.findIndex(s => s !== 'correct');
+  return <form id={`check-${step.id}`} onSubmit={check} className={`drill ${step.layout === 'table' ? 'drill-table' : ''}`} noValidate>
+    {step.image && <img className="drill-hero" src={`/images/${step.image}.svg`} alt={imageAlt(step.image)} />}
+    {step.layout === 'table' && step.verb && <div className="drill-table-head" lang="nl">{step.verb}{step.verbEn && <small>{step.verbEn}</small>}</div>}
+    <div className="drill-items">{step.items.map((item, i) => <DrillItem key={i} {...{ item, step, index: i, value: values[i], status: statuses[i], revealed, translations: preferences.translations }} autoFocus={i === 0 && !item.listen && !step.choices && !item.choices} onChange={value => { setValues(v => v.map((old, j) => j === i ? value : old)); setStatuses(s => s.map((old, j) => j === i && old === 'wrong' ? null : old)); }} />)}</div>
+    {checked && <Feedback status={allCorrect ? 'correct' : 'wrong'} explanation={step.explanation} total={step.items.length} wrongCount={wrong || statuses.filter(s => s !== 'correct').length} revealed={revealed} onReveal={() => { setRevealed(true); onStuck(); document.getElementById(`${step.id}-item-${firstOpen}`)?.focus(); }} />}
+  </form>;
+}
+
+function Complete({ step, lesson, next, back }) {
+  const nextLesson = lessons[lesson.number];
+  return <section className="completion-page"><div className="completion-art"><img src={`/images/${lesson.image}.svg`} alt={imageAlt(lesson.image)} /><span><Check size={23} /></span></div><div className="eyebrow">LESSON {lesson.number} COMPLETE</div><h1>{step.title}.</h1><p>{step.instruction}</p>
+    <div className="completion-columns"><div><span className="small-caps">YOUR FIVE TARGET WORDS</span><div className="collected-words">{lesson.targets.map(id => <span lang="nl" key={id}>{wordById[id].article ? `${wordById[id].article} ` : ''}{wordById[id].dutch}</span>)}</div></div>
+      <div><span className="small-caps">GRAMMAR YOU CAN NOW USE</span><ul className="completion-grammar">{lesson.grammar.map(id => { const point = grammarPoints.find(g => g.id === id); return <li key={id}><strong>{point.title}</strong> — {point.summary}</li>; })}</ul></div></div>
+    <p className="completion-note">{lesson.answers} answers in this lesson. {nextLesson ? `Everything here comes back in “${nextLesson.title}”.` : 'Everything in this volume now works together.'}<br />Come back tomorrow for a review — that is when it really sticks.</p>
+    <button className="primary-button" onClick={next}>Finish this lesson <Check size={17} /></button>{back && <button className="text-link completion-back" onClick={back}><ArrowLeft size={15} /> Read the last page again</button>}</section>;
+}

@@ -1,9 +1,9 @@
 import { createInitialState } from './learning.js';
-const KEY = 'langzaam-v1';
+const KEY = 'langzaam-v2';
 export function loadState() {
   try {
     const stored = JSON.parse(localStorage.getItem(KEY));
-    if (!stored || stored.version !== 1 || !stored.words || !stored.completedSteps || !Array.isArray(stored.completedLessons)) return createInitialState();
+    if (!stored || stored.version !== 2 || !stored.words || !stored.completedSteps || !Array.isArray(stored.completedLessons)) return createInitialState();
     return { ...createInitialState(), ...stored };
   } catch { return createInitialState(); }
 }

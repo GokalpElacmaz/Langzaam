@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { audioTexts, lessons, words } from '../src/content.js';
+import { spawnSync } from 'node:child_process';
+import { existsSync, readFileSync } from 'node:fs';
+import { allowedForms, audioClips, audioTexts, lessons, words, wordsIn } from '../src/content.js';
 import {
   completeLesson, completeStep, createInitialState, getDueWords,
   getLearningSummary, getLessonProgress, isAnswerCorrect, recordEncounter,
@@ -98,50 +100,40 @@ test('lesson and page completion are idempotent and use globally unique page IDs
   assert.equal(getLessonProgress(state, lesson).isComplete, true);
 });
 
-test('dictation accepts punctuation and spacing variations while preserving word order', () => {
+test('answers ignore capitals and punctuation, accept pronoun pairs, but never word order or spelling', () => {
   assert.equal(isAnswerCorrect('  dit   is een huis! ', 'Dit is een huis.'), true);
-  assert.equal(isAnswerCorrect('de MAN loopt', 'De man loopt.'), true);
   assert.equal(isAnswerCorrect('Dit een is huis.', 'Dit is een huis.'), false);
-  assert.equal(isAnswerCorrect('De man loop.', 'De man loopt.'), false);
+  assert.equal(isAnswerCorrect('Woont jij hier?', 'Woon jij hier?'), false);
+  assert.equal(isAnswerCorrect('woon je hier', 'Woon jij hier?'), true);
+  assert.equal(isAnswerCorrect('Ze is moe.', 'Zij is moe.'), true);
+  assert.equal(isAnswerCorrect('We wonen in Leuven.', 'Wij wonen in Leuven.'), true);
+  assert.equal(isAnswerCorrect('Het is een boom.', 'Dit is een boom.', ['Het is een boom.']), true);
   assert.equal(isAnswerCorrect('', 'Dit is een huis.'), false);
 });
 
-test('each chapter adds only its planned words and every Dutch exercise stays in that vocabulary', () => {
-  assert.deepEqual(lessons.map((lesson) => lesson.newWordIds), [
-    ['dit', 'is', 'een', 'huis', 'boom', 'bank'], ['de', 'man', 'vrouw'], ['loopt', 'zit'],
-  ]);
-  const known = new Set();
-  const stepIds = new Set();
-  const vocabularyIds = new Set(words.map((word) => word.id));
+test('the whole book passes the curriculum validator', () => {
+  const result = spawnSync(process.execPath, ['scripts/validate-content.mjs'], { encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+});
 
-  for (const lesson of lessons) {
-    for (const id of lesson.newWordIds) known.add(id);
-    assert.equal(lesson.steps.length, 8);
-    for (const step of lesson.steps) {
-      assert.equal(stepIds.has(step.id), false, `${step.id} must be globally unique`);
-      stepIds.add(step.id);
-      for (const id of step.wordIds) assert.ok(known.has(id), `${step.id}: unintroduced tracking word ${id}`);
+test('ten targets per lesson, derived word tracking, and a clean speech corpus', () => {
+  for (const lesson of lessons) assert.equal(lesson.targets.length, 10, lesson.id);
+  assert.deepEqual(wordsIn('Hij woont niet in Gent.'), ['hij', 'wonen', 'niet', 'in']);
+  assert.deepEqual(wordsIn('Ben jij moe?'), ['zijn', 'jij', 'moe']);
+  assert.equal(audioTexts.some((text) => /___|[[\]]/.test(text)), false);
+  assert.ok(audioTexts.includes('jij woont'));
+  const known = allowedForms(0);
+  assert.ok(known.has('is') && !known.has('ben') && !known.has('zijn'));
+  assert.ok(allowedForms(1).has('bent') && !allowedForms(2).has('grote') && allowedForms(3).has('grote'));
+});
 
-      const texts = [
-        step.sentence, step.fullSentence, ...(step.tokens || []),
-        ...(step.cards || []).map((card) => card.sentence),
-        ...(step.lines || []).map((line) => line.sentence),
-        ...(step.choices || []).map((choice) => choice.label),
-        ...(['arrange', 'dictation'].includes(step.type) ? [step.answer] : []),
-      ].filter(Boolean);
-      for (const text of texts) {
-        const tokens = text.toLowerCase().match(/[\p{L}]+/gu) || [];
-        for (const token of tokens) assert.ok(known.has(token), `${step.id}: unintroduced Dutch word ${token}`);
-      }
-      if (step.choices) assert.ok(step.choices.some((choice) => choice.id === step.answer));
-      if (step.type === 'arrange') {
-        const expected = step.answer.toLowerCase().match(/[\p{L}]+/gu).sort();
-        assert.deepEqual(step.tokens.map((token) => token.toLowerCase()).sort(), expected);
-      }
-    }
+test('every spoken Dutch text has normal and slow recordings, in the voice each line needs', () => {
+  const manifest = JSON.parse(readFileSync(new URL('../src/audio-manifest.json', import.meta.url)));
+  const missing = audioClips.filter(({ text, voice }) => !manifest[text]?.[voice]?.normal || !manifest[text]?.[voice]?.slow);
+  assert.deepEqual(missing.slice(0, 5), [], `${missing.length} clips have no recording; run node scripts/generate-audio.mjs`);
+  for (const entry of Object.values(manifest)) {
+    assert.ok(entry[entry.default], 'each text has its default voice');
+    for (const speeds of Object.values(entry).filter((v) => typeof v === 'object')) for (const path of Object.values(speeds)) assert.ok(existsSync(new URL(`../public${path}`, import.meta.url)), path);
   }
-  assert.deepEqual(known, vocabularyIds);
-  assert.equal(words.find((word) => word.id === 'bank').english, 'bench');
-  assert.ok(audioTexts.includes('De vrouw zit.'));
-  assert.equal(audioTexts.some((text) => text.includes('___')), false);
+  assert.ok(new Set(audioClips.map((clip) => clip.voice)).size >= 2, 'the course uses more than one voice');
 });

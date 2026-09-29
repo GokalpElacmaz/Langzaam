@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><defs><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.58" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.08"/></feComponentTransfer><feBlend mode="multiply" in2="SourceGraphic"/></filter><pattern id="bricks" x="0" y="0" width="46" height="28" patternUnits="userSpaceOnUse"><path d="M0 14H46 M23 0V14 M0 14V28 M46 14V28" fill="none" stroke="#98573f" stroke-width="1.2" opacity=".33"/></pattern><pattern id="roof" width="30" height="15" patternUnits="userSpaceOnUse"><path d="M0 14H30M15 0V14" fill="none" stroke="#50614d" stroke-width="1" opacity=".3"/></pattern></defs><rect width="400" height="300" fill="#f5f1e7"/><g filter="url(#grain)"><ellipse cx="200" cy="258" rx="92" ry="9" fill="#dce0ca" opacity=".66"/><g transform="translate(-6 0) scale(.5)"><g stroke="#405a4b" stroke-linejoin="round" stroke-linecap="round">
+ <path d="M442 400L500 419V512H442Z" fill="#a3654d" stroke-width="5"/>
+ <path d="M442 400L500 419V512H442Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M380 332L424 342 516 424 442 400Z" fill="#586951" stroke-width="5.5"/>
+ <path d="M380 332L424 342 516 424 442 400Z" fill="url(#roof)" stroke="none"/>
+ <path d="M448 368V316H472V388" fill="#bc795b" stroke-width="5"/>
+ <path d="M442 316H478V304H442Z" fill="#d4a389" stroke-width="4"/>
+ <path d="M318 512L319 400 380 332 442 400 442 512Z" fill="#bd795c" stroke-width="5.5"/>
+ <path d="M318 512L319 400 380 332 442 400 442 512Z" fill="url(#bricks)" stroke="none"/>
+ <path d="M306 407L380 325 454 407" fill="none" stroke="#e3b49a" stroke-width="13"/>
+ <path d="M306 414L380 333 454 414" fill="none" stroke-width="4.5"/>
+ <path d="M338 512V460Q351 443 364 460V512Z" fill="#446353" stroke-width="5.5"/>
+ <path d="M345 468H357V506H345Z" fill="none" stroke="#8a9c7e" stroke-width="3"/>
+ <circle cx="359" cy="488" r="4.5" fill="#d4bc6c" stroke="none"/>
+ <path d="M328 512H374V521H328Z" fill="#a3a28c" stroke-width="4"/>
+ <path d="M381 428H387V470H381ZM429 428H435V470H429Z" fill="#5d745b" stroke-width="3.5"/>
+ <path d="M390 428H426V470H390Z" fill="#ead4a4" stroke-width="7"/>
+ <path d="M408 428V470M390 449H426" fill="none" stroke-width="4.5"/>
+ <path d="M385 473H431V481H385Z" fill="#bba086" stroke-width="3.5"/>
+ <path d="M312 512H506" stroke-width="5.5"/>
+ <path d="M280 513Q279 494 288 500Q292 486 298 500Q306 494 304 513" fill="#607b57" stroke-width="3"/>
+ <path d="M522 513Q521 498 529 503Q534 492 539 504Q546 499 544 513" fill="#607b57" stroke-width="3"/>
+ </g></g></g></svg>
