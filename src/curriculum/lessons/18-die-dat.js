@@ -420,9 +420,9 @@ export default [
     body: [
       'English has one verb, *to know*. Dutch has two. **kennen** = to be acquainted with, to be familiar with: a person, a place, or a thing you have met — a book, a film, a street. **weten** = to have a piece of information: a fact.',
       'What follows the verb decides. After **kennen** comes a noun or a name: *Ik ken de buurman. Ken jij Leuven? Lotte kent dat boek.* After **weten** comes a fact: a dat-clause, a clause with a question word (wie, wat, waar, wanneer, hoe, hoeveel), or het or dat standing for a fact: *Ik weet dat hij altijd leest. Weet jij waar de buurman woont? Ik weet het niet.*',
-      'A quick test: if English could say “be familiar with”, use kennen. If “know that / know where / know who / know when” fits, use weten. *I know the neighbour, but I don’t know his name* → *Ik **ken** de buurman, maar ik **weet** zijn naam niet.* A few nouns stand for a fact and usually go with weten: *het antwoord weten, zijn naam weten* (kennen is also heard with these two).',
-      'Short answers follow the same split. *Ken jij Tom? — Ja, **die** ken ik.* (die for a person or a de-word; *dat* for a het-word or a place: *Ken jij Gent? — Ja, dat ken ik goed.*) *Weet jij waar Tom woont? — Ja, **dat** weet ik.* or *Ja, ik weet **het**.*',
-      'For a language, *spreken* is the usual verb: *Lotte spreekt Engels.* kennen means you know it well: *Lotte kent Engels heel goed.* Never weten.',
+      'A quick test: if English could say “be familiar with”, use kennen. If “know that / know where / know who / know when” fits, use weten. *I know the neighbour, but I don’t know his name* → *Ik **ken** de buurman, maar ik **weet** zijn naam niet.* A noun that stands for a piece of information goes with weten: ***het antwoord** weten, **zijn naam** weten* — Weet jij het antwoord? This course always uses weten there.',
+      'Short answers follow the same split. *Ken jij Tom? — Ja, **die** ken ik.* In speech that is the usual short answer; *Ja, ik ken **hem**.* (him) and *Ja, ik ken **haar**.* (her) are just as correct. (die for a person or a de-word; *dat* for a het-word or a place: *Ken jij Gent? — Ja, dat ken ik goed.*) *Weet jij waar Tom woont? — Ja, **dat** weet ik.* or *Ja, ik weet **het**.*',
+      'For a language, *spreken* is the usual verb: *Lotte spreekt Engels.* kennen is also correct: *Lotte kent Engels.* Never weten.',
       'The forms. kennen is regular: *ik ken, jij kent, wij kennen*, past *kende, kenden*, participle *gekend*. weten is not: *ik weet, jij weet, hij weet* (no extra t), past ***wist**, wisten*, participle *geweten*.',
     ],
     tables: [
@@ -449,7 +449,7 @@ export default [
       { nl: 'Ik ken de buurman, maar ik weet zijn naam niet.', en: 'I know the neighbour, but I don’t know his name.' },
       { nl: 'Ken jij de man die op de bank zit? — Ja, die ken ik.', en: 'Do you know the man sitting on the bench? — Yes, I know him.' },
       { nl: 'Weet jij wie dat is? — Nee, dat weet ik niet.', en: 'Do you know who that is? — No, I don’t know.' },
-      { nl: 'Ken jij zijn zus Sofie? — Ja, die ken ik.', en: 'Do you know his sister Sofie? — Yes, I know her.' },
+      { nl: 'Ken jij zijn zus Sofie? — Ja, ik ken haar goed.', en: 'Do you know his sister Sofie? — Yes, I know her well.' },
       { nl: 'Kent Lotte zijn familie in Gent? — Ja, die kent zij goed.', en: 'Does Lotte know his family in Ghent? — Yes, she knows them well.' },
     ],
   },
@@ -489,8 +489,8 @@ export default [
     items: [
       { en: 'I know the neighbour.', answer: 'Ik ken de buurman.' },
       { en: 'Do you know where the neighbour lives?', answer: 'Weet jij waar de buurman woont?' },
-      { en: 'I don’t know.', answer: 'Ik weet het niet.' },
-      { en: 'I don’t know him. (start with die)', answer: 'Die ken ik niet.' },
+      { en: 'I don’t know.', answer: 'Ik weet het niet.', accept: ['Dat weet ik niet.'] },
+      { en: 'I don’t know him.', answer: 'Ik ken hem niet.', accept: ['Die ken ik niet.'] },
       { en: 'Do you know the man who is sitting on the bench?', answer: 'Ken jij de man die op de bank zit?' },
       { en: 'Lotte knows that Bram is tired.', answer: 'Lotte weet dat Bram moe is.' },
       { en: 'Do you (plural) know when the lesson begins?', answer: 'Weten jullie wanneer de les begint?' },
