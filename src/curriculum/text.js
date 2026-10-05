@@ -3,8 +3,8 @@
 /** Grammar pages may mark an ending with brackets: “hij woon[t]”. */
 export const stripMarkup = (text) => String(text).replace(/[[\]]/g, '');
 
-/** Letter runs only; punctuation, blanks and brackets are ignored. */
-export const tokenize = (text) => stripMarkup(text).match(/[\p{L}]+/gu) || [];
+/** Keep internal apostrophes in words such as paprika's; ignore surrounding punctuation. */
+export const tokenize = (text) => stripMarkup(text).replace(/’/gu, "'").match(/\p{L}+(?:'\p{L}+)*/gu) || [];
 
 /** Put the answer into the blank of a cloze prompt. */
 export const fillBlank = (text, answer) => stripMarkup(text).replace('___', answer);

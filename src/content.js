@@ -1,3 +1,5 @@
+import { courseLevels, levelForVolume } from './curriculum/levels.js';
+export { courseLevels, vocabularyGoal } from './curriculum/levels.js';
 /**
  * Assembles the book: the curriculum plan (src/curriculum/plan.js) plus one
  * authored file of pages per lesson (src/curriculum/lessons/*). Everything the
@@ -5,8 +7,12 @@
  * the vocabulary each lesson may use — is derived here, never hand-maintained.
  * The page schema is documented in docs/CURRICULUM.md.
  */
-import { grammarPoints, images, lessonPlan, names, speakerVoices, voices, volumes, words as plannedWords } from './curriculum/plan.js';
+import { grammarPoints, images as coreImages, lessonPlan, names, speakerVoices, voices, volumes, words as plannedWords } from './curriculum/plan.js';
+import { practiceArt } from './curriculum/practice/art.js';
 import { fillBlank, stripMarkup, tokenize } from './curriculum/text.js';
+import { practiceModules } from './curriculum/practice/index.js';
+import { buildPracticeLesson } from './curriculum/practice/build-lesson.js';
+import { splitDrillPages } from './curriculum/drill-pages.js';
 import lesson1 from './curriculum/lessons/01-wat-is-dit.js';
 import lesson2 from './curriculum/lessons/02-ik-ben.js';
 import lesson3 from './curriculum/lessons/03-ik-woon.js';
@@ -50,10 +56,11 @@ import lesson40 from './curriculum/lessons/40-presentatie.js';
 import lesson41 from './curriculum/lessons/41-uitdrukkingen.js';
 import lesson42 from './curriculum/lessons/42-afstuderen.js';
 
-export { grammarPoints, images, names, voices, volumes };
+export { grammarPoints, names, voices, volumes };
+export const images = { ...coreImages, ...Object.fromEntries(Object.entries(practiceArt).map(([id, art]) => [id, art.alt])) };
 const authored = { 'wat-is-dit': lesson1, 'ik-ben': lesson2, 'ik-woon': lesson3, 'ik-heb': lesson4, 'ik-lees': lesson5, vandaag: lesson6, 'twee-katten': lesson7, 'mijn-familie': lesson8, 'ik-kan': lesson9, 'op-maandag': lesson10, gisteren: lesson11, omdat: lesson12, 'ik-sta-op': lesson13, groter: lesson14, toen: lesson15, 'ik-voel-me': lesson16, 'volgende-zomer': lesson17, 'die-dat': lesson18, 'hem-haar': lesson19, 'op-de-kast': lesson20, 'hoeveel-kost': lesson21, 'wachten-op': lesson22, 'terwijl': lesson23, 'om-te': lesson24, 'had-gedaan': lesson25, 'kunt-u': lesson26, 'als-ik-rijk-was': lesson27, 'sollicitatie': lesson28, 'wordt-gebouwd': lesson29, 'is-gebouwd': lesson30, 'laten': lesson31, 'mening': lesson32, 'hoe-meer': lesson33, 'volgens-de-krant': lesson34, 'had-ik-maar': lesson35, 'belgie': lesson36, 'college': lesson37, 'betoog': lesson38, 'onderzoek-doen': lesson39, 'presentatie': lesson40, 'uitdrukkingen': lesson41, 'afstuderen': lesson42 };
 
-const lessonOf = Object.fromEntries(lessonPlan.flatMap((lesson) => [...lesson.targets, ...lesson.structure, ...lesson.vocabulary].map((id) => [id, lesson.id])));
+const lessonOf = Object.fromEntries(lessonPlan.flatMap((lesson) => lesson.introducedWordIds.map((id) => [id, lesson.id])));
 export const words = plannedWords.map((word) => ({ ...word, lessonId: lessonOf[word.id] }));
 export const wordById = Object.fromEntries(words.map((word) => [word.id, word]));
 
@@ -66,11 +73,31 @@ const nameSet = new Set(names.map((name) => name.toLowerCase()));
 
 /** Word ids behind a Dutch text; names and unknown tokens are ignored. */
 export function wordsIn(...texts) {
-  return [...new Set(texts.flatMap((text) => tokenize(text ?? ''))
-    .map((token) => token.toLowerCase().replace(/^eén$/u, 'één'))
-    .filter((token) => !nameSet.has(token))
-    .map((token) => formToWord[token])
-    .filter(Boolean))];
+  const ambiguous = { douche: ['douche', 'douchen'], reis: ['reis', 'reizen'], reden: ['reden', 'rijden'], fiets: ['fiets', 'fietsen'], fietsen: ['fiets', 'fietsen'], open: ['open', 'openen'], kom: ['kom', 'komen'], sport: ['sport', 'sporten'], sporten: ['sport', 'sporten'], vertrek: ['vertrek', 'vertrekken'] };
+  const subjects = new Set(['ik', 'jij', 'je', 'hij', 'zij', 'ze', 'wij', 'we', 'jullie', 'u', 'er']);
+  const determiners = new Set(['de', 'het', 'een', 'geen', 'mijn', 'jouw', 'zijn', 'haar', 'ons', 'onze', 'hun', 'deze', 'die']);
+  return [...new Set(texts.flatMap((text) => {
+    const tokens = tokenize(text ?? '').map((token) => token.toLowerCase().replace(/^eén$/u, 'één'));
+    return tokens.map((token, index) => {
+      if (nameSet.has(token)) return null;
+      if (['pak', 'pakt'].includes(token)) return tokens.at(-1) === 'uit' ? 'uitpakken' : 'pakken';
+      if (token === 'nodig') return tokens.at(-1) === 'uit' ? 'uitnodigen' : 'nodig';
+      if (['sluit', 'sluiten'].includes(token)) return tokens.at(-1) === 'af' ? 'afsluiten' : 'sluiten';
+      if (token === 'mist') {
+        const previous = tokens[index - 1];
+        const fog = tokens.length === 1 || determiners.has(previous) || ['veel', 'weinig', 'is', 'was', 'in', 'door', 'zonder', 'met'].includes(previous)
+          || (previous === 'er' && ['is', 'was'].includes(tokens[index - 2]));
+        return fog ? 'mist' : 'missen';
+      }
+      if (ambiguous[token]) {
+        const [noun, verb] = ambiguous[token];
+        if (determiners.has(tokens[index - 1])) return noun;
+        if (subjects.has(tokens[index - 1]) || subjects.has(tokens[index + 1]) || nameSet.has(tokens[index - 1]) || (tokens.length === 1 && String(text).endsWith('!'))) return verb;
+        return ['fietsen', 'sporten'].includes(token) ? verb : noun;
+      }
+      return formToWord[token];
+    });
+  }).filter(Boolean))];
 }
 
 /** What a drill item shows, what the learner answers, and what is spoken afterwards. */
@@ -101,7 +128,7 @@ export function stepTexts(step) {
   const spoken = [];
   const checked = [];
   if (step.nl) spoken.push(step.nl);
-  for (const card of step.cards || []) spoken.push(card.nl);
+  for (const card of step.cards || []) { if (card.term) spoken.push(card.term); spoken.push(card.nl); }
   for (const line of step.lines || []) spoken.push(line.nl);
   for (const row of (step.tables || []).flatMap((table) => table.rows)) spoken.push(row.nl);
   for (const example of step.examples || []) spoken.push(example.nl);
@@ -115,16 +142,32 @@ export function stepTexts(step) {
 }
 
 export const lessons = lessonPlan.map((plan, lessonIndex) => {
-  let part = 'Words';
-  const steps = (authored[plan.id] || []).map((step, i) => {
-    part = step.part || part;
+  const module = practiceModules.find((item) => item.id === plan.id);
+  const pages = module ? buildPracticeLesson(module, plan.reviewWordIds.map((id) => wordById[id])) : (authored[plan.id] || []);
+  const steps = splitDrillPages(pages, plan.id).map((step) => {
     const texts = stepTexts(step);
-    return { ...step, id: step.id || `${plan.id}-${String(i + 1).padStart(2, '0')}`, part, wordIds: wordsIn(...texts.spoken, ...texts.checked) };
+    return { ...step, wordIds: wordsIn(...texts.spoken, ...texts.checked) };
   });
   const answers = steps.reduce((sum, step) => sum + (step.type === 'drill' ? step.items.length : ['picture', 'arrange'].includes(step.type) ? 1 : 0), 0);
-  return { ...plan, number: lessonIndex + 1, newWordIds: [...plan.targets, ...plan.structure, ...plan.vocabulary], steps, answers, minutes: Math.round(answers * 0.3 + steps.length * 0.4) };
+  return { ...plan, level: levelForVolume(plan.volume), number: lessonIndex + 1, newWordIds: plan.introducedWordIds, steps, answers, available: plan.status === 'published' && steps.length >= 30 && steps.at(-1)?.type === 'complete', minutes: Math.round(answers * 0.3 + steps.length * 0.4) };
 });
 export const lessonById = Object.fromEntries(lessons.map((lesson) => [lesson.id, lesson]));
+export const publishedLessons = lessons.filter((lesson) => lesson.available);
+export const volumeCoverage = volumes.map((volume, index) => {
+  const available = publishedLessons.filter((lesson) => lesson.volume === index);
+  const introduced = new Set(available.flatMap((lesson) => lesson.newWordIds));
+  const cumulative = new Set(publishedLessons.filter((lesson) => lesson.volume <= index).flatMap((lesson) => lesson.newWordIds));
+  return { lessons: available.length, words: introduced.size, cumulative: cumulative.size };
+});
+
+/** Published coverage is separate from a learner's recall and from unfinished drafts. */
+export const levelCoverage = courseLevels.map((level, index) => {
+  const available = publishedLessons.filter(lesson => lesson.level === level.id);
+  const earlierLevels = new Set(courseLevels.slice(0, index + 1).map(item => item.id));
+  const cumulative = new Set(publishedLessons.filter(lesson => earlierLevels.has(lesson.level)).flatMap(lesson => lesson.newWordIds)).size;
+  return { ...level, lessons: available.length, words: new Set(available.flatMap(lesson => lesson.newWordIds)).size,
+    cumulative, remaining: Math.max(0, level.minWords - cumulative) };
+});
 
 /** Every form a learner may meet by the end of the given lesson, plus names. */
 export function allowedForms(lessonIndex) {

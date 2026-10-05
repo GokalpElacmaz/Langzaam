@@ -1,27 +1,50 @@
 # Curriculum and authoring guide
 
-Seven volumes, forty-two long lessons, from “Dit is een huis” to reading and writing academic Dutch at a
-Flemish university. The volumes follow the CEFR grammar and topic syllabus (the level on each volume is the
-target of its syllabus, not a certified level):
+The roadmap has four levels across seven volumes and 42 original grammar lesson plans, with new vocabulary-practice lessons
+inserted between grammar lessons. A level label states the intended syllabus, not a certified CEFR outcome.
+Only reviewed, sufficiently complete lessons are available; the app identifies unfinished plans as drafts.
 
-| Volume | Lessons | Level | Theme |
+| Volume | Original grammar lessons | Level | Theme |
 |---|---|---|---|
-| 0 | 1–6 | Pre-A1 → A1 | First things first |
-| 1 | 7–12 | A1 → A2 | A life in Dutch |
-| 2 | 13–18 | A2 | More to say |
-| 3 | 19–24 | A2+ → B1 | A new year in Leuven |
-| 4 | 25–30 | B1 | Work and the city |
-| 5 | 31–36 | B1+ → B2 | City and society |
-| 6 | 37–42 | B2 | Academic Dutch |
+| 0 | 1–10, plus vocabulary practice | A1 | First things first |
+| 1 | 11–12, plus vocabulary practice | A2 | A life in Dutch |
+| 2 | 13–18, plus vocabulary practice | A2 | More to say |
+| 3 | 19–24 (drafts) | B1 | A new year in Leuven |
+| 4 | 25–30 (drafts) | B1 | Work and the city |
+| 5 | 31–36 (drafts) | B2 | City and society |
+| 6 | 37–42 (drafts) | B2 | Academic Dutch |
+
+Numbers in the story bible below refer to the original grammar lesson files, not their current display
+position. IDs are stable so inserting practice does not erase saved progress. Current counts, open work and
+verification results are recorded in [CURRICULUM-EXPANSION.md](CURRICULUM-EXPANSION.md).
+The current course has 56 published lessons (18 core and 38 practice), with 1,004 distinct entries:
+510 in A1 and 494 first introduced in A2. All existing lesson pages, answers and IDs are preserved.
+All published lessons are unlocked at the user's request; unpublished drafts remain unavailable.
+
+Cumulative editorial vocabulary goals are **A1: 500–1,000; A2: 1,000–1,500; B1: 2,000–2,500;
+B2: 4,000–5,000**, together with practical communicative coverage. Each goal includes earlier levels.
+`src/curriculum/levels.js` defines the four categories and targets; `levelCoverage` counts only published lessons. Do not count inflections, proper names or later revisits as new words. The
+[Council of Europe](https://www.coe.int/en/web/common-european-framework-reference-languages/reference-level-descriptions)
+describes language-specific reference levels through competence and language content; a word count alone
+is not an A1 qualification.
 
 ## Principles
 
-1. **Ten target words per lesson.** Each lesson introduces exactly ten content words. They are used
-   at least 12 times in their own lesson (most far more), the previous lesson's targets return at least
-   4 times, and **every older target returns at least twice in every later lesson** — so nothing leaves
+1. **Core grammar lessons retain ten targets; practice lessons aim for twenty.** The original grammar sequence keeps its ten-target recurrence rules. Core targets are used
+   at least 12 times in their own lesson (most far more), the previous core lesson's targets return at least
+   4 times, and **every older core target returns at least twice in every later core lesson** — so nothing leaves
    the cycle. A few structure words (pronouns, prepositions, negation) come with the grammar that needs them.
    From volume three on, targets and grammar from more than twelve lessons back must still return in every
    lesson, but once is enough.
+   **Practice lessons.** Aim for twenty genuinely new entries and 250 answers. The allowed ranges are
+   **15–25 new entries and 245–300 answers**, depending on topic, repetition and difficulty.
+   All 38 current practice modules have 20 targets, 36 pages and an 83% typed-answer share. These
+   authoring ranges do not change any existing core or practice lesson.
+   Each target has at least two distinct authored contexts and twelve uses, plus typed recall, dictation,
+   grammar transformations and comprehension. Twenty earlier targets are revisited in a bounded schedule;
+   the due-word queue continues spaced retrieval. New practice vocabulary is not forced into every older
+   authored lesson, which would make later lessons unmanageably long. Each practice target must have an
+   accurately described illustration on its introduction card and its first recognition task.
    **Extra vocabulary.** From volume two on, ten targets cannot carry a topic (a flat, a job application, the
    climate), so each lesson also owns a file of extra words, `src/curriculum/vocabulary/<lesson-id>.js`: each is
    used at least three times in its lesson and may be used freely afterwards, but it is not recycled by rule.
@@ -29,7 +52,7 @@ target of its syllabus, not a certified level):
    the few true homographs (de reis / ik reis) are listed in the validator.
 2. **Grammar is taught, then never left alone.** A lesson may start a grammar point on its own page
    with tables and examples, but from then on it is practised *combined* with everything before it.
-   Every earlier grammar point must return on at least two pages of every later lesson.
+   Every earlier core grammar point must return on at least two pages of every later core lesson. Practice lessons explicitly select already-taught grammar for repetition.
 3. **Conjugation gets volume.** Every verb is drilled across all persons, in statements, questions
    (where “jij woont” becomes “woon jij”), and negatives, typed — not tapped.
 4. **Production over recognition.** Multiple choice is for first contact only. The share of answers
@@ -37,7 +60,7 @@ target of its syllabus, not a certified level):
 5. **The lessons build one language.** The same people, places and sentences grow from lesson to
    lesson; a later story re-tells earlier facts with new grammar.
 
-All of these are enforced by `node scripts/validate-content.mjs`, not by good intentions.
+The structural requirements are checked by `node scripts/validate-content.mjs --published`. Naturalness, meaning, accepted alternatives and picture accuracy also need editorial review; passing software checks cannot establish those by itself.
 
 ## The lessons
 
@@ -72,7 +95,7 @@ point — is `src/curriculum/plan.js`.
 - In Flanders de straat, de deur, de bank and de tas are traditionally “ze”; the course only uses “hij” for
   things that are masculine everywhere (boom, auto, sleutel, trein, winkel …).
 
-### Volume one (lessons 7–12)
+### Original grammar lessons 7–12 (now split across volumes zero and one)
 
 - **Lesson 7, the house:** Bram and Lotte's house has three rooms upstairs (kamers), a kitchen (keuken) with a
   table and four chairs, and a small garden (tuin) with one tree. The old man next door has two cats. Lotte's
@@ -232,7 +255,7 @@ reasonable word-order variants.
 
 Sentences must be true to this bible and to the pictures they sit next to.
 
-## Lesson anatomy (30–40 pages, 120+ answers)
+## Core grammar lesson anatomy
 
 Each lesson moves through the same parts (set `part` on the first page of each):
 
@@ -246,13 +269,56 @@ Each lesson moves through the same parts (set `part` on the first page of each):
    deliberately tempting (“woont” when “woon” is right).
 4. **Read** — an 8–12 line story or dialogue that continues the story bible, then comprehension
    questions and full-sentence answers.
-5. **Write** — dictation, translation from English (8+ sentences), and a final 12-item mixed drill.
+5. **Write** — dictation, translation from English (8+ sentences), and final review drills grouped by response format.
 6. **complete** — the closing page.
+
+## Vocabulary-practice authoring
+
+Write a module in `src/curriculum/practice/` and register it in `practice/index.js`. Give it a stable `id`,
+a core grammar anchor (`after`), volume, 15–25 entries, grammar reminders, twenty grammar tasks, a story
+and eight questions. `entry.js` stores authored meanings, two contexts and accepted alternatives. With
+twenty entries the shared builder retains the existing 36-page, 250-answer sequence and stable IDs.
+
+The base workload is `10 × entries + grammarItems.length + reviewWords.length + questions.length + 2`.
+For smaller topics, author `extraTranslations: [{ en, answer, accept? }]` using additional complete-sentence
+contexts to bring the total to 245–300. With the usual 20 grammar tasks, 20 review words and eight story
+questions, 15 entries need 45–100 extra translations; 25 entries already produce 300 answers. Do not pad
+with mechanical duplicates: choose contexts that help with difficult meanings, articles and word order.
+Recognition and recall pages split by answer format even when word counts are not multiples of ten.
+The builder never invents content. Both the validator and boundary tests cover the allowed ranges.
+
+Append additions after the final published A2 module when preserving existing practice reviews is required;
+inserting earlier changes the scheduled review words in subsequent practice lessons.
+
+Keep each page's response format consistent. Grammar gaps and complete-sentence rewrites belong on
+separate pages; a page asking for complete sentences must not require standalone subclause fragments.
+Word recall includes de or het for nouns. In vocabulary gaps, hide the article with its noun and any
+intervening modifiers: `___ is klein.` expects `Het balkon`, and `Dit is ___.` can expect `een mooi balkon`.
+Do not repeat the target elsewhere in the visible prompt. English translation cues and base-form cues
+in grammar exercises are intentional. `tests/practice-prompts.test.js` checks answer formats, article
+recall, target giveaways, variable workloads and the stable 36-page ID sequence for standard twenty-word lessons.
+
+`practice/integrate.js` assigns first-introduction ownership and defers later forms. An existing later target
+may be introduced earlier, but it must not also expose a past tense or comparative before that is taught.
+Later core uses of the same word are revisits. Check word senses and homographs when moving entries.
+
+Illustrations live in `public/images/practice/`. The reviewed mapping in `practice/art.js` gives each word
+an image, description and crop. Keep the generated original intact. The eight later A2 sheets (animals, jobs,
+character, cooking, care, garden, weather, sport) are hand-drawn SVG built from `scripts/practice-art/<topic>.mjs`
+with `node scripts/practice-art/build.mjs <topic>`; edit the source module, rebuild, and review the PNG from
+`--review <folder>`. Bram and Lotte reuse the path data of man.svg and woman.svg. Use `Illustration.jsx` to show a cell;
+inspect actual displayed crops, including at phone width. Match the first lesson's muted, flat illustration
+style. The image and its first-showing sentence must agree on visible people, colours, quantities and states;
+a noun picture need not illustrate every later example. Avoid using an image as an answer clue in dictation
+or unaided recall.
+
+Run the published validator, unit tests, browser checks and audio generator after a batch. Original core
+lesson IDs and step IDs must remain stable. Do not publish a draft merely because it has a title or targets.
 
 ## Page schema
 
 Lesson files live in `src/curriculum/lessons/NN-id.js` and default-export an array of pages. Page
-ids are generated (`lessonId-01` …). Every page has `type`, `title`, and usually `instruction`
+ids are generated (`lessonId-01` …) before any regrouping. `drill-pages.js` separates mixed response formats while retaining the original page ID for the first group, suffixing additional groups, and retaining each item's original progress ID. Numeric bookmarks migrate using `sourceIndex`; navigation then saves stable page IDs. Every page has `type`, `title`, and usually `instruction`
 (English) and `grammar` (ids of the grammar points it practises — the validator counts these).
 
 | type | fields |
@@ -298,27 +364,26 @@ a first pass, not a substitute.
 word in it (derived from the text, so “woont” counts for *wonen*). Exposure never counts as recall.
 Correct first attempts schedule reviews after 10 minutes, 1, 3, 7 and 14 days; mistakes make a word
 due immediately; early practice never advances the schedule. The review page turns due words back
-into typed sentence tasks drawn from lessons already completed.
+into typed sentence tasks drawn from lessons already opened.
 
 ## The publishing team (agents)
 
 The lessons were produced the way the original plan described: agents working against one curriculum model,
 never generating content live for the learner. Their definitions live in `.claude/agents/` and their full
-briefs in `docs/agent-briefs/`, so the same workflow can be rerun for the next volume:
+briefs in `docs/agent-briefs/`. They document the original workflow:
 
 - **illustrator** — draws missing pictures in the house style (40+ so far).
 - **lesson-author** — writes or revises one lesson file until `validate-content.mjs` passes.
 - **dutch-reviewer** — a strict Flemish-Dutch teacher that fixes grammar, naturalness, answer keys and story consistency.
 
-The validator is the curriculum QA: the agents cannot publish vocabulary the learner has not met, or let
-a target or grammar point fall out of the cycle. In Claude Code, ask for them by name, e.g. “use the
+The validator is a structural curriculum check: it rejects unintroduced word forms and missing required repetitions. It does not certify linguistic accuracy or authorise publication. In Claude Code, ask for them by name, e.g. “use the
 lesson-author agent to write lesson 7 from plan.js, then the dutch-reviewer agent on it”.
 
 ## Adding a lesson
 
-1. Add the lesson to `lessonPlan` and its words to `words` in `src/curriculum/plan.js`.
+1. For an original grammar lesson, add its plan to `coreLessonPlan` and its words to the base catalog in `src/curriculum/plan.js`.
 2. Write `src/curriculum/lessons/NN-id.js` and import it in `src/content.js`.
 3. Run `node scripts/validate-content.mjs <id>` until it passes.
 4. Commission missing pictures (see `.claude/agents/illustrator.md`) and regenerate audio with
    `node scripts/generate-audio.mjs`.
-5. Run the linguistic and curriculum QA agents, fix what they find, then `npm test`.
+5. Review the Dutch, answer alternatives and illustrations, fix findings, then run `npm test` and browser checks. Parallel authoring and review can use agents with clearly separated file ownership under the session instructions.

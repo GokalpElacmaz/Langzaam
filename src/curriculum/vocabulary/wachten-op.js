@@ -19,8 +19,8 @@ export default {
     { id: 'taal', dutch: 'taal', article: 'de', english: 'language', forms: ['talen'] },
     { id: 'soms', dutch: 'soms', english: 'sometimes' },
   ],
-  // erop, daarop, waarop … (and ermee, daarmee, waarmee: met becomes mee)
+  // erop, daarop, waarop … (and ermee, daarmee, waarmee: met becomes mee). waarom is its own word (why, lesson 19).
   // daarom and daarnaast are words of their own (that is why; in addition), so daar skips om and naast.
   // “de hele nacht”: heel (very) as an adjective means whole.
-  forms: { heel: ['hele'], er: join('er', preps), daar: join('daar', preps.filter((p) => !['om', 'naast'].includes(p))), waar: join('waar', preps) },
+  forms: { heel: ['hele'], er: join('er', preps), daar: join('daar', preps.filter((p) => !['om', 'naast'].includes(p))), waar: join('waar', preps.filter((p) => p !== 'om')) },
 };

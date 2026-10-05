@@ -122,7 +122,7 @@ export default [
       '**hebben** is almost regular, and that is exactly what makes it dangerous. Start from the rule you know: stem for ik, stem + t for jij, infinitive for the plural. The stem of *hebben* is **heb** — a double consonant at the end of a stem becomes single, just as *zitten* gives *ik zit*.',
       'So: *ik **heb***, *jij **hebt***, *wij/jullie/zij **hebben***. All regular.',
       'The one exception is the third person singular: **hij heeft, zij heeft, het heeft** — not *hebt*. English learners often write *hij hebt*; it is simply wrong. Think of English “has”, which also breaks the pattern of “have”.',
-      'Questions work as before. The verb moves to the front, and after *jij* the -t disappears: *jij hebt* → ***heb** jij?* But *heeft* is not a “stem + t” form, so it never changes: *Heeft Lotte een fiets?*',
+      'Questions work as before. The verb moves to the front, and when *jij* follows the verb, the -t disappears: *jij hebt* → ***heb** jij?* But *heeft* is not a “stem + t” form, so it never changes: *Heeft Lotte een fiets?*',
       'Remember that **zij** is both “she” (zij heeft) and “they” (zij hebben). The verb tells you which one is meant.',
     ],
     tables: [
@@ -248,8 +248,8 @@ export default [
   {
     type: 'grammar', title: 'geen or niet?', grammar: ['geen-niet', 'geen', 'niet'],
     body: [
-      'Dutch has two words for “not”, and they are never interchangeable.',
-      '**geen** replaces **een** — or no article at all — in front of a noun. It means “not a / no”: *Ik heb **een** hond* → *Ik heb **geen** hond.* You never say *niet een hond*.',
+      'Dutch uses **niet** and **geen** in different patterns. These exercises practise ordinary, neutral negation.',
+      '**geen** replaces **een** — or no article at all — in front of a noun. It means “not a / no”: *Ik heb **een** hond* → *Ik heb **geen** hond.* For neutral negation, use **geen hond**. A contrast with emphasis can use **niet een**, but that is not the pattern practised here.',
       '**niet** negates everything else: an adjective (*De hond is **niet** groot*), a verb (*Bram werkt **niet***), a place (*Lotte werkt **niet** in Brussel*), and a noun that already has **de, het** or **mijn** in front of it (*Dit is **niet** mijn fiets*).',
       'So the test is quick: is there **een** (or nothing) in front of a noun? Then **geen**. In every other case, **niet**.',
       'Where does *niet* go? Straight in front of the adjective, the place, or the noun with *de/het/mijn* after *is* that it negates (*De kat is **niet** klein*, *Lotte werkt **niet** in Brussel*, *Dit is **niet** het huis*). When it negates the whole action it goes to the end: *Max slaapt **niet**.* With **hebben** and a noun that has *mijn, de* or *het*, that noun comes first and *niet* follows it: *Ik heb mijn sleutel **niet**.*',

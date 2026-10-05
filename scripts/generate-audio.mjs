@@ -9,7 +9,7 @@
 import { execFile, execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { promisify } from 'node:util';
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -20,6 +20,7 @@ const contentPath = join(root, 'src', 'content.js');
 const manifestPath = join(root, 'src', 'audio-manifest.json');
 const force = process.argv.includes('--force');
 const rates = { normal: 145, slow: 105 };
+const subprocessOptions = { timeout: 60_000, killSignal: 'SIGKILL' };
 
 if (process.platform !== 'darwin') {
   throw new Error('Audio regeneration requires macOS. The checked-in recordings work on any platform.');
@@ -55,7 +56,7 @@ function slugFor(text) {
 }
 
 function durationOf(path) {
-  const info = execFileSync('/usr/bin/afinfo', [path], { encoding: 'utf8' });
+  const info = execFileSync('/usr/bin/afinfo', [path], { encoding: 'utf8', timeout: 10_000, killSignal: 'SIGKILL' });
   const duration = Number(info.match(/estimated duration:\s*([\d.]+) sec/)?.[1]);
   if (!Number.isFinite(duration) || duration <= 0) {
     throw new Error(`Audio file is empty or unreadable: ${path}. macOS speech services must be available.`);
@@ -66,8 +67,11 @@ function durationOf(path) {
 const run = promisify(execFile);
 let generated = 0;
 let verified = 0;
+let progressTimer;
+const activeJobs = new Map();
+const reportProgress = () => console.log(`Progress: verified ${verified}/${clips.length * Object.keys(rates).length}; generated ${generated}. Active: ${[...activeJobs.values()].join(', ') || 'none'}.`);
 try {
-  const jobs = [];
+  const jobsByVoice = new Map();
   const slugOf = new Map();
   for (const { text, voice } of clips) {
     if (!slugOf.has(text)) slugOf.set(text, slugFor(text));
@@ -79,21 +83,62 @@ try {
       const filename = `${slug}${voice === 'ellen' ? '' : `--${voice}`}${speed === 'slow' ? '-slow' : ''}.m4a`;
       const destination = join(outputDirectory, filename);
       manifest[text][voice][speed] = `/audio/${filename}`;
-      jobs.push(async () => {
-        if (force || !existsSync(destination)) {
-          const intermediate = join(temporaryDirectory, `${slug}-${voice}-${speed}.aiff`);
-          await run('/usr/bin/say', ['-v', content.voices[voice].system, '-r', String(rate), '-o', intermediate, text]);
-          durationOf(intermediate);
-          await run('/usr/bin/afconvert', ['-f', 'm4af', '-d', 'aac', intermediate, destination]);
-          generated += 1;
+      if (!jobsByVoice.has(voice)) jobsByVoice.set(voice, []);
+      jobsByVoice.get(voice).push(async () => {
+        activeJobs.set(voice, filename);
+        try {
+          let reusable = false;
+          if (!force && existsSync(destination)) {
+            try { durationOf(destination); reusable = true; }
+            catch { console.warn(`Regenerating unreadable recording: ${filename}`); }
+          }
+          if (!reusable) {
+            const intermediate = join(temporaryDirectory, `${slug}-${voice}-${speed}.aiff`);
+            const converted = join(temporaryDirectory, filename);
+            for (let attempt = 1; attempt <= 2; attempt += 1) {
+              try {
+                await run('/usr/bin/say', ['-v', content.voices[voice].system, '-r', String(rate), '-o', intermediate, text], subprocessOptions);
+                durationOf(intermediate);
+                await run('/usr/bin/afconvert', ['-f', 'm4af', '-d', 'aac', intermediate, converted], subprocessOptions);
+                durationOf(converted);
+                renameSync(converted, destination);
+                generated += 1;
+                break;
+              } catch (error) {
+                if (attempt === 2) throw new Error(`Failed to generate ${filename} after two attempts.`, { cause: error });
+                console.warn(`Retrying ${filename} after a failed or timed-out generation attempt: ${error.message}`);
+              } finally {
+                rmSync(intermediate, { force: true });
+                rmSync(converted, { force: true });
+              }
+            }
+          }
+          verified += 1;
+          if (verified % 100 === 0) reportProgress();
+        } finally {
+          activeJobs.delete(voice);
         }
-        durationOf(destination);
-        verified += 1;
       });
     }
   }
-  // A small pool: macOS speech synthesis is happy with a few parallel voices.
-  await Promise.all(Array.from({ length: 6 }, async () => { while (jobs.length) await jobs.shift()(); }));
+  // One worker per voice reduces load on each macOS speech service.
+  // Settle every worker before removing temporary files.
+  reportProgress();
+  progressTimer = setInterval(reportProgress, 30_000);
+  let failed = false;
+  const results = await Promise.allSettled([...jobsByVoice.values()].map(async (jobs) => {
+    try {
+      for (const job of jobs) {
+        if (failed) break;
+        await job();
+      }
+    } catch (error) {
+      failed = true;
+      throw error;
+    }
+  }));
+  const failure = results.find((result) => result.status === 'rejected');
+  if (failure) throw failure.reason;
   const used = new Set(Object.values(manifest).flatMap((entry) => Object.values(entry).filter((v) => typeof v === 'object').flatMap((speeds) => Object.values(speeds).map((path) => path.replace('/audio/', '')))));
   const stale = readdirSync(outputDirectory).filter((file) => file.endsWith('.m4a') && !used.has(file));
   for (const file of stale) rmSync(join(outputDirectory, file));
@@ -104,5 +149,6 @@ try {
   }
   console.log(`Generated ${generated} recordings; verified ${verified} recordings for ${slugOf.size} Dutch texts in ${Object.keys(content.voices).length} voices; removed ${stale.length} unused.`);
 } finally {
+  clearInterval(progressTimer);
   rmSync(temporaryDirectory, { recursive: true, force: true });
 }

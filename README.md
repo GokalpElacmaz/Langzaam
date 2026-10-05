@@ -1,10 +1,26 @@
 # Langzaam — a little Dutch, often.
 
-An illustrated Dutch textbook you work through, not a streak app. Two volumes, **twelve long lessons**
-(36–46 pages each). Each lesson has **ten target words**, all of which keep
-coming back in later lessons, and grammar taught explicitly: de/het, zijn, every present-tense ending with
-its spelling rules, hebben, geen/niet, adjective -e, verb-second word order, plurals, possessives, modal verbs,
-the perfect tense and subordinate clauses. Every sentence has a picture or a recording in two voices. Mathematics and physics remain on the roadmap after B2.
+An illustrated Dutch textbook with explicit grammar, typed practice, recorded audio and spaced review.
+The available course currently has **56 lessons: 18 core grammar lessons and 38 vocabulary-practice lessons**.
+The existing lesson contents are preserved. The book and journey group lessons under **A1, A2, B1 and B2**,
+while keeping the seven volumes, lesson IDs and saved progress. B1 and B2 lessons remain drafts.
+
+| Level | Cumulative vocabulary goal | Available lessons | New entries at this level | Cumulative coverage |
+| --- | ---: | ---: | ---: | ---: |
+| A1 | 500–1,000 | 28 | 510 | 510 |
+| A2 | 1,000–1,500 | 28 | 494 | 1,004 |
+| B1 | 2,000–2,500 | 0 | 0 | 1,004 |
+| B2 | 4,000–5,000 | 0 | 0 | 1,004 |
+
+Goals include earlier levels. Inflections and revisited entries count once; coverage is vocabulary taught,
+not a claim that a learner has mastered it. A2 has reached its **1,000-entry minimum**; further A2 topics can
+take it towards 1,500 before B1.
+
+New practice lessons aim for **20 words and 250 answers**, with **15–25 words and 245–300 answers**
+allowed for topic size, repetition and difficulty. All thirty-eight current practice lessons use 20 entries,
+36 pages and 250 answers, with 760 vocabulary illustrations. The latest eight A2 additions cover animals,
+jobs, character and feelings, cooking, personal care, the garden, weather and sport. See
+[the expansion checkpoint](docs/CURRICULUM-EXPANSION.md).
 
 ## Open locally
 
@@ -19,20 +35,26 @@ Open http://127.0.0.1:5173. `npm run build` writes a static release to `dist/`.
 
 Each lesson moves through **Words → Grammar → Combine → Read → Write**:
 
-- **Words**: see and hear the ten targets, recognise them by reading and by ear, then write and spell them.
+- **Words**: see and hear the targets (ten in a core grammar lesson, usually twenty in a practice lesson), recognise them by reading and by ear, then write and spell them.
 - **Grammar**: a real explanation page with tables and audio, followed at once by conjugation tables and
   typed drills. From then on every grammar point is practised combined with everything before it.
 - **Combine**: rewrite sentences (make it a question, make it negative, change the subject, start with
   “Vandaag”), and build sentences from word tiles with deliberately tempting spare words.
 - **Read**: a dialogue or story that continues Bram and Lotte's life in Leuven, then questions answered in full sentences.
-- **Write**: dictation, translation from English, and a long mixed final drill.
+- **Write**: dictation, translation from English, and final review pages grouped by answer format.
 
 Most answers are typed, and the share rises from 60% in lesson 1 to 80–90% later. Capitals and punctuation
 never matter; spelling and word order always do. jij/je, zij/ze and wij/we are interchangeable. After a
 mistake you can reveal the answers, but you then type them in yourself.
 
+All drill pages use one answer format at a time: missing words, complete sentences, word recall/translation, conjugation, or dictation.
+Vocabulary gaps include the missing noun's article: `___ is klein.` expects `Het balkon`. The prompt must
+not repeat the target elsewhere. English translation cues and grammar base-form cues remain intentional.
+
 ## Progress and review
 
+All published lessons are unlocked, preserving the user's chosen access setting; drafts remain unavailable.
+Adding practice lessons preserves existing lesson and page IDs and saved progress.
 Progress is saved in this browser's `localStorage` (`langzaam-v2`). There is no account or sync.
 Every answer records an encounter for each word in it. For example, “woont” counts for *wonen*.
 Correct first attempts schedule a word for 10 minutes, then 1, 3, 7 and 14 days later. A mistake makes it
@@ -43,7 +65,10 @@ have opened, including conjugation rows like “jij ___ (wonen)”. The schedule
 
 - `src/curriculum/plan.js` is the curriculum model: every word, its forms and when each unlocks, the grammar points and the picture descriptions.
 - `src/curriculum/lessons/*.js` holds the pages of each lesson. `src/content.js` derives everything else (tracked words, audio corpus).
-- `scripts/validate-content.mjs` enforces the course rules: only introduced Dutch, target recurrence, grammar recurrence, typed share and page shape.
+- `scripts/validate-content.mjs --published` checks the available course; omitting `--published` also audits unfinished drafts. It enforces only introduced Dutch, target recurrence, grammar recurrence, typed share and page shape.
+- `src/curriculum/practice/` holds the new vocabulary lessons and their reviewed illustration mapping. The
+  later A2 picture sheets are hand-drawn SVG, generated by `node scripts/practice-art/build.mjs <topic>`
+  (add `--review <folder>` to render a PNG to check them).
 - `docs/CURRICULUM.md` covers the principles, story bible, page schema and publishing workflow.
 - `.claude/agents/` and `docs/agent-briefs/` hold the illustrator, lesson-author and dutch-reviewer agents that produced the lessons.
 
@@ -59,5 +84,5 @@ still review the course before any real publication.
 
 ```sh
 npm test                 # learner model, answer checking, validator, audio coverage
-npx playwright test      # starts the dev server; walks lesson 1 by typing every answer, solves every later lesson, phone width
+npx playwright test      # solves available lessons; checks saved progress, phone width, audio and new pictures
 ```

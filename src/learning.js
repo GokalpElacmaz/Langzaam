@@ -11,6 +11,38 @@ export function createInitialState() {
   };
 }
 
+/** Resolve old numeric bookmarks against authored pages, then save stable page IDs. */
+export function lessonPosition(state, lesson) {
+  const savedId = state.positionStepIds?.[lesson.id];
+  const byId = lesson.steps.findIndex(step => step.id === savedId);
+  if (byId >= 0) return byId;
+  const numeric = state.positions?.[lesson.id];
+  const oldIndex = Number.isInteger(numeric) ? Math.max(0, numeric) : 0;
+  const migrated = lesson.steps.findIndex(step => step.sourceIndex === oldIndex);
+  return migrated >= 0 ? migrated : Math.min(oldIndex, lesson.steps.length - 1);
+}
+
+export function setLessonPosition(state, lesson, index) {
+  const step = lesson.steps[index];
+  return {
+    ...state,
+    positions: { ...state.positions, [lesson.id]: step.sourceIndex ?? index },
+    positionStepIds: { ...state.positionStepIds, [lesson.id]: step.id },
+  };
+}
+
+/** Users should be able to open any published lesson at any time. */
+export function isLessonUnlocked(state, lesson, catalog) {
+  return Boolean(lesson.available);
+}
+
+/** Forms introduced in later lessons stay hidden until those lessons are opened. */
+export function collectedForms(word, openedLessonIds) {
+  return [...new Set([...(word.forms || []), ...Object.entries(word.laterForms || {})
+    .filter(([lessonId]) => openedLessonIds.has(lessonId)).flatMap(([, forms]) => forms)])]
+    .filter(form => form !== word.dutch);
+}
+
 /**
  * correct: true = recalled, false = needs practice, null = reading/listening only.
  * Give lesson events a stable eventId to prevent revisits inflating progress.

@@ -1,3 +1,4 @@
+import Illustration from './Illustration.jsx';
 import React, { Fragment } from 'react';
 import { Check, X } from 'lucide-react';
 import { AudioButton } from './audio.jsx';
@@ -38,7 +39,7 @@ export function DrillItem({ item, step = {}, index, value, onChange, status, rev
   const { kind, choices, answer, spoken, task } = itemModel(item, step);
   const locked = status === 'correct';
   const inputId = `${step.id || 'review'}-item-${index}`;
-  const width = `${Math.max(5, answer.length + 2)}ch`;
+  const width = '12ch';
   const input = (className = '', extra = {}) => <input id={inputId} className={`drill-input ${className} ${status || ''}`} lang="nl" autoComplete="off" autoCapitalize="none" autoCorrect="off" spellCheck="false" value={value} disabled={locked} onChange={e => onChange(e.target.value)} autoFocus={autoFocus} {...extra} />;
   const buttons = choices && <div className="drill-choices" role="group" aria-label="Choose an answer">{choices.map(choice => <button type="button" key={choice} lang="nl" className={`word-token ${value === choice ? 'selected' : ''} ${locked && value === choice ? 'correct' : ''}`} aria-pressed={value === choice} disabled={locked} onClick={() => onChange(choice)}>{choice}</button>)}</div>;
   const mark = status && <span className={`drill-mark ${status}`} aria-label={status === 'correct' ? 'Correct' : 'Not yet right'}>{status === 'correct' ? <Check size={14} /> : <X size={14} />}</span>;
@@ -52,7 +53,7 @@ export function DrillItem({ item, step = {}, index, value, onChange, status, rev
 
   return <div className={`drill-item ${status || ''} ${item.image ? 'has-image' : ''}`}>
     <span className="drill-number">{index + 1}</span>
-    {item.image && <img className="drill-image" src={`/images/${item.image}.svg`} alt={imageAlt(item.image)} />}
+    {item.image && <Illustration className="drill-image" image={item.image} alt={imageAlt(item.image)} />}
     <div className="drill-body">
       {kind === 'listen' && <div className="drill-listen"><AudioButton text={item.listen} label="Play" className="audio-wide" conceal={!locked} />{locked && <span lang="nl">{item.listen}</span>}</div>}
       {kind === 'cloze' && <p className="drill-sentence" lang="nl">{item.nl.split('___')[0]}{choices ? <span className="blank-word">{value || '…'}</span> : <label className="inline-blank"><span className="sr-only">Missing word</span>{input('inline', { style: { width } })}</label>}{item.nl.split('___')[1]}{item.cue && <span className="drill-cue">({item.cue})</span>}</p>}

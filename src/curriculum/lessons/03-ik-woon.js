@@ -116,7 +116,7 @@ export default [
       'The stem alone goes with **ik**. The stem **+ t** goes with **jij/je**, **hij**, **zij/ze** (she) and **het** (it). The three plural persons — **wij/we**, **jullie** and **zij/ze** (they) — use the full infinitive.',
       'So a regular verb has only three present-tense forms: *werk, werkt, werken*. Thousands of verbs follow this pattern; once you can do it with ten verbs, you can do it with all of them.',
       '**zij** can mean “she” or “they”. The verb tells you which: *zij werkt* = she works, *zij werken* = they work — just as *zij is* and *zij zijn* did in lesson 2.',
-      '**het** is “it” — and it is also the pronoun for **het kind**, because kind is a het-word: *Het kind speelt. **Het** is blij.* Dutch uses the grammar of the noun here, not the sex of the child.',
+      '**het** means “it”. With **het kind**, **het** is possible when speaking about a child in general: *Het kind speelt. **Het** is blij.* For a particular child, **hij** or **zij** is also natural. The article **het** does not force you to use the pronoun **het** for a person.',
       'Dutch has one present tense where English has two: *ik werk* is both “I work” and “I am working”. Never translate “am working” with *ben*: *ik ben werk* is wrong; *ik werk* is right.',
     ],
     tables: [
@@ -378,7 +378,7 @@ export default [
   },
   {
     type: 'drill', title: 'Change the subject', grammar: ['present-regular', 'spelling-stem', 'subject-pronouns', 'zijn'],
-    instruction: 'Rewrite the sentence with the new subject. Change the verb — and only the verb.',
+    instruction: 'Rewrite the sentence with the new subject. Change the subject and its verb; keep the rest of the sentence.',
     items: [
       { nl: 'Ik woon in Leuven.', task: 'Change ik to hij', answer: 'Hij woont in Leuven.' },
       { nl: 'Hij slaapt.', task: 'Change hij to wij', answer: 'Wij slapen.' },
@@ -467,7 +467,7 @@ export default [
       'Because jij still comes after the verb, it still loses its -t: *Waar **woon** jij?* — never *waar woont jij*. The question word changes nothing about that rule.',
       'A waar-question cannot be answered with ja or nee; you answer with a place. **in** a town, a building or a car (*in Leuven, in het huis, in de auto*), **op** a surface such as a bench (*op de bank*), and **thuis** on its own — “at home” needs no preposition. **hier** means “here”. “Op straat” (out in the street) is fixed, without de.',
       '**wat** you already know from *Wat is dit?* It works the same way: question word, verb, subject.',
-      'When you answer about a thing, remember lesson 2: a de-word becomes **hij**, a het-word becomes **het**. *Waar is de auto? **Hij** is hier. Waar is het huis? **Het** is in Leuven.* The child is a het-word too: *Waar is het kind? **Het** speelt op straat.*',
+      'Remember the examples from lesson 2: *Waar is de auto? **Hij** is hier. Waar is het huis? **Het** is in Leuven.* Masculine de-words use **hij**; het-words for things use **het**. For **het kind**, **het**, **hij** or **zij** can be possible, depending on how you refer to the child.',
     ],
     tables: [
       { caption: 'Question word + verb + subject', rows: [
@@ -544,18 +544,18 @@ export default [
   },
   {
     type: 'drill', title: 'hij, het, zij — and where?', grammar: ['hij-het-things', 'question-word', 'de-het', 'zijn', 'dit-is'],
-    instruction: 'Type the missing pronoun. A de-word is hij, a het-word is het — the child too — and a woman is zij.',
+    instruction: 'Type the missing pronoun. Use hij for boom and auto, het for huis and raam, and zij for Lotte. For the child, het, hij or zij is possible.',
     items: [
       { nl: 'Is de auto nieuw? Ja, ___ is nieuw.', en: 'Is the car new? Yes, it is new.', answer: 'hij' },
       { nl: 'Is het raam groot? Nee, ___ is klein.', en: 'Is the window big? No, it is small.', answer: 'het' },
-      { nl: 'Waar is het kind? ___ speelt op straat.', en: 'Where is the child? It is playing in the street.', answer: 'Het' },
+      { nl: 'Waar is het kind? ___ speelt op straat.', en: 'Where is the child? It is playing in the street.', answer: 'Het', accept: ['Hij', 'Zij'] },
       { nl: 'Is de boom oud? Ja, ___ is oud.', en: 'Is the tree old? Yes, it is old.', answer: 'hij' },
       { nl: 'Waar is de vrouw? ___ is thuis; zij is ziek.', en: 'Where is the woman? She is at home; she is ill.', answer: 'Zij' },
-      { nl: 'Is het kind lief? Ja, ___ is lief.', en: 'Is the child sweet? Yes, it is sweet.', answer: 'het' },
+      { nl: 'Is het kind lief? Ja, ___ is lief.', en: 'Is the child sweet? Yes, it is sweet.', answer: 'het', accept: ['hij', 'zij'] },
       { nl: 'Wat is dit? ___ is een deur.', en: 'What is this? This is a door.', answer: 'Dit', accept: ['Het'] },
       { nl: 'Is het huis klein? Nee, ___ is groot.', en: 'Is the house small? No, it is big.', answer: 'het' },
     ],
-    explanation: 'de boom, de auto → hij; het huis, het raam, het kind → het. A de-word thing is “hij” even though English says “it”.',
+    explanation: 'de boom, de auto → hij; het huis, het raam → het. For het kind, het is possible, and hij or zij can refer to the particular child.',
   },
   {
     type: 'drill', title: 'Answer in a full sentence', grammar: ['yes-no-question', 'present-regular', 'zijn', 'niet', 'subject-pronouns'], task: 'Answer in full',
@@ -565,7 +565,7 @@ export default [
       { image: 'man-happy', nl: 'Is Bram moe?', answer: 'Nee, hij is blij.', accept: ['Nee, Bram is blij.', 'Nee, hij is niet moe.', 'Nee, Bram is niet moe.', 'Nee, hij is niet moe. Hij is blij.'] },
       { image: 'couple-talking', nl: 'Slapen Bram en Lotte?', answer: 'Nee, zij praten.', accept: ['Nee, Bram en Lotte praten.', 'Nee, zij slapen niet.', 'Nee, Bram en Lotte slapen niet.', 'Nee, zij slapen niet. Zij praten.'] },
       { image: 'people-home', nl: 'Bram en Lotte, wonen jullie hier?', task: 'Answer as Bram and Lotte', answer: 'Ja, wij wonen hier.' },
-      { image: 'child-playing', nl: 'Slaapt het kind?', answer: 'Nee, het speelt.', accept: ['Nee, het kind speelt.', 'Nee, het slaapt niet.', 'Nee, het kind slaapt niet.', 'Nee, het slaapt niet. Het speelt.'] },
+      { image: 'child-playing', nl: 'Slaapt het kind?', answer: 'Nee, het speelt.', accept: ['Nee, het kind speelt.', 'Nee, het slaapt niet.', 'Nee, het kind slaapt niet.', 'Nee, het slaapt niet. Het speelt.', 'Nee, hij speelt.', 'Nee, zij speelt.', 'Nee, hij slaapt niet.', 'Nee, zij slaapt niet.'] },
       { image: 'man-cooking', nl: 'Slaapt Bram?', answer: 'Nee, hij kookt.', accept: ['Nee, Bram kookt.', 'Nee, hij slaapt niet.', 'Nee, Bram slaapt niet.', 'Nee, hij slaapt niet. Hij kookt.'] },
       { image: 'woman-studying', nl: 'Slaapt Lotte?', answer: 'Nee, zij leert.', accept: ['Nee, Lotte leert.', 'Nee, zij slaapt niet.', 'Nee, Lotte slaapt niet.', 'Nee, zij slaapt niet. Zij leert.'] },
       { image: 'old-man', nl: 'Is de man jong?', answer: 'Nee, hij is oud.', accept: ['Nee, de man is oud.', 'Nee, hij is niet jong.', 'Nee, de man is niet jong.'] },
@@ -593,7 +593,7 @@ export default [
   {
     type: 'arrange', title: 'Two sentences, two verbs', grammar: ['zijn', 'present-regular', 'hij-het-things'],
     instruction: 'Build: “The child is happy. It is playing.” Two tiles are traps.',
-    nl: 'Het kind is blij. Het speelt.', en: 'The child is happy. It is playing.', image: 'child-playing', distractors: ['spelen', 'hij'],
+    nl: 'Het kind is blij. Het speelt.', en: 'The child is happy. It is playing.', image: 'child-playing', distractors: ['spelen', 'speel'],
   },
 
   // ——— Read ———
@@ -626,7 +626,7 @@ export default [
       { nl: 'Waar leert Lotte?', task: 'Answer in full', answer: 'Zij leert thuis.', accept: ['Lotte leert thuis.', 'Zij leert ook thuis.'] },
       { nl: 'Is het huis mooi?', task: 'Answer in full', answer: 'Ja, het is mooi.', accept: ['Ja, het huis is mooi.'] },
       { nl: 'Wacht de man op Bram?', task: 'Answer in full', answer: 'Nee, hij wacht op het kind.', accept: ['Nee, de man wacht op het kind.'] },
-      { nl: 'Is het kind lief?', task: 'Answer in full', answer: 'Ja, het is lief.', accept: ['Ja, het kind is lief.'] },
+      { nl: 'Is het kind lief?', task: 'Answer in full', answer: 'Ja, het is lief.', accept: ['Ja, het kind is lief.', 'Ja, hij is lief.', 'Ja, zij is lief.'] },
       { nl: 'Praten Bram en Lotte?', task: 'Answer in full', answer: 'Ja, zij praten.', accept: ['Ja, Bram en Lotte praten.', 'Ja, zij praten op de bank.'] },
     ],
   },

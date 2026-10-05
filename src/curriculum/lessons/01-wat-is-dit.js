@@ -28,7 +28,7 @@ export default [
       { nl: 'Dit is een auto.', en: 'This is a car.', image: 'car' },
       { nl: 'Dit is een straat.', en: 'This is a street.', image: 'neighbourhood' },
     ],
-    note: 'Ten words now. You do not need them all today — every one of them comes back in every later lesson.',
+    note: 'Ten words now. You do not need them all today — you will meet them again in later lessons and review.',
   },
   {
     type: 'picture', title: 'Read and point', grammar: ['dit-is'],

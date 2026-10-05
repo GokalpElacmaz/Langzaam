@@ -45,7 +45,7 @@ export default [
       { nl: 'Gisteren is Lotte thuisgebleven.', en: 'Yesterday Lotte stayed at home.', image: 'woman-sick' },
       { nl: '’s Ochtends was ik me en dan kleed ik me aan.', en: 'In the morning I wash, and then I get dressed.' },
     ],
-    note: 'de arm, de armen; het been, de benen (leg — irregular plural); de keel (throat) → keelpijn; de koorts (fever); rusten (to rest: ik rust, hij rust); blijven (to stay: ik blijf, hij blijft, ik ben gebleven, ik bleef) — thuisblijven (to stay at home) is written as one word, like thuiskomen: ik blijf thuis, ik ben thuisgebleven; slecht (bad, badly); de apotheker (the pharmacist). zich wassen (to wash): ik was me — the same spelling as “was”, the past of zijn. zich aankleden (to get dressed): ik kleed me aan.',
+    note: 'de arm, de armen; het been, de benen (leg — the long ee becomes e in an open syllable); de keel (throat) → keelpijn; de koorts (fever); rusten (to rest: ik rust, hij rust); blijven (to stay: ik blijf, hij blijft, ik ben gebleven, ik bleef) — thuisblijven (to stay at home) is written as one word, like thuiskomen: ik blijf thuis, ik ben thuisgebleven; slecht (bad, badly); de apotheker (the pharmacist). zich wassen (to wash): ik was me — the same spelling as “was”, the past of zijn. zich aankleden (to get dressed): ik kleed me aan.',
   },
   {
     type: 'observe', title: 'Remembering Oostende', grammar: ['reflexive', 'dit-is', 'adverb-position', 'toen-past', 'imperfect-weak', 'imperfect-strong'],
@@ -558,7 +558,7 @@ export default [
       { en: 'Take your coat with you.', answer: 'Neem je jas mee.', accept: ['Neem jouw jas mee.'] },
       { en: 'Come on Monday at ten o’clock.', answer: 'Kom maandag om tien uur.', accept: ['Kom op maandag om tien uur.'] },
     ],
-    explanation: 'Ga vroeg naar bed: time before place, as in every sentence. Neem je jas mee: here je is the possessive “your” — the context makes it clear.',
+    explanation: 'Ga vroeg naar bed: the usual time-before-place order practised here. Neem je jas mee: here je is the possessive “your” — the context makes it clear.',
   },
   {
     type: 'arrange', title: 'Early tomorrow', grammar: ['imperative', 'separable', 'time-place'],
@@ -725,7 +725,7 @@ export default [
       { nl: '___ hoofd', cue: 'de / het', answer: 'het' },
       { nl: '___ buik', cue: 'de / het', answer: 'de' },
     ],
-    explanation: 'apothekers, medicijnen, benen: -s, -en, and one irregular plural. een goed medicijn — een + het-word: no -e; een lieve vrouw — a de-word: -e. het medicijn → het. The doctor in this book is a woman → zij.',
+    explanation: 'apothekers takes -s; medicijnen and benen take -en. In been → benen, the long vowel stays long and ee becomes e in the open syllable. een goed medicijn — een + het-word: no -e; een lieve vrouw — a de-word: -e. het medicijn → het. The doctor in this book is a woman → zij.',
   },
   {
     type: 'arrange', title: 'If you have a fever', grammar: ['als-inversion', 'modals', 'infinitive-end', 'pijn-hebben'],

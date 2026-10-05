@@ -3,7 +3,7 @@ export default {
   words: [
     { id: 'jarig', dutch: 'jarig', english: 'having a birthday (Lotte is jarig)', image: 'birthday' },
     { id: 'gefeliciteerd', dutch: 'gefeliciteerd', english: 'congratulations / happy birthday' },
-    { id: 'uitnodigen', dutch: 'uitnodigen', english: 'to invite (nodig hebben: to need — same spelling as “nodig”)', forms: ['nodig', 'nodigt', 'uitnodig', 'uitnodigt', 'uitgenodigd', 'nodigde', 'nodigden', 'uitnodiging', 'uitnodigingen'] },
+    { id: 'uitnodigen', dutch: 'uitnodigen', english: 'to invite (nodig hebben: to need — same spelling as “nodig”)', forms: ['nodig', 'nodigt', 'nodigen', 'uitnodig', 'uitnodigt', 'uitgenodigd', 'nodigde', 'nodigden'] },
     { id: 'vieren', dutch: 'vieren', english: 'to celebrate (ik vier — same spelling as the number vier)', forms: ['viert', 'gevierd', 'vierden'] },
     { id: 'kaars', dutch: 'kaars', article: 'de', english: 'candle', image: 'birthday', forms: ['kaarsen', 'kaarsje', 'kaarsjes'] },
     { id: 'zingen', dutch: 'zingen', english: 'to sing', forms: ['zing', 'zingt', 'gezongen', 'zong', 'zongen'] },
@@ -20,10 +20,11 @@ export default {
     { id: 'bakken', dutch: 'bakken', english: 'to bake / to fry', forms: ['bak', 'bakt', 'gebakken', 'bakte', 'bakten'] },
     { id: 'tonen', dutch: 'tonen', english: 'to show', forms: ['toon', 'toont', 'getoond', 'toonde', 'toonden'] },
     { id: 'stuk', dutch: 'stuk', article: 'het', english: 'piece (een stuk taart)', forms: ['stukken', 'stukje', 'stukjes'] },
-    { id: 'lekker', dutch: 'lekker', english: 'tasty / nice', forms: ['lekkere', 'lekkerder', 'lekkerst'] },
+    { id: 'lekker', dutch: 'lekker', english: 'tasty / nice', forms: ['lekkere', 'lekkerder', 'lekkerst', 'lekkerste'] },
     { id: 'leuk', dutch: 'leuk', english: 'nice / fun', forms: ['leuke', 'leuker', 'leukst', 'leukste'] },
     { id: 'echt', dutch: 'echt', english: 'really / real', forms: ['echte'] },
     { id: 'allemaal', dutch: 'allemaal', english: 'all (of us / them): wij zingen allemaal' },
+    { id: 'waarom', dutch: 'waarom', english: 'why' },
     { id: 'kus', dutch: 'kus', article: 'de', english: 'kiss', forms: ['kusje', 'kusjes'] },
   ],
 };

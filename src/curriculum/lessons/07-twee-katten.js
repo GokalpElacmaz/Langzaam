@@ -247,7 +247,7 @@ export default [
     type: 'grammar', title: 'Plural sentences: verb, ze, -e and geen', grammar: ['plural', 'present-regular', 'hij-het-things', 'adjective-e', 'geen-niet'],
     body: [
       '**The verb.** A plural subject takes the plural verb — the same form you use with *wij, jullie* and *zij* (they), which is the infinitive: *De kat slaap**t*** → *De katten slap**en***. *Het kind speel**t*** → *De kinderen spel**en***. Two names joined by *en* are plural too: *Mimi en Max slapen.* With the irregulars: *de hond **is*** → *de honden **zijn***; *de man **heeft*** → *de mannen **hebben***.',
-      '**The pronoun.** In the singular you choose between *hij* (de-words) and *het* (het-words). In the plural there is no choice: people, animals and things, de-words and het-words — all are **zij / ze**. *De stoelen zijn nieuw → **Ze** zijn nieuw. De huizen zijn oud → **Ze** zijn oud.* For things, the unstressed **ze** is usual.',
+      '**The pronoun.** For singular things, you have practised *hij* with masculine de-words and *het* with het-words; feminine de-words can use *ze*. In the plural there is no choice: people, animals and things, de-words and het-words — all are **zij / ze**. *De stoelen zijn nieuw → **Ze** zijn nieuw. De huizen zijn oud → **Ze** zijn oud.* For things, the unstressed **ze** is usual.',
       '**The adjective.** In front of a plural noun the adjective **always** takes -e. The one exception you learnt — *een* + het-word, no -e — cannot happen, because a plural has no *een*: *een groot huis → twee **grote** huizen, de **grote** huizen, veel **grote** huizen.* After the verb the adjective never changes: *De huizen zijn **groot**.*',
       '**geen.** Since *een* has no plural, **geen** simply goes in front of the plural noun: *Ik heb een kat → Ik heb **geen** katten.* With *de*, *mijn* or a number the rule stays **niet**: *De katten zijn **niet** in de tuin.*',
       '**dit zijn.** *Dit is een kat* → *Dit **zijn** twee katten.* The verb agrees with the plural noun, not with *dit*.',
@@ -305,7 +305,7 @@ export default [
   },
   {
     type: 'drill', title: 'hij, het or ze?', grammar: ['hij-het-things', 'plural', 'subject-pronouns'],
-    instruction: 'Replace the subject with a pronoun. Singular: de-word → hij, het-word → het. Plural: always ze.',
+    instruction: 'Replace the subject with a pronoun. For the singular nouns here, use hij with stoel, tuin and sleutel, and het with huis. For the plurals, use ze.',
     items: [
       { nl: 'De stoelen zijn nieuw. ___ zijn nieuw.', cue: 'hij / het / ze', answer: 'Ze' },
       { nl: 'De stoel is nieuw. ___ is nieuw.', cue: 'hij / het / ze', answer: 'Hij' },

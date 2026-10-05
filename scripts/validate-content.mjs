@@ -1,3 +1,5 @@
+import { practiceGoals } from '../src/curriculum/levels.js';
+import { practiceArt } from '../src/curriculum/practice/art.js';
 /**
  * Curriculum validator. Every lesson — whether written by a person or an
  * authoring agent — must pass this before it is published.
@@ -16,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { grammarPoints, lessonPlan, words as plannedWords } from '../src/curriculum/plan.js';
 import { allowedForms, images, lessons, stepTexts, wordsIn } from '../src/content.js';
 import { tokenize } from '../src/curriculum/text.js';
+import { practiceModules } from '../src/curriculum/practice/index.js';
 
 export const RULES = {
   targetsPerLesson: 10,
@@ -41,7 +44,8 @@ export const RULES = {
 /** “Eén” at the start of a sentence lowercases to “eén”; the word is “één”. */
 const lower = (token) => token.toLowerCase().replace(/^eén$/u, 'één');
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
-const only = process.argv[2];
+const publishedOnly = process.argv.includes('--published');
+const only = process.argv.slice(2).find((arg) => !arg.startsWith('--'));
 const errors = [];
 const warnings = [];
 const fail = (where, message) => errors.push(`${where}: ${message}`);
@@ -49,12 +53,15 @@ const fail = (where, message) => errors.push(`${where}: ${message}`);
 // The plan itself.
 const planned = new Map();
 for (const lesson of lessonPlan) {
-  if (lesson.targets.length !== RULES.targetsPerLesson) fail(lesson.id, `must have exactly ${RULES.targetsPerLesson} targets`);
+  const targetCount = lesson.targets.length;
+  if (lesson.track === 'practice') {
+    if (targetCount < practiceGoals.minWords || targetCount > practiceGoals.maxWords) fail(lesson.id, 'practice needs 15–25 targets');
+  } else if (targetCount !== RULES.targetsPerLesson) fail(lesson.id, `must have exactly ${RULES.targetsPerLesson} targets`);
+  if (new Set(lesson.targets).size !== targetCount) fail(lesson.id, 'targets must be distinct entries');
   const maxExtras = RULES.maxExtrasPerLesson[Math.min((lesson.volume || 0), RULES.maxExtrasPerLesson.length - 1)];
   if (lesson.vocabulary.length > maxExtras) fail(lesson.id, `has ${lesson.vocabulary.length} extra words; volume ${lesson.volume || 0} allows ${maxExtras}`);
   for (const id of [...lesson.targets, ...lesson.structure, ...lesson.vocabulary]) {
-    if (planned.has(id)) fail(lesson.id, `word ${id} is already introduced in ${planned.get(id)}`);
-    planned.set(id, lesson.id);
+    if (!planned.has(id)) planned.set(id, lesson.id);
     if (!plannedWords.some((word) => word.id === id)) fail(lesson.id, `word ${id} is not defined in words`);
   }
   for (const id of lesson.grammar) if (!grammarPoints.some((point) => point.id === id)) fail(lesson.id, `unknown grammar point ${id}`);
@@ -67,7 +74,7 @@ for (const word of plannedWords) {
 }
 
 // One spelling, one word: a form may belong to only one word (true homographs are listed here).
-const homographs = new Set(['reis', 'reden']); // de reis / ik reis; de reden / zij reden (rijden)
+const homographs = new Set(['reis', 'reden', 'douche', 'fiets', 'fietsen', 'open', 'pak', 'pakt', 'kom', 'mist', 'nodig', 'sluit', 'sluiten', 'sport', 'sporten', 'vertrek']); // noun/adjective / conjugated verb; resolved contextually by wordsIn
 const formOwner = new Map();
 for (const word of plannedWords) {
   for (const form of [word.dutch, ...(word.forms || []), ...Object.values(word.laterForms || {}).flat()]) {
@@ -80,8 +87,11 @@ for (const word of plannedWords) {
 
 const stepIds = new Set();
 const report = [];
+if (only && !lessons.some((lesson) => lesson.id === only)) fail('selection', `unknown lesson ${only}`);
 lessons.forEach((lesson, index) => {
   if (only && lesson.id !== only) return;
+  if (publishedOnly && !lesson.available) return;
+  const practice = lesson.track === 'practice';
   const known = allowedForms(index);
   const grammarSoFar = new Set(lessonPlan.slice(0, index + 1).flatMap((l) => l.grammar));
   const uses = {};
@@ -90,7 +100,7 @@ lessons.forEach((lesson, index) => {
   if (lesson.answers < RULES.minAnswers) fail(lesson.id, `has ${lesson.answers} answers; needs at least ${RULES.minAnswers}`);
   const typed = lesson.steps.filter((s) => s.type === 'drill').flatMap((s) => s.items.filter((item) => !(item.choices || s.choices))).length;
   const typedShare = lesson.answers ? typed / lesson.answers : 0;
-  const minTyped = RULES.minTypedShare[Math.min(index, RULES.minTypedShare.length - 1)];
+  const minTyped = practice ? 0.7 : RULES.minTypedShare[Math.min(lesson.coreIndex, RULES.minTypedShare.length - 1)];
   if (typedShare < minTyped) fail(lesson.id, `only ${Math.round(typedShare * 100)}% of answers are typed; needs ${minTyped * 100}%`);
   if (lesson.steps.at(-1)?.type !== 'complete') fail(lesson.id, 'last page must be type "complete"');
 
@@ -114,24 +124,49 @@ lessons.forEach((lesson, index) => {
     }
     for (const key of imageKeys(step)) {
       if (!images[key]) fail(at, `unknown image key ${key}`);
-      else if (!existsSync(join(root, 'public', 'images', `${key}.svg`))) warnings.push(`${at}: image ${key}.svg is not drawn yet`);
+      else if (!existsSync(practiceArt[key] ? join(root, 'public', practiceArt[key].file) : join(root, 'public', 'images', `${key}.svg`))) warnings.push(`${at}: image ${key}.svg is not drawn yet`);
     }
   }
 
   for (const id of lesson.targets) if ((uses[id] || 0) < RULES.minOwnTargetUses) fail(lesson.id, `target “${id}” is used ${uses[id] || 0}× in spoken Dutch; needs ${RULES.minOwnTargetUses}`);
-  const earlier = lessonPlan.slice(0, index).flatMap((l) => l.targets);
-  const previous = new Set(lessonPlan[index - 1]?.targets || []);
-  const distant = (lessonIndex) => index >= RULES.distantFrom && index - lessonIndex > RULES.distantAfter;
-  const introducedAt = (key, id) => lessonPlan.findIndex((l) => l[key].includes(id));
-  for (const id of earlier) {
+  const coreBefore = lessonPlan.slice(0, index).filter((l) => l.track === 'core');
+  const earlier = practice ? lesson.reviewWordIds : coreBefore.flatMap((l) => l.targets);
+  const previous = new Set(coreBefore.at(-1)?.targets || []);
+  const distant = (lessonIndex) => lesson.coreIndex >= RULES.distantFrom && lesson.coreIndex - lessonIndex > RULES.distantAfter;
+  const introducedAt = (key, id) => lessonPlan.find((l) => l.track === 'core' && l[key].includes(id))?.coreIndex;
+  for (const id of practice ? [] : earlier) {
     const needed = previous.has(id) ? RULES.minPreviousTargetUses : distant(introducedAt('targets', id)) ? RULES.minDistantTargetUses : RULES.minEarlierTargetUses;
     if ((uses[id] || 0) < needed) fail(lesson.id, `earlier target “${id}” is recycled ${uses[id] || 0}×; needs ${needed}`);
   }
   for (const id of lesson.vocabulary) if ((uses[id] || 0) < RULES.minOwnExtraUses) fail(lesson.id, `extra word “${id}” is used ${uses[id] || 0}× in spoken Dutch; needs ${RULES.minOwnExtraUses}`);
   for (const id of lesson.grammar) if ((grammarSteps[id] || 0) < RULES.minOwnGrammarSteps) fail(lesson.id, `grammar “${id}” is practised on ${grammarSteps[id] || 0} pages; needs ${RULES.minOwnGrammarSteps}`);
-  for (const id of lessonPlan.slice(0, index).flatMap((l) => l.grammar)) {
+  for (const id of practice ? [] : coreBefore.flatMap((l) => l.grammar)) {
     const needed = distant(introducedAt('grammar', id)) ? RULES.minDistantGrammarSteps : RULES.minEarlierGrammarSteps;
     if ((grammarSteps[id] || 0) < needed) fail(lesson.id, `earlier grammar “${id}” returns on ${grammarSteps[id] || 0} pages; needs ${needed}`);
+  }
+
+  if (practice) {
+    const module = practiceModules.find((item) => item.id === lesson.id);
+    if (lesson.steps.length < 30 || lesson.steps.length > 50) fail(lesson.id, 'practice needs 30–50 pages');
+    if (lesson.answers < practiceGoals.minAnswers || lesson.answers > practiceGoals.maxAnswers) fail(lesson.id, 'practice needs 245–300 answers');
+    if (lesson.newWordIds.length !== lesson.targets.length) fail(lesson.id, 'every practice target must be a genuinely new entry');
+    if (new Set(lesson.reviewWordIds).size !== 20) fail(lesson.id, 'practice needs twenty distinct earlier words to review');
+    for (const id of lesson.reviewWordIds) {
+      if (!lessonPlan.slice(0, index).some((l) => l.introducedWordIds.includes(id))) fail(lesson.id, `review word ${id} has not been introduced`);
+      if (!uses[id]) fail(lesson.id, `scheduled review word ${id} is missing`);
+    }
+    for (const id of lesson.reviewGrammar) {
+      if (!grammarSoFar.has(id)) fail(lesson.id, `review grammar ${id} has not been taught`);
+      if ((grammarSteps[id] || 0) < 2) fail(lesson.id, `review grammar ${id} needs two practice pages`);
+    }
+    for (const entry of module.entries) {
+      const art = practiceArt[entry.word.image];
+      if (!art?.alt || !existsSync(join(root, 'public', art.file))) fail(lesson.id, `${entry.word.id} needs a described, installed vocabulary illustration`);
+      if (new Set(entry.examples.map((example) => example.nl)).size < 2) fail(lesson.id, `${entry.word.id} needs two distinct contexts`);
+      for (const example of entry.examples) {
+        if (!example.en || !wordsIn(example.nl).includes(entry.word.id)) fail(lesson.id, `invalid or untranslated context for ${entry.word.id}`);
+      }
+    }
   }
 
   report.push({

@@ -3,16 +3,18 @@
  * at each point in the book. Lessons, the validator, the learner model and the
  * authoring agents all read from here.
  *
- * Every lesson has exactly ten TARGET words — drilled hard in their own lesson
- * and recycled in every later lesson — plus a few STRUCTURE words that its
- * grammar needs (pronouns, prepositions, negation). Verbs and adjectives list
+ * Core grammar lessons retain ten TARGET words. Added practice lessons have
+ * twenty new targets and bounded spaced review. A few STRUCTURE words support
+ * the grammar (pronouns, prepositions, negation). Verbs and adjectives list
  * every form the learner may see; a form can unlock later than its word
  * (`laterForms`), e.g. “is” in lesson 1 but “ben / bent / zijn” in lesson 2.
  */
 
 import vocabulary from './vocabulary/index.js';
+import { practiceModules } from './practice/index.js';
+import { expandCurriculum } from './practice/integrate.js';
 
-export const lessonPlan = [
+export const coreLessonPlan = [
   {
     id: 'wat-is-dit',
     title: 'Wat is dit?',
@@ -423,7 +425,7 @@ const coreWords = [
   { id: 'oud', dutch: 'oud', english: 'old', kind: 'target', image: 'old-man', laterForms: { 'ik-heb': ['oude'], groter: ['ouder', 'oudst', 'oudste'] } },
   { id: 'jong', dutch: 'jong', english: 'young', kind: 'target', image: 'woman', laterForms: { 'ik-heb': ['jonge'], groter: ['jonger', 'jongst', 'jongste'] } },
   { id: 'moe', dutch: 'moe', english: 'tired', kind: 'target', image: 'man-tired' },
-  { id: 'blij', dutch: 'blij', english: 'happy', kind: 'target', image: 'man-happy', laterForms: { groter: ['blijer'] } },
+  { id: 'blij', dutch: 'blij', english: 'happy', kind: 'target', image: 'man-happy', laterForms: { 'ik-heb': ['blije'], groter: ['blijer'] } },
   { id: 'ziek', dutch: 'ziek', english: 'ill', kind: 'target', image: 'woman-sick' },
   { id: 'mooi', dutch: 'mooi', english: 'beautiful', kind: 'target', image: 'park', laterForms: { 'ik-heb': ['mooie'], groter: ['mooier', 'mooist', 'mooiste'] } },
   { id: 'nieuw', dutch: 'nieuw', english: 'new', kind: 'target', image: 'car', laterForms: { 'ik-heb': ['nieuwe'], groter: ['nieuwer', 'nieuwst', 'nieuwste'] } },
@@ -642,7 +644,7 @@ const coreWords = [
   { id: 'zee', dutch: 'zee', article: 'de', english: 'sea', kind: 'target', image: 'sea' },
   { id: 'strand', dutch: 'strand', article: 'het', english: 'beach', kind: 'target', image: 'child-beach', forms: ['stranden'] },
   { id: 'reizen', dutch: 'reizen', english: 'to travel', kind: 'target', image: 'suitcase', forms: ['reis', 'reist', 'gereisd', 'reisde', 'reisden'] },
-  { id: 'foto', dutch: 'foto', article: 'de', english: 'photo', kind: 'target', image: 'photo' },
+  { id: 'foto', dutch: 'foto', article: 'de', english: 'photo', kind: 'target', image: 'photo', forms: ["foto's"] },
   { id: 'oma', dutch: 'oma', article: 'de', english: 'grandma', kind: 'target', image: 'grandparents' },
   { id: 'opa', dutch: 'opa', article: 'de', english: 'grandpa', kind: 'target', image: 'grandparents' },
   { id: 'samen', dutch: 'samen', english: 'together', kind: 'structure' },
@@ -678,7 +680,7 @@ const coreWords = [
   // 18 — De buurman die altijd leest
   { id: 'buurman', dutch: 'buurman', article: 'de', english: 'neighbour (man)', kind: 'target', image: 'neighbours' },
   { id: 'buurvrouw', dutch: 'buurvrouw', article: 'de', english: 'neighbour (woman)', kind: 'target', image: 'neighbours' },
-  { id: 'collega', dutch: 'collega', article: 'de', english: 'colleague', kind: 'target', image: 'colleagues' },
+  { id: 'collega', dutch: 'collega', article: 'de', english: 'colleague', kind: 'target', image: 'colleagues', forms: ["collega's"] },
   { id: 'student', dutch: 'student', article: 'de', english: 'student', kind: 'target', image: 'students', forms: ['studenten'] },
   { id: 'universiteit', dutch: 'universiteit', article: 'de', english: 'university', kind: 'target', image: 'university' },
   { id: 'les', dutch: 'les', article: 'de', english: 'lesson / class', kind: 'target', image: 'classroom', forms: ['lessen'] },
@@ -801,12 +803,12 @@ const coreWords = [
   { id: 'zonder', dutch: 'zonder', english: 'without', kind: 'structure' },
 
   // 25 — De trein was al vertrokken
-  { id: 'kwijt', dutch: 'kwijt', english: 'lost, gone (Ik ben mijn sleutel kwijt)', kind: 'target', image: 'wallet' },
-  { id: 'verliezen', dutch: 'verliezen', english: 'to lose', kind: 'target', image: 'wallet', forms: ['verlies', 'verliest', 'verloren', 'verloor'] },
+  { id: 'kwijt', dutch: 'kwijt', english: 'lost, gone (Ik ben mijn sleutel kwijt)', kind: 'target', image: 'practice-portemonnee' },
+  { id: 'verliezen', dutch: 'verliezen', english: 'to lose', kind: 'target', image: 'practice-portemonnee', forms: ['verlies', 'verliest', 'verloren', 'verloor'] },
   { id: 'vertrekken', dutch: 'vertrekken', english: 'to leave / to depart', kind: 'target', image: 'train', forms: ['vertrek', 'vertrekt', 'vertrokken', 'vertrok'] },
   { id: 'missen', dutch: 'missen', english: 'to miss', kind: 'target', image: 'man-running', forms: ['mis', 'mist', 'gemist', 'miste', 'misten'] },
   { id: 'rennen', dutch: 'rennen', english: 'to run', kind: 'target', image: 'man-running', forms: ['ren', 'rent', 'gerend', 'rende', 'renden'] },
-  { id: 'portemonnee', dutch: 'portemonnee', article: 'de', english: 'wallet / purse', kind: 'target', image: 'wallet', forms: ['portemonnees'] },
+  { id: 'portemonnee', dutch: 'portemonnee', article: 'de', english: 'wallet / purse', kind: 'target', image: 'practice-portemonnee', forms: ['portemonnees'] },
   { id: 'bus', dutch: 'bus', article: 'de', english: 'bus', kind: 'target', image: 'bus', forms: ['bussen'] },
   { id: 'iemand', dutch: 'iemand', english: 'someone / anyone', kind: 'target' },
   { id: 'niemand', dutch: 'niemand', english: 'no one', kind: 'target' },
@@ -827,8 +829,8 @@ const coreWords = [
   { id: 'loket', dutch: 'loket', article: 'het', english: 'counter / window (at an office)', kind: 'target', image: 'town-hall', forms: ['loketten'] },
   { id: 'inschrijven', dutch: 'inschrijven', english: 'to register (zich inschrijven)', kind: 'target', forms: ['inschrijf', 'inschrijft', 'ingeschreven', 'inschrijving'] },
   { id: 'ondertekenen', dutch: 'ondertekenen', english: 'to sign', kind: 'target', image: 'form', forms: ['onderteken', 'ondertekent', 'ondertekend', 'ondertekende'] },
-  { id: 'brief', dutch: 'brief', article: 'de', english: 'letter', kind: 'target', image: 'card', forms: ['brieven'] },
-  { id: 'identiteitskaart', dutch: 'identiteitskaart', article: 'de', english: 'identity card', kind: 'target', image: 'form', forms: ['identiteitskaarten'] },
+  { id: 'brief', dutch: 'brief', article: 'de', english: 'letter', kind: 'target', image: 'practice-brief', forms: ['brieven'] },
+  { id: 'identiteitskaart', dutch: 'identiteitskaart', article: 'de', english: 'identity card', kind: 'target', image: 'practice-identiteitskaart', forms: ['identiteitskaarten'] },
   { id: 'u', dutch: 'u', english: 'you (formal)', kind: 'structure' },
   { id: 'uw', dutch: 'uw', english: 'your (formal)', kind: 'structure' },
   { id: 'meneer', dutch: 'meneer', english: 'sir / Mr', kind: 'structure' },
@@ -838,10 +840,10 @@ const coreWords = [
 
   // 27 — Als ik meer tijd had …
   { id: 'dromen', dutch: 'dromen', english: 'to dream (de droom, de dromen: the dream — same spellings)', kind: 'target', image: 'man-dreaming', forms: ['droom', 'droomt', 'gedroomd', 'droomde', 'droomden'] },
-  { id: 'geluk', dutch: 'geluk', article: 'het', english: 'happiness / luck (gelukkig: happy, luckily)', kind: 'target', forms: ['gelukkig', 'gelukkige'] },
+  { id: 'geluk', dutch: 'geluk', article: 'het', english: 'happiness / luck (gelukkig: happy, luckily)', kind: 'target', forms: ['gelukkig', 'gelukkige', 'gelukkiger'] },
   { id: 'rijk', dutch: 'rijk', english: 'rich', kind: 'target', forms: ['rijke', 'rijker', 'rijkst'] },
   { id: 'baan', dutch: 'baan', article: 'de', english: 'job', kind: 'target', forms: ['banen'] },
-  { id: 'bedrijf', dutch: 'bedrijf', article: 'het', english: 'company', kind: 'target', image: 'office', forms: ['bedrijven'] },
+  { id: 'bedrijf', dutch: 'bedrijf', article: 'het', english: 'company', kind: 'target', image: 'practice-bedrijf', forms: ['bedrijven'] },
   { id: 'loon', dutch: 'loon', article: 'het', english: 'wage / salary', kind: 'target', image: 'money', forms: ['lonen'] },
   { id: 'vrij', dutch: 'vrij', english: 'free / off (a day off)', kind: 'target', forms: ['vrije'] },
   { id: 'kans', dutch: 'kans', article: 'de', english: 'chance', kind: 'target', forms: ['kansen'] },
@@ -1051,29 +1053,31 @@ const coreWords = [
  * unlike targets, they are not recycled by rule. A vocabulary file can also unlock new forms of older
  * words from its lesson on (`forms: { huis: ['huisje'] }`).
  */
-for (const lesson of lessonPlan) lesson.vocabulary = (vocabulary[lesson.id]?.words || []).map((word) => word.id);
-const extraWords = lessonPlan.flatMap((lesson) => (vocabulary[lesson.id]?.words || []).map((word) => ({ ...word, kind: 'extra' })));
-export const words = [...coreWords, ...extraWords].map((word) => {
-  const added = lessonPlan.filter((lesson) => vocabulary[lesson.id]?.forms?.[word.id]);
+for (const lesson of coreLessonPlan) lesson.vocabulary = (vocabulary[lesson.id]?.words || []).map((word) => word.id);
+const extraWords = coreLessonPlan.flatMap((lesson) => (vocabulary[lesson.id]?.words || []).map((word) => ({ ...word, kind: 'extra' })));
+const baseWords = [...coreWords, ...extraWords].map((word) => {
+  const added = coreLessonPlan.filter((lesson) => vocabulary[lesson.id]?.forms?.[word.id]);
   if (!added.length) return word;
   const laterForms = { ...word.laterForms };
   for (const lesson of added) laterForms[lesson.id] = [...(laterForms[lesson.id] || []), ...vocabulary[lesson.id].forms[word.id]];
   return { ...word, laterForms };
 });
 
-/** The book's volumes, in order; each lesson's `volume` indexes this list (lessons 1–6 have none: volume zero). */
+export const { lessonPlan, words } = expandCurriculum(coreLessonPlan, baseWords, practiceModules);
+
+/** The first ten grammar lessons supply the A1 foundation; practice builds vocabulary breadth. */
 export const volumes = [
-  { name: 'First things first', level: 'Pre-A1 → A1', description: 'Images, sounds, and a small familiar world: de/het, zijn and hebben, every present-tense ending, geen and niet, word order.' },
-  { name: 'A life in Dutch', level: 'A1 → A2', description: 'Home, family, the week, what you did yesterday and why: plurals, possessives, modal verbs, the perfect tense and subordinate clauses.' },
+  { name: 'First things first', level: 'A1', description: 'Everyday vocabulary and present-tense grammar: home, possessions, food, plurals, family, abilities and time. Twenty-word practice lessons revisit familiar grammar.' },
+  { name: 'A life in Dutch', level: 'A2', description: 'What you did yesterday and why: the perfect tense and subordinate clauses. Further everyday vocabulary practice is being expanded.' },
   { name: 'More to say', level: 'A2', description: 'Separable verbs, comparisons, the simple past, reflexive verbs, the future and relative clauses — with longer stories.' },
-  { name: 'A new year in Leuven', level: 'A2+ → B1', description: 'Object pronouns, where things are, money and dates, verbs with prepositions, time clauses, om … te — Tom moves to Leuven.' },
+  { name: 'A new year in Leuven', level: 'B1', description: 'Object pronouns, where things are, money and dates, verbs with prepositions, time clauses, om … te — Tom moves to Leuven.' },
   { name: 'Work and the city', level: 'B1', description: 'The pluperfect, the formal u, the conditional, relative clauses with prepositions and the passive — Bram finds a new job.' },
-  { name: 'City and society', level: 'B1+ → B2', description: 'Verb clusters, opinions and connectors, reported speech, the past conditional and word formation — the news, the climate, Belgium.' },
+  { name: 'City and society', level: 'B2', description: 'Verb clusters, opinions and connectors, reported speech, the past conditional and word formation — the news, the climate, Belgium.' },
   { name: 'Academic Dutch', level: 'B2', description: 'Lectures, essays, research and presentations: nominal style, formal connectors, hedging, idioms — and Lotte graduates.' },
 ];
 
 /** Proper names may appear anywhere; they are never tracked as vocabulary. */
-export const names = ['Bram', 'Lotte', 'Max', 'Leuven', 'Gent', 'Brussel', 'Antwerpen', 'Sofie', 'Tom', 'Emma', 'Jonas', 'Noor', 'Mimi', 'België', 'Spanje', 'Oostende', 'Claes', 'Duitsland', 'Amerika', 'Europa', 'Nederland', 'Frankrijk', 'Vlaanderen', 'Wallonië', 'Karim', 'Sarah', 'Janssens'];
+export const names = ['Bram', 'Lotte', 'Max', 'Leuven', 'Gent', 'Brussel', 'Antwerpen', 'Sofie', 'Tom', 'Emma', 'Jonas', 'Noor', 'Mimi', 'België', 'Spanje', 'Oostende', 'Claes', 'Duitsland', 'Amerika', 'Europa', 'Nederland', 'Frankrijk', 'Vlaanderen', 'Wallonië', 'Karim', 'Sarah', 'Janssens', 'Ines', 'Pieter', 'Yasmine'];
 
 export const grammarPoints = [
   { id: 'dit-is', title: 'Dit is een …', summary: 'Naming what you see: “Dit is een huis.”' },
@@ -1084,7 +1088,7 @@ export const grammarPoints = [
   { id: 'zijn', title: 'zijn (to be)', summary: 'ik ben, jij bent, hij is, wij/jullie/zij zijn.' },
   { id: 'inversion', title: 'Verb before subject', summary: 'In a question the verb comes first, and “jij bent” becomes “ben jij”.' },
   { id: 'niet', title: 'niet', summary: '“Niet” comes after the verb: “Ik ben niet moe.”' },
-  { id: 'hij-het-things', title: 'hij and het for things', summary: 'A de-word is “hij”, a het-word is “het”.' },
+  { id: 'hij-het-things', title: 'hij and het for things', summary: 'Masculine de-words use “hij”; het-words for things use “het”.' },
   { id: 'present-regular', title: 'The present tense', summary: 'ik + stem, jij/hij + stem + t, wij/jullie/zij + infinitive.' },
   { id: 'spelling-stem', title: 'Spelling the stem', summary: 'wonen → woon, slapen → slaap, zitten → zit, hij zit.' },
   { id: 'question-word', title: 'Question words', summary: '“Waar woon jij?” — question word, verb, subject.' },
@@ -1092,7 +1096,7 @@ export const grammarPoints = [
   { id: 'geen-niet', title: 'geen or niet?', summary: '“Geen” for een-nouns, “niet” for everything else.' },
   { id: 'adjective-e', title: 'een grote hond', summary: 'An adjective before a noun takes -e, except een + het-word.' },
   { id: 'spelling-z-s', title: 'z → s, v → f', summary: 'z → s and v → f: lezen → ik lees, schrijven → ik schrijf.' },
-  { id: 'adverb-position', title: 'graag, altijd, nooit', summary: 'They come straight after the verb: “Ik drink graag koffie.”' },
+  { id: 'adverb-position', title: 'graag, altijd, nooit', summary: 'Practise simple statements and questions: “Ik drink graag koffie”, “Drink jij graag koffie?”' },
   { id: 'gaan', title: 'gaan (to go)', summary: 'ik ga, jij gaat, hij gaat, wij/jullie/zij gaan.' },
   { id: 'v2-inversion', title: 'The verb stays second', summary: '“Vandaag ga ik naar het park.”' },
   { id: 'time-place', title: 'Time before place', summary: '“Ik ga morgen naar de winkel.”' },
@@ -1287,7 +1291,7 @@ export const speakerVoices = {
   'De buurman': 'xander', 'De buurvrouw': 'ellen', 'De dokter': 'ellen', 'De apotheker': 'xander', 'De leraar': 'xander',
   Oma: 'ellen', Opa: 'xander', 'De verkoper': 'xander', 'De verkoopster': 'ellen',
   'De eigenaar': 'ellen',
-  'De bediende': 'ellen', 'De ober': 'xander', 'De agent': 'xander', 'De gids': 'ellen',
-  'De journaliste': 'ellen', Karim: 'xander', Sarah: 'ellen',
+  'De vrouw': 'ellen', 'De bediende': 'ellen', 'De ober': 'xander', 'De agent': 'xander', 'De gids': 'ellen',
+  'De journaliste': 'ellen', Karim: 'xander', Sarah: 'ellen', Ines: 'ellen', Pieter: 'xander', Yasmine: 'ellen',
   'De professor': 'xander', 'De promotor': 'ellen',
 };

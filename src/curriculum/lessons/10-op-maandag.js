@@ -82,7 +82,7 @@ export default [
       { en: 'three days', answer: 'drie dagen' },
       { en: 'two weeks', answer: 'twee weken' },
     ],
-    explanation: 'de dag, de week — but het uur. The plurals follow the lesson 7 rules: dag → dagen (short a, one letter: da-gen), week → weken (the long ee loses a letter in an open syllable: we-ken).',
+    explanation: 'de dag, de week — but het uur. week → weken follows the spelling rule from lesson 7: the long ee becomes a single e in an open syllable. dag → dagen is irregular: the short a in dag becomes a long a in dagen. Learn the pair together.',
   },
   {
     type: 'drill', title: 'Hear and spell',

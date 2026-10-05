@@ -292,11 +292,11 @@ export default [
     type: 'grammar', title: 'kunnen, willen, moeten, mogen', grammar: ['modals', 'subject-pronouns', 'inversion'],
     body: [
       'Four verbs change the shape of a Dutch sentence: **kunnen** (can, be able to), **willen** (want), **moeten** (must, have to) and **mogen** (may, be allowed to). They are the *modal verbs*. They say how an action stands — possible, wanted, necessary, allowed — and a second verb says what the action is: *Ik **kan** zwemmen. Ik **wil** zwemmen. Ik **moet** werken. Ik **mag** hier zitten.*',
-      'Their singular is irregular, and there is a reason. Long ago these were past-tense forms that came to be used for the present — which is also why English says *he can, he may, he must*, never *he cans*. So in Dutch too **hij gets no -t**: *hij kan, hij wil, hij mag*. (*hij moet* ends in t only because the stem itself is *moet*.) The plural is always the infinitive: *wij kunnen, willen, moeten, mogen*.',
+      'Their singular forms need special attention. With these four verbs, **hij gets no added -t**: *hij kan, hij wil, hij mag*. (*hij moet* ends in t only because the stem itself is *moet*.) The plural is always the infinitive: *wij kunnen, willen, moeten, mogen*.',
       '**kunnen**: *ik kan, hij kan*. For **jij** two forms are correct: **jij kunt**, the standard written form taught here, and *jij kan*, very common in speech. Both are accepted in this course. In a question the standard form is *kun jij?* (kunt minus the jij-t); *kan jij?* is just as common in Flanders, and this course writes **Kan jij …?**',
       '**willen**: *ik wil*, **jij wilt**, but **hij wil** — jij takes a t, hij does not. *hij wilt* is a classic mistake. In a question jij loses its t again: ***Wil** jij koffie?*',
       '**moeten**: *ik moet, jij moet, hij moet* — the stem ends in t, so nothing is ever added, as with *zitten* and *wachten*. **mogen**: *ik mag, jij mag, hij mag* — a different vowel in the singular (*mag*, never *moog*), and no t anywhere.',
-      '**Meaning traps.** *Ik wil* means “I want”, never “I will”: Dutch *wil* and English *will* are false friends. **mag niet** means “must not, is not allowed to”: *Max **mag niet** op het bed slapen.* So English “must not” is *mag niet*, not *moet niet*. And “don’t have to” is not *moet niet* in standard Dutch either — it needs another verb, which comes later. For now, say what someone must do, and use *mag niet* for what is forbidden.',
+      '**Meaning traps.** *Ik wil* means “I want”, never “I will”: Dutch *wil* and English *will* are false friends. **mag niet** means “must not, is not allowed to”: *Max **mag niet** op het bed slapen.* Use **mag niet** for a clear prohibition in these exercises. **Moet niet** can also mean that something should not happen. For “don’t have to”, this course teaches **hoeven**, which comes later; **moet niet** is also heard with that meaning in Belgium, but its standard status is disputed. For now, say what someone must do, and use *mag niet* for what is forbidden.',
       '**kunnen** also means “know how to”: *Bram kan zwemmen* = he knows how to swim. When the second verb is obvious, Dutch simply leaves it out: *Ik **kan** een beetje Nederlands* (I speak a bit of Dutch), *Ik **wil** koffie*, *Mag ik een appel?* In the drills you will always write the second verb.',
     ],
     tables: [
@@ -640,7 +640,7 @@ export default [
       { nl: 'Hoe ___ jouw vriendin?', cue: 'heten', answer: 'heet' },
       { nl: 'Bram ___ een boek.', cue: 'schrijven', answer: 'schrijft' },
     ],
-    explanation: 'One conjugated verb per sentence, in second place (or first in a question). A second verb is always the infinitive, and always last.',
+    explanation: 'One conjugated verb per sentence, in second place (or first in a question). With a modal in these sentences, the second verb is an infinitive at the end.',
   },
   {
     type: 'drill', title: 'Every day, a modal', grammar: ['modals', 'infinitive-end', 'adjective-e', 'geen-niet', 'hij-het-things'],
@@ -690,10 +690,10 @@ export default [
       { nl: 'Hoeveel ___ zijn er in de keuken? — Vier.', cue: 'stoel', answer: 'stoelen' },
       { nl: '___ helpt de oude man?', en: 'Who is helping the old man?', answer: 'Wie' },
       { nl: '___ oud is Noor? — Zij is vijf jaar.', en: 'How old is Noor?', answer: 'Hoe' },
-      { nl: 'De tafel is klein. ___ is klein.', cue: 'hij / het', answer: 'Hij' },
+      { nl: 'De tafel is klein. ___ is klein.', cue: 'hij / zij / het', answer: 'Hij', accept: ['Zij'] },
       { nl: 'Het raam is groot. ___ is groot.', cue: 'hij / het', answer: 'Het' },
     ],
-    explanation: 'een goede vriend but een goed boek: een + het-word keeps the bare adjective; after mijn the -e is always there: mijn nieuwe jas. onze tuin (de-word), ons huis (het-word). Er is + one thing, er zijn + a plural. de tafel → hij, het raam → het.',
+    explanation: 'een goede vriend but een goed boek: een + het-word keeps the bare adjective; after mijn the -e is always there: mijn nieuwe jas. onze tuin (de-word), ons huis (het-word). Er is + one thing, er zijn + a plural. de tafel can use hij or ze; het raam uses het.',
   },
   {
     type: 'drill', title: 'Family and friends', grammar: ['possessives', 'wie-hoe', 'modals', 'infinitive-end', 'plural', 'numbers'],

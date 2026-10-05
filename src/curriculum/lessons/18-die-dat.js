@@ -11,7 +11,7 @@
  * Short answers use “die” where spoken Dutch does (“Ja, die ken ik”); hem / haar (lesson 13) are accepted
  * and taught beside it. The relative clause after a final participle or infinitive (“Ik heb de vrouw ontmoet
  * die …”) and the one before it are both accepted. The plural “collega’s” is written with the ’s of lesson 13.
- * Strict kennen / weten: iemand of een plaats kennen; het antwoord, zijn naam weten; een taal spreken or kennen.
+ * Teach weten as the default for facts; also accept kennen with a familiar answer or name.
  */
 export default [
   // ——— Words ———
@@ -420,7 +420,7 @@ export default [
     body: [
       'English has one verb, *to know*. Dutch has two. **kennen** = to be acquainted with, to be familiar with: a person, a place, or a thing you have met — a book, a film, a street. **weten** = to have a piece of information: a fact.',
       'What follows the verb decides. After **kennen** comes a noun or a name: *Ik ken de buurman. Ken jij Leuven? Lotte kent dat boek.* After **weten** comes a fact: a dat-clause, a clause with a question word (wie, wat, waar, wanneer, hoe, hoeveel), or het or dat standing for a fact: *Ik weet dat hij altijd leest. Weet jij waar de buurman woont? Ik weet het niet.*',
-      'A quick test: if English could say “be familiar with”, use kennen. If “know that / know where / know who / know when” fits, use weten. *I know the neighbour, but I don’t know his name* → *Ik **ken** de buurman, maar ik **weet** zijn naam niet.* A noun that stands for a piece of information goes with weten: ***het antwoord** weten, **zijn naam** weten* — Weet jij het antwoord? This course always uses weten there.',
+      'A useful starting point: if English could say “be familiar with”, use kennen. Before a clause meaning “know that / know where / know who / know when”, use weten. *I know the neighbour, but I don’t know his name* → *Ik **ken** de buurman, maar ik **weet** zijn naam niet.* We teach **weten** as the default for information such as an answer or a name. **Kennen** can also express familiarity with that answer or name: *Ik ken zijn naam niet; Ken jij het antwoord?* Those noun-based alternatives are accepted. Keep weten before a clause: *Ik weet waar hij woont.*',
       'Short answers follow the same split. *Ken jij Tom? — Ja, **die** ken ik.* In speech that is the usual short answer; *Ja, ik ken **hem**.* (him) and *Ja, ik ken **haar**.* (her) are just as correct. (die for a person or a de-word; *dat* for a het-word or a place: *Ken jij Gent? — Ja, dat ken ik goed.*) *Weet jij waar Tom woont? — Ja, **dat** weet ik.* or *Ja, ik weet **het**.*',
       'For a language, *spreken* is the usual verb: *Lotte spreekt Engels.* kennen is also correct: *Lotte kent Engels.* Never weten.',
       'The forms. kennen is regular: *ik ken, jij kent, wij kennen*, past *kende, kenden*, participle *gekend*. weten is not: *ik weet, jij weet, hij weet* (no extra t), past ***wist**, wisten*, participle *geweten*.',
@@ -465,7 +465,7 @@ export default [
       { nl: 'Wij ___ dat Lotte morgen les heeft.', answer: 'weten' },
       { nl: '___ jullie wanneer de les begint?', answer: 'weten' },
     ],
-    explanation: 'A noun or a name after the verb (de buurman, Tom, Leuven, het boek) → kennen. A clause (waar …, hoe …, dat …, wanneer …) or a fact like het antwoord → weten.',
+    explanation: 'Use kennen for familiarity with a person, place or thing. Use weten before a clause (waar …, hoe …, dat …, wanneer …). With a noun such as het antwoord, weten is our default; kennen can also describe an answer you are familiar with.',
   },
   {
     type: 'drill', title: 'kennen or weten — type it', grammar: ['kennen-weten', 'imperfect-weak', 'imperfect-strong', 'perfect-hebben', 'v2-inversion', 'relative-clause'],
@@ -478,7 +478,7 @@ export default [
       { nl: 'Lotte ___ Antwerpen heel goed: zij is er opgegroeid.', cue: 'kennen / weten', answer: 'kent' },
       { nl: '___ jullie Gent?', cue: 'kennen / weten', answer: 'Kennen' },
       { nl: 'Vroeger ___ oma veel mensen in Oostende.', cue: 'kennen / weten', en: 'Grandma used to know a lot of people in Ostend.', answer: 'kende' },
-      { nl: 'Bram ___ het antwoord niet.', cue: 'kennen / weten', en: 'Bram didn’t know the answer.', answer: 'wist' },
+      { nl: 'Bram ___ het antwoord niet.', cue: 'kennen / weten', en: 'Bram didn’t know the answer.', answer: 'wist', accept: ['kende'] },
       { nl: 'Dat heb ik altijd ___.', cue: 'kennen / weten', en: 'I have always known that.', answer: 'geweten' },
     ],
     explanation: 'wist and wisten, the past of weten, look nothing like the present — learn them. kende is regular: n is not in ’t kofschip, so -de.',
@@ -495,9 +495,9 @@ export default [
       { en: 'Lotte knows that Bram is tired.', answer: 'Lotte weet dat Bram moe is.' },
       { en: 'Do you (plural) know when the lesson begins?', answer: 'Weten jullie wanneer de les begint?' },
       { en: 'I know the neighbour, but I don’t know his name.', answer: 'Ik ken de buurman, maar ik weet zijn naam niet.', accept: ['Ik ken de buurman, maar ik ken zijn naam niet.'] },
-      { en: 'Does Noor know the answer?', answer: 'Weet Noor het antwoord?' },
+      { en: 'Does Noor know the answer?', answer: 'Weet Noor het antwoord?', accept: ['Kent Noor het antwoord?'] },
     ],
-    explanation: '“Ik ken hem niet” or, as people often say it, “Die ken ik niet”: then die is the first element, so the verb comes second and ik follows it. “het antwoord” and “zijn naam” are facts: weten.',
+    explanation: '“Ik ken hem niet” or, as people often say it, “Die ken ik niet”: then die is the first element, so the verb comes second and ik follows it. With het antwoord and zijn naam, weten is the taught default; kennen is also accepted for familiarity with the answer or name.',
   },
 
   // ——— Grammar: no ge- ———
@@ -832,7 +832,7 @@ export default [
       { nl: 'Wat heeft Lotte vandaag gehad?', answer: 'Lotte heeft vandaag twee lessen gehad.', accept: ['Zij heeft vandaag twee lessen gehad.', 'Lotte heeft twee lessen gehad.', 'Zij heeft twee lessen gehad.', 'Twee lessen.'] },
       { nl: 'Wat doet de buurman op de bank?', answer: 'De buurman leest een boek.', accept: ['Hij leest een boek.', 'Hij leest.', 'De buurman leest.', 'Hij leest weer een boek.', 'De buurman leest weer een boek.'] },
       { nl: 'Waar heeft de buurman vroeger gewerkt?', answer: 'De buurman heeft vroeger aan de universiteit gewerkt.', accept: ['Hij heeft vroeger aan de universiteit gewerkt.', 'Hij heeft aan de universiteit gewerkt.', 'De buurman heeft aan de universiteit gewerkt.', 'Vroeger heeft hij aan de universiteit gewerkt.', 'Aan de universiteit.', 'Hij werkte vroeger aan de universiteit.', 'De buurman werkte vroeger aan de universiteit.', 'Vroeger werkte hij aan de universiteit.'] },
-      { nl: 'Hoe was de leraar als student?', task: 'Start with “Hij was een student die …”', answer: 'Hij was een student die altijd het antwoord wist.', accept: ['Hij was een student die het antwoord altijd wist.'] },
+      { nl: 'Hoe was de leraar als student?', task: 'Start with “Hij was een student die …”', answer: 'Hij was een student die altijd het antwoord wist.', accept: ['Hij was een student die het antwoord altijd wist.', 'Hij was een student die altijd het antwoord kende.', 'Hij was een student die het antwoord altijd kende.'] },
       { nl: 'Wie was de jonge man in de tuin?', answer: 'Dat was een collega.', accept: ['Het was een collega.', 'Dat was zijn collega.', 'Het was zijn collega.', 'Een collega.', 'Dat was een collega van Bram.', 'Het was een collega van Bram.', 'Een collega van Bram.','Dat was een collega die ook in Brussel werkt.', 'Het was een collega die ook in Brussel werkt.'] },
       { nl: 'Wanneer moet de collega koffie komen drinken?', answer: 'Hij moet volgende zaterdag koffie komen drinken.', accept: ['De collega moet volgende zaterdag koffie komen drinken.', 'Volgende zaterdag moet hij koffie komen drinken.', 'Hij moet volgende zaterdag komen.', 'Volgende zaterdag.'] },
       { nl: 'Kent de buurman de nieuwe leraar die Noor heeft?', task: 'Answer with “Nee, die …”', answer: 'Nee, die kent hij niet.', accept: ['Nee, die kent de buurman niet.'] },

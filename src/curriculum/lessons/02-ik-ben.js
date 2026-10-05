@@ -101,7 +101,7 @@ export default [
       '**1. Stressed and unstressed forms.** Three pronouns have two forms: **jij / je**, **zij / ze**, **wij / we**. The unstressed forms (je, ze, we) are what people normally say. The stressed forms carry contrast or emphasis: *Ik ben moe. En **jij**?* Both are correct; in this course both are always accepted.',
       '**2. zij / ze is both “she” and “they”.** Often only the verb tells you which: *ze **is** ziek* is she, *ze **zijn** ziek* is they. You will see this on the next page.',
       '**3. “You” is either one person or several.** **jij / je** speaks to one person, **jullie** to two or more. English hides the difference; Dutch always marks it. (Dutch also has a formal *u*; this course uses the everyday jij/je.)',
-      '**het** means *it*. For things there is a twist — a de-word is “hij” — which gets its own page later in this lesson.',
+      '**het** means *it*. For things there is a twist — some de-words use “hij” — which gets its own page later in this lesson.',
     ],
     tables: [
       { caption: 'Singular', rows: [{ nl: 'ik', en: 'I' }, { nl: 'jij / je', en: 'you (one person)' }, { nl: 'hij', en: 'he' }, { nl: 'zij / ze', en: 'she' }, { nl: 'het', en: 'it' }] },
@@ -410,15 +410,15 @@ export default [
   {
     type: 'grammar', title: 'hij and het for things', grammar: ['hij-het-things', 'de-het'],
     body: [
-      'English calls every thing *it*. Dutch looks at the article: a **de**-word is referred to as **hij**, a **het**-word as **het**.',
+      'English uses *it* for things. Dutch also uses grammatical gender: masculine **de**-words such as *auto* use **hij**, and **het**-words for things use **het**. Feminine de-words can use **zij / ze**, especially in Belgium.',
       '*De auto is nieuw. **Hij** is mooi.* — here “hij” means *it*, not *he*. *Het raam is klein. **Het** is oud.*',
-      'People follow who they are, not the article: de man → **hij**, de vrouw → **zij**. The one exception is **het kind**: when you speak about “the child” in general, it is **het**, as the article says. *Het kind is ziek. **Het** is moe.*',
-      'This is the practical reason articles matter: you cannot even say “it” in Dutch without knowing whether a noun is de or het. Learn every noun with its article — and so with its pronoun.',
+      'For people, the pronoun can follow the person: de man → **hij**, de vrouw → **zij**. With **het kind**, **het** is possible when speaking about a child in general. For a particular child, **hij** or **zij** is also natural when you know who the child is. The article remains **het**.',
+      'Learn each noun with its article, and notice the pronouns used with it. The article helps with reference to things; for people, it does not determine the pronoun.',
       'A note for Belgium: in Flanders some de-words — *de straat*, *de deur*, *de bank* — are traditionally feminine and called **ze**, not hij. The examples in this course use hij only with words like *de boom* and *de auto*, where the whole language area agrees.',
       'One limit: when you point at something to *name* it, you say **dit** whatever the noun is: *Dit is een auto.* Hij and het are for talking about something already mentioned.',
     ],
     tables: [
-      { caption: 'de-word → hij · het-word → het', rows: [
+      { caption: 'Pronouns with familiar nouns', rows: [
         { nl: 'De boom is groot. [Hij] is oud.', en: 'The tree is big. It is old.' },
         { nl: 'De auto is nieuw. [Hij] is mooi.', en: 'The car is new. It is beautiful.' },
         { nl: 'Het huis is klein. [Het] is oud.', en: 'The house is small. It is old.' },
@@ -436,7 +436,7 @@ export default [
   },
   {
     type: 'drill', title: 'hij, zij or het?', grammar: ['hij-het-things', 'de-het'], choices: ['Hij', 'Zij', 'Het'],
-    instruction: 'Choose the pronoun for the second sentence. Check the article in the first.',
+    instruction: 'Choose the pronoun for the second sentence. Use the noun and the context. For a child, het, hij and zij can all be possible.',
     items: [
       { nl: 'De boom is groot. ___ is oud.', answer: 'Hij' },
       { nl: 'Het huis is klein. ___ is oud.', answer: 'Het' },
@@ -444,12 +444,12 @@ export default [
       { nl: 'De auto is nieuw. ___ is ook mooi.', answer: 'Hij' },
       { nl: 'Het raam is groot. ___ is niet oud.', answer: 'Het' },
       { nl: 'De man is jong. ___ is moe.', answer: 'Hij' },
-      { nl: 'Het kind is ziek. ___ is moe.', answer: 'Het' },
+      { nl: 'Het kind is ziek. ___ is moe.', answer: 'Het', accept: ['Hij', 'Zij'] },
     ],
-    explanation: 'boom and auto are de-words, so “it” is hij. huis, raam and kind are het-words: het.',
+    explanation: 'boom and auto are masculine de-words: hij. huis and raam are things with het: het. For kind, het is possible; hij or zij can refer to the particular child.',
   },
   {
-    type: 'drill', title: 'Answer with hij or het', grammar: ['hij-het-things', 'yes-no-question', 'niet'], task: 'Answer in full',
+    type: 'drill', title: 'Answer with a pronoun', grammar: ['hij-het-things', 'yes-no-question', 'niet'], task: 'Answer in full',
     instruction: 'Look at the picture and answer with a pronoun: “Ja, hij is …” or “Nee, het is niet …”.',
     items: [
       { image: 'tree', nl: 'Is de boom groot?', answer: 'Ja, hij is groot.' },
@@ -458,7 +458,7 @@ export default [
       { image: 'tree-small', nl: 'Is de boom oud?', answer: 'Nee, hij is niet oud.', accept: ['Nee, hij is jong.', 'Nee, hij is niet oud. Hij is jong.'] },
       { image: 'woman-sick', nl: 'Is Lotte ziek?', answer: 'Ja, zij is ziek.' },
       { image: 'old-man', nl: 'Is de man jong?', answer: 'Nee, hij is niet jong.', accept: ['Nee, hij is oud.', 'Nee, hij is niet jong. Hij is oud.'] },
-      { image: 'child', nl: 'Is het kind klein?', answer: 'Ja, het is klein.' },
+      { image: 'child', nl: 'Is het kind klein?', answer: 'Ja, het is klein.', accept: ['Ja, hij is klein.', 'Ja, zij is klein.'] },
       { image: 'man-happy', nl: 'Is Bram moe?', answer: 'Nee, hij is niet moe.', accept: ['Nee, hij is blij.', 'Nee, hij is niet moe. Hij is blij.'] },
       { image: 'house', nl: 'Is het huis groot?', answer: 'Ja, het is groot.' },
     ],
@@ -475,9 +475,9 @@ export default [
       { nl: 'De man is niet moe.', answer: 'Hij is niet moe.' },
       { nl: 'Bram en Lotte zijn blij.', answer: 'Zij zijn blij.' },
       { nl: 'De boom is ook mooi.', answer: 'Hij is ook mooi.' },
-      { nl: 'Het kind is lief.', answer: 'Het is lief.' },
+      { nl: 'Het kind is lief.', answer: 'Het is lief.', accept: ['Hij is lief.', 'Zij is lief.'] },
     ],
-    explanation: '“Is het groot?” — het is now the subject, so the article is gone. “Is hij nieuw?” is the car. “Het is lief” is the child: het kind takes het.',
+    explanation: '“Is het groot?” — het is now the subject, so the article is gone. “Is hij nieuw?” is the car. For the child, “Het is lief” is possible; “Hij is lief” or “Zij is lief” can refer to the particular child.',
   },
 
   // ——— Combine ———
@@ -527,7 +527,7 @@ export default [
       { nl: 'Ben ik oud?', answer: 'Nee, jij bent niet oud.' },
       { nl: 'Is de auto oud?', answer: 'Nee, hij is niet oud.', accept: ['Nee, de auto is niet oud.'] },
       { nl: 'Zijn Bram en Lotte oud?', answer: 'Nee, zij zijn niet oud.', accept: ['Nee, Bram en Lotte zijn niet oud.'] },
-      { nl: 'Is het kind ziek?', answer: 'Nee, het is niet ziek.', accept: ['Nee, het kind is niet ziek.'] },
+      { nl: 'Is het kind ziek?', answer: 'Nee, het is niet ziek.', accept: ['Nee, het kind is niet ziek.', 'Nee, hij is niet ziek.', 'Nee, zij is niet ziek.'] },
       { image: 'tree', nl: 'Is dit een huis?', answer: 'Nee, dit is geen huis.', accept: ['Nee, dit is geen huis. Dit is een boom.'] },
       { image: 'door', nl: 'Is dit een raam?', answer: 'Nee, dit is geen raam.', accept: ['Nee, dit is geen raam. Dit is een deur.'] },
     ],

@@ -1,7 +1,8 @@
+import Illustration from './Illustration.jsx';
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check, RotateCcw, Eye, Headphones, Sprout, BookOpen } from 'lucide-react';
 import { grammarPoints, lessons, voiceFor, wordById, wordsIn } from './content.js';
-import { completeStep, completeLesson } from './learning.js';
+import { completeStep, completeLesson, lessonPosition, setLessonPosition } from './learning.js';
 import { isAnswerCorrect, seededShuffle, tokenize } from './curriculum/text.js';
 import { names } from './curriculum/plan.js';
 import { AudioButton, PlayAllButton, useAudio } from './audio.jsx';
@@ -17,22 +18,22 @@ function label(step) {
 }
 
 export default function Lesson({ lesson, state, setState, preferences, setPreferences, navigate, encounter }) {
-  const [index, setIndex] = useState(() => Math.max(0, Math.min(state.positions?.[lesson.id] || 0, lesson.steps.length - 1)));
+  const index = lessonPosition(state, lesson);
   const step = lesson.steps[index];
   const { stop } = useAudio();
-  useEffect(() => { setState(s => ({ ...s, positions: { ...s.positions, [lesson.id]: index } })); }, [index, lesson.id]);
+  useEffect(() => { setState(s => s.positionStepIds?.[lesson.id] === step.id ? s : setLessonPosition(s, lesson, index)); }, [lesson.id, step.id]);
   useEffect(() => { stop(); window.scrollTo({ top: 0, behavior: 'instant' }); }, [index]);
   function next() {
-    setState(s => completeStep(s, step.id));
-    if (index < lesson.steps.length - 1) setIndex(index + 1);
-    else { setState(s => ({ ...completeLesson(s, lesson.id), positions: { ...s.positions, [lesson.id]: 0 } })); navigate('book'); }
+    const finished = index === lesson.steps.length - 1;
+    setState(s => setLessonPosition(completeStep(finished ? completeLesson(s, lesson.id) : s, step.id), lesson, finished ? 0 : index + 1));
+    if (finished) navigate('book');
   }
   const parts = [...new Set(lesson.steps.map(s => s.part))];
   return <div className="lesson-page page-enter">
     <div className="reader-nav"><button className="text-link" onClick={() => navigate('book')}><ArrowLeft size={15} /> The book</button><span>LESSON {String(lesson.number).padStart(2, '0')} <span className="reader-nav-divider">/</span> {lesson.title}</span><span>{index + 1} <span className="muted">/ {lesson.steps.length}</span></span></div>
     <div className="reader-progress" aria-label={`Page ${index + 1} of ${lesson.steps.length}`}>{lesson.steps.map((s, i) => <span key={s.id} className={`${i <= index ? 'filled' : ''} ${i > 0 && lesson.steps[i - 1].part !== s.part ? 'part-start' : ''}`} />)}</div>
     <div className="reader-toolbar"><span className="small-caps">PART {parts.indexOf(step.part) + 1} · {step.part.toUpperCase()} <span className="reader-nav-divider">/</span> {label(step).toUpperCase()}</span><div><button className={preferences.slow ? 'tool-toggle selected' : 'tool-toggle'} onClick={() => setPreferences(p => ({ ...p, slow: !p.slow }))} aria-pressed={preferences.slow}><Headphones size={15} />{preferences.slow ? 'Slow audio' : 'Normal audio'}</button><button className={preferences.translations ? 'tool-toggle selected' : 'tool-toggle'} onClick={() => setPreferences(p => ({ ...p, translations: !p.translations }))} aria-pressed={preferences.translations}><Eye size={15} /> English</button></div></div>
-    <ExercisePage key={step.id} {...{ step, lesson, preferences, encounter, next }} back={index > 0 ? () => setIndex(index - 1) : null} />
+    <ExercisePage key={step.id} {...{ step, lesson, preferences, encounter, next }} back={index > 0 ? () => setState(s => setLessonPosition(s, lesson, index - 1)) : null} />
   </div>;
 }
 
@@ -55,7 +56,7 @@ function ExercisePage({ step, lesson, preferences, encounter, next, back }) {
 }
 
 function Observe({ step, preferences }) {
-  return <><div className={`observation-grid cards-${Math.min(step.cards.length, 3)}`}>{step.cards.map((card, i) => <article className="observation-card" key={i}>{card.image ? <img src={`/images/${card.image}.svg`} alt={imageAlt(card.image)} /> : <div className="word-typography" lang="nl">{card.nl.split(/[ .?!]/)[0]}</div>}<div className="observation-text"><span lang="nl">{card.nl}</span><AudioButton text={card.nl} />{preferences.translations && <small>{card.en}</small>}</div></article>)}</div>{step.note && <div className="gentle-note"><Sprout size={22} /><p>{step.note}</p></div>}</>;
+  return <><div className={`observation-grid cards-${Math.min(step.cards.length, 3)}`}>{step.cards.map((card, i) => <article className="observation-card" key={i}>{card.image ? <Illustration image={card.image} alt={imageAlt(card.image)} /> : <div className="word-typography" lang="nl">{card.term || card.nl.split(/[ .?!]/)[0]}</div>}<div className="observation-text">{card.term && <div className="vocabulary-term"><strong lang="nl">{card.term}</strong><AudioButton text={card.term} />{preferences.translations && <small>{card.gloss}</small>}</div>}<span lang="nl">{card.nl}</span><AudioButton text={card.nl} />{preferences.translations && <small>{card.en}</small>}</div></article>)}</div>{step.note && <div className="gentle-note"><Sprout size={22} /><p>{step.note}</p></div>}</>;
 }
 
 function Grammar({ step, preferences }) {
@@ -70,9 +71,9 @@ function Grammar({ step, preferences }) {
 function Story({ step, preferences }) {
   const [english, setEnglish] = useState(false);
   const show = preferences.translations && english;
-  return <div className="story-page"><img className="story-scene" src={`/images/${step.image}.svg`} alt={imageAlt(step.image)} />
+  return <div className="story-page"><Illustration className="story-scene" image={step.image} alt={imageAlt(step.image)} />
     <div className="story-tools"><PlayAllButton id={`story-${step.id}`} texts={step.lines.map(l => ({ text: l.nl, voice: voiceFor(l.nl, l.speaker) }))} label="Listen to it all" /><button type="button" className="subtle-link" onClick={() => setEnglish(!english)} disabled={!preferences.translations}>{english ? 'Hide the English' : 'Show the English'}</button></div>
-    <div className="story-lines">{step.lines.map((line, i) => <div className="story-line" key={i}>{line.image && <img src={`/images/${line.image}.svg`} alt="" />}<div>{line.speaker && <b className="story-speaker">{line.speaker}</b>}<span lang="nl">{line.nl}</span>{show && <small>{line.en}</small>}</div><AudioButton text={line.nl} voice={voiceFor(line.nl, line.speaker)} /></div>)}</div>
+    <div className="story-lines">{step.lines.map((line, i) => <div className="story-line" key={i}>{line.image && <Illustration image={line.image} />}<div>{line.speaker && <b className="story-speaker">{line.speaker}</b>}<span lang="nl">{line.nl}</span>{show && <small>{line.en}</small>}</div><AudioButton text={line.nl} voice={voiceFor(line.nl, line.speaker)} /></div>)}</div>
     {step.note && <div className="pattern-note"><Rich text={step.note} /></div>}
   </div>;
 }
@@ -103,7 +104,7 @@ function Picture({ step, encounter, onDone, onStuck }) {
   return <form id={`check-${step.id}`} onSubmit={check}>
     {step.listen ? <div className="listening-player"><AudioButton text={step.nl} label="Listen to the sentence" className="audio-wide" conceal={status !== 'correct'} />{status === 'correct' && <p className="transcript" lang="nl">{step.nl}</p>}</div>
       : <div className="sentence-prompt"><span lang="nl">{step.nl}</span><AudioButton text={step.nl} /></div>}
-    <div className="picture-options" role="group" aria-label="Choose a picture">{step.choices.map((choice, i) => <button type="button" key={choice.image} className={`picture-option ${selected === choice.image ? 'selected' : ''} ${status === 'correct' && selected === choice.image ? 'correct' : ''} ${revealed && choice.image === step.answer ? 'revealed' : ''}`} onClick={() => { setSelected(choice.image); setStatus(null); }} disabled={status === 'correct'} aria-pressed={selected === choice.image} aria-label={`Picture ${i + 1}: ${imageAlt(choice.image)}`}><img src={`/images/${choice.image}.svg`} alt="" /><span className="option-index">{status === 'correct' && selected === choice.image ? <Check size={15} /> : i + 1}</span>{status === 'correct' && <span lang="nl" className="revealed-label">{choice.nl}</span>}</button>)}</div>
+    <div className="picture-options" role="group" aria-label="Choose a picture">{step.choices.map((choice, i) => <button type="button" key={choice.image} className={`picture-option ${selected === choice.image ? 'selected' : ''} ${status === 'correct' && selected === choice.image ? 'correct' : ''} ${revealed && choice.image === step.answer ? 'revealed' : ''}`} onClick={() => { setSelected(choice.image); setStatus(null); }} disabled={status === 'correct'} aria-pressed={selected === choice.image} aria-label={`Picture ${i + 1}: ${imageAlt(choice.image)}`}><Illustration image={choice.image} /><span className="option-index">{status === 'correct' && selected === choice.image ? <Check size={15} /> : i + 1}</span>{status === 'correct' && <span lang="nl" className="revealed-label">{choice.nl}</span>}</button>)}</div>
     <Feedback status={status} explanation={step.explanation || step.en} total={1} wrongCount={1} revealed={revealed} onReveal={() => { setRevealed(true); onStuck(); }} />
   </form>;
 }
@@ -124,7 +125,7 @@ function Arrange({ step, encounter, onDone, onStuck }) {
     else if (!missed.current) { missed.current = true; encounter(step.wordIds, false, `missed:${step.id}:${Date.now()}`); }
   }
   const edit = (list) => { setArranged(list); setStatus(null); };
-  return <form id={`check-${step.id}`} onSubmit={check} className="arrange-exercise">{step.image && <img src={`/images/${step.image}.svg`} alt={imageAlt(step.image)} />}<div className="sentence-builder">
+  return <form id={`check-${step.id}`} onSubmit={check} className="arrange-exercise">{step.image && <Illustration image={step.image} alt={imageAlt(step.image)} />}<div className="sentence-builder">
     <p className="arrange-english">{step.en}</p>
     <div className={`answer-slot ${status === 'correct' ? 'correct' : ''}`} aria-label="Your sentence" aria-live="polite">{arranged.length ? arranged.map((tokenIndex, i) => <button type="button" key={tokenIndex} lang="nl" className="word-token" disabled={status === 'correct'} onClick={() => edit(arranged.filter((_, j) => j !== i))}>{tokens[tokenIndex]}</button>) : <span>Tap the words in order… {step.distractors?.length ? `(${step.distractors.length === 1 ? 'one word is' : `${step.distractors.length} words are`} not needed)` : ''}</span>}</div>
     <div className="token-bank">{tokens.map((token, i) => <button type="button" key={i} lang="nl" className="word-token" disabled={arranged.includes(i) || status === 'correct' || arranged.length >= needed} onClick={() => edit([...arranged, i])}>{token}</button>)}</div>
@@ -149,8 +150,9 @@ function Drill({ step, preferences, encounter, onDone, onStuck }) {
     next.forEach((status, i) => {
       if (statuses[i] === 'correct') return;
       const words = wordsIn(...[itemModel(step.items[i], step).spoken, step.items[i].nl, step.items[i].listen, step.items[i].answer].filter(Boolean));
-      if (status === 'correct') encounter(words, revealed || missed.current.has(i) ? null : true, `passed:${step.id}:${i}`);
-      else if (!missed.current.has(i)) { missed.current.add(i); encounter(words, false, `missed:${step.id}:${i}:${Date.now()}`); }
+      const progressId = step.items[i].progressId || `${step.id}:${i}`;
+      if (status === 'correct') encounter(words, revealed || missed.current.has(i) ? null : true, `passed:${progressId}`);
+      else if (!missed.current.has(i)) { missed.current.add(i); encounter(words, false, `missed:${progressId}:${Date.now()}`); }
     });
     setStatuses(next); setChecked(true);
     if (next.every(s => s === 'correct')) onDone();
@@ -158,7 +160,7 @@ function Drill({ step, preferences, encounter, onDone, onStuck }) {
   const wrong = statuses.filter(s => s === 'wrong').length;
   const firstOpen = statuses.findIndex(s => s !== 'correct');
   return <form id={`check-${step.id}`} onSubmit={check} className={`drill ${step.layout === 'table' ? 'drill-table' : ''}`} noValidate>
-    {step.image && <img className="drill-hero" src={`/images/${step.image}.svg`} alt={imageAlt(step.image)} />}
+    {step.image && <Illustration className="drill-hero" image={step.image} alt={imageAlt(step.image)} />}
     {step.layout === 'table' && step.verb && <div className="drill-table-head" lang="nl">{step.verb}{step.verbEn && <small>{step.verbEn}</small>}</div>}
     <div className="drill-items">{step.items.map((item, i) => <DrillItem key={i} {...{ item, step, index: i, value: values[i], status: statuses[i], revealed, translations: preferences.translations }} autoFocus={i === 0 && !item.listen && !step.choices && !item.choices} onChange={value => { setValues(v => v.map((old, j) => j === i ? value : old)); setStatuses(s => s.map((old, j) => j === i && old === 'wrong' ? null : old)); }} />)}</div>
     {checked && <Feedback status={allCorrect ? 'correct' : 'wrong'} explanation={step.explanation} total={step.items.length} wrongCount={wrong || statuses.filter(s => s !== 'correct').length} revealed={revealed} onReveal={() => { setRevealed(true); onStuck(); document.getElementById(`${step.id}-item-${firstOpen}`)?.focus(); }} />}
@@ -167,9 +169,9 @@ function Drill({ step, preferences, encounter, onDone, onStuck }) {
 
 function Complete({ step, lesson, next, back }) {
   const nextLesson = lessons[lesson.number];
-  return <section className="completion-page"><div className="completion-art"><img src={`/images/${lesson.image}.svg`} alt={imageAlt(lesson.image)} /><span><Check size={23} /></span></div><div className="eyebrow">LESSON {lesson.number} COMPLETE</div><h1>{step.title}.</h1><p>{step.instruction}</p>
-    <div className="completion-columns"><div><span className="small-caps">YOUR FIVE TARGET WORDS</span><div className="collected-words">{lesson.targets.map(id => <span lang="nl" key={id}>{wordById[id].article ? `${wordById[id].article} ` : ''}{wordById[id].dutch}</span>)}</div></div>
-      <div><span className="small-caps">GRAMMAR YOU CAN NOW USE</span><ul className="completion-grammar">{lesson.grammar.map(id => { const point = grammarPoints.find(g => g.id === id); return <li key={id}><strong>{point.title}</strong> — {point.summary}</li>; })}</ul></div></div>
-    <p className="completion-note">{lesson.answers} answers in this lesson. {nextLesson ? `Everything here comes back in “${nextLesson.title}”.` : 'Everything in this volume now works together.'}<br />Come back tomorrow for a review — that is when it really sticks.</p>
+  return <section className="completion-page"><div className="completion-art"><Illustration image={lesson.image} alt={imageAlt(lesson.image)} /><span><Check size={23} /></span></div><div className="eyebrow">LESSON {lesson.number} COMPLETE</div><h1>{step.title}.</h1><p>{step.instruction}</p>
+    <div className="completion-columns"><div><span className="small-caps">YOUR {lesson.targets.length} TARGET WORDS</span><div className="collected-words">{lesson.targets.map(id => <span lang="nl" key={id}>{wordById[id].article ? `${wordById[id].article} ` : ''}{wordById[id].dutch}</span>)}</div></div>
+      <div><span className="small-caps">GRAMMAR TO KEEP PRACTISING</span><ul className="completion-grammar">{(lesson.reviewGrammar || lesson.grammar).map(id => { const point = grammarPoints.find(g => g.id === id); return <li key={id}><strong>{point.title}</strong> — {point.summary}</li>; })}</ul></div></div>
+    <p className="completion-note">{lesson.answers} answers in this lesson. {nextLesson?.available ? `Continue with “${nextLesson.title}”, and revisit these words in A little review.` : 'Keep these words active with A little review while the next lessons are prepared.'}<br />Come back tomorrow for a review — that is when it really sticks.</p>
     <button className="primary-button" onClick={next}>Finish this lesson <Check size={17} /></button>{back && <button className="text-link completion-back" onClick={back}><ArrowLeft size={15} /> Read the last page again</button>}</section>;
 }

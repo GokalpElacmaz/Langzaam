@@ -43,7 +43,7 @@ export default [
       { nl: 'Lotte leest graag.', en: 'Lotte likes reading.', image: 'woman-reading' },
       { nl: 'Bram schrijft graag.', en: 'Bram likes writing.', image: 'man-writing' },
     ],
-    note: '“Altijd” = always, “nooit” = never, “graag” = gladly — Dutch’s way of saying you like doing something. All three stand straight after the verb — never in front of it, where English puts “always” and “never”. The grammar section explains the rule.',
+    note: '“Altijd” = always, “nooit” = never, “graag” = gladly — Dutch’s way of saying you like doing something. In the simple statements here, they follow the conjugated verb. In questions they follow the subject. Later you will learn other positions, including putting an adverb first for emphasis.',
   },
   {
     type: 'picture', title: 'Read and point', grammar: ['present-regular'],
@@ -315,7 +315,7 @@ export default [
     body: [
       '**Koffie**, **thee**, **water**, **brood** and **kaas** are *mass nouns*: you do not count them. When you talk about them in general, there is **no article at all**: *Ik drink thee. Bram eet kaas. Het kind drinkt water.* (In a café you will hear “een koffie” — a cup of coffee — and at the bakery you buy “een brood”, a whole loaf. That is ordering one portion, not talking about coffee or bread in general.)',
       '**Appel** is different: you can count apples, so it behaves like huis or boek. *Ik eet **een** appel. De appel is groot.*',
-      'When you mean a particular one, use the article: **de** koffie, **de** thee, **de** kaas, **de** appel, but **het** water, **het** brood. The pronoun follows the article, as with every noun: de-word → **hij**, het-word → **het**. *De kaas is oud. Hij is oud. — Het water is hier. Het is hier.*',
+      'When you mean a particular one, use the article: **de** koffie, **de** thee, **de** kaas, **de** appel, but **het** water, **het** brood. For the examples here, masculine **kaas** uses **hij**, and **water**, a het-word for a thing, uses **het**. Not every de-word uses hij; feminine nouns can use ze. *De kaas is oud. Hij is oud. — Het water is hier. Het is hier.*',
       '**Negation.** “Geen” replaces “een” — and it also stands where there is *no* article: *Lotte drinkt **geen** koffie. Ik eet **geen** appel. Wij hebben **geen** brood.* Never *niet koffie*.',
       '**geen …, maar …** To say what someone has *instead*, add “maar”: *Lotte drinkt **geen** koffie, **maar** thee.* The noun after “maar” keeps its own article: zero for a mass noun, “een” for a count noun — *Ik eet geen kaas, maar een appel.*',
       'Compare three ways of saying no: *Lotte drinkt **geen** koffie* (she does not drink coffee), *Lotte drinkt **nooit** koffie* (she never drinks it), *Ik drink **niet graag** koffie* (I don’t like drinking it). With “nooit” and “niet graag” the noun keeps its zero article.',
@@ -383,10 +383,10 @@ export default [
 
   // ——— Grammar: graag, altijd, nooit ———
   {
-    type: 'grammar', title: 'graag, altijd, nooit: straight after the verb', grammar: ['adverb-position', 'niet', 'inversion', 'question-word'],
+    type: 'grammar', title: 'graag, altijd, nooit: their place in a sentence', grammar: ['adverb-position', 'niet', 'inversion', 'question-word'],
     body: [
-      '**Graag**, **altijd** (always), **nooit** (never) — and **niet**, which you already know — stand **directly after the conjugated verb**.',
-      'English puts “always” and “never” *before* the verb: *Bram **always** drinks coffee.* Dutch never does: *Bram drinkt **altijd** koffie.* “Bram altijd drinkt koffie” is one of the most common learner mistakes — the verb has to come first.',
+      'In the simple subject-first statements on these pages, **graag**, **altijd** (always), **nooit** (never) and **niet** follow the conjugated verb. This is the pattern to practise here, not their only possible position.',
+      'English puts “always” and “never” *before* the verb: *Bram **always** drinks coffee.* In a Dutch subject-first statement, use: *Bram drinkt **altijd** koffie.* “Bram altijd drinkt koffie” is one of the most common learner mistakes — the verb has to come first.',
       '**Graag** has no one-word English equivalent. Literally it means “gladly”; Dutch uses it where English uses the verb *like*: *Ik lees **graag*** = I like reading. *Ik drink **graag** thee* = I like (drinking) tea. To say you don’t like something: ***niet graag***, with niet first — *Ik wacht niet graag.*',
       'In a **question** the verb comes first, then the subject, *then* the adverb: *Drink jij **graag** koffie? Eet Bram **altijd** kaas?* With a question word the pattern is the same: *Wat drink jij **graag**? Waar schrijf jij **graag**?*',
       'The slot is the same with every verb: *Bram heeft **altijd** koffie thuis. Wij wonen **graag** in Leuven. Is Bram **altijd** moe?*',
@@ -442,7 +442,7 @@ export default [
       { nl: 'Eet jij een appel?', task: 'Add “altijd”', answer: 'Eet jij altijd een appel?' },
       { nl: 'Bram heeft koffie thuis.', task: 'Add “altijd”', answer: 'Bram heeft altijd koffie thuis.' },
     ],
-    explanation: 'Statement: subject, verb, adverb. Question: verb, subject, adverb. The adverb never jumps in front of the verb.',
+    explanation: 'Statement: subject, verb, adverb. Question: verb, subject, adverb. These pages practise the ordinary subject-first statement and its question. An adverb can also start a sentence with inversion, which comes later.',
   },
   {
     type: 'arrange', title: 'Bram and his coffee', grammar: ['adverb-position'],
@@ -456,7 +456,7 @@ export default [
   },
   {
     type: 'drill', title: 'English order, Dutch order', grammar: ['adverb-position', 'present-regular', 'inversion', 'question-word'],
-    instruction: 'Translate. In English “always” and “never” come before the verb; in Dutch they come after it.',
+    instruction: 'Translate using subject-first statements. Put altijd or nooit after the conjugated verb.',
     items: [
       { en: 'Bram always eats bread.', answer: 'Bram eet altijd brood.' },
       { en: 'Lotte always drinks tea.', answer: 'Lotte drinkt altijd thee.' },
@@ -700,6 +700,6 @@ export default [
   },
   {
     type: 'complete', title: 'Reading, eating, drinking, writing — in the right order',
-    instruction: 'Four new verbs in every person, the z that turns into s and the v that turns into f, coffee and cheese without “een”, and the slot straight after the verb where graag, altijd, nooit and niet belong. All of it comes back in lesson 6.',
+    instruction: 'Four new verbs in every person, the z that turns into s and the v that turns into f, coffee and cheese without “een”, and the position of graag, altijd, nooit and niet in simple statements and questions. All of it comes back in lesson 6.',
   },
 ];

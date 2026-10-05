@@ -17,5 +17,5 @@ export default {
     { id: 'herhalen', dutch: 'herhalen', english: 'to repeat', forms: ['herhaal', 'herhaalt', 'herhaald', 'herhaalde'] },
     { id: 'uitleggen', dutch: 'uitleggen', english: 'to explain', forms: ['uitleg', 'uitlegt', 'uitgelegd'] },
   ],
-  forms: { zullen: ['zou', 'zouden'] },
+  forms: { zullen: ['zou', 'zouden'], kunnen: ['kun'] },
 };

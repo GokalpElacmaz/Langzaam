@@ -111,20 +111,22 @@ test('answers ignore capitals and punctuation, accept pronoun pairs, but never w
   assert.equal(isAnswerCorrect('', 'Dit is een huis.'), false);
 });
 
-test('the whole book passes the curriculum validator', () => {
-  const result = spawnSync(process.execPath, ['scripts/validate-content.mjs'], { encoding: 'utf8' });
+test('every published lesson passes the curriculum validator; drafts remain auditable separately', () => {
+  const result = spawnSync(process.execPath, ['scripts/validate-content.mjs', '--published'], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
 });
 
-test('ten targets per lesson, derived word tracking, and a clean speech corpus', () => {
-  for (const lesson of lessons) assert.equal(lesson.targets.length, 10, lesson.id);
+test('declared vocabulary loads, derived word tracking, and a clean speech corpus', () => {
+  for (const lesson of lessons) assert.equal(lesson.targets.length, lesson.track === 'practice' ? 20 : 10, lesson.id);
   assert.deepEqual(wordsIn('Hij woont niet in Gent.'), ['hij', 'wonen', 'niet', 'in']);
   assert.deepEqual(wordsIn('Ben jij moe?'), ['zijn', 'jij', 'moe']);
   assert.equal(audioTexts.some((text) => /___|[[\]]/.test(text)), false);
   assert.ok(audioTexts.includes('jij woont'));
   const known = allowedForms(0);
   assert.ok(known.has('is') && !known.has('ben') && !known.has('zijn'));
-  assert.ok(allowedForms(1).has('bent') && !allowedForms(2).has('grote') && allowedForms(3).has('grote'));
+  assert.ok(allowedForms(1).has('bent'));
+  assert.ok(!allowedForms(lessons.findIndex(l => l.id === 'ik-woon')).has('grote'));
+  assert.ok(allowedForms(lessons.findIndex(l => l.id === 'ik-heb')).has('grote'));
 });
 
 test('every spoken Dutch text has normal and slow recordings, in the voice each line needs', () => {

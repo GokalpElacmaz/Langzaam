@@ -19,6 +19,8 @@
  * subordinate clause the course writes “niet hoeft te koken” and accepts “niet te koken hoeft”.
  * de soep is traditionally feminine, so it is “ze” (as in Flanders).
  */
+import { listenPages, recallPages } from '../review-pages.js';
+
 export default [
   // ——— Words ———
   {
@@ -797,6 +799,37 @@ export default [
     instruction: 'Build: “While Lotte is cutting the vegetables, Max lies under the table.” Two tiles are traps.',
     nl: 'Terwijl Lotte de groenten snijdt, ligt Max onder de tafel.', en: 'While Lotte is cutting the vegetables, Max lies under the table.', image: 'dog-big', distractors: ['legt', 'snijd'],
   },
+
+  {
+    type: 'drill', title: 'Before, after and as soon as', grammar: ['time-conjunctions', 'verb-preposition', 'er-preposition', 'als-inversion', 'dates', 'reflexive', 'perfect-zijn', 'perfect-hebben'],
+    instruction: 'Questions about market day and about everyone in the book. Answer with a complete sentence; use the information in brackets.',
+    items: [
+      { nl: 'Wat doen Bram en Lotte, nadat zij boodschappen gedaan hebben?', answer: 'Nadat zij boodschappen gedaan hebben, gaan zij naar huis.', accept: ['Zij gaan naar huis.', 'Nadat zij boodschappen hebben gedaan, gaan zij naar huis.'] },
+      { nl: 'Wat doet Lotte, nadat zij de groenten gesneden heeft?', answer: 'Nadat Lotte de groenten gesneden heeft, doet zij ze in de pan.', accept: ['Zij doet ze in de pan.', 'Nadat zij de groenten gesneden heeft, doet zij ze in de pan.'] },
+      { nl: 'Wat eten zij, nadat de vrienden gekomen zijn?', answer: 'Nadat de vrienden gekomen zijn, eten zij de soep.', accept: ['Zij eten de soep.', 'Nadat de vrienden gekomen zijn, eten zij soep.'] },
+      { nl: 'Wat zegt Bram, zodra de soep klaar is?', answer: 'Zodra de soep klaar is, zegt Bram: smakelijk!', accept: ['Hij zegt: smakelijk!', 'Bram zegt: smakelijk!'] },
+      { nl: 'Hoe lang heeft Lotte al tijd? (sinds haar project klaar is)', answer: 'Lotte heeft weer tijd, sinds haar project klaar is.', accept: ['Sinds haar project klaar is, heeft Lotte weer tijd.'] },
+      { nl: 'Wat koopt Lotte, voordat zij naar huis gaan? (appels en eieren)', answer: 'Voordat zij naar huis gaan, koopt Lotte appels en eieren.', accept: ['Lotte koopt appels en eieren.'] },
+      { nl: 'Is fruit gezond?', answer: 'Ja, fruit is heel gezond.', accept: ['Ja, fruit is gezond.'] },
+      { nl: 'Wat voor fruit koopt Lotte? (appels)', answer: 'Lotte koopt appels.', accept: ['Zij koopt appels.'] },
+      { nl: 'Heeft Tom honger als hij komt?', answer: 'Ja, Tom heeft honger, want hij heeft tot vier uur geslapen.', accept: ['Ja, hij heeft honger.', 'Ja, Tom heeft honger.'] },
+      { nl: 'Wat zeg je in Vlaanderen voor het eten?', answer: 'Je zegt: smakelijk!', accept: ['Smakelijk!'] },
+      { nl: 'Als het regent, gaan Bram en Lotte dan ook naar de markt?', answer: 'Ja, als het regent, gaan zij ook naar de markt.', accept: ['Ja, zij gaan ook naar de markt.'] },
+      { nl: 'Op welke datum is het feest van Lotte? (de twintigste oktober)', answer: 'Het feest van Lotte is op 20 oktober.', accept: ['Het feest is op de twintigste oktober.', 'Op 20 oktober.'] },
+      { nl: 'Wacht Max op de vis? (ja, hij wacht erop)', answer: 'Ja, Max wacht erop.', accept: ['Ja, hij wacht erop.', 'Ja, Max wacht er al lang op.'] },
+      { nl: 'Interesseert Emma zich voor koken? (ja)', answer: 'Ja, Emma interesseert zich voor koken.', accept: ['Ja, zij interesseert zich voor koken.'] },
+      { nl: 'Waar luistert Bram naar, terwijl hij kookt? (muziek)', answer: 'Bram luistert naar muziek, terwijl hij kookt.', accept: ['Hij luistert naar muziek, terwijl hij kookt.'] },
+      { nl: 'Houdt Tom van muziek tijdens het eten? (ja)', answer: 'Ja, Tom houdt van muziek tijdens het eten.', accept: ['Ja, hij houdt van muziek tijdens het eten.'] },
+      { nl: 'Kijkt Jonas naar sport op televisie? (ja, na het eten)', answer: 'Ja, Jonas kijkt na het eten naar sport op televisie.', accept: ['Ja, na het eten kijkt Jonas naar sport op televisie.', 'Ja, Jonas kijkt naar sport op televisie.'] },
+      { nl: 'Is televisie kijken goed na een lange dag? (ja)', answer: 'Ja, televisie kijken is goed na een lange dag.', accept: ['Ja, na een lange dag is televisie kijken goed.'] },
+      { nl: 'Zorgt Tom morgen weer voor patiënten? (ja, in het ziekenhuis)', answer: 'Ja, Tom zorgt morgen weer voor patiënten in het ziekenhuis.', accept: ['Ja, hij zorgt morgen weer voor patiënten in het ziekenhuis.'] },
+      { nl: 'Hoeveel patiënten zijn bang voor de nacht? (twee)', answer: 'Twee patiënten zijn bang voor de nacht.', accept: ['Er zijn twee patiënten bang voor de nacht.'] },
+      { nl: 'Is Max bang voor de verkoper? (nee)', answer: 'Nee, Max is niet bang voor de verkoper.', accept: ['Nee, hij is niet bang voor de verkoper.'] },
+    ],
+    explanation: 'nadat … gedaan hebben: the perfect after nadat. erop: Max waits for it (the fish). Als het regent, gaan zij toch …: the clause first, then the verb.',
+  },
+  ...recallPages(["boom", "bank", "vrouw", "kind", "deur", "raam", "auto", "straat", "oud", "jong", "ziek", "mooi", "nieuw", "lopen", "spelen", "praten", "hond", "boek", "fiets", "sleutel", "telefoon", "jas", "thee", "kaas", "park", "school", "trein", "kamer", "stoel", "tuin", "vader", "zus", "vriendin", "familie", "naam", "zwemmen", "spreken", "maandag", "dinsdag", "woensdag", "donderdag", "vrijdag", "zondag", "weekend", "zien", "film", "denken", "begrijpen", "uitgaan", "snel", "lang", "geleden", "reizen", "oma", "herinneren", "dokter", "sturen", "wensen", "cadeau", "hangen", "lamp", "verhuizen", "huren", "zoeken", "verdienen", "lenen", "examen", "aankomen", "langzaam", "warm", "koud", "kort", "moeilijk", "vakantie", "zee", "strand", "foto", "opa", "hoofd", "buik", "rug", "pijn", "apotheek", "winter", "reis", "vliegtuig", "hotel", "buurman", "buurvrouw", "collega", "student", "universiteit", "les", "leraar", "antwoord", "verjaardag", "feest", "kaart", "kast", "muur", "doos", "bedrag", "rekening", "eigenaar"]),
+  ...listenPages(["examen", "aankomen", "langzaam", "warm", "koud", "kort", "moeilijk", "vakantie", "zee", "strand", "foto", "opa", "hoofd", "buik", "rug", "pijn", "apotheek", "winter", "reis", "vliegtuig", "hotel", "buurman", "buurvrouw", "collega", "student", "universiteit", "les", "leraar", "antwoord", "verjaardag", "feest", "kaart", "kast", "muur", "doos", "bedrag", "rekening", "eigenaar"]),
 
   // ——— Read ———
   {

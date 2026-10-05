@@ -243,8 +243,8 @@ export default [
       '**want** is a linking word like *en*, *maar* and *of*. It takes no slot, and what follows is an ordinary main clause, with the verb second: *Ik ga niet, **want** het **regent**.* If the clause after want starts with a time, the verb-second rule works inside it as always: *…, want morgen **heeft** Lotte een examen.*',
       '**omdat** opens a **subordinate clause** (Dutch: *bijzin*) — a clause that cannot stand on its own. In a subordinate clause the subject comes straight after omdat, and the **conjugated verb goes to the very end**: *Ik ga niet, **omdat** het **regent**. …, omdat Lotte morgen een examen **heeft**.*',
       'Everything between the subject and the verb keeps the order you know: time before place, niet in its place, graag and nooit after the subject. Only the verb has left: *Bram werkt vandaag niet in Brussel* → *omdat Bram vandaag niet in Brussel **werkt***.',
-      'There is **no inversion** in a subordinate clause. The subject always stands right after omdat — never *omdat morgen heeft zij*. And because jij now stands **before** its verb, jij keeps its -t: *omdat jij morgen **werkt***, *omdat jij moe **bent***.',
-      'Which one should you use? In speech, want is very common; in writing — and at a Belgian university — omdat is everywhere, because it can also start the sentence (see the als page). Dutch puts a comma before both; answers never check commas.',
+      'There is **no inversion** in a subordinate clause. In the neutral pattern practised here, put the subject after omdat and the conjugated verb at the end — never *omdat morgen heeft zij*. And because jij now stands **before** its verb, jij keeps its -t: *omdat jij morgen **werkt***, *omdat jij moe **bent***.',
+      'Which one should you use? In speech, want is very common; in writing — and at a Belgian university — omdat is everywhere, because it can also start the sentence (see the als page). A comma is usual before want. Before omdat it depends on the sentence and emphasis; it is not always needed. Answers do not check commas.',
     ],
     tables: [
       { caption: 'want — main clause, verb second', rows: [
@@ -329,7 +329,7 @@ export default [
       { nl: 'Bram koopt brood, want thuis hebben wij geen brood.', task: 'Replace want with omdat', answer: 'Bram koopt brood, omdat wij thuis geen brood hebben.' },
       { nl: 'Ik ben blij, want morgen kom jij.', task: 'Replace want with omdat', answer: 'Ik ben blij, omdat jij morgen komt.' },
     ],
-    explanation: 'want vrijdag heeft zij → omdat zij vrijdag … heeft. want morgen kom jij → omdat jij morgen komt. In an omdat-clause the subject is always first, and the verb always last.',
+    explanation: 'want vrijdag heeft zij → omdat zij vrijdag … heeft. want morgen kom jij → omdat jij morgen komt. Use omdat + subject + the rest + verb in these exercises.',
   },
   {
     type: 'arrange', title: 'Because of the exam', grammar: ['want-omdat', 'verb-final', 'hebben'],

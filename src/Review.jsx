@@ -13,11 +13,11 @@ function practiceBank(state) {
   const opened = lessons.filter(l => state.completedLessons.includes(l.id) || l.steps.some(s => state.completedSteps[s.id]));
   return opened.flatMap(lesson => lesson.steps.filter(step => step.type === 'drill' && !step.choices).flatMap(step => step.items.map((raw, i) => {
     if (raw.choices) return null;
-    const verb = raw.label && wordById[formToWord[raw.answer?.toLowerCase()]];
+    const verb = raw.label && (wordById[step.verb] || wordById[formToWord[raw.answer?.toLowerCase()]]);
     const item = raw.label ? (verb ? { nl: `${raw.label} ___`, cue: verb.dutch, en: raw.gloss, answer: raw.answer } : null) : { ...raw, task: raw.task || step.task };
     if (!item) return null;
     const texts = itemTexts(item);
-    return { item, key: `${step.id}:${i}`, lesson: lesson.number, words: wordsIn(...texts.spoken, ...texts.checked) };
+    return { item, key: raw.progressId || `${step.id}:${i}`, lesson: lesson.number, words: wordsIn(...texts.spoken, ...texts.checked) };
   }))).filter(Boolean);
 }
 

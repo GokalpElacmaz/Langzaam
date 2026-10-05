@@ -12,7 +12,7 @@ export default {
     { id: 'peper', dutch: 'peper', article: 'de', english: 'pepper' },
     { id: 'kraam', dutch: 'kraam', article: 'het', english: 'market stall (het kraam in Flanders, de kraam in the Netherlands)', image: 'market', forms: ['kramen'] },
     { id: 'vers', dutch: 'vers', english: 'fresh', forms: ['verse'] },
-    { id: 'lekker', dutch: 'lekker', english: 'tasty / nice', forms: ['lekkere', 'lekkerder', 'lekkerst'] },
+    { id: 'lekker', dutch: 'lekker', english: 'tasty / nice', forms: ['lekkere', 'lekkerder', 'lekkerst', 'lekkerste'] },
     { id: 'proeven', dutch: 'proeven', english: 'to taste', forms: ['proef', 'proeft', 'geproefd', 'proefde'] },
     { id: 'bakken', dutch: 'bakken', english: 'to bake / to fry', forms: ['bak', 'bakt', 'gebakken', 'bakte', 'bakten'] },
     { id: 'pan', dutch: 'pan', article: 'de', english: 'pan', forms: ['pannen'] },

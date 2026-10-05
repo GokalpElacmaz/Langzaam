@@ -1,7 +1,7 @@
 /** Lesson 34 — extra vocabulary: news and the press. */
 export default {
   words: [
-    { id: 'woningnood', dutch: 'woningnood', article: 'de', english: 'housing shortage', forms: ['woning', 'woningen'] },
+    { id: 'woningnood', dutch: 'woningnood', article: 'de', english: 'housing shortage', forms: [] },
     { id: 'kot', dutch: 'kot', article: 'het', english: 'student room (Leuven: op kot gaan)', forms: ['koten', 'kotstudent', 'kotstudenten'] },
     { id: 'stijging', dutch: 'stijging', article: 'de', english: 'rise / increase' },
     { id: 'procent', dutch: 'procent', english: 'per cent' },
